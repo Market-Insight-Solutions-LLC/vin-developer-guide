@@ -1,5 +1,21 @@
 # Configuration file for the Sphinx documentation builder.
 
+import os
+import sys
+import sphinx_rtd_theme
+from os import environ
+
+sys.path.insert(0, os.path.abspath('.'))
+
+rtd_tag = 'latest'
+if environ.get('READTHEDOCS_VERSION') is not None:
+    rtd_tag = os.environ['READTHEDOCS_VERSION']
+
+placeholder_replacements = {
+    "{BRANCH}" : "main",
+    "{BRANCH_DOC}" : "latest", # Used to target the correct ReadTheDocs distribution version
+    "{RTD_TAG}": rtd_tag
+}
 # -- Project information
 
 project = 'VIN Developer Guide'
