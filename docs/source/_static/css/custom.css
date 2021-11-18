@@ -1,5 +1,10 @@
 @import "theme.css";
 
+/* Side navigation bar color */
+.wy-side-nav-search {
+    background-color: #0FFFFF;
+}
+
 /* Fix horizontal scrollbars in tables*/
 .wy-table-responsive table td {
     /* !important prevents the common CSS stylesheets from overriding
@@ -11,10 +16,7 @@
     overflow: visible !important;
 }
 
-/* Side navigation bar color */
-.wy-side-nav-search {
-    background-color: #0FFFFF;
-}
+
 
 
 
