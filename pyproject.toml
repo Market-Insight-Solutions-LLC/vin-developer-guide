@@ -1,0 +1,8 @@
+[build-system]
+requires = ["flit_core >=3.2,<4"]
+build-backend = "flit_core.buildapi"
+
+[project]
+name = "vin_developer_guide"
+authors = [{name = "Dion", email = "dhicks@virgilsystems.com"}]
+dynamic = ["version", "description"]

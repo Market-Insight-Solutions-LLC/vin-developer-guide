@@ -1,0 +1,122 @@
+VIN™ Command Line Interface (CLI)
+====================================
+
+The VIN™ CLI acts as a Hypertext Transfer Protocol (HTTP) client for reaching the VIN™ HTTP server from the command line in a Linux environment. 
+
+Running the VIN™ CLI
+------------------------
+The VIN™ CLI can be used for VIN™ nodes on both a local machine and on the network with following being the command for starting up the VIN™ CLI:
+
+For a local machine with default settings:
+
+* Run a terminal session and enter: 
+
+.. code-block:: console
+
+    ./VIN_cli <vinnode_hostname_or_IP> <vinnode_http_server_port>
+
+* For example, a VIN™ running on a local machine would be ./VIN_cli localhost 9980 where 9980 is the default HTTP port for the node.
+
+If a port other than 9980 needs to be specified, it can be done so using the -h flag:
+
+* As an example, executing the following: 
+
+.. code-block:: console
+
+    ./VIN -p 60001 -r 60601 -h 60660 
+
+has the internode comm port set to 60001, the secure receipt port to 60601 and the HTTP command port at 60660. 
+
+Once a connection with the VIN™ CLI has been established, clicking help in the CLI allows for the viewing of commands and their usages. (Note: these are also listed below for reference.)
+
+The following table displays a list of commands that are accessible by the VIN™ CLI:
+
+
+.. csv-table:: VIN™ CLI Supported Commands
+    :header: Command, Command Line Instruction, Description
+    :widths: 15 35 50 
+
+    Put, put <key> <value>, "Puts a user provided value onto the network which corresponds to the user provided key."
+    Get, get <key>, "Requires a given key and returns the Key-Value pair from the respective node. The value is displayed in the CLI window. No other output is displayed."
+    Spread, spread <filepath>, "Splits a file of any type located in a given path into tokens and then spreads them across the network. An encrypted cryptographic receipt is then generated and stored in ‘/opt/VIN/receipts/sent’."
+    Share, share <filepath> <ip address> <port of another node>, "Spreads a file, then the peer will automatically establish a secure channel with the IP address and receipt port of specified peer in the network and transfer the encrypted cryptographic receipt. The receiver peer will automatically call ‘gather’ on the receipt once decrypted."
+    Gather, gather <receipt filepath>, "Gathers a spread file using the given receipt. It will be reassembled into the output directory ‘/opt/VIN/outputs’."
+    GetPeers, getPeers, "Get the addresses and ports for all nodes connected on this network."
+    Shutdown, shutdown, "Send a shutdown signal to the current node that the user is connected to."
+
+
+Running a Simple Network and Basic Functionality
+--------------------------------------------------
+To run a simple VIN™ on a local machine a minimum of three VIN™ nodes (one bootstrap node and two sender/receiver nodes) must be instantiated. To do so, the following steps should be completed:
+
+* Open three terminal sessions in the directory where the VIN executable resides.
+* Within one of the sessions, run: 
+
+.. code-block:: console
+
+    ./VIN -b 
+
+This will serve as the bootstrap node and will occupy port 8000 for incoming connections.
+
+* On another session, run: 
+ 
+.. code-block:: console
+
+    ./VIN  
+
+This will start a VIN peer on the default port for data (8080) and the default receipt server (9090)
+
+* On the final terminal window, run: 
+
+.. code-block:: console
+
+    ./VIN -p <DATA_PORT> -r <RECEIPT_PORT> 
+
+* Where <DATA_PORT> and <RECEIPT_PORT> must be different than that of the other peer (i.e., different than 8080 and 9090, respectively).
+
+IP Network
+^^^^^^^^^^
+To run a simple VIN™ on an IP based network, such as Amazon Web Service (AWS), a Local Area Network (LAN) with routers/switches and Dynamic Host Communication Protocol (DHCP), VMware, etc., these steps should be followed:
+
+
+* Complete the ‘Installation’ steps for all systems that will be in the network (Note: mass deployment will be an upcoming feature).
+* For each system, from the VIN executable directory, run: 
+
+.. code-block:: console
+
+    ./VIN -b 
+
+* This will start a bootstrap node. Be sure to record the IP address of this device.
+
+* In all subsequent nodes, use a text editor to edit the configuration file located in the directory: /etc/opt/VIN/defaults.cfg. (For more information on defaults.cfg, please refer to the :doc:`configuration` section). 
+* Replace the bootstrap_ip variable with bootstrap_ip = "<bootstrap_ip>:<bootstrap_port>:"; (Note: be sure to leave the quotes (") intact.
+* Following this, on all non-bootstrap nodes, run: 
+
+.. code-block:: console
+
+    ./VIN  
+
+* At this point, a Virgil Integrity Network™ has been successfully launched with each peer having access to a VIN™ CLI window and its commands.
+
+Note: any node can run in the background (i.e., as a background process) if it is needed. To do so, within a VIN™ CLI from the VIN executable directory, simply enter the command: 
+
+.. code-block:: console
+
+    ./VIN & > /dev/null or /VIN -p <DATA_PORT> -r <RECEIPT_PORT> & > /dev/null  
+
+These nodes can be shutdown from the VIN™ CLI (refer to the VIN™ CLI Installation and Usage section). To ensure correct functionality, please confirm that no other processes are using any of the previously assigned ports. 
+
+Sharing a File
+---------------
+
+Gathering a File
+----------------
+
+Spreading a File
+----------------
+
+Deleting a Node
+---------------
+
+Shutting Down a Network
+-----------------------
