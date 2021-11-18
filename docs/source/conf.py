@@ -1,8 +1,5 @@
 # Configuration file for the Sphinx documentation builder.
-import os
-import sys
-sys.path.append(os.path.abspath('../..'))
-sys.path.append(os.path.abspath('..'))
+
 # -- Project information
 
 project = 'VIN Developer Guide'
@@ -36,5 +33,9 @@ html_theme = 'sphinx_rtd_theme'
 
 # -- Options for EPUB output
 epub_show_urls = 'footnote'
+
+html_static_path = ['_static']
+
+html_style = 'css/custom.css'
 
 
