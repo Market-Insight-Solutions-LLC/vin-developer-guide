@@ -37,16 +37,4 @@ html_theme = 'sphinx_rtd_theme'
 # -- Options for EPUB output
 epub_show_urls = 'footnote'
 
-# These folders are copied to the documentation's HTML output
-html_static_path = ['_static']
 
-# These paths are either relative to html_static_path
-# or fully qualified paths (eg. https://...)
-html_css_files = [
-    'css/custom.css',
-]
-
-# A workaround for the responsive tables always having annoying scrollbars.
-#def setup(app):
-#    app.add_css_file("no_scrollbars.css")
-    #app.add_stylesheet("no_scrollbars.css")
