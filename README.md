@@ -1,1 +1,0 @@
-# vin_developer_guide
