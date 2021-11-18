@@ -1,0 +1,21 @@
+@import "theme.css";
+
+
+/* Side navigation bar */
+
+.wy-side-nav-search {
+    background-color: #8c0b70;
+}
+
+
+/* Fix tables */
+
+.wy-table-responsive table td {
+    /* !important prevents the common CSS stylesheets from overriding
+        this as on RTD they are loaded after this stylesheet */
+    white-space: normal !important;
+}
+
+.wy-table-responsive {
+    overflow: visible !important;
+}
