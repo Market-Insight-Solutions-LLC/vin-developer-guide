@@ -1,5 +1,10 @@
 # Configuration file for the Sphinx documentation builder.
 
+import os
+import sys
+sys.path.append(os.path.abspath('../..'))
+sys.path.append(os.path.abspath('..'))
+
 # -- Project information
 
 project = 'VIN Developer Guide'
