@@ -1,15 +1,6 @@
 @import "theme.css";
 
-
-/* Side navigation bar */
-
-.wy-side-nav-search {
-    background-color: #8c0b70;
-}
-
-
-/* Fix tables */
-
+/* Fix horizontal scrollbars in tables*/
 .wy-table-responsive table td {
     /* !important prevents the common CSS stylesheets from overriding
         this as on RTD they are loaded after this stylesheet */
@@ -19,3 +10,11 @@
 .wy-table-responsive {
     overflow: visible !important;
 }
+
+/* Side navigation bar color */
+/*.wy-side-nav-search {
+    background-color: #AA0b70;
+}*/
+
+
+
