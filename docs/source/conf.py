@@ -54,7 +54,8 @@ html_static_path = ['_static']
 
 html_style = 'css/custom.css'
 
-html_logo = "virgil_v_black.png"
+html_logo = "images/virgil_v_black.png"
+
 html_theme_options = {
     'logo_only': True,
     'display_version': False,
