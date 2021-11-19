@@ -1,7 +1,7 @@
 Getting Started
 ==================
 
-Code bwlock example
+Code block example
 
 .. code-block:: console
 
