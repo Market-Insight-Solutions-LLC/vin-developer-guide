@@ -57,7 +57,7 @@ html_style = 'css/custom.css'
 html_logo = "images/virgil_v_black.png"
 
 html_theme_options = {
-    'logo_only': True,
+    'logo_only': False,
     'display_version': False,
 }
 
