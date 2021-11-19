@@ -1,2 +1,14 @@
 {% extends "!layout.html" %}
-{% set css_files = css_files + [ "_static/css/custom.css" ] %}
+  {% block footer %} {{ super() }}
+
+  <style>
+    /* Sidebar header (and topbar for mobile) */
+    .wy-side-nav-search, .wy-nav-top {
+      background: #0000FF;
+    }
+    /* Sidebar */
+    /*.wy-nav-side {
+      background: #000000;
+    }*/
+  </style>
+{% endblock %}
