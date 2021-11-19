@@ -54,4 +54,8 @@ html_static_path = ['_static']
 
 html_style = 'css/custom.css'
 
+#html_css_files = [
+#    'css/custom.css',
+#]
+
 
