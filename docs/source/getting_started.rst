@@ -1,15 +1,53 @@
 Getting Started
 ==================
 
-Code block example
 
-.. code-block:: console
+Introduction
+------------
+* Add links to software that may be required to run the VIN™ or use its functionality
 
-   (.venv) $ pip install lumache
+Installation
+------------
+* System requirements
+  
+  * Installing dependencies (if there are any)
+  
+* Linux
 
+  * Ubuntu 20.04
+  
+    * Run the VIN.deb installation package
 
-For example:
+  * Raspberry Pi OS
+  
+  * CentOS
+  
+* Windows
 
->>> import lumache
->>> lumache.get_random_ingredients()
-['shells', 'gorgonzola', 'parsley']
+  * Run the VIN.msi installation package
+
+* Android
+
+* Other Operating Systems (OSs)
+
+  * If integration with an OS that is not listed, please contact our team with a request.
+	
+* Components
+
+  * ``defaults.cfg``: modifiable configuration file 
+  
+  * Third party components
+  
+    * Will any other components be required? 
+
+Disk
+----
+All VIN™ Disk IO occurs and is located in ``/opt/VIN`` for Linux based operating systems and ``VIN\\`` for Windows. Any cryptographic receipts and reconstructed data will be stored here.
+
+Debug Logs
+----------
+VIN™ nodes store log outputs in ``/var/log/VIN/logs/`` for Linux based operating systems and ``VIN\\logs\\`` for Windows. If any support from Virgil Systems is required, these logs can be sent along with any support requests to obtain more visibility into the issue.
+
+Running the Validation Test
+---------------------------
+After building and installing the VIN™ on the desired system architecture, a test executable named ``VIN_test.exe`` will be generated in ``qtoken-cpp/build/test``. This file can be executed to run the test suite.

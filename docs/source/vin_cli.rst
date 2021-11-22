@@ -1,11 +1,11 @@
 VIN™ Command Line Interface (CLI)
 ====================================
 
-The VIN™ CLI acts as a Hypertext Transfer Protocol (HTTP) client for reaching the VIN™ HTTP server from the command line in a Linux environment. 
+The VIN™ CLI acts as a Hypertext Transfer Protocol (HTTP) client for reaching the VIN™ HTTP server from the command line in a Linux environment. It will be installed during the installation of the VIN™.
 
 Running the VIN™ CLI
 ------------------------
-The VIN™ CLI can be used for VIN™ nodes on both a local machine and on the network with following being the command for starting up the VIN™ CLI:
+The VIN™ CLI can be used for VIN™ nodes on both a local machine and on the network with the following being the command for starting up the VIN™ CLI:
 
 For a local machine with default settings:
 
