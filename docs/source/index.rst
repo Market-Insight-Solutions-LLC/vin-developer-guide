@@ -4,6 +4,7 @@
    :titlesonly:
 
    Home <index>
+   home
    vin_description
    getting_started
    vin_cli
