@@ -16,7 +16,7 @@ Installation
 
   * Ubuntu 20.04
   
-    * Run the VIN.deb installation package
+    * Run the ``VIN.deb`` installation package
 
   * Raspberry Pi OS
   
@@ -24,9 +24,15 @@ Installation
   
 * Windows
 
-  * Run the VIN.msi installation package
+  * Run the ``VIN.msi`` installation package
+
+* Amazon Web Services
+
+  * Add text...
 
 * Android
+
+  * Add text...
 
 * Other Operating Systems (OSs)
 
