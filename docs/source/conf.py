@@ -54,13 +54,14 @@ html_static_path = ['_static']
 
 html_style = 'css/custom.css'
 
-html_logo = "images/virgil_v_black.png"
+html_logo = "images/logo/virgil_v_black.png"
 
 html_theme_options = {
     'logo_only': False,
     'display_version': False,
 }
 
+numfig = True
 #def setup(app):
 #    app.add_css_file('custom.css', 900)
 
