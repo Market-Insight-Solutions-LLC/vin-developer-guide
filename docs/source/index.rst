@@ -1,14 +1,11 @@
-Guide
-==========
 
 .. toctree::
    :hidden:
    :titlesonly:
 
-   
-   getting_started
+   Home <home>
    vin_description
-   home
+   getting_started
    vin_cli
    configuration
    sample_use_cases
@@ -17,7 +14,6 @@ Guide
    glossary
 
 
-Some text.
 
 
 
