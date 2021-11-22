@@ -4,9 +4,9 @@
    :titlesonly:
 
    
+   getting_started
    vin_description
    home
-   getting_started
    vin_cli
    configuration
    sample_use_cases
@@ -15,7 +15,7 @@
    glossary
 
 
-
+Some text.
 
 
 
