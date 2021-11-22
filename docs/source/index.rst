@@ -1,3 +1,5 @@
+Guide
+==========
 
 .. toctree::
    :hidden:
