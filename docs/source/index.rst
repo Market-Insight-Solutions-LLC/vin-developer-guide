@@ -8,11 +8,6 @@ Virgil Integrity Network™ (VIN™) Developer Guide
    :titlesonly:
 
    Home <self>
-
-.. toctree::
-   :hidden:
-   :maxdepth: 1   
-
    vin_description
    getting_started
    vin_cli
