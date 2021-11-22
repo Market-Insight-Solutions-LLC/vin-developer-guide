@@ -5,6 +5,6 @@ Include some metris on the various types of VIN encoder configurations. These do
 
 For example, by enabling reed-soloman, the impact on speed is expected to be X while the data inflation is X.
 
-Could include some graphs to make it more visually appealing.
+Possibly include some graphs to make it more visually appealing.
 
 

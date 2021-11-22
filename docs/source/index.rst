@@ -5,6 +5,7 @@ Virgil Integrity Network™ (VIN™) Developer Guide
 .. toctree::
    :hidden:   
 
+   Home <index>
    vin_description
    getting_started
    vin_cli
