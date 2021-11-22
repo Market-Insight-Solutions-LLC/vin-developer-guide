@@ -1,18 +1,3 @@
-.. toctree::
-   :hidden:
-   :titlesonly:
-
-   Home <home>
-   vin_description
-   getting_started
-   vin_cli
-   configuration
-   sample_use_cases
-   vin_metrics
-   release_notes
-   glossary
-
-
 Virgil Integrity Network™ (VIN™) Developer Guide
 ======================================================
 
@@ -29,5 +14,19 @@ Check out the :doc:`getting_started` section to begin with the installation proc
    This project is under active development.
 
 
+
+.. toctree::
+   :hidden:
+   :titlesonly:
+
+   Home <home>
+   vin_description
+   getting_started
+   vin_cli
+   configuration
+   sample_use_cases
+   vin_metrics
+   release_notes
+   glossary
 
 
