@@ -3,7 +3,7 @@
    :hidden:
    :titlesonly:
 
-   Home <home>
+   home
    vin_description
    getting_started
    vin_cli
