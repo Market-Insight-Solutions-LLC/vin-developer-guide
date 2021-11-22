@@ -1,4 +1,3 @@
-
 .. toctree::
    :hidden:
    :titlesonly:
@@ -12,10 +11,6 @@
    vin_metrics
    release_notes
    glossary
-
-
-
-
 
 
 
