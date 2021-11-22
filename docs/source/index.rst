@@ -3,8 +3,9 @@
    :hidden:
    :titlesonly:
 
-   home
+   
    vin_description
+   home
    getting_started
    vin_cli
    configuration

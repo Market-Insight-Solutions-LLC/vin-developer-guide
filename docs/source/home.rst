@@ -7,7 +7,7 @@ Virgil Integrity Network™ (VIN™) Developer Guide
   :width: 100
   :alt: Virgil Logo
 
-Welcosme to the Virgil Integrity Network™ (VIN™) Developer Guide! This guide provides all the informaiton required to get the VIN™ functioning properly. Additionally, information on some of the core functionality of the VIN is also included.
+Welcome to the Virgil Integrity Network™ (VIN™) Developer Guide! This guide provides all the informaiton required to get the VIN™ functioning properly. Additionally, information on some of the core functionality of the VIN is also included.
 
 
 
