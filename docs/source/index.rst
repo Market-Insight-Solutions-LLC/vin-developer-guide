@@ -1,19 +1,17 @@
 Virgil Integrity Network™ (VIN™) Developer Guide
 ======================================================
 
-
-
 .. toctree::
    :hidden:
    :titlesonly:
 
-   Home <index>
+   index
    vin_description
    getting_started
    vin_cli
    configuration
-   vin_metrics
    sample_use_cases
+   vin_metrics
    release_notes
    glossary
 
