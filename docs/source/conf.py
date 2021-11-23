@@ -61,7 +61,9 @@ html_theme_options = {
     'display_version': False,
 }
 
-numfig = True
+# Enables the numbering of figures and tables
+#numfig = True
+
 #def setup(app):
 #    app.add_css_file('custom.css', 900)
 

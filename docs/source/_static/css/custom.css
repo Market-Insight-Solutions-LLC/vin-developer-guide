@@ -12,6 +12,7 @@
     white-space: normal !important;
 }
 
+/* These remove the gap on the left, essentially filling the screen with the document */
 .wy-table-responsive {
     overflow: visible !important;
 }
@@ -19,6 +20,15 @@
 .wy-nav-content {
     max-width: none;
 }
+
+/* Change the color/border/text of the tables header row */
+/*.wy-table-responsive table th {
+    background-color: #ede;
+    border-style: solid solid solid solid;
+    border-width: 0px 0px 0px 0px;
+    border-color: #AAAAAA;
+    text-align: center;
+}*/
 
 
 

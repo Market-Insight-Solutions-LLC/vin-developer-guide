@@ -2,59 +2,257 @@
 Configuration Options
 =====================
 
-This section presents, in detail, the configuration options available to the VIN™ upon its installation. The following tables highlight each parameter in the configuration file as well as a description of said parameter, its default value, and any options that the value may be changed to.
+This section presents the configuration options available to the VIN™ upon its installation. The following tables highlight each parameter in the configuration file as well as a description of the parameter, its default value, and any options that the value may be set to.
 
+The configuration items listed below relate to connection information for the various components that comprise the VIN™.
 
-Connections and Shard Sizes
----------------------------
-The configuration items listed below relate to connection information for the various segments that comprise the VIN™.
-
-.. csv-table:: Connection and Shard Size Parameters
+.. csv-table:: Connection Parameters
     :header: Parameter, Description, Default, Options 
     :widths: 15 40 10 35
 
-    version, "Thde current version of the VIN™.", 0.1.0, Do not modify.
-    bootstrap, "Sets the current VIN™ node as a bootstrap node.", false, "true: set the node as bootstrap.
+    version, "The current version of the VIN™.", 0.1.0, "Do not modify."
+    config_name, The name of the VIN™’s configuration file., "default_config, Default value or user-defined."
+    bootstrap_ip, The bootstrap node’s IP address., 0.0.0.0, "Default value or user-defined."
+    bootstrap_port, The port for node-to-bootstrap and bootstrap-to-node communications within the VIN™., 8000, "Default value or user-defined."
+    kademlia_port, The port through which each VIN™ node communications bi-directionally with the Kademlia network., 8080, "Default value or user-defined."
+    receipt_port, The port through which each node within the VIN™ communicates its cryptographic receipt., 9090, "Default value or user-defined."
+    http_port, The port for all HTTP messages within the VIN™., 9980, "Default value or user-defined."
+    lvm_port, The port through which each VIN™ node communicates with the LVM., 60001, "Default value or user-defined."
+    redundancy, The number of holograms that will be replicated from the original data shards and placed on the network., 5, "It is recommended to keep the value between X and X. Lower redundancy leads to higher transmission speeds but lower data reliability/integrity."
+    log_datasize, Enables the logging/storing of the size of the file being stored on the network., true, "true: enables logging of the data size.
+    
+    false: disables logging of the data size."
+
+
+chunker
+-------
+The following options pertain to the configuration of the chunkers (shards) used by the VIN™.
+
+.. csv-table:: Chunker Parameters
+    :header: Parameter, Description, Default, Options 
+    :widths: 15 40 10 35
+
+    log, "Enables the logging/storing of the shards for inspection/debug purposes.", true, "true: enables logging of shards.
+    
+    false: disables logging of shards."
+    default_size, "Specifies the default size of the chunks (shards), in bytes, that a file will be divided into before being distributed throughout the network.", 1500, "The default value of the chunk size. This can be over-ridden by the system optimization which will dynamically determine chunk sizes."
+    chunks_per_receipt, "The number of chunks that can be recorded in any single cryptographic receipt.", 200, "Any number between 1 and To Be Determined (TBD). The recommended value is 200."
+    max_size, "The maximum chunk size in bytes.", 50000, "As the minimum transmission unit (MTU) for most networks is 65kB, ensure that this parameter is set below this value. Note: if using an encoder(s) that inflate(s) chunk size, be sure the inflated size does not exceed the MTU."
+    min_size, "The minimum chunk size in bytes.", 100, "When attempting to dynamically determine chunk size, this value sets the minimum optimal size for chunks."
+    default_number, "When attempting to dynamically determine chunk size, this value determine the optimal number of chunks to use to set the initial dynamic chunk size.", 6, ? 
+
+flags (Linux)
+-------------
+Any flags utilized by the VIN™ for a Linux operating system are listed in the table below.
+
+.. csv-table:: Flag (Linux) Parameters
+    :header: Parameter, Description, Default, Options 
+    :widths: 15 40 10 35
+
+    bootstrap, "Sets the current VIN™ node as a bootstrap node for a Linux OS.", false,	"true: set the node as bootstrap. 
     
     false: do not set the node as bootstrap."
-    bootstrap_ip, The bootstrap node’s IP address.,	0.0.0.0, Default value or user-defined.
-    chunk_size, "Specifies the size of the chunks (shards), in bytes, that a file will be divided into before being distributed throughout the network.", 50000, "As the minimum transmission unit (MTU) for most networks is 65kB, ensure that this parameter is set below that. Note: if using an encoder(s) that inflates chunk size, be sure the inflated size does not exceed the MTU."
-    chunks_per_receipt, The number of chunks that can be recorded in any single cryptographic receipt., 200, Any number between 1 and To Be Determined (TBD). The recommended value is 200.
-    bootstrap_ip, The bootstrap node’s IP address.,	0.0.0.0, Default value or user-defined.
-    bootstrap_port, The port for node-to-bootstrap and bootstrap-to-node communications within the VIN™., 8000,	Default value or user-defined.
-    kademlia_port, The port through which each VIN™ node communications bi-directionally with the Kademlia network., 8080, Default value or user-defined.
-    receipt_port, The port through which each node within the VIN™ communicates its cryptographic receipt., 9090, Default value or user-defined.
-    http_port, The port for all HTTP messages within the VIN™., 9980, Default value or user-defined.
-    lvm_port, The port through which each VIN™ node communicates with the LVM., 60001, Default value or user-defined.
-    log_shards, "Enables the logging/storing of shards for inspection. Note by default, logs are stored in ‘/var/log/VIN/logs/’", false, "true enables the storing of shards.
 
-    false: disables the storing of shards."
 
-.. _files:
+win_flags (Windows)
+-------------------
+Any flags utilized by the VIN™ for a Windows operating system are listed in the table below.
 
-Files (Linux)
+.. csv-table:: Win_flag (Windows) Parameters
+    :header: Parameter, Description, Default, Options 
+    :widths: 15 40 10 35
+
+    bootstrap, "Sets the current VIN™ node as a bootstrap node for a Windows OS.", false, "true: set the node as bootstrap. 
+    
+    false: do not set the node as bootstrap."
+
+
+files (Linux)
 -------------
 The following options pertain to the locations of configuration and logs generated by the VIN™ for a Linux operating system.
 
-.. csv-table:: Receipts (Linux) Parameters
+.. csv-table:: File (Linux) Parameters
     :header: Parameter, Description, Default, Options 
     :widths: 15 40 10 35
 
-    base, The base location in the VIN™ folder structure., /opt/VIN/, Default value or user-defined.
-    config, The location of the configuration file (the file which this document details) is located here., /etc/opt/VIN/, Default value or user-defined.
-    logs, Any log files generated by the VIN™ will be stored here.,	/var/log/VIN/logs/, Default value or user-defined.
-    rebuilt, The storage location of the file that was rebuilt from the chunks (shards)., /opt/VIN/outputs/, Default value or user-defined.
+    base, "The base location in the VIN™ folder structure.", /opt/VIN/, "Default value or user-defined."
+    config, "The location of the configuration file is located here.", /etc/opt/VIN/, "Default value or user-defined."
+    logs, "The log files generated by the VIN™ will be stored here.", /var/log/VIN/logs/, "Default value or user-defined."
+    shards, "The shards that are gathered are stored here.", /var/log/VIN/shards/, "Default value or user-defined."
+    rebuilt, "The storage location of the file that was rebuilt from the chunks (shards).", /opt/VIN/outputs/, "Default value or user-defined."
+    kaddata, "The location where kademlia shards are stored if on-disk storage is enabled in the VIN™.", /opt/VIN/kademlia/data/, "Default value or user-defined."
 
-.. _receip:
 
-Receipts (Linux)
+receipts (Linux)
 ----------------
 The options below configure the location of the files/folders related to the cryptographic receipts utilized by the VIN™ for a Linux operating system.
 
-.. csv-table:: Receipts (Linux) Parameters
+.. csv-table:: Receipt (Linux) Parameters
     :header: Parameter, Description, Default, Options 
     :widths: 15 40 10 35
 
-    base, The base storage location of the cryptographic receipts used by the VIN™., /opt/VIN/receipts/, Default value or user-defined.
-    received, The location of any received cryptographic receipts., /opt/VIN/receipts/received/, Default value or user-defined.
-    sent, The location of any sent cryptographic receipts., /opt/VIN/receipts/sent/, Default value or user-defined.
+    base, "The base storage location of the cryptographic receipts used by the VIN™.", /opt/VIN/receipts/, "Default value or user-defined.""
+    received, "The location of any received cryptographic receipts.", /opt/VIN/receipts/received/, "Default value or user-defined."
+    sent, "The location of any sent cryptographic receipts.", /opt/VIN/receipts/sent/, "Default value or user-defined.""
+
+
+
+keys (Linux)
+----------------
+The configuration items below set the location of the files/folders associated with the public and private keys sent while using the VIN™ for a Linux operating system.
+
+.. csv-table:: Receipt (Linux) Parameters
+    :header: Parameter, Description, Default, Options 
+    :widths: 15 40 10 35
+
+    base, "The storage location for any public/private keys utilized by the VIN™.",	/opt/VIN/keys/, "Default value or user-defined."
+    crt, "The location and name of the public key.," /opt/VIN/keys/self.crt, "Default value or user-defined."
+    priv, "The location and name of the private key," /opt/VIN/keys/self.priv, "Default value or user-defined."
+
+
+
+win_files (Windows)
+-------------------
+The following options pertain to the locations of configuration and logs generated by the VIN™ for a Windows operating system.
+
+.. csv-table:: Win_file (Windows) Parameters
+    :header: Parameter, Description, Default, Options 
+    :widths: 15 40 10 35
+
+    Table
+
+
+receipts (Windows)
+------------------
+The options below configure the location of the files/folders related to the cryptographic receipts utilized by the VIN™ for a Windows operating system.
+
+.. csv-table:: Receipt (Windows) Parameters
+    :header: Parameter, Description, Default, Options 
+    :widths: 15 40 10 35
+
+    Table
+
+
+keys (Windows)
+----------------
+The configuration items below set the location of the files/folders associated with the public and private keys sent while using the VIN™ for a Windows operating system.
+
+.. csv-table:: Key (Linux) Parameters
+    :header: Parameter, Description, Default, Options 
+    :widths: 15 40 10 35
+
+    Table
+
+
+timeouts
+--------
+These options allow for the configuration of various timeouts used to ensure the correct functionality of the VIN™.
+
+.. csv-table:: Timeout Parameters
+    :header: Parameter, Description, Default, Options 
+    :widths: 15 40 10 35
+
+    Table
+
+
+encoders
+--------
+The following configuration items allow for the enabling/disabling and customization of the various coders used by the VIN™.
+
+reed_shard
+^^^^^^^^^^
+Configuration items for the Reed-Solomon coder on a per shard basis are listed in the following table.
+
+.. csv-table:: Reed-Solomon Shard Coder Parameters
+    :header: Parameter, Description, Default, Options 
+    :widths: 15 40 10 35
+
+    Table
+
+
+alpha
+^^^^^
+Configuration items for Alpha-entanglement coder are listed in the following table.
+
+.. csv-table:: Alpha Entanglement Coder Parameters
+    :header: Parameter, Description, Default, Options 
+    :widths: 15 40 10 35
+
+    Table
+
+
+cipher
+^^^^^^
+Configuration items for the cipher coder are listed in the following table.
+
+.. csv-table:: Cipher Coder Parameters
+    :header: Parameter, Description, Default, Options 
+    :widths: 15 40 10 35
+
+    Table
+
+
+concurrent
+^^^^^^^^^^
+Configuration items for the concurrent coder are listed in the following table.
+
+.. csv-table:: Concurrent Coder Parameters
+    :header: Parameter, Description, Default, Options 
+    :widths: 15 40 10 35
+
+    Table
+
+
+polar
+^^^^^
+Configuration items for the polar coder are listed in the following table.
+
+.. csv-table:: Concurrent Coder Parameters
+    :header: Parameter, Description, Default, Options 
+    :widths: 15 40 10 35
+
+    Table
+
+
+self-entanglement
+^^^^^^^^^^^^^^^^^
+Configuration items for the self-entanglement coder are listed in the following table.
+
+.. csv-table:: Self-entanglement Coder Parameters
+    :header: Parameter, Description, Default, Options 
+    :widths: 15 40 10 35
+
+    Table
+
+
+validation
+^^^^^^^^^^
+Configuration items for the validation coder are listed in the following table.
+
+.. csv-table:: Self-entanglement Coder Parameters
+    :header: Parameter, Description, Default, Options 
+    :widths: 15 40 10 35
+
+    Table
+
+
+reed_block
+^^^^^^^^^^
+Configuration items for the Reed-Solomon coder on a per data block basis are listed in the following table.
+
+.. csv-table:: Self-entanglement Coder Parameters
+    :header: Parameter, Description, Default, Options 
+    :widths: 15 40 10 35
+
+    Table
+
+
+channels
+--------
+The VIN™ has the ability to operate with a Binary Symmetric Channel (BSC) with the intention of testing degradation on the network and the options pertaining to this channel are listed below.
+
+.. csv-table:: Timeout Parameters
+    :header: Parameter, Description, Default, Options 
+    :widths: 15 40 10 35
+
+    Table
