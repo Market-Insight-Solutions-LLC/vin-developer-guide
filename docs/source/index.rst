@@ -15,6 +15,7 @@ Check out the :doc:`getting_started` section to begin with the installation proc
 
 .. toctree::
    :hidden:
+   :titlesonly:
 
    vin_description
    getting_started
