@@ -15,9 +15,9 @@ For a local machine with default settings:
 
     ./VIN_cli <vinnode_hostname_or_IP> <vinnode_http_server_port>
 
-* For example, a VIN™ running on a local machine would be ./VIN_cli localhost 9980 where 9980 is the default HTTP port for the node.
+* For example, a VIN™ running on a local machine would be ``./VIN_cli localhost 9980`` where 9980 is the default HTTP port for the node.
 
-If a port other than 9980 needs to be specified, it can be done so using the -h flag:
+If a port other than 9980 needs to be specified, it can be done so using the ``-h flag``:
 
 * As an example, executing the following: 
 
@@ -49,7 +49,7 @@ Running a Simple Network and Basic Functionality
 --------------------------------------------------
 To run a simple VIN™ on a local machine a minimum of three VIN™ nodes (one bootstrap node and two sender/receiver nodes) must be instantiated. To do so, the following steps should be completed:
 
-* Open three terminal sessions in the directory where the VIN executable resides.
+* Open three terminal sessions in the directory where the VIN™ executable resides.
 * Within one of the sessions, run: 
 
 .. code-block:: console
@@ -72,14 +72,14 @@ This will start a VIN peer on the default port for data (8080) and the default r
 
     ./VIN -p <DATA_PORT> -r <RECEIPT_PORT> 
 
-* Where <DATA_PORT> and <RECEIPT_PORT> must be different than that of the other peer (i.e., different than 8080 and 9090, respectively).
+* Where ``<DATA_PORT>`` and ``<RECEIPT_PORT>`` must be different than that of the other peer (i.e., different than 8080 and 9090, respectively).
 
 IP Network
 ^^^^^^^^^^
 To run a simple VIN™ on an IP based network, such as Amazon Web Service (AWS), a Local Area Network (LAN) with routers/switches and Dynamic Host Communication Protocol (DHCP), VMware, etc., these steps should be followed:
 
 
-* Complete the ‘Installation’ steps for all systems that will be in the network (Note: mass deployment will be an upcoming feature).
+* Complete the ``Installation`` steps for all systems that will be in the network (Note: mass deployment will be an upcoming feature).
 * For each system, from the VIN executable directory, run: 
 
 .. code-block:: console
@@ -89,7 +89,7 @@ To run a simple VIN™ on an IP based network, such as Amazon Web Service (AWS),
 * This will start a bootstrap node. Be sure to record the IP address of this device.
 
 * In all subsequent nodes, use a text editor to edit the configuration file located in the directory: /etc/opt/VIN/defaults.cfg. (For more information on defaults.cfg, please refer to the :doc:`configuration` section). 
-* Replace the bootstrap_ip variable with bootstrap_ip = "<bootstrap_ip>:<bootstrap_port>:"; (Note: be sure to leave the quotes (") intact.
+* Replace the ``bootstrap_ip`` variable with ``bootstrap_ip = "<bootstrap_ip>:<bootstrap_port>:"``; (Note: be sure to leave the quotes (") intact.
 * Following this, on all non-bootstrap nodes, run: 
 
 .. code-block:: console
