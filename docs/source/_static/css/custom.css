@@ -23,15 +23,14 @@
 
 /* Change the color/border/text of the tables header row NOTE 
    NOTE: Border options do not currently work */
-/*
-   .wy-table-responsive table th {
-    background-color: #12d44d;
+    /* table th {
+    background-color: #cc00ff;
     border-style: solid solid solid solid;
     border-width: 1000px 100px 10px 100px;
     border-color: #0000FF;
     text-align: left;
-}
-*/
+} */
+
 
 /* Change the color/border of the cells in a table
    NOTE: This does not currently work */   
@@ -43,25 +42,32 @@
 }
 */
 
-/*
+/* 
 .wy-table-responsive table tr {
     border-style: solid solid solid solid;
     border-width: 0px 0px 0px 0px;
     border-color: #A11111;
-}
-*/
+} */
+
 
 /* Change the color of even and odd rows in a table */
-
-/*.wy-table-responsive table tr:nth-child(3) {
+/* EVEN WORKS */
+/* .wy-table-responsive table tr:nth-child(even) { 
     background-color: #020202;
-}*/
-
-/*
-.wy-table-responsive table tr:nth-child(1) {
-    background-color: #ff0000;
 }
-*/
+
+.wy-table-responsive table tr:nth-child(odd) { 
+    background-color: #2600fd;
+}
+
+.table tr:nth-child(odd)>td, .table tr:nth-child(odd)>th {
+   background-color: red; 
+ } */
+
+/* table tr:nth-child(odd) {
+    background-color: #ff0000;
+} */
+
 
 
 

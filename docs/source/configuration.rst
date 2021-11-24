@@ -2,7 +2,7 @@
 Configuration Options
 =====================
 
-Thssis section presents the configuration options available to the VIN™ upon its installation. The following tables highlight each parameter in the configuration file as well as a description of the parameter, its default value, and any options that the value may be set to.
+This section presents the configuration options available to the VIN™ upon its installation. The following tables highlight each parameter in the configuration file as well as a description of the parameter, its default value, and any options that the value may be set to.
 
 The configuration items listed below relate to connection information for the various components that comprise the VIN™.
 

@@ -1,4 +1,4 @@
-VIN™ Metrics
+VIN™ Statistics
 ================
 
 Include some metris on the various types of VIN encoder configurations. These don't need to be really specific numbers, but more of an impact statment of items in the pipeline.
