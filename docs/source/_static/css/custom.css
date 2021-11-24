@@ -23,11 +23,36 @@
 
 /* Change the color/border/text of the tables header row */
 /*.wy-table-responsive table th {
-    background-color: #ede;
+    background-color: #FF00FF;
+    border-style: solid solid solid solid;
+    border-width: 0px 0px 0px 0px;
+    border-color: #0000FF;
+    text-align: center;
+}*/
+
+/* Change the color/border of the cells in a table */
+/*.wy-table-responsive table td {
     border-style: solid solid solid solid;
     border-width: 0px 0px 0px 0px;
     border-color: #AAAAAA;
-    text-align: center;
+}*/
+
+/*
+.wy-table-responsive table tr {
+    border-style: solid solid solid solid;
+    border-width: 0px 0px 0px 0px;
+    border-color: #A11111;
+}
+*/
+
+/* Change the color of even and odd rows in a table */
+/*
+.wy-table-responsive table tr:nth-child(0) {
+    background-color: #020202;
+}
+
+.wy-table-responsive table tr:nth-child(2) {
+    background-color: #ff0000;
 }*/
 
 
