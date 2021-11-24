@@ -2,7 +2,7 @@
 Configuration Options
 =====================
 
-This section presents the configuration options available to the VIN™ upon its installation. The following tables highlight each parameter in the configuration file as well as a description of the parameter, its default value, and any options that the value may be set to.
+Thssis section presents the configuration options available to the VIN™ upon its installation. The following tables highlight each parameter in the configuration file as well as a description of the parameter, its default value, and any options that the value may be set to.
 
 The configuration items listed below relate to connection information for the various components that comprise the VIN™.
 
@@ -11,7 +11,7 @@ The configuration items listed below relate to connection information for the va
     :widths: 15 40 10 35
 
     *version*, "The current version of the VIN™.", 0.1.0, "Do not modify."
-    *config_name*, The name of the VIN™’s configuration file., "default_config, Default value or user-defined."
+    *config_name*, The name of the VIN™’s configuration file., "default_config", Default value or user-defined."
     *bootstrap_ip*, The bootstrap node’s IP address., 0.0.0.0, "Default value or user-defined."
     *bootstrap_port*, The port for node-to-bootstrap and bootstrap-to-node communications within the VIN™., 8000, "Default value or user-defined."
     *kademlia_port*, The port through which each VIN™ node communications bi-directionally with the Kademlia network., 8080, "Default value or user-defined."

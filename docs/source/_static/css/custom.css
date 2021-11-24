@@ -21,21 +21,27 @@
     max-width: none;
 }
 
-/* Change the color/border/text of the tables header row */
-/*.wy-table-responsive table th {
-    background-color: #FF00FF;
+/* Change the color/border/text of the tables header row NOTE 
+   NOTE: Border options do not currently work */
+/*
+   .wy-table-responsive table th {
+    background-color: #12d44d;
     border-style: solid solid solid solid;
-    border-width: 0px 0px 0px 0px;
+    border-width: 1000px 100px 10px 100px;
     border-color: #0000FF;
-    text-align: center;
-}*/
+    text-align: left;
+}
+*/
 
-/* Change the color/border of the cells in a table */
-/*.wy-table-responsive table td {
+/* Change the color/border of the cells in a table
+   NOTE: This does not currently work */   
+/*
+   .wy-table-responsive table td {
     border-style: solid solid solid solid;
     border-width: 0px 0px 0px 0px;
-    border-color: #AAAAAA;
-}*/
+    border-color: #fc0000;
+}
+*/
 
 /*
 .wy-table-responsive table tr {
@@ -46,14 +52,17 @@
 */
 
 /* Change the color of even and odd rows in a table */
-/*
-.wy-table-responsive table tr:nth-child(0) {
-    background-color: #020202;
-}
 
-.wy-table-responsive table tr:nth-child(2) {
-    background-color: #ff0000;
+/*.wy-table-responsive table tr:nth-child(3) {
+    background-color: #020202;
 }*/
+
+/*
+.wy-table-responsive table tr:nth-child(1) {
+    background-color: #ff0000;
+}
+*/
+
 
 
 
