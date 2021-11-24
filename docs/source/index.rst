@@ -14,6 +14,7 @@ Check out the :doc:`getting_started` section to begin with the installation proc
    This project is under active development.
 
 .. toctree::
+   :maxdepth: 2
    :hidden:
 
    vin_description
@@ -24,5 +25,19 @@ Check out the :doc:`getting_started` section to begin with the installation proc
    vin_statistics
    release_notes
    glossary
+
+.. This hides the titles
+   .. toctree::
+      :hidden:
+      :titlesonly:
+
+      vin_description
+      getting_started
+      vin_cli
+      configuration
+      sample_use_cases
+      vin_statistics
+      release_notes
+      glossary
 
 
