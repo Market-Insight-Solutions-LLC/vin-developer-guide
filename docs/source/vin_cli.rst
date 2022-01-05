@@ -6,7 +6,7 @@ The VIN™ CLI acts as a Hypertext Transfer Protocol (HTTP) client for reaching 
 
 
 Running the VIN™ CLI
-====================
+======================
 
 The VIN™ CLI can be used for VIN™ nodes on both a local machine and on the network with the following being the command for starting up the VIN™ CLI:
 
