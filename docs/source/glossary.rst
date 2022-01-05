@@ -1,6 +1,6 @@
+********
 Glossary
-========
-
+********
 
 .. csv-table::
     :header: Terminology, Acronym, Definition

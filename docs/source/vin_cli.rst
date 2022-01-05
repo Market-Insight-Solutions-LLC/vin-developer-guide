@@ -1,10 +1,13 @@
+***********************************
 VIN™ Command Line Interface (CLI)
-====================================
+***********************************
 
 The VIN™ CLI acts as a Hypertext Transfer Protocol (HTTP) client for reaching the VIN™ HTTP server from the command line in a Linux environment. It will be installed during the installation of the VIN™.
 
+
 Running the VIN™ CLI
-------------------------
+====================
+
 The VIN™ CLI can be used for VIN™ nodes on both a local machine and on the network with the following being the command for starting up the VIN™ CLI:
 
 For a local machine with default settings:
@@ -46,7 +49,8 @@ The following table displays a list of commands that are accessible by the VIN�
 
 
 Running a Simple Network and Basic Functionality
---------------------------------------------------
+================================================
+
 To run a simple VIN™ on a local machine a minimum of three VIN™ nodes (one bootstrap node and two sender/receiver nodes) must be instantiated. To do so, the following steps should be completed:
 
 * Open three terminal sessions in the directory where the VIN™ executable resides.
@@ -74,8 +78,10 @@ This will start a VIN peer on the default port for data (8080) and the default r
 
 * Where ``<DATA_PORT>`` and ``<RECEIPT_PORT>`` must be different than that of the other peer (i.e., different than 8080 and 9090, respectively).
 
+
 IP Network
-^^^^^^^^^^
+----------
+
 To run a simple VIN™ on an IP based network, such as Amazon Web Service (AWS), a Local Area Network (LAN) with routers/switches and Dynamic Host Communication Protocol (DHCP), VMware, etc., these steps should be followed:
 
 
@@ -106,17 +112,22 @@ Note: any node can run in the background (i.e., as a background process) if it i
 
 These nodes can be shutdown from the VIN™ CLI (refer to the VIN™ CLI Installation and Usage section). To ensure correct functionality, please confirm that no other processes are using any of the previously assigned ports. 
 
+
 Sharing a File
----------------
+==============
+
 
 Gathering a File
-----------------
+================
+
 
 Spreading a File
-----------------
+================
+
 
 Deleting a Node
----------------
+===============
+
 
 Shutting Down a Network
------------------------
+=======================
