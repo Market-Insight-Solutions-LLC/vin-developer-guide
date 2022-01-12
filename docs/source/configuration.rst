@@ -191,7 +191,7 @@ These options allow for the configuration of various timeouts used to ensure the
 encoders
 ========
 
-The following configuration items allow for the enabling/disabling and customization of the various coders used by the VIN™.
+The following configuration items allow for the enabling/disabling and customization of the various coders used by the VIN™. By enabling/disabling coders in the VIN™, performance may be affected.
 
 reed_shard
 ----------

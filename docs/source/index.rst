@@ -20,10 +20,9 @@ Check out the :doc:`getting_started` section to begin with the installation proc
 
    vin_description
    getting_started
-   vin_cli
    configuration
+   vin_cli
    sample_use_cases
-   vin_statistics
    release_notes
    glossary
 
