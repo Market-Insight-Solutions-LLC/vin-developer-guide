@@ -6,7 +6,7 @@ Sample Use Cases
 Introduction
 ============
 
-Provided with the VIN™ installation package is a number of scripts that can be easily executed to showcase the functionality of the VIN™. Be sure to shut down any current instances of the VIN™ before running each script.
+Provided with the *VIN™* installation package is a number of scripts that can be easily executed to showcase the functionality of the *VIN™*. Be sure to shut down any current instances of the *VIN™* before running each script.
 
 
 Sample Scripts
@@ -33,8 +33,8 @@ Share
 -----
 
 
-Gathing a File
-==============
+Gathering a File
+================
 
 
 Get

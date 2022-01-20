@@ -14,17 +14,15 @@ This release contains many upgrades to the VIN encryption/decryption and encodin
 Features
 --------
 
-#. Reed-Soloman Coder...
-
+#. Reed-Solomon Coder...
 #. Concurrent Coder...
-
 #. SHA-256 Encryption...
 
 
 Improvements/Changes
 --------------------
 
-* Improvementsy...
+* Improvements...
 
 
 Bugfixes
@@ -35,7 +33,6 @@ Bugfixes
 
 ===========================================
 
-
 July 14, 2021
 =============
 
@@ -45,9 +42,9 @@ This release includes many features and fixes to improve the performance and rel
 Features 
 --------
 
-#. Windows Integration
+#. *Windows* Integration
    
-   Allows the application to be built using Visual Studio 2019, improving the overall scale and usability of the DTxTM. This allows for a Windows Installer package (.msi) file to be created and utilized to easily install the application where necessary. 
+   Allows the application to be built using *Visual Studio 2019*, improving the overall scale and usability of the DTxTM. This allows for a *Windows* Installer package (``MSI``) file to be created and utilized to easily install the application where necessary. 
 
 #. Sharing to Multiple Peers (One to Many) 
 
@@ -62,12 +59,12 @@ Improvements/Changes
 --------------------
 
 * Alerts for errors found in data 
-* Updated the Kademlia library 
-* Added in the underlying LVM   
+* Updated the *Kademlia* library 
+* Added in the underlying *LVM*   
 * Added in license enforcement 
-* Removed Boost dependency  
+* Removed *Boost* dependency  
 * A node’s status is routinely checked to determine if it’s connected to the bootstrap 
-* Added support for ECDH single pass allowing objects to be encrypted using ECC keys with 256bits of strength. 
+* Added support for ECDH single pass allowing objects to be encrypted using ECC keys with 256 bits of strength. 
 * Added ability to sign CMS objects to verity source prior to decrypting 
 * Websocket integration 
 

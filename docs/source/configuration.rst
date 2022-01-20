@@ -2,25 +2,25 @@
 Configuration Options
 *********************
 
-This section presents the configuration options available to the VIN™ upon its installation. The following tables highlight each parameter in the configuration file as well as a description of the parameter, its default value, and any options that the value may be set to.
+This section presents the configuration options available to the *VIN™* upon its installation. The following tables highlight each parameter in the configuration file as well as a description of the parameter, its default value, and any options that the value may be set to.
 
 connections
 ===========
 
-The configuration items listed below relate to connection information for the various components that comprise the VIN™.
+The configuration items listed below relate to connection information for the various components that comprise the *VIN™*.
 
 .. csv-table:: Connection Parameters
     :header: Parameter, Description, Default, Options 
     :widths: 15 40 10 35
 
-    *version*, "The current version of the VIN™.", 0.1.0, "Do not modify."
-    *config_name*, The name of the VIN™’s configuration file., "default_config", Default value or user-defined."
+    *version*, "The current version of the *VIN™*.", 0.1.0, "Do not modify."
+    *config_name*, The name of the *VIN™’s* configuration file., "default_config", Default value or user-defined."
     *bootstrap_ip*, The bootstrap node’s IP address., 0.0.0.0, "Default value or user-defined."
-    *bootstrap_port*, The port fora node's node-to-bootstrap and bootstrap-to-node communications within the VIN™., 8000, "Default value or user-defined."
-    *kademlia_port*, The port through which a VIN™ node communications bi-directionally with the Kademlia network., 8080, "Default value or user-defined."
-    *receipt_port*, The port through which a node within the VIN™ communicates its cryptographic receipt., 9090, "Default value or user-defined."
-    *http_port*, The port utilized for HTTP messages by a node within the VIN™., 9980, "Default value or user-defined."
-    *lvm_port*, The port through which a VIN™ node communicates with the LVM., 60001, "Default value or user-defined."
+    *bootstrap_port*, The port fora node's node-to-bootstrap and bootstrap-to-node communications within the *VIN™*., 8000, "Default value or user-defined."
+    *kademlia_port*, The port through which a *VIN™* node communications bi-directionally with the Kademlia network., 8080, "Default value or user-defined."
+    *receipt_port*, The port through which a node within the *VIN™* communicates its cryptographic receipt., 9090, "Default value or user-defined."
+    *http_port*, The port utilized for HTTP messages by a node within the *VIN™*., 9980, "Default value or user-defined."
+    *lvm_port*, The port through which a *VIN™* node communicates with the LVM., 60001, "Default value or user-defined."
     *redundancy*, The number of holograms that will be replicated from the original data shards and placed on the network., 5, "It is recommended to keep the value between X and X. Lower redundancy leads to higher transmission speeds but lower data reliability/integrity."
     *log_datasize*, Enables the logging/storing of the size of the file being stored on the network., true, "true: enables logging of the data size.
     
@@ -30,7 +30,7 @@ The configuration items listed below relate to connection information for the va
 chunker
 =======
 
-The following options pertain to the configuration of the chunkers (shards) used by the VIN™.
+The following options pertain to the configuration of the chunkers (shards) used by the *VIN™*.
 
 .. csv-table:: Chunker Parameters
     :header: Parameter, Description, Default, Options 
@@ -43,35 +43,35 @@ The following options pertain to the configuration of the chunkers (shards) used
     *chunks_per_receipt*, "The number of chunks that can be recorded in any single cryptographic receipt.", 200, "Any number between 1 and To Be Determined (TBD). The recommended value is 200."
     *max_size*, "The maximum chunk size in bytes.", 50000, "As the minimum transmission unit (MTU) for most networks is 65kB, ensure that this parameter is set below this value. Note: if using an encoder(s) that inflate(s) chunk size, be sure the inflated size does not exceed the MTU."
     *min_size*, "The minimum chunk size in bytes.", 100, "When attempting to dynamically determine chunk size, this value sets the minimum optimal size for chunks."
-    *default_number*, "When attempting to dynamically determine chunk size, this is the starting value of the number of chunks that the file will initially be split into. Note: depending on *min_size* and *max_size*, the final number of chunks may be less than or greater than this number.", 6, "The options vary depending on the *max_size*, *min_size* and the size of the files that are expected to be handled by the VIN™. The default is recommended for most cases." 
+    *default_number*, "When attempting to dynamically determine chunk size, this is the starting value of the number of chunks that the file will initially be split into. Note: depending on *min_size* and *max_size*, the final number of chunks may be less than or greater than this number.", 6, "The options vary depending on the *max_size*, *min_size* and the size of the files that are expected to be handled by the *VIN™*. The default is recommended for most cases." 
 
 ================================================
 
 
 flags (Linux)
-=============
+===============
 
-Any flags utilized by the VIN™ for a Linux operating system are listed in the table below.
+Any flags utilized by the *VIN™* for a *Linux* operating system are listed in the table below.
 
 .. csv-table:: Flag (Linux) Parameters
     :header: Parameter, Description, Default, Options 
     :widths: 15 40 10 35
 
-    *bootstrap*, "Sets the current VIN™ node as a bootstrap node for a Linux OS.", false,	"true: set the node as bootstrap. 
+    *bootstrap*, "Sets the current *VIN™* node as a bootstrap node for a *Linux* OS.", false,	"true: set the node as bootstrap. 
     
     false: do not set the node as bootstrap."
 
 
 win_flags (Windows)
-===================
+=====================
 
-Any flags utilized by the VIN™ for a Windows operating system are listed in the table below.
+Any flags utilized by the *VIN™* for a *Windows* operating system are listed in the table below.
 
 .. csv-table:: Win_flag (Windows) Parameters
     :header: Parameter, Description, Default, Options 
     :widths: 15 40 10 35
 
-    *bootstrap*, "Sets the current VIN™ node as a bootstrap node for a Windows OS.", false, "true: set the node as bootstrap. 
+    *bootstrap*, "Sets the current *VIN™* node as a bootstrap node for a *Windows* OS.", false, "true: set the node as bootstrap. 
     
     false: do not set the node as bootstrap."
 
@@ -79,46 +79,46 @@ Any flags utilized by the VIN™ for a Windows operating system are listed in th
 
 
 files (Linux)
-=============
+===============
 
-The following options pertain to the locations of configuration and logs generated by the VIN™ for a Linux operating system.
+The following options pertain to the locations of configuration and logs generated by the *VIN™* for a *Linux* operating system.
 
 .. csv-table:: File (Linux) Parameters
     :header: Parameter, Description, Default, Options 
     :widths: 15 40 10 35
 
-    *base*, "The base location in the VIN™ folder structure.", /opt/VIN/, "Default value or user-defined."
+    *base*, "The base location in the *VIN™* folder structure.", /opt/VIN/, "Default value or user-defined."
     *config*, "The location of the configuration file is located here.", /etc/opt/VIN/, "Default value or user-defined."
-    *logs*, "The log files generated by the VIN™ will be stored here.", /var/log/VIN/logs/, "Default value or user-defined."
+    *logs*, "The log files generated by the *VIN™* will be stored here.", /var/log/VIN/logs/, "Default value or user-defined."
     *shards*, "The shards that are gathered are stored here.", /var/log/VIN/shards/, "Default value or user-defined."
     *rebuilt*, "The storage location of the file that was rebuilt from the chunks (shards).", /opt/VIN/outputs/, "Default value or user-defined."
-    *kaddata*, "The location where kademlia shards are stored if on-disk storage is enabled in the VIN™.", /opt/VIN/kademlia/data/, "Default value or user-defined."
+    *kaddata*, "The location where *Kademlia* shards are stored if on-disk storage is enabled in the *VIN™*.", /opt/VIN/kademlia/data/, "Default value or user-defined."
 
 
 receipts (Linux)
-================
+==================
 
-The options below configure the location of the files/folders related to the cryptographic receipts utilized by the VIN™ for a Linux operating system.
+The options below configure the location of the files/folders related to the cryptographic receipts utilized by the *VIN™* for a *Linux* operating system.
 
 .. csv-table:: Receipt (Linux) Parameters
     :header: Parameter, Description, Default, Options 
     :widths: 15 40 10 35
 
-    *base*, "The base storage location of the cryptographic receipts used by the VIN™.", /opt/VIN/receipts/, "Default value or user-defined."
+    *base*, "The base storage location of the cryptographic receipts used by the *VIN™*.", /opt/VIN/receipts/, "Default value or user-defined."
     *received*, "The location of any received cryptographic receipts.", /opt/VIN/receipts/received/, "Default value or user-defined."
     *sent*, "The location of any sent cryptographic receipts.", /opt/VIN/receipts/sent/, "Default value or user-defined."
 
 
 keys (Linux)
-============
+==============
 
-The configuration items below set the location of the files/folders associated with the public and private keys sent while using the VIN™ for a Linux operating system.
+The configuration items below set the location of the files/folders associated with the public and private keys sent while using the *VIN™* for a *Linux* operating system.
 
 .. csv-table:: Receipt (Linux) Parameters
     :header: Parameter, Description, Default, Options 
     :widths: 15 40 10 35
 
-    *base*, "The storage location for any public/private keys utilized by the VIN™.",	/opt/VIN/keys/, "Default value or user-defined."
+    *base*, "The storage location for any public/private keys utilized by the *VIN™*.",	/opt/VIN/keys/, "Default value or user-defined."
     *crt*, "The location and name of the public key.", /opt/VIN/keys/self.crt, "Default value or user-defined."
     *priv*, "The location and name of the private key.", /opt/VIN/keys/self.priv, "Default value or user-defined."
 
@@ -126,48 +126,48 @@ The configuration items below set the location of the files/folders associated w
 
 
 win_files (Windows)
-===================
+=====================
 
-The following options pertain to the locations of configuration and logs generated by the VIN™ for a Windows operating system.
+The following options pertain to the locations of configuration and logs generated by the *VIN™* for a *Windows* operating system.
 
 .. csv-table:: Win_file (Windows) Parameters
     :header: Parameter, Description, Default, Options 
     :widths: 15 40 10 35
 
-    *base*, "The base location in the VIN™ folder structure.", "VIN\\\\", "Default value or user-defined."
-    *config*, "The location of the configuration file is located here.", "VIN\\\\", "Default value or user-defined."
-    *logs*, "The log files generated by the VIN™ will be stored here.", "VIN\\\\logs\\\\", "Default value or user-defined."
-    *shards*, "The shards that are gathered are stored here.", "VIN\\\\shards\\\\", "Default value or user-defined."
-    *rebuilt*, "The storage location of the file that was rebuilt from the chunks (shards).", "VIN\\\\outputs\\\\", "Default value or user-defined."
-    *kaddata*, "The location where kademlia shards are stored if on-disk storage is enabled in the VIN™.", "VIN\\\\kademlia\\\\data\\\\", "Default value or user-defined."
+    *base*, "The base location in the *VIN™* folder structure.", "Program Files\\Virgil\\VIN\\", "Default value or user-defined."
+    *config*, "The location of the configuration file is located here.", "Program Files\\Virgil\\VIN\\", "Default value or user-defined."
+    *logs*, "The log files generated by the *VIN™* will be stored here.", "Program Files\\Virgil\\VIN\\logs\\", "Default value or user-defined."
+    *shards*, "The shards that are gathered are stored here.", "Program Files\\Virgil\\VIN\\shards\\", "Default value or user-defined."
+    *rebuilt*, "The storage location of the file that was rebuilt from the chunks (shards).", "Program Files\\Virgil\\VIN\\outputs\\", "Default value or user-defined."
+    *kaddata*, "The location where kademlia shards are stored if on-disk storage is enabled in the *VIN™*.", "Program Files\\Virgil\\VIN\\kademlia\\data\\", "Default value or user-defined."
 
 
 receipts (Windows)
-==================
+====================
 
-The options below configure the location of the files/folders related to the cryptographic receipts utilized by the VIN™ for a Windows operating system.
+The options below configure the location of the files/folders related to the cryptographic receipts utilized by the *VIN™* for a *Windows* operating system.
 
 .. csv-table:: Receipt (Windows) Parameters
     :header: Parameter, Description, Default, Options 
     :widths: 15 40 10 35
 
-    *base*, "The base storage location of the cryptographic receipts used by the VIN™.", "VIN\\\\receipts\\\\", "Default value or user-defined."
-    *received*, "The location of any received cryptographic receipts.", "VIN\\\\receipts\\\\received\\\\", "Default value or user-defined."
-    *sent*, "The location of any sent cryptographic receipts.", "VIN\\\\receipts\\\\sent\\\\", "Default value or user-defined."
+    *base*, "The base storage location of the cryptographic receipts used by the *VIN™*.", "Program Files\\Virgil\\VIN\\receipts\\", "Default value or user-defined."
+    *received*, "The location of any received cryptographic receipts.", "Program Files\\Virgil\\VIN\\receipts\\received\\", "Default value or user-defined."
+    *sent*, "The location of any sent cryptographic receipts.", "Program Files\\Virgil\\VIN\\receipts\\sent\\", "Default value or user-defined."
 
 
 keys (Windows)
-==============
+================
 
-The configuration items below set the location of the files/folders associated with the public and private keys sent while using the VIN™ for a Windows operating system.
+The configuration items below set the location of the files/folders associated with the public and private keys sent while using the *VIN™* for a *Windows* operating system.
 
-.. csv-table:: Key (Linux) Parameters
+.. csv-table:: Key (Windows) Parameters
     :header: Parameter, Description, Default, Options 
     :widths: 15 40 10 35
 
-    *base*, "The storage location for any public/private keys utilized by the VIN™.", "VIN\\\\keys\\\\", "Default value or user-defined."
-    *pub*, "The location and name of the public key.", "VIN\\\\keys\\\\self.pub", "Default value or user-defined."
-    *priv*, "The location and name of the private key.", "VIN\\\\keys\\\\self.priv", "Default value or user-defined."
+    *base*, "The storage location for any public/private keys utilized by the *VIN™*.", "Program Files\\Virgil\\VIN\\keys\\", "Default value or user-defined."
+    *pub*, "The location and name of the public key.", "Program Files\\Virgil\\VIN\\keys\\self.pub", "Default value or user-defined."
+    *priv*, "The location and name of the private key.", "Program Files\\Virgil\\VIN\\keys\\self.priv", "Default value or user-defined."
 
 ======================================================
 
@@ -175,7 +175,7 @@ The configuration items below set the location of the files/folders associated w
 timeouts
 ========
 
-These options allow for the configuration of various timeouts used to ensure the correct functionality of the VIN™.
+These options allow for the configuration of various timeouts used to ensure the correct functionality of the *VIN™*.
 
 .. csv-table:: Timeout Parameters
     :header: Parameter, Description, Default, Options 
@@ -191,7 +191,7 @@ These options allow for the configuration of various timeouts used to ensure the
 encoders
 ========
 
-The following configuration items allow for the enabling/disabling and customization of the various coders used by the VIN™. By enabling/disabling coders in the VIN™, performance may be affected.
+The following configuration items allow for the enabling/disabling and customization of the various coders used by the *VIN™*. By enabling/disabling coders in the *VIN™*, performance may be affected.
 
 reed_shard
 ----------
@@ -202,25 +202,25 @@ Configuration items for the Reed-Solomon coder on a per shard basis are listed i
     :header: Parameter, Description, Default, Options 
     :widths: 15 40 10 35
 
-    *on*, "Enables/disables the Reed-Solomon shard coding/decoding algorithm utilized by the VIN™.", true, "true: enables the Reed-Solomon shard coder.
+    *on*, "Enables/disables the Reed-Solomon shard coding/decoding algorithm utilized by the *VIN™*.", true, "true: enables the Reed-Solomon shard coder.
     
     false: disables the Reed-Solomon shard coder." 
     *log*, "Enables/disables log generation for the output of the Reed-Solomon shard coder.", false, "true: enables logging.
     
     false: disables logging."
-    *perc_parity*, "The percentage of parity bytes created per data byte. Every two parity bytes can find and correct a single corrupted byte among a set of bytes. Note: Not every parity byte can correct every data byte. Each parity byte only ‘covers’ for a certain set of data bytes.", 100, "0 – 100; where a higher number improves data recovery. The default is recommended."
+    *perc_parity*, "The percentage of parity bytes created per data byte. Every two parity bytes can find and correct a single corrupted byte among a set of bytes. Note: Not every parity byte can correct every data byte. Each parity byte only 'covers' for a certain set of data bytes.", 100, "0 – 100; where a higher number improves data recovery. The default is recommended."
 
 
 alpha
 -----
 
-Configuration items for Alpha-entanglement coder are listed in the following table.
+Configuration items for Alpha-Entanglement coder are listed in the following table.
 
 .. csv-table:: Alpha Entanglement Coder Parameters
     :header: Parameter, Description, Default, Options 
     :widths: 15 40 10 35
 
-    *on*, "Enables/disables the alpha entanglement coding/decoding algorithm utilized by the VIN™.", true, "true: enables the alpha entanglement coder.
+    *on*, "Enables/disables the alpha entanglement coding/decoding algorithm utilized by the *VIN™*.", true, "true: enables the alpha entanglement coder.
     
     false: disables the alpha entanglement coder."
     *log*, "Enables/disables log generation for the output of the alpha entanglement coder.", false, "true: enables logging.
@@ -237,7 +237,7 @@ Configuration items for the cipher coder are listed in the following table.
     :header: Parameter, Description, Default, Options 
     :widths: 15 40 10 35
 
-    *on*, "Enables/disables the cipher coding/decoding algorithm utilized by the VIN™.", true, "true: enables the cipher coder.
+    *on*, "Enables/disables the cipher coding/decoding algorithm utilized by the *VIN™*.", true, "true: enables the cipher coder.
     
     false: disables the cipher coder."
     *bits*, "The size of the key used by the cipher coder algorithm.", 256, "128, 192, or 256."
@@ -255,7 +255,7 @@ Configuration items for the concurrent coder are listed in the following table.
     :header: Parameter, Description, Default, Options 
     :widths: 15 40 10 35
 
-    *on*, "Enables/disables the concurrent coding/decoding algorithm utilized by the VIN™.", true, "true: enables the concurrent coder.
+    *on*, "Enables/disables the concurrent coding/decoding algorithm utilized by the *VIN™*.", true, "true: enables the concurrent coder.
     
     false: disables the concurrent coder."
     *log*, "Enables/disables log generation for the output of the concurrent coder.", false, "true: enables logging.
@@ -272,7 +272,7 @@ Configuration items for the polar coder are listed in the following table.
     :header: Parameter, Description, Default, Options 
     :widths: 15 40 10 35
 
-    *on*, "Enables/disables the polar coding/decoding algorithm utilized by the VIN™.", true, "true: enables the polar coder.
+    *on*, "Enables/disables the polar coding/decoding algorithm utilized by the *VIN™*.", true, "true: enables the polar coder.
     
     false: disables the polar coder."
     *log*, "Enables/disables log generation for the output of the polar coder.", false, "true: enables logging.
@@ -285,11 +285,11 @@ self-entanglement
 
 Configuration items for the self-entanglement coder are listed in the following table.
 
-.. csv-table:: Self-entanglement Coder Parameters
+.. csv-table:: Self-Entanglement Coder Parameters
     :header: Parameter, Description, Default, Options 
     :widths: 15 40 10 35
 
-    *on*, "Enables/disables the self-entanglement coding/decoding algorithm utilized by the VIN™.", true, "true: enables the self-entanglement coder.
+    *on*, "Enables/disables the self-entanglement coding/decoding algorithm utilized by the *VIN™*.", true, "true: enables the self-entanglement coder.
     
     false: disables the self-entanglement coder." 
     *log*, "Enables/disables log generation for the output of the self-entanglement coder.", false, "true: enables logging.
@@ -320,13 +320,13 @@ Configuration items for the Reed-Solomon coder on a per data block basis are lis
     :header: Parameter, Description, Default, Options 
     :widths: 15 40 10 35
 
-    *on*, "Enables/disables the Reed-Solomon block coding/decoding algorithm utilized by the VIN™.", true, "true: enables the Reed-Solomon block coder.
+    *on*, "Enables/disables the Reed-Solomon block coding/decoding algorithm utilized by the *VIN™*.", true, "true: enables the Reed-Solomon block coder.
     
     false: disables the Reed-Solomon block coder."
     *log*, "Enables/disables log generation for the output of the Reed-Solomon coder.", false, "true: enables logging.
     
     false: disables logging."
-    *perc_parity*, "The percentage of parity bytes created per data byte. Every two parity bytes can find and correct a single corrupted byte among a set of bytes. Note: Not every parity byte can correct every data byte. Each parity byte only ‘covers’ for a certain set of data bytes.", 100, "0 – 100; where a higher number improves data recovery. The default is recommended."
+    *perc_parity*, "The percentage of parity bytes created per data byte. Every two parity bytes can find and correct a single corrupted byte among a set of bytes. Note: Not every parity byte can correct every data byte. Each parity byte only 'covers' for a certain set of data bytes.", 100, "0 – 100; where a higher number improves data recovery. The default is recommended."
 
 ===============================================
 
@@ -334,7 +334,7 @@ Configuration items for the Reed-Solomon coder on a per data block basis are lis
 channels
 ========
 
-The VIN™ has the ability to operate with a Binary Symmetric Channel (BSC) with the intention of testing degradation on the network and the options pertaining to this channel are listed below.
+The *VIN™* has the ability to operate with a Binary Symmetric Channel (BSC) with the intention of testing degradation on the network and the options pertaining to this channel are listed below.
 
 .. csv-table:: Timeout Parameters
     :header: Parameter, Description, Default, Options 
@@ -347,5 +347,5 @@ The VIN™ has the ability to operate with a Binary Symmetric Channel (BSC) with
     
     false: disables logging."
     *bsc_p*, "The percentage of bits that will be flipped during transmission.", 1.0, "Any number between 0 and 100."
-    *bsc_sym_size*, "The symbol size of either bits (1) or bytes (8), which is affected by the ‘bsc_p.’ For example, if ‘bsc_p’ is 1.0 and ‘bsc_sym_size’ is set to 1, 1% of bits will be flipped. If ‘bsc_sym_size’ is 8, 1% of bytes will be flipped.", 8, "1 or 8."
+    *bsc_sym_size*, "The symbol size of either bits (1) or bytes (8), which is affected by the 'bsc_p.' For example, if 'bsc_p' is 1.0 and 'bsc_sym_size' is set to 1, 1% of bits will be flipped. If 'bsc_sym_size' is 8, 1% of bytes will be flipped.", 8, "1 or 8."
 

@@ -1,6 +1,7 @@
-******************
+********************
 VIN™ Description
-******************
+********************
+
 
 Introduction
 ============
@@ -15,7 +16,7 @@ A solution that addresses the data integrity challenge has to deliver extreme co
 
 To achieve these goals, the solution must:
 
-* Be anti-fragile and resistant to cyberattacks like ransomware
+* Be anti-fragile and resistant to cyber attacks like ransomware
 * Deliver immutable and auditable verification of data, files, and software 
 * Provide alerts and proof of data integrity
 * Seamlessly deploy onsite, as well as on user systems and endpoints
@@ -29,21 +30,21 @@ If the solution can meet these criteria, Command, Control and Communications are
 
 
 The Virgil Integrity Network™ (VIN™)
-=======================================
+==========================================
 
-The Virgil Integrity Network™ is a network agnostic middleware solution for assured integrity and availability of data in adverse environments. The VIN™ guarantees 100% data integrity and availability, across all network types, in the end-to-end digital supply chain and operational continuity through adverse and adversarial environments even with 80%+ data impact during D5 attacks (delay, disrupt, degrade, destroy, and deceive).  
+The *Virgil Integrity Network™* is a network agnostic middleware solution for assured integrity and availability of data in adverse environments. The *VIN™* guarantees 100% data integrity and availability, across all network types, in the end-to-end digital supply chain and operational continuity through adverse and adversarial environments even with 80%+ data impact during D5 attacks (delay, disrupt, degrade, destroy, and deceive).  
 
-The patented technology leverages techniques from Digital Ledgers, quantum computing, advanced cryptography, graph-based networking, and Artificial Intelligence (AI) to provide unparalleled data integrity not just for communications, but as well for data storage. The negligible latency impact, the speed of encoding and decoding provides real-time data transmission not only for static content (files) but as well for streaming (media) as well. The use of digital ledgers within the VIN™’s digital supply chain ensures that data and transaction provenance assurance take place and that data is authentic and tamper-proof.
+The patented technology leverages techniques from Digital Ledgers, quantum computing, advanced cryptography, graph-based networking, and Artificial Intelligence (AI) to provide unparalleled data integrity not just for communications, but as well for data storage. The negligible latency impact, the speed of encoding and decoding provides real-time data transmission not only for static content (files) but as well for streaming (media) as well. The use of digital ledgers within the *VIN™’s* digital supply chain ensures that data and transaction provenance assurance take place and that data is authentic and tamper-proof.
 
 
 VIN™ Core Values
-==================
+=====================
 
 
 Confidentiality
 ---------------
 
-The VIN™ ensures data security against the strongest types of attacks by sharding and encrypting. Data is safeguarded even in untrusted (public) networks and domains. Security travels with the data, and only authorized users can access or modify it even if the underlying infrastructure is compromised. 
+The *VIN™* ensures data security against the strongest types of attacks by sharding and encrypting. Data is safeguarded even in untrusted (public) networks and domains. Security travels with the data, and only authorized users can access or modify it even if the underlying infrastructure is compromised. 
 
 
 Integrity
@@ -61,17 +62,17 @@ The combination of error correction with distributed storage in multiple public 
 Policy & Audit 
 --------------
 
-The VIN™ is the first distributed ledger built for communications. Data and transactions are stored in an immutable auditable ledger. All data is traceable on a supply chain that ensures trust and reliability for critical operations.
+The *VIN™* is the first distributed ledger built for communications. Data and transactions are stored in an immutable auditable ledger. All data is traceable on a supply chain that ensures trust and reliability for critical operations.
 
 
 Operational Capabilities
 ------------------------
 
-The VIN™, as part of its guarantee of data integrity and availability, provides the following operational capabilities: 
+The *VIN™*, as part of its guarantee of data integrity and availability, provides the following operational capabilities: 
 
 * Zero-Trust Networking
 
-  * Virgil applies distributed ledgers as communications middleware with patented encoding techniques 
+  * *Virgil Systems* applies distributed ledgers as communications middleware with patented encoding techniques 
   * Invulnerable Storage – obfuscation and random mixing 
   * Invulnerable Communications: integrity/availability guarantee 
   * Network visibility 
@@ -83,7 +84,7 @@ The VIN™, as part of its guarantee of data integrity and availability, provide
 * Lightweight installation footprint  
 * Negligible latency impact 
 * Speed of encoding and decoding provides real-time data transmission 
-* Digital ledgers within the VINTMs digital supply chain ensures that data and transaction provenance assurance occur and that data is authentic and tamper-proof 
+* Digital ledgers within the *VIN™* digital supply chain ensures that data and transaction provenance assurance occur and that data is authentic and tamper-proof 
 * Network agnostic 
 * Supports both static files and streaming media 
 
@@ -91,7 +92,7 @@ The VIN™, as part of its guarantee of data integrity and availability, provide
 Data Flow in the VIN™
 =======================
 
-To demonstrate how the VIN™ works imagine a sender wishing to transmit some important data to a receiver. The sender’s node seamlessly and nearly instantly transforms the outgoing data using patented error-correcting codes. The data is spread out over a network of nodes in a privacy preserving way that is indistinguishable from noise. Only an authorized receiving node can gather the data back together. A detailed step-by-step process is listed below:
+To demonstrate how the *VIN™* works imagine a sender wishing to transmit some important data to a receiver. The sender’s node seamlessly and nearly instantly transforms the outgoing data using patented error-correcting codes. The data is spread out over a network of nodes in a privacy preserving way that is indistinguishable from noise. Only an authorized receiving node can gather the data back together. A detailed step-by-step process is listed below:
 
 * The sender selects the data that is to be sent. 
 * The data is fragmented into shards which will be transformed into a tokenized hologram (qToken).
@@ -106,19 +107,18 @@ To demonstrate how the VIN™ works imagine a sender wishing to transmit some im
 * Data integrity and availability is assured even if up to 80% of data is destroyed or delayed during transmission.
 
 .. figure:: images/vin_description/vin_data_flow.png
-  :width: 500
+  :scale: 100
   :align: center
   :alt: VIN Data Flow
   
-  VIN™ Data Flow
+  *VIN™* Data Flow
 
 
 .. figure:: images/vin_description/vin_high_level.png
-  :width: 500
+  :scale: 50
   :align: center
   :alt: VIN High Level Description
   
-  High-Level Description of the VIN™
+  High-Level Description of the *VIN™*
  
-
 The security of the end-to-end data supply chain is assured by a proprietary Proof of Integrity. Both the receiver and the sender are assured that the data was received in integrity, even if 80% of the data is affected by attackers, degradation, or network outages. An operator is alerted of any attempted interference even across physical and logical networks.
