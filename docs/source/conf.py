@@ -19,7 +19,7 @@ placeholder_replacements = {
 # -- Project information
 
 project = 'VIN™ Developer Guide'
-copyright = '2021, Virgil Systems'
+copyright = '2022, Virgil Systems'
 author = 'Dion Hicks'
 
 release = '0.1'
