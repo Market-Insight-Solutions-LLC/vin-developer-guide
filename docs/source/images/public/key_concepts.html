@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Key Concepts &mdash; VIN™ Reference Guide 0.1 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/custom.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="VIN™ Dashboard" href="dashboard.html" />
+    <link rel="prev" title="Sample Use Cases" href="sample_use_cases.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> VIN™ Reference Guide
+            <img src="_static/virgil_v_black.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="vin_description.html">VIN™ Description</a></li>
+<li class="toctree-l1"><a class="reference internal" href="getting_started_at_virgil.html">Getting Started at Virgil Systems</a></li>
+<li class="toctree-l1"><a class="reference internal" href="developing_with_windows.html">Developing with Windows</a></li>
+<li class="toctree-l1"><a class="reference internal" href="developing_with_linux_wsl.html">Developing with Linux and WSL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="vin_cli.html">VIN™ Command Line Interface (CLI)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="configuration.html">Configuration Options</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sample_use_cases.html">Sample Use Cases</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Key Concepts</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#blockchain">Blockchain</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#public-key-infrastructure-pki">Public Key Infrastructure (PKI)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#error-correction-code-ecc">Error Correction Code (ECC)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#data-holograms">Data Holograms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#bootstrap-ping-node">Bootstrap(ping) Node</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#peer">Peer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#peer-to-peer-network">Peer-to-Peer Network</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#merkle-tree">Merkle Tree</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#kademlia">Kademlia</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#logical-virtual-machine-lvm">Logical Virtual Machine (LVM)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#persistence-on-disk-storage">Persistence – On-Disk Storage</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#filesystem-in-userspace-fuse">Filesystem in USErspace (FUSE)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#rvault">RVault</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#perimeterless-zero-trust-model">Perimeterless Zero-Trust Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#advanced-encryption-standard-algorithm">Advanced Encryption Standard Algorithm</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#substitution">Substitution</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#permutation">Permutation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#key-expansion-schedule">Key Expansion Schedule</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#tokenization">Tokenization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#deterministic-shard-size">Deterministic Shard Size</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#sha-256-hash-generation">SHA-256 Hash Generation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#cryptographic-receipt">Cryptographic Receipt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#unique-shard-name-generation">Unique Shard Name Generation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#concurrent-coding">Concurrent Coding</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#reed-solomon-coding">Reed-Solomon Coding</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#polar-coding">Polar Coding</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#polar-transform">Polar Transform</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#channel-polarization-polar-code-and-encoding">Channel Polarization, Polar Code, and Encoding</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#independent-random-shard-encryption-cipher-coding">Independent Random Shard Encryption (Cipher Coding)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#alpha-entanglement">Alpha Entanglement</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#ae-spherical-representation">AE Spherical Representation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ae-lattice-representation">AE Lattice Representation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ae-data-recovery-capability">AE Data Recovery Capability</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#references">References</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#self-entanglement">Self-Entanglement</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#distance-superimpose-codes">Distance/Superimpose Codes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#smart-contracting">Smart Contracting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#data-integrity-calculator-and-alerts">Data Integrity Calculator and Alerts</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="dashboard.html">VIN™ Dashboard</a></li>
+<li class="toctree-l1"><a class="reference internal" href="vin_statistics.html">VIN™ Statistics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="vin_metrics.html">VIN™ Metrics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="release_notes.html">Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="glossary.html">Glossary</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">VIN™ Reference Guide</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>Key Concepts</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/key_concepts.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="key-concepts">
+<h1>Key Concepts<a class="headerlink" href="#key-concepts" title="Permalink to this headline"></a></h1>
+<p>The following section contains information regarding a number of commonly used terms associated with distributed ledger technology. Furthermore, key concepts related to the VIN™ are explained.</p>
+<section id="blockchain">
+<h2>Blockchain<a class="headerlink" href="#blockchain" title="Permalink to this headline"></a></h2>
+<p>A blockchain is a growing list of records, called blocks, that are linked together using cryptography. Each block contains a cryptographic hash of the previous block, a timestamp, and transaction data (generally represented as a Merkle tree). The timestamp proves that the transaction data existed when the block was published in order to get into its hash. As blocks each contain information about the block previous to it, they form a chain, with each additional block reinforcing the ones before it. Therefore, blockchains are resistant to modification of their data because once recorded, the data in any given block cannot be altered retroactively without altering all subsequent blocks.</p>
+</section>
+<section id="public-key-infrastructure-pki">
+<h2>Public Key Infrastructure (PKI)<a class="headerlink" href="#public-key-infrastructure-pki" title="Permalink to this headline"></a></h2>
+<p>A public key infrastructure is a set of roles, policies, hardware, software, and procedures needed to create, manage, distribute, use, store and revoke digital certificates and manage public-key encryption. The purpose of a PKI is to facilitate the secure electronic transfer of information for a range of network activities such as e-commerce, internet banking and confidential email. It is required for activities where simple passwords are an inadequate authentication method and more rigorous proof is required to confirm the identity of the parties involved in the communication and to validate the information being transferred.</p>
+</section>
+<section id="error-correction-code-ecc">
+<h2>Error Correction Code (ECC)<a class="headerlink" href="#error-correction-code-ecc" title="Permalink to this headline"></a></h2>
+<p>Error correction code is used for controlling errors in data over unreliable or noisy communication channels. The central idea is the sender encodes the message with redundant information in the form of an ECC. The redundancy allows the receiver to detect a limited number of errors that may occur anywhere in the message, and often to correct these errors without retransmission.</p>
+</section>
+<section id="data-holograms">
+<h2>Data Holograms<a class="headerlink" href="#data-holograms" title="Permalink to this headline"></a></h2>
+<p>Data which has been divided into shards, combined with its hash, and encoded using a variety of encoding techniques.</p>
+</section>
+<section id="bootstrap-ping-node">
+<h2>Bootstrap(ping) Node<a class="headerlink" href="#bootstrap-ping-node" title="Permalink to this headline"></a></h2>
+<p>A bootstrapping node is a node in an overlay network that provides initial configuration information to newly joining nodes so that they may successfully join the overlay network.</p>
+</section>
+<section id="peer">
+<h2>Peer<a class="headerlink" href="#peer" title="Permalink to this headline"></a></h2>
+<p>A peer, in networking, is a node that provides the same functionality as another and has equal permissions and responsibilities for processing data.</p>
+</section>
+<section id="peer-to-peer-network">
+<h2>Peer-to-Peer Network<a class="headerlink" href="#peer-to-peer-network" title="Permalink to this headline"></a></h2>
+<p>In its simplest form, a peer-to-peer (P2P) network is created when two or more PCs are connected and share resources without going through a separate server computer. A P2P network can be an ad hoc connection—a couple of computers connected via a Universal Serial Bus to transfer files. A P2P network also can be a permanent infrastructure that links a half-dozen computers in a small office over copper wires. Or a P2P network can be a network on a much grander scale in which special protocols and applications set up direct relationships among users over the Internet.</p>
+<figure class="align-center" id="id2">
+<a class="reference internal image-reference" href="_images/peer_to_peer.png"><img alt="Peer-to-Peer Network" src="_images/peer_to_peer.png" style="width: 500px;" /></a>
+<figcaption>
+<p><span class="caption-text">Peer-to-Peer Network</span><a class="headerlink" href="#id2" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+<section id="merkle-tree">
+<h2>Merkle Tree<a class="headerlink" href="#merkle-tree" title="Permalink to this headline"></a></h2>
+<p>In cryptography and computer science, a hash tree or Merkle tree is a tree in which every leaf node is labelled with the cryptographic hash of a data block, and every non-leaf node is labelled with the cryptographic hash of the labels of its child nodes. Hash trees allow efficient and secure verification of the contents of large data structures. Hash trees are a generalization of hash lists and hash chains.</p>
+<figure class="align-center" id="id3">
+<a class="reference internal image-reference" href="_images/merkle_tree.png"><img alt="Merkle Tree" src="_images/merkle_tree.png" style="width: 500px;" /></a>
+<figcaption>
+<p><span class="caption-text">Merkle Tree</span><a class="headerlink" href="#id3" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+<section id="kademlia">
+<h2>Kademlia<a class="headerlink" href="#kademlia" title="Permalink to this headline"></a></h2>
+<p>Kademlia is a distributed hash table for decentralized peer-to-peer computer networks. It specifies the structure of the network and the exchange of information through node lookups. Kademlia nodes communicate among themselves using UDP. A virtual or overlay network is formed by the participant nodes. Each node is identified by a number or node ID. The node ID serves not only as identification, but the Kademlia algorithm uses the node ID to locate values (usually file hashes or keywords). In fact, the node ID provides a direct map to file hashes and that node stores information on where to obtain the file or resource.</p>
+<p>Consider the simple network bellow. The network size is 2^3 or eight maximum keys and nodes. There are seven nodes participating: the small circles at the bottom. The node under consideration is node six (binary 110) in black. There are three k-buckets for each node in this network. Nodes zero, one and two (binary 000, 001, and 010) are candidates for the farthest k-bucket. Node three (binary 011, not shown) is not participating in the network. In the middle k-bucket, nodes four and five (binary 100 and 101) are placed. Finally, the third k-bucket can only contain node seven (binary 111). Each of the three k-buckets are enclosed in a gray circle. If the size of the k-bucket was two, then the farthest 2-bucket can only contain two of the three nodes. For example, if node six has node one and two in the farthest 2-bucket, it would have to request a node ID lookup to these nodes to find the location (IP address) of node zero. Each node knows its neighborhood well and has contact with a few nodes far away which can help locate other nodes far away.</p>
+<figure class="align-center" id="id4">
+<a class="reference internal image-reference" href="_images/kademlia_network.png"><img alt="Simple Kademlia Network" src="_images/kademlia_network.png" style="width: 500px;" /></a>
+<figcaption>
+<p><span class="caption-text">Simple Kademlia Network</span><a class="headerlink" href="#id4" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+<section id="logical-virtual-machine-lvm">
+<h2>Logical Virtual Machine (LVM)<a class="headerlink" href="#logical-virtual-machine-lvm" title="Permalink to this headline"></a></h2>
+<p>The LVM contained within the VIN™ architecture takes advantage of an automatic memory management, Artificial Intelligence (AI)/Machine Learning (ML) distributed ledger. It contains a reduced, concise instruction set for the logic programming types of virtual machines (VMs) which utilize the Prolog (Programming and Logic) language. While traditional Prolog VMs focus on large instruction sets and linear sequential models of computing, the LVM builds upon an arrangement of instructions in the form of a matrix. Thus, at its core, it has a matrixed instruction set architecture with the instructions forming the elements of the matrix. This strategy improves speed by refactoring a complex operation into smaller, faster operations. It is designed to be massively distributed, scalable, and parallelizable, while still adhering to all the ACID (atomicity, consistency, isolation, durability) properties to guarantee data validity while undergoing any D5 symptoms. The LVM is leveraged by the VIN™ as a high-speed data store for the storage of data holograms.</p>
+<figure class="align-center" id="id5">
+<a class="reference internal image-reference" href="_images/lvm_high_level.png"><img alt="High-level LVM Block Design" src="_images/lvm_high_level.png" style="width: 500px;" /></a>
+<figcaption>
+<p><span class="caption-text">High-level LVM Block Design</span><a class="headerlink" href="#id5" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+<section id="persistence-on-disk-storage">
+<h2>Persistence – On-Disk Storage<a class="headerlink" href="#persistence-on-disk-storage" title="Permalink to this headline"></a></h2>
+<p>To ensure the tokenized data holograms persist as networks may suffer from the D5 effects, VIN utilizes a number of tools to perform swift and reliable on-disk storage.</p>
+<section id="filesystem-in-userspace-fuse">
+<h3>Filesystem in USErspace (FUSE)<a class="headerlink" href="#filesystem-in-userspace-fuse" title="Permalink to this headline"></a></h3>
+<p>FUSE is a software interface for Unix and Unix-like computer operating systems that lets non-privileged users create their own file systems without editing kernel code.
+FUSE is particularly useful for writing virtual file systems. Unlike traditional file systems that essentially work with data on mass storage, virtual filesystems don’t actually store data themselves. They act as a view or translation of an existing file system or storage device.</p>
+<p>A flow-chart diagram showing how FUSE works: Request from userspace to list files (ls -l /tmp/fuse) gets redirected by the Kernel through VFS to FUSE. FUSE then executes the registered handler program (./hello) and passes it the request (ls -l /tmp/fuse). The handler program returns a response back to FUSE which is then redirected to the userspace program that originally made the request.</p>
+<figure class="align-center" id="id6">
+<a class="reference internal image-reference" href="_images/fuse_flow_chart.png"><img alt="FUSE Flow Chart" src="_images/fuse_flow_chart.png" style="width: 500px;" /></a>
+<figcaption>
+<p><span class="caption-text">FUSE Flow Chart</span><a class="headerlink" href="#id6" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+<section id="rvault">
+<h3>RVault<a class="headerlink" href="#rvault" title="Permalink to this headline"></a></h3>
+<p>A secure and authenticated store for secrets (passwords, keys, certificates) and small documents. It uses envelope encryption with one-time password (OTP) authentication. The vault can be operated as a file system in userspace.</p>
+<p>Key features and cryptography:</p>
+<ul class="simple">
+<li><p>Envelope encryption with one-time password (OTP) authentication.</p></li>
+<li><p>Mounting vault as a file system in userspace using FUSE.</p></li>
+<li><p>Command line interface (CLI) to operate secrets (and auto-complete for keys).</p></li>
+<li><p>scrypt RFC 7914 for the key derivation function (KDF).</p></li>
+<li><p>AES 256 or Chacha20 cipher with AE. ISO/IEC 19772:2009 compliant.</p></li>
+<li><p>Authentication with the server using TOTP (RFC 6238).</p></li>
+<li><p>On-the-fly LZ4 compression.</p></li>
+<li><p>Lightweight code base, easy to audit, minimum dependencies, extensive tests, ASan and UBSan enabled, supports different CPU architectures.</p></li>
+</ul>
+</section>
+</section>
+<section id="perimeterless-zero-trust-model">
+<h2>Perimeterless Zero-Trust Model<a class="headerlink" href="#perimeterless-zero-trust-model" title="Permalink to this headline"></a></h2>
+<p>Virgil Systems defines the ZTM as a countermeasure that bind endpoint identity- and context-based, logical-access in a perimeterless system. A permiterless ZTM is sometimes known as a Software-Defined Perimeter (SDP). With this approach to security, digital assets are essentially invisible on the network, protected by masked ports that give attackers no idea where any potential targets might be hosted. Applications become opaque to discovery. The VIN™ leverages the perimeterless ZTM to hide data via redistribution to a collection of anonymized node entities and smart contracts.</p>
+<p>The perimeterless system is one element of ZTM’s broader paradigm of extending the principle of “least privilege” to the maximum: Trust no one and grant no privileges until a ZTM solution has verified a user’s identity. Even then, access to the data can be limited in number of accesses, time bound, or geographically bound, according to the concept of operations. Nor does the ZTM grant trust based on data asset ownership. If a user is listed as a database owner, for instance, that will mean nothing to a ZTM solution. It will not allow access until it has established who she is, often by means of sophisticated device authentication.</p>
+<p>Then, once the ZTM solution has authenticated the user, it makes discrete access permissions. The user can only see data for which they have been specifically granted access. It’s nearly impossible to move laterally across the network with the ZTM.</p>
+<p>ZTM came about because the old security model of “inside means trusted” and “outside means untrusted” is broken. When users became mobile and business partners on the “outside” required access, virtual private networks (VPNs) and demilitarized zones (DMZs) became common. They also granted excessive implicit trust — trust that attackers abused. It was an unworkable and highly insecure way of operating. In response, security visionaries developed ZTM, which is often instantiated today as a Zero-Trust Network Access (ZTNA) solution. The ZTM stands in opposition to the prevailing implicit trust model.</p>
+<p>ZTM ensures all data, either in transit through the network or at rest, stored within the network, is invulnerable and secure against any form of attack or natural disaster. The ZTM never assumes implicit trust based on a user’s physical or network location, e.g., just because a user is logged onto the Local Area Network (LAN), that should not entitle him or her to see data that’s available on the LAN.</p>
+<p>In the case of the VIN™, distributed ledgers certify and verify the identity, context, and policy adherence of the specified participants before allowing access. The solution also uses ZTM principles to minimize lateral movement elsewhere in the network. Figure 3 illustrates the relationships the ZTM of distributed ledger communications nodes, which perform the functions of network virtualization and global overlay.</p>
+</section>
+<section id="advanced-encryption-standard-algorithm">
+<h2>Advanced Encryption Standard Algorithm<a class="headerlink" href="#advanced-encryption-standard-algorithm" title="Permalink to this headline"></a></h2>
+<p>The Advanced Encryption Standard is 128-bit symmetric block cipher that takes 128 bits of plain-text message and encrypts it into 128 bits of cipher text using the fundamentals of an SP-network (Substitution-Permutation) and a ‘secret’ key. This key can be 128, 192, or 256 bits depending on the level of security required, with 256 bits generating the most secure cipher text.</p>
+<p>The algorithm begins by arranging the 128 bits into a 4x4 grid of bytes (i.e., 16 different bytes). More specifically, it receives a linear series of bytes depicted below:</p>
+<figure class="align-center" id="id7">
+<a class="reference internal image-reference" href="_images/linear_byte_arrangement.png"><img alt="Linear Byte Arrangement" src="_images/linear_byte_arrangement.png" style="width: 800px;" /></a>
+<figcaption>
+<p><span class="caption-text">Linear Byte Arrangement</span><a class="headerlink" href="#id7" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+<p>And converts them to the 4x4 grid in column major order.</p>
+<figure class="align-center" id="id8">
+<a class="reference internal image-reference" href="_images/grid_byte_arrangement.png"><img alt="Grid Byte Arrangement" src="_images/grid_byte_arrangement.png" style="width: 300px;" /></a>
+<figcaption>
+<p><span class="caption-text">Grid Byte Arrangement</span><a class="headerlink" href="#id8" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+<p>A part of the ‘key’ is XORed with the plain text before beginning the iterative portion of the algorithm. After this is completed  which is displayed in the following figure.</p>
+<figure class="align-center" id="id9">
+<a class="reference internal image-reference" href="_images/algorithm.png"><img alt="AES Algorithm" src="_images/algorithm.png" style="width: 500px;" /></a>
+<figcaption>
+<p><span class="caption-text">AES Algorithm</span><a class="headerlink" href="#id9" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+<p>Each round of the encryption algorithm performs the following:</p>
+<ul class="simple">
+<li><p>Substitute bytes (SubBytes)</p></li>
+<li><p>Shift rows</p></li>
+<li><p>Mix columns (except the last round)</p></li>
+<li><p>XOR the message with the round key</p></li>
+</ul>
+<p>A 128-bit key requires 10 rounds, a 192-bit key requires 12 rounds, and a 256-bit key requires 14 rounds to complete the algorithm. The round key is determined by expanding the original key using a ‘Key Schedule’ or ‘Key Expansion’ into different round keys. More specifically, it takes the shorter key (128, 192, 256 bit) and expands it into the round keys (11, 13, or 15 keys depending on the size of the key). A more detailed description of this process is listed in the ‘Key Expansion.’</p>
+<p>All operations in the AES algorithm operate within Finite Fields (Galois Fields). The Finite Field for AES (Rijndael) has the following parameters:</p>
+<ul class="simple">
+<li><p>Contains 2^8 elements: GF(2^8)</p></li>
+<li><p>Can do +, -, x and division (inversion: x^-1)</p></li>
+<li><p>2^8 elements is essentially a byte</p>
+<ul>
+<li><p>00000000 -&gt; 11111111</p></li>
+<li><p>256 elements in the finite field</p></li>
+</ul>
+</li>
+<li><p>Whatever operations occur, stay within the field. I.e., the elements are always between 0-255</p></li>
+<li><p>Addition and subtraction undo each other</p></li>
+<li><p>Multiplication and inversion undo each other</p></li>
+<li><p>For an overview on AES field arithmetic, visit the following link:</p>
+<ul>
+<li><p><a class="reference external" href="https://www.youtube.com/watch?v=9TYfiO__m2A">https://www.youtube.com/watch?v=9TYfiO__m2A</a></p></li>
+</ul>
+</li>
+<li><p>For a deep discussion on Galois fields with multiple examples, refer to the following:</p>
+<ul>
+<li><p><a class="reference external" href="https://www.youtube.com/watch?v=oPjkfvuqqv4">https://www.youtube.com/watch?v=oPjkfvuqqv4</a></p></li>
+</ul>
+</li>
+</ul>
+<section id="substitution">
+<h3>Substitution<a class="headerlink" href="#substitution" title="Permalink to this headline"></a></h3>
+<p>SubBytes handles the substitution portion of the SP-network and refers to the utilization of a Substitution Box (S-Box), which is essentially a cleverly designed look up tale. Since it is a look up table, it can substitute the data extremely quickly. It takes each byte in the grid and maps it to a different byte within the S-Box. Some parameters of the S-Box are:</p>
+<ul class="simple">
+<li><p>It’s non-linear</p></li>
+<li><p>It contains no fixed points. I.e., no byte is substituted with itself</p></li>
+<li><p>It contains no opposite fixed points. I.e., no byte is substituted with a flipped byte. E.g., if the byte was 00110101, it will not be replaced with 11001010.</p></li>
+</ul>
+<p>A simple illustration of byte substitution is shown below:</p>
+<figure class="align-center" id="id10">
+<a class="reference internal image-reference" href="_images/grid_with_sub_bytes.png"><img alt="4x4 Grid with Substituted Bytes" src="_images/grid_with_sub_bytes.png" style="width: 700px;" /></a>
+<figcaption>
+<p><span class="caption-text">4x4 Grid with Substituted Bytes</span><a class="headerlink" href="#id10" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+<section id="permutation">
+<h3>Permutation<a class="headerlink" href="#permutation" title="Permalink to this headline"></a></h3>
+<p>The permutation portion of the AES algorithm is comprised of two parts: shifting the rows and mixing the columns. Shifting the rows is very systematic and adheres to the following steps:</p>
+<ul class="simple">
+<li><p>1st row has no change</p></li>
+<li><p>2nd row -&gt; shift each byte to the left by one</p></li>
+<li><p>3rd row -&gt; shift each byte to the left by two</p></li>
+<li><p>4th row -&gt; shift each byte to the left by three</p></li>
+</ul>
+<p>An example of the 4x4 grid after the performing the row shift operation is displayed below:</p>
+<figure class="align-center" id="id11">
+<a class="reference internal image-reference" href="_images/row_shift.png"><img alt="Row Shift Operation" src="_images/row_shift.png" style="width: 700px;" /></a>
+<figcaption>
+<p><span class="caption-text">Row Shift Operation</span><a class="headerlink" href="#id11" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+<p>Mixing the columns is not as simplistic and easy to execute as row shifting. As seen in the following figure, mixing the columns involves the matrix multiplication of a pre-defined matrix (i.e., the matrix on the left) and the columns to the mixed.</p>
+<figure class="align-center" id="id12">
+<a class="reference internal image-reference" href="_images/column_mix.png"><img alt="Column Mix Operation" src="_images/column_mix.png" style="width: 500px;" /></a>
+<figcaption>
+<p><span class="caption-text">Column Mix Operation</span><a class="headerlink" href="#id12" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+<p>However, this is not a normal matrix multiplication with standard additions and multiplications as they occur in the finite field. For example, the addition is actually an XOR operation, while the multiplication is a multiplication within the finite field which is modular and polynomial. For more detailed information on this process, refer to the video listed above.</p>
+</section>
+<section id="key-expansion-schedule">
+<h3>Key Expansion Schedule<a class="headerlink" href="#key-expansion-schedule" title="Permalink to this headline"></a></h3>
+<p>The key expansion process is used to generate a number of round keys based upon an initial key. As mentioned above, 10 keys are generated when starting with a 128-bit key, 12 with a 192-bit key and 14 with a 256-bit. Including the initial key, 11, 13 and 15 unique keys are required for the AES algorithm when 128, 192, and 256-bit keys are used, respectively. For this explanation, a 128-bit key will be considered.</p>
+<p>The first step in the process is to represent the key in a 4x4 matrix in similar fashion to the 128-bit plain-text message to be encrypted. Upon doing so, use four words to house the values of the 4 columns in the matrix as shown in the following figure. Note: these are actually doublewords (i.e., 32 bits) but will be referred to as words as is commonly done in this algorithm’s description.</p>
+<figure class="align-center" id="id13">
+<a class="reference internal image-reference" href="_images/key_as_words.png"><img alt="AES Key Word Representatation" src="_images/key_as_words.png" style="width: 300px;" /></a>
+<figcaption>
+<p><span class="caption-text">AES Key Word Representation</span><a class="headerlink" href="#id13" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+<p>Since 11 skeys (<em>k</em><sub>0</sub>, <em>k</em><sub>1</sub>, …, <em>k</em><sub>11</sub>) will be required for a 128-bit key, and each key is 4 words in length, then 11x4 words, or 44 words will be required to complete all of the round keys. I.e., <em>W</em><sub>0</sub>, <em>W</em><sub>1</sub>, …, <em>W</em><sub>43</sub> will be generated where:</p>
+<p class="text-align-center"><em>W</em><sub>0</sub>, <em>W</em><sub>1</sub>, <em>W</em><sub>2</sub>, <em>W</em><sub>3</sub> =&gt;R <em>k</em><sub>0</sub> ,  <em>W</em><sub>4</sub>, <em>W</em><sub>5</sub>, <em>W</em><sub>6</sub>, <em>W</em><sub>7</sub> =&gt; <em>k</em><sub>1</sub>…, <em>W</em><sub>40</sub>, <em>W</em><sub>41</sub>, <em>W</em><sub>42</sub>, <em>W</em><sub>43</sub> =&gt; <em>k</em><sub>10</sub></p>
+<p>Note: as 192-bit key requires 6 words per key and a 256-bit key needs 8 words.</p>
+<p>Each set of 4 words are generated from the previous set of 4 words. For example, <em>W</em><sub>4</sub>, <em>W</em><sub>5</sub>, <em>W</em><sub>6</sub>, and <em>W</em><sub>7</sub> are determined by using the values of words <em>W</em><sub>0</sub>, <em>W</em><sub>1</sub>, <em>W</em><sub>2</sub>, and <em>W</em><sub>3</sub>. Thus, by knowing the values of the first 4 words, each subsequent set can be found using the same four steps:</p>
+<ul class="simple">
+<li><p>Rotation</p></li>
+<li><p>Substitution</p></li>
+<li><p>Round constant XORing</p></li>
+<li><p>Word XORing</p></li>
+</ul>
+<p>The rotation step takes the bytes in the last word of the key (i.e., <em>W</em><sub>3</sub>) and shifts them to the left. (Note: <em>B</em> = <em>Byte</em>.)</p>
+<p class="text-align-center"><em>W</em><sub>3</sub> = <em>B</em><sub>12</sub>, <em>B</em><sub>13</sub>, <em>B</em><sub>14</sub>, <em>B</em><sub>15</sub> =&gt; <em>W</em><sub>3</sub> = <em>B</em><sub>13</sub>, <em>B</em><sub>14</sub>, <em>B</em><sub>15</sub>, <em>B</em><sub>12</sub></p>
+<p>The substitution step utilizes a substitution box in similar fashion to that of the S-Box of the AES algorithm. Thus, each byte in the last word of the key being determined (<em>W</em><sub>3</sub> for <em>k</em><sub>0</sub>, <em>W</em><sub>7</sub> for <em>k</em><sub>1</sub>, etc.) will be substituted with values from a specifically designed look up table, resulted in substituted word 3 (<em>SW</em><sub>3</sub>) with the substituted bytes be denoted as <em>SB</em><sub>13</sub>, <em>SB</em><sub>14</sub>, <em>SB</em><sub>15</sub>, and <em>SB</em><sub>12</sub>.</p>
+<p>The final phase is determining the value of the first word in the next key (i.e., <em>W</em><sub>4</sub>). This requires two steps, both involving XOR. First a round constant (<em>rcon[]</em>) value is XORed with the newly substituted bytes of <em>W</em><sub>3</sub>, the result of which is then XORed with the bytes in W1. For a 128-bit key:</p>
+<p class="text-align-center"><em>rcon[] = {0x01, 0x02, 0x04, 0x08, 0x10, 0x20, 0x40, 0x80, 0x1b, 0x36}</em></p>
+<p>where each subsequent value in <em>rcon[]</em> corresponds to the key being generated. I.e., (0x01 is for <em>k</em><sub>0</sub>, 0x02 is for <em>k</em><sub>1</sub>, …, 0x36 is for <em>k</em><sub>10</sub>). Denoting the XOR of the <em>SW</em><sub>3</sub> and <em>rcon[0]</em> as <em>Y</em><sub>0</sub> <em>[]</em> the equation becomes:</p>
+<p class="text-align-center"><em>Y</em><sub>0</sub> <em>[]</em> = <em>SW</em><sub>3</sub> <span class="math notranslate nohighlight">\(\oplus\)</span> <em>rcon[0]</em></p>
+<p class="text-align-center"><em>Y</em><sub>0</sub> <em>[]</em> = <em>SB</em><sub>13</sub> <span class="math notranslate nohighlight">\(\oplus\)</span> <em>0x01</em>, <em>SB</em><sub>14</sub> <span class="math notranslate nohighlight">\(\oplus\)</span> <em>0x01</em>, <em>SB</em><sub>15</sub> <span class="math notranslate nohighlight">\(\oplus\)</span> <em>0x01</em>, <em>SB</em><sub>12</sub> <span class="math notranslate nohighlight">\(\oplus\)</span> <em>0x01</em></p>
+<p>Thus,</p>
+<p class="text-align-center"><em>W</em><sub>4</sub> = <em>W</em><sub>1</sub> <span class="math notranslate nohighlight">\(\oplus\)</span> <em>Y</em><sub>0</sub> <em>[]</em></p>
+<p class="text-align-center"><em>W</em><sub>4</sub> = <em>B</em><sub>0</sub> <span class="math notranslate nohighlight">\(\oplus\)</span> <em>Y</em><sub>0</sub> <em>[]</em>, <em>B</em><sub>1</sub> <span class="math notranslate nohighlight">\(\oplus\)</span> <em>Y</em><sub>1</sub> <em>[]</em>, <em>B</em><sub>2</sub> <span class="math notranslate nohighlight">\(\oplus\)</span> <em>Y</em><sub>2</sub> <em>[]</em>, <em>B</em><sub>3</sub> <span class="math notranslate nohighlight">\(\oplus\)</span> <em>Y</em><sub>3</sub> <em>[]</em>,</p>
+<p>Finally, simple XORing of bytes is used to get the final three words of the next key (i.e., <em>W5</em>, <em>W6</em>, and <em>W7</em>).</p>
+<p class="text-align-center"><em>W</em><sub>5</sub> = <em>W</em><sub>1</sub> <span class="math notranslate nohighlight">\(\oplus\)</span> <em>W</em><sub>4</sub></p>
+<p class="text-align-center"><em>W</em><sub>6</sub> = <em>W</em><sub>2</sub> <span class="math notranslate nohighlight">\(\oplus\)</span> <em>W</em><sub>5</sub></p>
+<p class="text-align-center"><em>W</em><sub>7</sub> = <em>W</em><sub>3</sub> <span class="math notranslate nohighlight">\(\oplus\)</span> <em>W</em><sub>6</sub></p>
+<p>To calculate the next key, simply use the newly found words <em>W4</em>, <em>W5</em>, <em>W6</em> and <em>W7</em> as the initial values of the key expansion algorithm. Do this for each required key in order to find all of the round keys needed for the AES algorithm.</p>
+</section>
+</section>
+<section id="tokenization">
+<h2>Tokenization<a class="headerlink" href="#tokenization" title="Permalink to this headline"></a></h2>
+<p>The fragmenting of data into shards which undergo encryption and encoding before being distributed onto the VIN™. In the case of the VIN™, the tokenization of data occurs in a configurable pipeline allow for a great deal of customization in regard to encoding algorithms and encoding techniques.</p>
+</section>
+<section id="deterministic-shard-size">
+<h2>Deterministic Shard Size<a class="headerlink" href="#deterministic-shard-size" title="Permalink to this headline"></a></h2>
+<p>To ensure optimal data transmission rates and network stability, each file is divided into the ideal shard size before undergoing further encryption and tokenization.</p>
+</section>
+<section id="sha-256-hash-generation">
+<h2>SHA-256 Hash Generation<a class="headerlink" href="#sha-256-hash-generation" title="Permalink to this headline"></a></h2>
+<p>Hash of the file to be sent over the network. Used to detect issues with the data upon retrieval.</p>
+</section>
+<section id="cryptographic-receipt">
+<h2>Cryptographic Receipt<a class="headerlink" href="#cryptographic-receipt" title="Permalink to this headline"></a></h2>
+<p>The cryptographic receipt is receipt sent by a ‘sender’ to a ‘receiver’ consisting of all the hashes of the data shards combined with the Distributed Ledger network node structure. It encodes the set of all private keys and subnetwork map of QTokens entangled at relative locations. The receipt accomplishes this by using a special cyberspace measurement based on the symmetric distance properties of the XOR operation which is sent on a set of (multiple) side channels using FIPS-140 compliant public key infrastructure (PKI) to further mitigate interception probability by a man-in-the-middle attack.
+The cryptographic receipt is known as the Proof-Of-Data-Integrity (PoDI) and can also contain an encrypted reference to the Proof-of-Source-Identity (PoSI) for provenance and attribution purposes. These are important in chain of custody or other digital supply chains (e.g., proof of designs to mitigate risks of fake manufacturing).
+In particular it is a unique identifier containing the following information of the data stored on the network:</p>
+<ul class="simple">
+<li><p>Shard filenames (key) to access data (value)</p></li>
+<li><p>Encoders used</p></li>
+<li><p>File hash</p></li>
+</ul>
+</section>
+<section id="unique-shard-name-generation">
+<h2>Unique Shard Name Generation<a class="headerlink" href="#unique-shard-name-generation" title="Permalink to this headline"></a></h2>
+<ul class="simple">
+<li><p>Add information</p></li>
+</ul>
+</section>
+<section id="concurrent-coding">
+<h2>Concurrent Coding<a class="headerlink" href="#concurrent-coding" title="Permalink to this headline"></a></h2>
+<p>Concurrent codes are error correcting block codes which operate by mapping every possible prefix of the info data to a single bit of the encoded block. The data inflation of concurrent is significant as an n bit block results in an encoded block with 2n+1 - 2 bits.</p>
+<p>Concurrent coding uses the unique linear sequence of 0’s and 1’s in a message word to generate a pattern of 0’s and 1’s uniquely distributed across a larger codeword space. A message is broken down into linearly expanding sub-sequences of bits—pre-fixes starting from the least significant bit and incrementally increasing in length. Each pre-fix is then passed through a hashing function. The output of the hashing function is used as the address of a mark to be placed in the codeword space. As a simplistic example the message 1101 will produce addresses from the arbitrary hash sequences H(1), H(01), H(101), and H(1101). Multiple messages can be combined via an OR process into a single codeword before transmission.</p>
+<figure class="align-center" id="id14">
+<a class="reference internal image-reference" href="_images/concurrent_encoding.png"><img alt="Concurrent Code Encoding Process" src="_images/concurrent_encoding.png" style="width: 500px;" /></a>
+<figcaption>
+<p><span class="caption-text">Concurrent Code Encoding Process</span><a class="headerlink" href="#id14" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+<p>The values 0 and 1, (the first potential message bits) are each passed through the hashing function, and the received codeword is then examined. If a mark is found at the position indicated by the output of the hash functions, then the message value is retained for further analysis—represented by the white boxes in Fig 3. If no mark is found all possibilities with the input sequence cannot be found and analysis not pursued (grey boxes). For each retained value the next step in the sequence is examined with both 0 and 1 appended i.e., if H(1) found, next step is H(01) and H(11), again retaining those attempts that result in an associated mark present in the codeword. The process is repeated for the number of bits in each message. The process forms a decoding tree.</p>
+<figure class="align-center" id="id15">
+<a class="reference internal image-reference" href="_images/concurrent_decoding.png"><img alt="Concurrent Code Decoding Process" src="_images/concurrent_decoding.png" style="width: 500px;" /></a>
+<figcaption>
+<p><span class="caption-text">Concurrent Code Decoding Process</span><a class="headerlink" href="#id15" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+<p>For more information refer to the following:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4773133/">https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4773133/</a></p></li>
+<li><p><a class="reference external" href="http://citeseerx.ist.psu.edu/viewdoc/download;jsessionid=A658FA2EB8725BF7F555317FDCEAD939?doi=10.1.1.113.8569&amp;rep=rep1&amp;type=pdf">http://citeseerx.ist.psu.edu/viewdoc/download;jsessionid=A658FA2EB8725BF7F555317FDCEAD939?doi=10.1.1.113.8569&amp;rep=rep1&amp;type=pdf</a></p></li>
+</ul>
+</section>
+<section id="reed-solomon-coding">
+<h2>Reed-Solomon Coding<a class="headerlink" href="#reed-solomon-coding" title="Permalink to this headline"></a></h2>
+<p>Reed–Solomon codes are a group of error-correcting codes which operate on a block of data treated as a set of finite-field elements called symbols. Reed–Solomon codes are able to detect and correct multiple symbol errors. By adding t = n − k check symbols to the data, a Reed–Solomon code can detect (but not correct) any combination of up to t erroneous symbols or locate and correct up to ⌊t/2⌋ erroneous symbols at unknown locations. As an erasure code, it can correct up to t erasures at locations that are known and provided to the algorithm, or it can detect and correct combinations of errors and erasures. Reed–Solomon codes are also suitable as multiple-burst bit-error correcting codes, since a sequence of b + 1 consecutive bit errors can affect at most two symbols of size b. The choice of t is up to the designer of the code and may be selected within wide limits.
+For more information refer to the following:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://www.youtube.com/watch?v=jgO09opx56o">https://www.youtube.com/watch?v=jgO09opx56o</a></p></li>
+<li><p><a class="reference external" href="https://www.youtube.com/watch?v=fBRMaEAFLE0">https://www.youtube.com/watch?v=fBRMaEAFLE0</a></p></li>
+</ul>
+</section>
+<section id="polar-coding">
+<h2>Polar Coding<a class="headerlink" href="#polar-coding" title="Permalink to this headline"></a></h2>
+<p>Polar codes are error correcting block codes which excel at efficient error correction. Polar codes require that the encoded block size be a power of 2 but places no other restrictions on block size or data inflation.</p>
+<p>The below graphs illustrate how the error correcting capacity of a polar encoder might change in relation to the block size and data inflation. Errors are simulated with a binary symmetric channel where P is the probability the channel will flip any given bit.</p>
+<p>Note: Pol(N, K) is the polar encoder which takes K bit info blocks to N bit encoded blocks.</p>
+<section id="polar-transform">
+<h3>Polar Transform<a class="headerlink" href="#polar-transform" title="Permalink to this headline"></a></h3>
+<ul class="simple">
+<li><p><a class="reference external" href="https://www.youtube.com/watch?v=rB0rhQKyV34">https://www.youtube.com/watch?v=rB0rhQKyV34</a></p></li>
+</ul>
+</section>
+<section id="channel-polarization-polar-code-and-encoding">
+<h3>Channel Polarization, Polar Code, and Encoding<a class="headerlink" href="#channel-polarization-polar-code-and-encoding" title="Permalink to this headline"></a></h3>
+<ul class="simple">
+<li><p><a class="reference external" href="https://www.youtube.com/watch?v=1uYEq4ueOok">https://www.youtube.com/watch?v=1uYEq4ueOok</a></p></li>
+</ul>
+</section>
+</section>
+<section id="independent-random-shard-encryption-cipher-coding">
+<h2>Independent Random Shard Encryption (Cipher Coding)<a class="headerlink" href="#independent-random-shard-encryption-cipher-coding" title="Permalink to this headline"></a></h2>
+<ul class="simple">
+<li><p>AES-128 or AES-256 occurs on a per shard basis.</p></li>
+<li><p>May also perform GMAC (Galois Counter Mode (GCM) Message Authentication Code) as a default instead of AES</p></li>
+<li><p><a class="reference external" href="https://www.youtube.com/watch?v=V2TlG3JbGp0">https://www.youtube.com/watch?v=V2TlG3JbGp0</a></p></li>
+</ul>
+</section>
+<section id="alpha-entanglement">
+<h2>Alpha Entanglement<a class="headerlink" href="#alpha-entanglement" title="Permalink to this headline"></a></h2>
+<p>Alpha Entanglement (AE) Codes (AEC) provide a way to increase redundancy without increasing the overhead storage costs of a system by entangling a net of data and redundancy blocks. By doing so, AEC provide a more secure and efficient storage solution than traditional error correcting algorithms. Instead of fabricating redundancy in a per-file procedure, as is the case in erasure codes, entanglement codes propagate redundancy throughout the network.</p>
+<p>Intertwining data and redundancy blocks has the following benefits:</p>
+<ul class="simple">
+<li><p>High fault-tolerance</p></li>
+<li><p>Fair protection to all files</p></li>
+<li><p>Low encoding/decoding complexity</p></li>
+<li><p>Data integrity</p></li>
+</ul>
+<p>The encoder builds block chains (strands) that alternate data and redundant blocks. The entanglement function computes the exclusive-or (XOR) of two consecutive blocks at the head of a strand and inserts the output adjacent to the last block. The strands are intertwined creating a mesh of entangled blocks.</p>
+<p>To get a better understanding of AE, illustrating AE with <em>α</em> = 1, or one strand, is an ideal starting point. The following figure illustrates how redundant blocks containing information on previous data blocks are propagated throughout the network.</p>
+<figure class="align-center" id="id16">
+<a class="reference internal image-reference" href="_images/alpha_one_chain.png"><img alt="Alpha Entanglement Data and Redundancy Blocks (*α* = 1)" src="_images/alpha_one_chain.png" style="width: 600px;" /></a>
+<figcaption>
+<p><span class="caption-text">Alpha Entanglement Data and Redundancy Blocks (<em>α</em> = 1)</span><a class="headerlink" href="#id16" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+<p>When a new data block is introduced (e.g., the purple block), the algorithm creates a new redundant block (i.e., the right grey block) containing information regarding the blue, green, yellow, and purple data blocks. The entanglement function XORs two consecutive blocks at the head of a strand and inserts the outputted redundancy block adjacent to the last block. This process continues for each new piece of data that enters the system.</p>
+<p>If the purple data block is corrupted or lost, it is possible to retrieve the data using information found within the last grey block and the other, nearest blocks within the chain. The procedure is conducted using simple XOR operations.</p>
+<figure class="align-center" id="id17">
+<a class="reference internal image-reference" href="_images/alpha_one_chain_repair_data.png"><img alt="Repairing a Data Block" src="_images/alpha_one_chain_repair_data.png" style="width: 400px;" /></a>
+<figcaption>
+<p><span class="caption-text">Repairing a Data Block</span><a class="headerlink" href="#id17" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+<p>Repairing the redundant blocks can be accomplished in two different ways:</p>
+<ul class="simple">
+<li><p>By using information in the previous data and redundant block</p></li>
+<li><p>By using information in the next data and redundant block</p></li>
+</ul>
+<figure class="align-center" id="id18">
+<a class="reference internal image-reference" href="_images/alpha_one_chain_repair_redundant.png"><img alt="Repairing a Redundancy Block" src="_images/alpha_one_chain_repair_redundant.png" style="width: 400px;" /></a>
+<figcaption>
+<p><span class="caption-text">Repairing a Redundancy Block</span><a class="headerlink" href="#id18" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+<p>By using nodes to represent data blocks and edges to represent redundant blocks, the chain becomes can be shown as it is in the following figure.</p>
+<figure class="align-center" id="id19">
+<a class="reference internal image-reference" href="_images/alpha_nodes_and_edges.png"><img alt="AE with Nodes and Edges" src="_images/alpha_nodes_and_edges.png" style="width: 400px;" /></a>
+<figcaption>
+<p><span class="caption-text">AE with Nodes and Edges</span><a class="headerlink" href="#id19" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+<p>Instead of using one chain (<em>α</em> = 1) in the system, it is possible to use alpha chains. In the example below, <em>α</em> = 3.</p>
+<figure class="align-center" id="id20">
+<a class="reference internal image-reference" href="_images/alpha_3_chain.png"><img alt="AE with *α* = 3" src="_images/alpha_3_chain.png" style="width: 500px;" /></a>
+<figcaption>
+<p><span class="caption-text">AE with <em>α</em> = 3</span><a class="headerlink" href="#id20" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+<p>Now, the purple data block can be rebuilt by not only using the horizontal chains, but by the diagonal chains to its right as well. Note: the ellipses next to the light blue and pink data blocks refer to data blocks that are further back in the chain. Fault tolerance is now  improved as the data is being propagated in multiple directions. Each chain which the data block participates adds an additional redundant block which increase storage overhead (e.g., when <em>α</em> = 3, there are 3 redundant blocks for each data block).</p>
+<section id="ae-spherical-representation">
+<h3>AE Spherical Representation<a class="headerlink" href="#ae-spherical-representation" title="Permalink to this headline"></a></h3>
+<p>While a lattice grid is useful for understanding the more complex features of  AE (refer to <a class="reference internal" href="#ae-lattice-representation"><span class="std std-ref">AE Lattice Representation</span></a>) for now, to illustrate how AE recovers data, a propagation sphere will be used where <em>α</em> = 2.</p>
+<figure class="align-center" id="id21">
+<a class="reference internal image-reference" href="_images/alpha_propagation_sphere.png"><img alt="Propagation Sphere representation of AE" src="_images/alpha_propagation_sphere.png" style="width: 400px;" /></a>
+<figcaption>
+<p><span class="caption-text">Propagation Sphere representation of AE</span><a class="headerlink" href="#id21" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+<p>The requested block is at the center of its own, loosely called propagation sphere. The entanglement codes create, an arrangement of overlapping spheres, with each data block existing at the center of its own propagation sphere. Each data block is uniquely identified by its position in the lattice and calculates the combinations of two or more blocks that are useful to read the block during a failure. Any path that connects the data block request to the data block out is valid to read the central block. Paths that are closer to the center have less elements in serial combinations while paths that are further away require more blocks. However, these increase the chances of successfully retrieving the data, especially when it becomes lost or corrupted.</p>
+<p>The decoder ussses the shortest available path to repair a missing data block. As single failures are easily repaired, the algorithm rarely needs to use a long path. Furthermore, the decoder can repair multiple single failures in parallel, thus, a long path containing two or more failures may be repaired in a single round. The redundancy propagation found within AEC increases the probability of successfully recovering from catastrophic failures and  tampering with data difficult. An example of data blocks being recovered is shown in the following figure.</p>
+<figure class="align-center" id="id22">
+<a class="reference internal image-reference" href="_images/alpha_lost_blocks.png"><img alt="AE Paths for Data Recovery" src="_images/alpha_lost_blocks.png" style="width: 800px;" /></a>
+<figcaption>
+<p><span class="caption-text">AE Paths for Data Recovery</span><a class="headerlink" href="#id22" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+<p>If the middle block is unreadable (i.e., lost, or corrupted), AE will use the path that is closest to the middle of the propagation sphere, or the shortest path. As the failure becomes bigger, other paths can be used to recover the data but as shown, the paths become larger. Thus, it is easy to recognize that larger failures require larger effort (i.e., more data and redundant block processing) to be remedied.</p>
+</section>
+<section id="ae-lattice-representation">
+<span id="id1"></span><h3>AE Lattice Representation<a class="headerlink" href="#ae-lattice-representation" title="Permalink to this headline"></a></h3>
+<p>When creating a lattice arrangement of data and redundancy blocks using AE, an understanding of AE’s parameters is required. More specifically, α is the number of entanglements, or the number of redundant blocks created per node, s is the number of horizontal strands connecting the nodes, while p is the number of helical strands. The figure below illustrates a number of AE configurations.</p>
+<figure class="align-center" id="id23">
+<a class="reference internal image-reference" href="_images/alpha_configurations.png"><img alt="AE Configurations" src="_images/alpha_configurations.png" style="width: 400px;" /></a>
+<figcaption>
+<p><span class="caption-text">AE Configurations</span><a class="headerlink" href="#id23" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+<p>As shown, a node (i.e., a circle), <em>d</em><sub>i</sub>, represents a data block and an edge (i.e., the straight line between nodes), <em>p</em><sub>i,j</sub>, represents a parity (redundancy) block. Nodes are added to the graph in sequential order and are uniquely identified by their position i, indicated inside the nodes.</p>
+<p>There are three classifications for strands (<em>s</em>): the horizontal (<em>H</em>), the right-handed (<em>RH</em>) and the left-handed (<em>LH</em>). When viewed from a 3D perspective, the helical strands (<em>RH</em> and <em>LH</em>) revolve around a central horizontal axis.</p>
+<p>AEC are categorized as follows:</p>
+<ul class="simple">
+<li><p>Single entanglements or 1-entanglements, <em>α</em> = 1, built with a single horizontal strand.</p></li>
+<li><p>Double entanglements or 2-entanglements(<em>s</em>, <em>p</em>), <em>α</em> = 2, built with s horizontal strands and one class of <em>p</em> helical strands.</p></li>
+<li><p>Triple entanglements or 3-entanglements(<em>s</em>, <em>p</em>), <em>α</em> = 3, built with s horizontal strands and two classes of <em>p</em> helical strands.</p></li>
+<li><p>n-Tuple entanglements or n-entanglements(<em>s</em>, <em>p</em>), <em>α</em> = <em>n</em>, built with s horizontal strands and <em>n - 1</em> classes of <em>p</em> helical strands.</p></li>
+<li><p>When possible, 2-entanglements are composed with one class of helical strands (i.e., either <em>RH</em> or <em>LH</em>) and 3-entanglements are composed with both classes of strands (i.e., <em>RH</em> and <em>LH</em>.</p></li>
+</ul>
+<p>With this information it is possible to present an AE(3,5,5) lattice with <em>α</em> = 3, <em>s</em> = 5 (rows) and <em>p</em> = 5 (diagonals/columns). This structure seen in the figure below.</p>
+<figure class="align-center" id="id24">
+<a class="reference internal image-reference" href="_images/alpha_lattice_arrangement.png"><img alt="AE(3,2,5) Lattice Arrangement" src="_images/alpha_lattice_arrangement.png" style="width: 400px;" /></a>
+<figcaption>
+<p><span class="caption-text">AE(3,2,5) Lattice Arrangement</span><a class="headerlink" href="#id24" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+<p>The lattice is composed of 15 strands: 5 <em>H</em> strands, <em>H</em><sub>1-5</sub>, 5 <em>RH</em> strands, <em>RH</em><sub>1-5</sub>, and 5 <em>LH</em> strands, <em>LH</em><sub>1-5</sub>, separated into top, central, and bottom sections with node placement being determined by specific code parameters (refer to the <a class="reference external" href="https://arxiv.org/abs/1810.02974">Vero Estrada-Galinales et al. paper</a> for more details). Notice that the <em>RH</em> strands extend diagonally downward and the <em>LH</em> strands diagonally upward. Additionally, the <em>RH</em> strands run vertically upward from the top row, whereas the <em>LH</em> strands extend vertically downward from the bottom row. This can be seen by following the dotted line for <em>RH</em><sub>1</sub> and the bold line for <em>LH</em><sub>2</sub>. The lattice can be compared to a helix structure, such as that of DNA, and thus nodes on the top are connected to nodes on the bottom through the <em>RH</em> and <em>LH</em> strands. To elaborate, as shown in the figure, node 26 connects to 25 via <em>RH</em><sub>1</sub> through the <em>p</em><sub>25,26</sub> edge, and 35 via <em>LH</em><sub>2</sub>, or the <em>p</em><sub>26,35</sub> edge. Furthermore, each node <em>d</em><sub>i</sub>, participates in <em>α</em> (3 in this case) strands. For example, <em>d</em><sub>26</sub> is a top node that belongs to <em>H</em><sub>1</sub>, horizontally, <em>RH</em><sub>1</sub> (vertically) and <em>LH</em><sub>2</sub> (diagonally) strands. Note: the blue nodes are at one hop (i.e., one edge separattion) of node <em>d</em><sub>26</sub>.</p>
+<p>The decoder repairs a node using two adjacent edges that belong to the same strand, thus, there are alpha options. If <em>d</em><sub>26</sub> was damaged, for example, it can be repaired using the <em>H</em> strand, by computing the XOR of <em>p</em><sub>21,26</sub> and <em>p</em><sub>26,31</sub>. To repair an edge, the decoder can take either of the two connecting nodes on the damaged edge and the node’s corresponding adjacent edge; thus, giving two options for repair. To demonstrate, to repair the damaged edge, <em>p</em><sub>21,26</sub>, the XOR of <em>d</em><sub>21</sub>, and <em>p</em><sub>16,21</sub> can be calculated.</p>
+</section>
+<section id="ae-data-recovery-capability">
+<h3>AE Data Recovery Capability<a class="headerlink" href="#ae-data-recovery-capability" title="Permalink to this headline"></a></h3>
+<p>The curves in the figure display how many blocks are irrecoverable after running repairs. The ideal location for a curve to be located is to the bottom right corner as this indicates the presence of less irrecoverable blocks, even during catastrophic data loss (30-50%). It can be seen that AE(3,2,5) outperforms other versions of AE and the RS (Reed-Solomon) configurations that were tested. To elaborate, AE(3,2,5) has approximately 2 irrecoverable blocks at 30% unavailable locations and approximately 1100 at 50%.</p>
+<figure class="align-center" id="id25">
+<a class="reference internal image-reference" href="_images/alpha_recovery_capability.png"><img alt="AE Data Recovery Capability" src="_images/alpha_recovery_capability.png" style="width: 400px;" /></a>
+<figcaption>
+<p><span class="caption-text">AE Data Recovery Capability</span><a class="headerlink" href="#id25" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+<section id="references">
+<h3>References<a class="headerlink" href="#references" title="Permalink to this headline"></a></h3>
+<p>The information and figures presented in this section was derived from the creators of AE. For more information on AE please refer to the authors’ paper and/or presentation via the following links:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://arxiv.org/abs/1810.02974">Vero Estrada-Galinales et al. paper</a></p></li>
+<li><p><a class="reference external" href="https://www.youtube.com/watch?v=qcO2XBg6nnk">Vero Estrada-Galinales et al. presentation</a></p></li>
+</ul>
+</section>
+</section>
+<section id="self-entanglement">
+<h2>Self-Entanglement<a class="headerlink" href="#self-entanglement" title="Permalink to this headline"></a></h2>
+<ul class="simple">
+<li><p>XOR with SHA hash of file.</p></li>
+</ul>
+</section>
+<section id="distance-superimpose-codes">
+<h2>Distance/Superimpose Codes<a class="headerlink" href="#distance-superimpose-codes" title="Permalink to this headline"></a></h2>
+<ul class="simple">
+<li><p>Add information</p></li>
+</ul>
+</section>
+<section id="smart-contracting">
+<h2>Smart Contracting<a class="headerlink" href="#smart-contracting" title="Permalink to this headline"></a></h2>
+<p>Smart contracts refer to computer protocols that digitally facilitate the verification, control, or execution  of an agreement. Smart contracts run on the blockchain platform, which will process all the transactions in a contract; hence, middlemen are not required for executing the transactions.</p>
+<p>Similar to traditional contracts, smart contracts define rules and penalties around an agreement and automatically enforce those obligations. While they can work independently, many smart contracts can also be implemented together.</p>
+<p>The integral components of a smart contract are termed as objects. There are essentially three objects in a smart contract – the signatories, who are the parties involved in the smart contracts that use digital signatures to approve or disapprove the contractual terms; the subject of agreement or contract; and the specific terms.</p>
+<p>For more information refer to the following:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://corpgov.law.harvard.edu/2018/05/26/an-introduction-to-smart-contracts-and-their-potential-and-inherent-limitations/">https://corpgov.law.harvard.edu/2018/05/26/an-introduction-to-smart-contracts-and-their-potential-and-inherent-limitations/</a></p></li>
+<li><p><a class="reference external" href="https://www.youtube.com/watch?v=pWGLtjG-F5c">https://www.youtube.com/watch?v=pWGLtjG-F5c</a></p></li>
+</ul>
+</section>
+<section id="data-integrity-calculator-and-alerts">
+<h2>Data Integrity Calculator and Alerts<a class="headerlink" href="#data-integrity-calculator-and-alerts" title="Permalink to this headline"></a></h2>
+<p>After the modular decoding and self-healing process, the VIN™ does a mathematical verification of proof of integrity by comparing the unique hash of the sent file calculated before and after data transmission; thus, determining whether or not data integrity was maintained. The system generates operator alerts depending on the status of the data:</p>
+<ul class="simple">
+<li><p>‘Green’ if data was unaffected during transmission</p></li>
+<li><p>‘yellow’ if &lt;80% of data was affected but was recovered/corrected by the VIN™</p></li>
+<li><p>‘red’ if &gt;80% of data was loss/corrupted and could not be recovered/corrected</p></li>
+</ul>
+<p>Due to proprietary encoding/decoding method used in the Qtoken, data integrity can be maintained even under significant degradation of the data itself and/or the network. Qtokens are able to guarantee data integrity by replicating themselves on several nodes, entangling them with other data to hide their identity, and regenerating replicas if loss or damage is detected (e.g., after a disk crash) by using a simple nearest neighbor gossip protocol.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="sample_use_cases.html" class="btn btn-neutral float-left" title="Sample Use Cases" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="dashboard.html" class="btn btn-neutral float-right" title="VIN™ Dashboard" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021, Virgil Systems.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>  
+
+  <style>
+    
+    /* Sidebar header (and topbar for mobile) */
+    .wy-side-nav-search, .wy-nav-top {background: #00ff00;}
+    
+    /* Sidebar */
+    .wy-nav-side {background: #000000;}
+    
+    /* Make a class to allow for center alignment of text */
+    .text-align-center { text-align: center; }
+
+    /* Change the background color to pure white so that images with white backgrounds look ok */
+    /* while this changes the background, it also affects the sidebar and search bar. will need to find another way to do this if needed.*/
+    /*div {background-color: #ffffff;}*/
+    
+
+  </style>
+
+
+</body>
+</html>

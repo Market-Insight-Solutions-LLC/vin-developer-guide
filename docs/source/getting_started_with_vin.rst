@@ -23,8 +23,8 @@ Linux
 * *Ubuntu 20.04+*
   
   * Navigate to the folder containing the ``VIN.zip`` file on the system
-  * Run ``unzip VIN.zip`` from a command line terminal (as an administrator) or double click the file and follow the prompts to extract the contents 
-  * Navigate to the extracted folder and run ``VIN.deb`` from a command line terminal (as an administrator) or double click the file and follow the prompts to install the *VIN™*  
+  * Run ``unzip VIN.zip`` from a command line interface (CLI) session (as an administrator) or double click the file and follow the prompts to extract the contents 
+  * Navigate to the extracted folder and run ``VIN.deb`` from a CLI session (as an administrator) or double click the file and follow the prompts to install the *VIN™*  
 
 * *Raspberry Pi*
   
@@ -35,8 +35,8 @@ Windows
 ----------
 
 * Navigate to the folder containing the ``VIN.zip`` file on the system
-* Run ``tar -xf VIN.zip`` from a command line terminal (as an administrator) or double click the file and follow the prompts to extract the contents 
-* Navigate to the extracted folder and run ``msiexec /i VIN.msi`` from a command line terminal (as an administrator) or double click the file and follow the prompts to install the *VIN™*  
+* Run ``tar -xf VIN.zip`` from a CLI session (as an administrator) or double click the file and follow the prompts to extract the contents 
+* Navigate to the extracted folder and run ``msiexec /i VIN.msi`` from a CLI session (as an administrator) or double click the file and follow the prompts to install the *VIN™*  
   
 
 VMs and Cloud Based Systems
@@ -99,11 +99,11 @@ Currently there are two ways in setting up the *VIN™*: on the same host system
 A Single Host System
 --------------------
 
-To run a simple *VIN™* on a local machine, a minimum of three *VIN™* nodes, one bootstrap node and two sender/receiver peer nodes, must be instantiated. To do so, the following steps should be completed:
+To run a simple *VIN™* on a local machine, a minimum of three *VIN™* nodes, one bootstrap node and two sender/receiver peer nodes, must be instantiated. Additionally, to perform commands with the network, the *VIN™ Command Line Interface* (*VIN™ CLI*) must be started. To do so, the following steps should be completed:
 
-* Upon installation of the *VIN™*, *VIN™* nodes can be launched from any directory using a command line interface. 
-* Begin by opening three terminal windows.
-* In one of the sessions, run ``VIN -b 127.0.0.1``. This will serve as the bootstrap node with the IP address of the host (``127.0.0.1``) and will occupy port ``8000`` for incoming connections. Note: ``VIN -b`` will also work.
+* Upon installation of the *VIN™*, *VIN™* nodes can be launched from any directory using commands in a command line interface (CLI). 
+* Begin by opening four CLI sessions.
+* In one of the sessions, run ``VIN -b 127.0.0.1`` if using *Linux* or ``VIN -app -b 127.0.0.1`` for *Windows* . This will serve as the bootstrap node with the IP address of the host (``127.0.0.1``) and will occupy port ``8000`` for incoming connections. Note: ``VIN -b`` will also work.
 
 .. figure:: images/getting_started_with_vin/bootstrap_connected_host.png
   :scale: 100
@@ -112,7 +112,7 @@ To run a simple *VIN™* on a local machine, a minimum of three *VIN™* nodes, 
 
   Bootstrap Connected Successfully
 
-* In another session, run ``VIN -app -n -a 127.0.0.1 -h 7070 -p 8080 -r 9090``. This will start a *VIN™* peer node and connect it to the bootstrap which has an IP address of ``127.0.0.1``. The peer node starts with a HTTP port of ``7070``, a data (Kademlia) port of ``8080`` and a receipt server port of ``9090``. These ports can be chosen based on the requirements/restrictions of the user.
+* In another session, run ``VIN -n -a 127.0.0.1 -h 7070 -p 8080 -r 9090`` if using *Linux* or ``VIN -app -n -a 127.0.0.1 -h 7070 -p 8080 -r 9090`` for *Windows*. This will start a *VIN™* peer node and connect it to the bootstrap which has an IP address of ``127.0.0.1``. The peer node starts with a HTTP port of ``7070``, a data (Kademlia) port of ``8080`` and a receipt server port of ``9090``. These ports can be chosen based on the requirements/restrictions of the user.
 
 .. figure:: images/getting_started_with_vin/peer_connected_host.png
   :scale: 100
@@ -121,8 +121,8 @@ To run a simple *VIN™* on a local machine, a minimum of three *VIN™* nodes, 
 
   Peer Connected Successfully
 
-* On the third terminal window, run ``VIN -n -a 127.0.0.1 -h 7071 -p 8081 -r 9091``. Note that the HTTP, data and receipt ports are different than the node which was first instantiated.
-* On the final terminal window, run ``VIN_CLI 127.0.0.1 7070``. This will successfully launch the *VIN™ CLI* and connect it to the peer with HTTP port of ``7070``. If everything is working correctly, the terminal window should contain the following:
+* On the third session run ``VIN -n -a 127.0.0.1 -h 7071 -p 8081 -r 9091`` if using *Linux* or ``VIN -app -n -a 127.0.0.1 -h 7071 -p 8081 -r 9091`` for *Windows*. Note that the HTTP, data and receipt ports are different than the node which was first instantiated.
+* On the final session run ``VIN_CLI 127.0.0.1 7070`` for both *Linux* and *Windows*. This will successfully launch the *VIN™ CLI* and connect it to the peer with HTTP port of ``7070``. If everything is working correctly, the CLI window should contain the following:
 
 .. figure:: images/getting_started_with_vin/vincli_connected_host.png
   :scale: 100
@@ -146,9 +146,9 @@ To run a basic *VIN™* on an IP based network, such as *Amazon Web Services (AW
 
 * For this example, two systems will be used: ``system_1`` and ``system_2``.
 * Complete the *VIN™* installation procedure on each system.
-* On each system, open three terminal sessions. 
+* On each system, open three CLI sessions. 
 * Since each system will have it's own IP address, deemed ``<ip_1>`` and ``<ip_2>`` for this example, it is imperative to determine and record it.
-* If using a Linux OS, run ``ifconifg`` in one of the terminal windows. Note: if this feature is not installed a message will appear recommending that ``sudo install net-tools`` be run. If this is the case, run this command and re-run ``ifconfig`` to generate an output similar to the one below. 
+* If using a Linux OS, run ``ifconifg`` in one of the CLI sessions. Note: if this feature is not installed a message will appear recommending that ``sudo install net-tools`` be run. If this is the case, run this command and re-run ``ifconfig`` to generate an output similar to the one below. 
   
 .. figure:: images/getting_started_with_vin/ifconfig_results.png
   :scale: 100
@@ -159,7 +159,7 @@ To run a basic *VIN™* on an IP based network, such as *Amazon Web Services (AW
   
 * Record the address next to the ``inet`` parameter for the required network connection (i.e., wired or wireless). In the image, the ``inet`` corresponding to an ethernet connection, ``eth0``, was recorded as ``<ip_1>``.
 
-* For *Windows*, run ``ipconfig`` in one of the terminal windows to generate an output similar to the one below.
+* For *Windows*, run ``ipconfig`` in one of the sessions to generate an output similar to the one below.
 
 .. figure:: images/getting_started_with_vin/ipconfig_results.png
   :scale: 100
@@ -171,7 +171,7 @@ To run a basic *VIN™* on an IP based network, such as *Amazon Web Services (AW
 * Record the address next to the ``IPv4 Address`` parameter for the required network connection (i.e., wired or wireless). In the image, the ``IPv4 Address`` corresponding to an ethernet connection, ``Ethernet adapter Ethernet 2``, was recorded as ``<ip_1>``.
 * Repeat the above instructions for ``system_2`` and record ``<ip_2>``.
 * Running the *VIN™* in *Linux* and *Windows* follow the same procedure with the same commands; thus, the following instructions will work for either OS.
-* In one of the thee terminal windows on ``system_1``, run ``VIN -b <ip_1>`` (``VIN -b`` will also work). This will serve as the bootstrap node and will occupy port ``8000`` for incoming connections. If the bootstrap was successfully launched, the terminal will output similar results to those in the following figure.
+* In one of the three sessions on ``system_1``, run ``VIN -b <ip_1>`` (``VIN -b`` will also work) for *Linux* or ``VIN -app -b <ip_1>`` for *Windows* (for this example it is ``10.51.2.29``). This will serve as the bootstrap node and will occupy port ``8000`` for incoming connections. If the bootstrap was successfully launched, the CLI session will output similar results to those in the following figure.
 
 .. figure:: images/getting_started_with_vin/bootstrap_connected_local.png
   :scale: 100
@@ -180,7 +180,7 @@ To run a basic *VIN™* on an IP based network, such as *Amazon Web Services (AW
 
   Bootstrap Connected Successfully
 
-* In another session on ``system_1``, run ``VIN -app -n -a <ip_1> -h 7070 -p 8080 -r 9090``. This will start a *VIN™* peer node with an HTTP port of ``7080``, a data (*Kademlia*) port of ``8080`` and a receipt server port of ``9090`` and connect to the bootstrap on ``<ip_1>`` which, for this example is ``10.51.2.29``. Note: these ports can be chosen based on the requirements/restrictions of the user. If the peer connects to the bootstrap successfully the terminal session will contain a similar output to the one in the figure below. Take note that it displays the ports and IP address that was used during the peer's instantiation.
+* In another session on ``system_1``, run ``VIN -n -a <ip_1> -h 7070 -p 8080 -r 9090`` for *Linux* or ``VIN -app -n -a <ip_1> -h 7070 -p 8080 -r 9090`` for *Windows*. This will start a *VIN™* peer node with an HTTP port of ``7080``, a data (*Kademlia*) port of ``8080`` and a receipt server port of ``9090`` and connect to the bootstrap on ``<ip_1>`` which, for this example is ``10.51.2.29``. Note: these ports can be chosen based on the requirements/restrictions of the user. If the peer connects to the bootstrap successfully the session will contain a similar output to the one in the figure below. Take note that it displays the ports and IP address that was used during the peer's instantiation.
 
 .. figure:: images/getting_started_with_vin/peer_connected_local.png
   :scale: 100
@@ -189,7 +189,7 @@ To run a basic *VIN™* on an IP based network, such as *Amazon Web Services (AW
 
   Peer Connected Successfully
 
-* In the third terminal window on ``system_1``, run ``VIN_CLI <ip_1> 7070``. This will launch the *VIN™ CLI* if the above steps were completed successfully. If everything is working correctly, the terminal should contain the following:
+* In the third session on ``system_1``, run ``VIN_CLI <ip_1> 7070``. This will launch the *VIN™ CLI* if the above steps were completed successfully. If everything is working correctly, the CLI session should contain the following:
 
 .. figure:: images/getting_started_with_vin/vincli_connected_local.png
   :scale: 100
@@ -198,8 +198,8 @@ To run a basic *VIN™* on an IP based network, such as *Amazon Web Services (AW
 
   *VIN™ CLI* Connected Successfully
 
-* In a terminal window on ``system_2``, run ``VIN -app -n -a <ip_1> -h 7071 -p 8081 -r 9091``. This will connect to the bootstrap located on ``system_1`` with its IP address of ``<ip_1>``.
-* In the second terminal session, run ``VIN_CLI <ip_2> 7071`` to connect to the peer on ``system_2`` using ``<ip_2>``.  
+* In a session on ``system_2``, run ``VIN -n -a <ip_1> -h 7071 -p 8081 -r 9091`` for *Linux* or ``VIN -app -n -a <ip_1> -h 7071 -p 8081 -r 9091`` for *Windows*. This will connect to the bootstrap located on ``system_1`` with its IP address of ``<ip_1>``.
+* In the second session, run ``VIN_CLI <ip_2> 7071`` to connect to the peer on ``system_2`` using ``<ip_2>``.  
 * In the final session, navigate to  ``/opt/VIN/outputs`` in *Linux* or ``Program Files\Virgil\VIN\outputs`` in *Windows*. These directories will contain the received file after it has been reconstructed during the example in the following section. 
 
 
@@ -249,5 +249,5 @@ The following will describe how to share files between the peer on ``system_1`` 
   Successful Share Between Peers (*VIN™ CLI* = top, Peer_1 = left, Peer_2 = right)
 
 
-* To manually confirm that the file was shared correctly, enter ``ls`` in the terminal session on ``system_2`` pointing to the ``outputs`` folder directory. A folder with the name of the file which was shared should be listed.
+* To manually confirm that the file was shared correctly, enter ``ls`` in the session on ``system_2`` pointing to the ``outputs`` folder directory. A folder with the name of the file which was shared should be listed.
 * Enter this folder and run ``ls``. The file which was shared will be displayed and can be inspected to ensure it was successfully shared.

@@ -1,0 +1,94 @@
+*********************************
+Getting Started at Virgil Systems
+*********************************
+
+.. _setting-up-git:
+
+Setting up Git
+===============
+
+Before development can begin, it is imperative that access to Virgil Systems’ *GitLab* be acquired and that *Git* tools are installed. To install *Git* and the required tools do the following:
+
+* Download and install *Git* by visiting https://git-scm.com/downloads 
+* Click on the link for the required operating system and follow the instructions to install *Git*
+
+
+Generating an SSH key 
+---------------------
+
+* Connect to the Virgil Network via *Cisco AnyConnect* (if this is not available contact the Virgil Systems’ administrative team for assistance).
+* Right-click on the desktop, or wherever you wish to clone the repository, and click **Git Bash Here**
+* Copy and paste ``ssh -T git@gitlab.optimusprime.ai`` in the *Git Bash* window and hit **Enter**
+* Type in **yes** when prompted and then hit enter
+* Copy and paste ``ssh-keygen -t rsa`` into the *GitBash* window and hit **Enter** (may require multiple **Enters**)
+* For Windows:
+  
+  * Navigate to the folder to ``c:/Users/Name/.ssh/`` where ``Name`` is your name (i.e., JohnSmith)
+  * Open ``id.rsa.pub`` using a text editor (i.e., *notepad++*) and copy the entire line found inside the file
+
+* For Linux:
+  
+  * Run ``cat ~/.ssh/id_rsa.pub``
+  * Copy the output
+
+* Visit https://gitlab.optimusprime.ai/ 
+* Click on the profile icon in the top right corner of the window
+   
+  * Click **Preferences** from the list
+
+* Click **SSH Keys** on the left side of the screen
+* Paste the SSH key copied from ``id.rsa.pub`` into the field under **Key**
+  
+  * Click the **Add key** button
+  
+* Click **SSH Keys** on the left side of the screen and the newly added key should be in the list under **Your SSH keys**
+
+
+Cloning a Repository 
+--------------------
+
+* In *GitLab*, navigate to the ``qtoken-cpp`` project, or whichever one that is required
+* Click the blue **Clone** button
+* Copy the link in field under the heading **Clone with SSH** (e.g., ``git@gitlab.optimusprime.ai:virgilsystems/prototypes/qtoken-cpp.git``)
+* Type ``git clone`` and paste the copied link into *Git Bash* and hit **Enter**
+* The project should now be cloned to computer in the location *Git Bash* was run from
+
+
+Setting up Branches and Committing
+----------------------------------
+
+The ``master`` branch will be checked out upon completing the cloning process. As the ``dev`` branch contains the latest changes, immediately check out this branch by running ``git checkout dev`` in the *Git Bash* window. The ``master`` branch is for releases only and should never be pushed to directly. Similarly, ``dev`` should never be pused to directly as any updated code must pass a review.
+
+The process for updating a branch is as follows:
+
+* From the ``dev`` branch, after making sure the latest changes have been pulled (i.e., running ``git pull origin dev``), create a new branch called ``vinXXX_feature``, where ``XXX`` refers to the *Jira* ticket number (i.e., ``git checkout -b vinXXX_feature``). This number can be found in the top-left corner of the *Jira* ticket. For example, if working on a streaming branch, with a ticket number of 123, the name would be ``vin123_streaming``. 
+* When development of the task has been finished, commit the changes, making sure to add any files and folders required (see `Basic Git Commands`_ for more information).
+* Following this, make sure to pull down (i.e., ``git pull origin dev``) and merge (if necessary) from the ``dev`` branch as there may be additional changes from other developers.
+* After the merge changes have been completed, commit, and push once more, then proceed to *GitLab* on a browser. On the left side, click **Merge Requests**. Create a new merge request from the current working branch (e.g., ``vin123_streaming``) into the ``dev`` branch and assign a reviewer to go through the changes. If you are unsure which reviewer to choose, contact the team lead.
+* Once the review is finished, view their recommended changes by going to the **Changes** tab under **Merge Requests**.
+* Make the suggested changes, commit, and push them once more.
+* Finally, the reviewer will approve your merge request and they will merge it into ``dev`` where it will begin validation through the CI/CD pipeline.
+
+
+Basic Git Commands
+------------------
+
+Creating new branch
+^^^^^^^^^^^^^^^^^^^
+
+``git checkout -b yourBranchName`` and once the branch has been created, ``git checkout yourBranchName`` will switch to that branch.
+
+
+Pulling from branch
+^^^^^^^^^^^^^^^^^^^
+
+``git pull origin dev`` pulls from the remote dev branch.
+
+
+Committing to a Repository
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+* ``git status`` generates a list of changes made in your branch. It is important to do this in order to see which files need to be added to the commit.
+* ``git add`` adds the newly added files to the commit. A folder can be added by putting quotations around it (i.e., “folder”).
+* ``git commit -a -m “Message regarding what’s being committed”`` where ``-a`` is for all tracked files and ``-m`` is for the message
+* ``git push -u origin yourBranchName`` pushes the changes to the branch on the repository.

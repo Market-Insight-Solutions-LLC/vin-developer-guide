@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>VIN™ Description &mdash; VIN™ Reference Guide 0.1 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/custom.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Getting Started at Virgil Systems" href="getting_started_at_virgil.html" />
+    <link rel="prev" title="Virgil Integrity Network™ (VIN™) Reference Guide" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> VIN™ Reference Guide
+            <img src="_static/virgil_v_black.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">VIN™ Description</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#introduction">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#data-integrity">Data Integrity</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#the-virgil-integrity-network-vin">The Virgil Integrity Network™ (VIN™)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#vin-core-values">VIN™ Core Values</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#confidentiality">Confidentiality</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#integrity">Integrity</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#availability">Availability</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#policy-audit">Policy &amp; Audit</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#operational-capabilities">Operational Capabilities</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#data-flow-in-the-vin">Data Flow in the VIN™</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="getting_started_at_virgil.html">Getting Started at Virgil Systems</a></li>
+<li class="toctree-l1"><a class="reference internal" href="developing_with_windows.html">Developing with Windows</a></li>
+<li class="toctree-l1"><a class="reference internal" href="developing_with_linux_wsl.html">Developing with Linux and WSL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="vin_cli.html">VIN™ Command Line Interface (CLI)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="configuration.html">Configuration Options</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sample_use_cases.html">Sample Use Cases</a></li>
+<li class="toctree-l1"><a class="reference internal" href="key_concepts.html">Key Concepts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dashboard.html">VIN™ Dashboard</a></li>
+<li class="toctree-l1"><a class="reference internal" href="vin_statistics.html">VIN™ Statistics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="vin_metrics.html">VIN™ Metrics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="release_notes.html">Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="glossary.html">Glossary</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">VIN™ Reference Guide</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>VIN™ Description</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/vin_description.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="vin-description">
+<h1>VIN™ Description<a class="headerlink" href="#vin-description" title="Permalink to this headline"></a></h1>
+<section id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline"></a></h2>
+<p>Data integrity at rest and in transmission, while being subjugated to unintentional human error, natural disasters, and D5 effects (deny, deceive, degrade, disrupt, and destroy) is critical in the modern world. Whether calculated malicious attacks or unintended behaviors are the culprit, data assurance has never been more important. While solutions to these issues exist, they rely on trusted devices and techniques resulting in these methods and technology approaches being very expensive to implement and operate. Additionally, they are easily attacked and compromised. Having the capability of assured data transmission on user systems, devices, and enterprise systems would allow for the sharing of approved files, software, and applications. From the operational and strategic perspective, there is a significant need to ensure that data integrity is assured when data is being uploaded to or transmitted from mission critical systems and data repositories.</p>
+</section>
+<section id="data-integrity">
+<h2>Data Integrity<a class="headerlink" href="#data-integrity" title="Permalink to this headline"></a></h2>
+<p>A solution that addresses the data integrity challenge has to deliver extreme confidentiality, integrity, and availability. It must therefore satisfy a range of complex, interlocking requirements. Without being overly difficult to operate, it must ensure absolute integrity for data in transit or motion (messages), data at rest (storage) and software programs.</p>
+<p>To achieve these goals, the solution must:</p>
+<ul class="simple">
+<li><p>Be anti-fragile and resistant to cyberattacks like ransomware</p></li>
+<li><p>Deliver immutable and auditable verification of data, files, and software</p></li>
+<li><p>Provide alerts and proof of data integrity</p></li>
+<li><p>Seamlessly deploy onsite, as well as on user systems and endpoints</p></li>
+<li><p>Ensure that stakeholder’s files and software maintain integrity throughout their full respective lifecycle</p></li>
+<li><p>Provide real-time audits of software changes with alerts when software integrity/data assurance may have been breached.</p></li>
+<li><p>Prevent compromised data, files, and software from being executed on any user system, e.g., mobile, desktop or cloud</p></li>
+</ul>
+<p>Administratively, the solution needs powerful capabilities that are simple and easy to manage. This is critical in high stress environments where users do not have the luxury to spend time on fussy system management issues. For example, the solution must have the flexibility for approved software updates/upgrades to be performed post-software delivery (e.g., patches and new functionality), both onsite and remotely. That way, everyone can be confident in verification of approved software updates.</p>
+<p>If the solution can meet these criteria, Command, Control and Communications are expected. Quality of Service (QoS) and Quality of Data are similarly expected, as are operational mission agility and continuity. Decision makers can be confident that their mission decisions and operations are based on accurate data and communications.</p>
+</section>
+<section id="the-virgil-integrity-network-vin">
+<h2>The Virgil Integrity Network™ (VIN™)<a class="headerlink" href="#the-virgil-integrity-network-vin" title="Permalink to this headline"></a></h2>
+<p>The Virgil Integrity Network™ is a network agnostic middleware solution for assured integrity and availability of data in adverse environments. The VIN™ guarantees 100% data integrity and availability, across all network types, in the end-to-end digital supply chain and operational continuity through adverse and adversarial environments even with 80%+ data impact during D5 attacks (delay, disrupt, degrade, destroy, and deceive).</p>
+<p>The patented technology leverages techniques from Digital Ledgers, quantum computing, advanced cryptography, graph-based networking, and Artificial Intelligence (AI) to provide unparalleled data integrity not just for communications, but as well for data storage. The negligible latency impact, the speed of encoding and decoding provides real-time data transmission not only for static content (files) but as well for streaming (media) as well. The use of digital ledgers within the VIN™’s digital supply chain ensures that data and transaction provenance assurance take place and that data is authentic and tamper-proof.</p>
+</section>
+<section id="vin-core-values">
+<h2>VIN™ Core Values<a class="headerlink" href="#vin-core-values" title="Permalink to this headline"></a></h2>
+<section id="confidentiality">
+<h3>Confidentiality<a class="headerlink" href="#confidentiality" title="Permalink to this headline"></a></h3>
+<p>The VIN™ ensures data security against the strongest types of attacks by sharding and encrypting. Data is safeguarded even in untrusted (public) networks and domains. Security travels with the data, and only authorized users can access or modify it even if the underlying infrastructure is compromised.</p>
+</section>
+<section id="integrity">
+<h3>Integrity<a class="headerlink" href="#integrity" title="Permalink to this headline"></a></h3>
+<p>Our breakthroughs in error correction, with the ability to restore integrity and maintain an immutable transaction ledger in the face of more than 80% errors or corruption ensures customers and operators can trust data is secure.</p>
+</section>
+<section id="availability">
+<h3>Availability<a class="headerlink" href="#availability" title="Permalink to this headline"></a></h3>
+<p>The combination of error correction with distributed storage in multiple public or private clouds allows the data to be available and restored despite catastrophic outages in 3rd party infrastructure.</p>
+</section>
+<section id="policy-audit">
+<h3>Policy &amp; Audit<a class="headerlink" href="#policy-audit" title="Permalink to this headline"></a></h3>
+<p>The VIN™ is the first distributed ledger built for communications. Data and transactions are stored in an immutable auditable ledger. All data is traceable on a supply chain that ensures trust and reliability for critical operations.</p>
+</section>
+<section id="operational-capabilities">
+<h3>Operational Capabilities<a class="headerlink" href="#operational-capabilities" title="Permalink to this headline"></a></h3>
+<p>The VIN™, as part of its guarantee of data integrity and availability, provides the following operational capabilities:</p>
+<ul class="simple">
+<li><p>Zero-Trust Networking</p>
+<ul>
+<li><p>Virgil applies distributed ledgers as communications middleware with patented encoding techniques</p></li>
+<li><p>Invulnerable Storage – obfuscation and random mixing</p></li>
+<li><p>Invulnerable Communications: integrity/availability guarantee</p></li>
+<li><p>Network visibility</p></li>
+</ul>
+</li>
+<li><p>Multi-cloud – avoid vendor dependency, lock-in, risk</p></li>
+<li><p>Data transaction logs for monitoring and compliance</p></li>
+<li><p>Ensure data provenance and access control</p></li>
+<li><p>Withstand large-scale network damage</p></li>
+<li><p>Lightweight installation footprint</p></li>
+<li><p>Negligible latency impact</p></li>
+<li><p>Speed of encoding and decoding provides real-time data transmission</p></li>
+<li><p>Digital ledgers within the VINTMs digital supply chain ensures that data and transaction provenance assurance occur and that data is authentic and tamper-proof</p></li>
+<li><p>Network agnostic</p></li>
+<li><p>Supports both static files and streaming media</p></li>
+</ul>
+</section>
+</section>
+<section id="data-flow-in-the-vin">
+<h2>Data Flow in the VIN™<a class="headerlink" href="#data-flow-in-the-vin" title="Permalink to this headline"></a></h2>
+<p>To demonstrate how the VIN™ works imagine a sender wishing to transmit some important data to a receiver. The sender’s node seamlessly and nearly instantly transforms the outgoing data using patented error-correcting codes. The data is spread out over a network of nodes in a privacy preserving way that is indistinguishable from noise. Only an authorized receiving node can gather the data back together. A detailed step-by-step process is listed below:</p>
+<ul class="simple">
+<li><p>The sender selects the data that is to be sent.</p></li>
+<li><p>The data is fragmented into shards which will be transformed into a tokenized hologram (qToken).</p></li>
+<li><p>Data shards are hashed, and each shard is combined with its hash.</p></li>
+<li><p>Additional data is mixed in creating a data hologram.</p></li>
+<li><p>These holograms are then compressed and secured.</p></li>
+<li><p>The sender node searches the network for available hosts</p></li>
+<li><p>It creates a smart contract consisting of the order of randomly distributed tokenized holograms.</p></li>
+<li><p>A cryptographic receipt is generated serving as map for receiver to find and reassemble tokenized holograms and is transmitted through a specially secured channel.</p></li>
+<li><p>The receiver utilizes the cryptographic receipt to gather and reassemble the scattered tokenized holograms.</p></li>
+<li><p>An alert is issued if there is interference with the data in transit.</p></li>
+<li><p>Data integrity and availability is assured even if up to 80% of data is destroyed or delayed during transmission.</p></li>
+</ul>
+<figure class="align-center" id="id1">
+<a class="reference internal image-reference" href="_images/vin_data_flow.png"><img alt="VIN Data Flow" src="_images/vin_data_flow.png" style="width: 500px;" /></a>
+<figcaption>
+<p><span class="caption-text">VIN™ Data Flow</span><a class="headerlink" href="#id1" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+<figure class="align-center" id="id2">
+<a class="reference internal image-reference" href="_images/vin_high_level.png"><img alt="VIN High Level Description" src="_images/vin_high_level.png" style="width: 500px;" /></a>
+<figcaption>
+<p><span class="caption-text">High-Level Description of the VIN™</span><a class="headerlink" href="#id2" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+<p>The security of the end-to-end data supply chain is assured by a proprietary Proof of Integrity. Both the receiver and the sender are assured that the data was received in integrity, even if 80% of the data is affected by attackers, degradation, or network outages. An operator is alerted of any attempted interference even across physical and logical networks.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="index.html" class="btn btn-neutral float-left" title="Virgil Integrity Network™ (VIN™) Reference Guide" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="getting_started_at_virgil.html" class="btn btn-neutral float-right" title="Getting Started at Virgil Systems" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021, Virgil Systems.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>  
+
+  <style>
+    
+    /* Sidebar header (and topbar for mobile) */
+    .wy-side-nav-search, .wy-nav-top {background: #00ff00;}
+    
+    /* Sidebar */
+    .wy-nav-side {background: #000000;}
+    
+    /* Make a class to allow for center alignment of text */
+    .text-align-center { text-align: center; }
+
+    /* Change the background color to pure white so that images with white backgrounds look ok */
+    /* while this changes the background, it also affects the sidebar and search bar. will need to find another way to do this if needed.*/
+    /*div {background-color: #ffffff;}*/
+    
+
+  </style>
+
+
+</body>
+</html>

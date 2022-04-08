@@ -1,0 +1,86 @@
+*******************
+VIN™ Dashboard
+*******************
+
+This is where information regarding the VIN™ Dashboard will go.
+
+
+GUI
+===
+
+.. figure:: images/dashboard/vin_dashboard_gui.png
+  :width: 500
+  :align: center
+  :alt: VIN Dashboard GUI
+
+  VIN Dashboard GUI Placeholder
+
+
+Network State Visualization 
+===========================
+
+.. figure:: images/dashboard/vin_network_state_visualizer.png
+  :width: 500
+  :align: center
+  :alt: VIN Network State Visualizer 
+
+  VIN Network State Visualizer Placeholder
+
+
+Configuration
+=============
+
+* Basic node management (add, delete, configure nodes)
+* Basic hybrid-network configuration (NAT configuration)
+
+
+Commands
+========
+
+* Put
+* Get
+* Spread
+* Gather
+* Share
+
+
+Instantiating a Network
+=======================
+
+* Selecting resource constraints (e.g., total desired space)
+
+
+Security Management
+===================
+
+* Data degradation visualization (e.g., test results) (to be implemented later on) 
+* Node churn visualization (to be implemented later on) 
+* Configure encoder pipeline (can be dynamic, e.g., per drive) 
+* Configure shard sizes 
+* Configure encryption pipeline (can be dynamic, e.g., per drive) 
+  
+  * File-level rules (roadmap, although showing one could be useful for MVP) 
+  * AES-128, AES-256 configuration change support 
+  
+* Alerting and alert configuration
+
+
+Network Management
+==================
+
+* Network traffic visualization (visualize traffic from p2p, aggregate network stats)  
+* Logs (display logs for nodes)
+
+
+Node Management
+===============
+
+* Node resources usage view  
+* Add and delete node  
+* Configure node (e.g., add resource, change node type)  
+
+
+Authentication of Data Transmission
+===================================
+
+* View file history from creation (requires the distributed ledger technology)

@@ -1,0 +1,117 @@
+Tokenization
+============
+The following details the components of the tokenization process.
+
+Deterministic Shard Size
+------------------------
+To ensure optimal data transmission rates and network stability, each file is divided into the ideal shard size before undergoing further encryption and tokenization. 
+
+SHA-256 Hash Generation
+-----------------------
+Hash of the file to be sent over the network. Used to detect issues with the data upon retrieval.
+
+Cryptographic Receipt
+---------------------
+The cryptographic receipt is receipt sent by a ‘sender’ to a ‘receiver’ consisting of all the hashes of the data shards combined with the Distributed Ledger network node structure. It encodes the set of all private keys and subnetwork map of QTokens entangled at relative locations. The receipt accomplishes this by using a special cyberspace measurement based on the symmetric distance properties of the XOR operation which is sent on a set of (multiple) side channels using FIPS-140 compliant public key infrastructure (PKI) to further mitigate interception probability by a man-in-the-middle attack.   
+The cryptographic receipt is known as the Proof-Of-Data-Integrity (PoDI) and can also contain an encrypted reference to the Proof-of-Source-Identity (PoSI) for provenance and attribution purposes. These are important in chain of custody or other digital supply chains (e.g., proof of designs to mitigate risks of fake manufacturing).
+In particular it is a unique identifier containing the following information of the data stored on the network:
+* Shard filenames (key) to access data (value)
+* Encoders used
+* File hash
+
+Unique Shard Name Generation
+----------------------------
+* Add information
+
+Concurrent Coding
+-----------------
+Concurrent codes are error correcting block codes which operate by mapping every possible prefix of the info data to a single bit of the encoded block. The data inflation of concurrent is significant as an n bit block results in an encoded block with 2n+1 - 2 bits.
+
+Concurrent coding uses the unique linear sequence of 0’s and 1’s in a message word to generate a pattern of 0’s and 1’s uniquely distributed across a larger codeword space. A message is broken down into linearly expanding sub-sequences of bits—pre-fixes starting from the least significant bit and incrementally increasing in length. Each pre-fix is then passed through a hashing function. The output of the hashing function is used as the address of a mark to be placed in the codeword space. As a simplistic example the message 1101 will produce addresses from the arbitrary hash sequences H(1), H(01), H(101), and H(1101). Multiple messages can be combined via an OR process into a single codeword before transmission.
+
+.. figure:: images/tokenization/concurrent_encoding.png
+  :width: 500
+  :align: center
+  :alt: Concurrent Code Encoding Process
+
+  Concurrent Code Encoding Process
+
+The values 0 and 1, (the first potential message bits) are each passed through the hashing function, and the received codeword is then examined. If a mark is found at the position indicated by the output of the hash functions, then the message value is retained for further analysis—represented by the white boxes in Fig 3. If no mark is found all possibilities with the input sequence cannot be found and analysis not pursued (grey boxes). For each retained value the next step in the sequence is examined with both 0 and 1 appended i.e., if H(1) found, next step is H(01) and H(11), again retaining those attempts that result in an associated mark present in the codeword. The process is repeated for the number of bits in each message. The process forms a decoding tree.
+
+.. figure:: images/tokenization/concurrent_decoding.png
+  :width: 500
+  :align: center
+  :alt: Concurrent Code Decoding Process
+
+  Concurrent Code Decoding Process
+
+For more information refer to the following:
+* https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4773133/
+* http://citeseerx.ist.psu.edu/viewdoc/download;jsessionid=A658FA2EB8725BF7F555317FDCEAD939?doi=10.1.1.113.8569&rep=rep1&type=pdf
+
+
+Reed-Solomon Coding
+-------------------
+Reed–Solomon codes are a group of error-correcting codes which operate on a block of data treated as a set of finite-field elements called symbols. Reed–Solomon codes are able to detect and correct multiple symbol errors. By adding t = n − k check symbols to the data, a Reed–Solomon code can detect (but not correct) any combination of up to t erroneous symbols or locate and correct up to ⌊t/2⌋ erroneous symbols at unknown locations. As an erasure code, it can correct up to t erasures at locations that are known and provided to the algorithm, or it can detect and correct combinations of errors and erasures. Reed–Solomon codes are also suitable as multiple-burst bit-error correcting codes, since a sequence of b + 1 consecutive bit errors can affect at most two symbols of size b. The choice of t is up to the designer of the code and may be selected within wide limits.
+For more information refer to the following:
+
+* https://www.youtube.com/watch?v=jgO09opx56o
+* https://www.youtube.com/watch?v=fBRMaEAFLE0
+
+
+Polar Coding
+------------
+Polar codes are error correcting block codes which excel at efficient error correction. Polar codes require that the encoded block size be a power of 2 but places no other restrictions on block size or data inflation.
+
+The below graphs illustrate how the error correcting capacity of a polar encoder might change in relation to the block size and data inflation. Errors are simulated with a binary symmetric channel where P is the probability the channel will flip any given bit.
+
+Note: Pol(N, K) is the polar encoder which takes K bit info blocks to N bit encoded blocks.
+
+Polar Transform
+^^^^^^^^^^^^^^^
+* https://www.youtube.com/watch?v=rB0rhQKyV34
+
+Channel Polarization, Polar Code, and Encoding
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+* https://www.youtube.com/watch?v=1uYEq4ueOok
+
+Independent Random Shard Encryption (Cipher Coding)
+---------------------------------------------------
+* AES-128 or AES-256 occurs on a per shard basis.
+* May also perform GMAC (Galois Counter Mode (GCM) Message Authentication Code) as a default instead of AES
+* https://www.youtube.com/watch?v=V2TlG3JbGp0
+
+Alpha Entanglement
+------------------
+* https://medium.com/unitychain/an-introduction-to-alpha-entanglement-codes-66a8835308c5
+* https://www.youtube.com/watch?v=qcO2XBg6nnk
+
+Self-Entanglement
+-----------------
+* XOR with SHA hash of file.
+
+Distance/Superimpose Codes
+--------------------------
+* Add information
+
+Smart Contracting
+-----------------
+Smart contracts refer to computer protocols that digitally facilitate the verification, control, or execution  of an agreement. Smart contracts run on the blockchain platform, which will process all the transactions in a contract; hence, middlemen are not required for executing the transactions.
+
+Similar to traditional contracts, smart contracts define rules and penalties around an agreement and automatically enforce those obligations. While they can work independently, many smart contracts can also be implemented together.
+
+The integral components of a smart contract are termed as objects. There are essentially three objects in a smart contract – the signatories, who are the parties involved in the smart contracts that use digital signatures to approve or disapprove the contractual terms; the subject of agreement or contract; and the specific terms.
+
+For more information refer to the following:
+* https://corpgov.law.harvard.edu/2018/05/26/an-introduction-to-smart-contracts-and-their-potential-and-inherent-limitations/
+* https://www.youtube.com/watch?v=pWGLtjG-F5c
+
+Data Integrity Calculator and Alerts
+------------------------------------
+After the modular decoding and self-healing process, the VIN™ does a mathematical verification of proof of integrity by comparing the unique hash of the sent file calculated before and after data transmission; thus, determining whether or not data integrity was maintained. The system generates operator alerts depending on the status of the data:
+* ‘green’ if data was unaffected during transmission
+* ‘yellow’ if <80% of data was affected but was recovered/corrected by the VIN™
+* ‘red’ if >80% of data was loss/corrupted and could not be recovered/corrected
+
+Due to proprietary encoding/decoding method used in the Qtoken, data integrity can be maintained even under significant degradation of the data itself and/or the network. Qtokens are able to guarantee data integrity by replicating themselves on several nodes, entangling them with other data to hide their identity, and regenerating replicas if loss or damage is detected (e.g., after a disk crash) by using a simple nearest neighbor gossip protocol. 
+

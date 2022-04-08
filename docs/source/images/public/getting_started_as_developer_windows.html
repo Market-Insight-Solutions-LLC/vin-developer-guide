@@ -1,0 +1,756 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Getting Started as a Developer &mdash; VIN™ Reference Guide 0.1 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/custom.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> VIN™ Reference Guide
+            <img src="_static/virgil_v_black.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="vin_description.html">VIN™ Description</a></li>
+<li class="toctree-l1"><a class="reference internal" href="key_concepts.html">Key Concepts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="getting_started_as_customer.html">Getting Started as a Customer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="vin_cli.html">VIN™ Command Line Interface (CLI)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="configuration.html">Configuration Options</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sample_use_cases.html">Sample Use Cases</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dashboard.html">VIN™ Dashboard</a></li>
+<li class="toctree-l1"><a class="reference internal" href="vin_statistics.html">VIN™ Statistics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="vin_metrics.html">VIN™ Metrics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="release_notes.html">Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="glossary.html">Glossary</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">VIN™ Reference Guide</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>Getting Started as a Developer</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/getting_started_as_developer_windows.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="getting-started-as-a-developer">
+<h1>Getting Started as a Developer<a class="headerlink" href="#getting-started-as-a-developer" title="Permalink to this headline"></a></h1>
+<section id="setting-up-git">
+<h2>Setting up Git<a class="headerlink" href="#setting-up-git" title="Permalink to this headline"></a></h2>
+<p>Before development can begin, it is imperative that access to Virgil Systems’ <em>GitLab</em> be acquired and that <em>Git</em> tools are installed. To install <em>Git</em> and the required tools do the following:</p>
+<ul class="simple">
+<li><p>Download and install <em>Git</em> by visiting <a class="reference external" href="https://git-scm.com/downloads">https://git-scm.com/downloads</a></p></li>
+<li><p>Click on the link for the required operating system and follow the instructions to install <em>Git</em></p></li>
+</ul>
+<section id="generating-an-ssh-key">
+<h3>Generating an SSH key<a class="headerlink" href="#generating-an-ssh-key" title="Permalink to this headline"></a></h3>
+<ul class="simple">
+<li><p>Connect to the Virgil Network via <em>Cisco AnyConnect</em> (if this is not available contact the Virgil Systems’ administrative team for assistance).</p></li>
+<li><p>Right-click on the desktop, or wherever you wish to clone the repository, and click <strong>Git Bash Here</strong></p></li>
+<li><p>Copy and paste <code class="docutils literal notranslate"><span class="pre">ssh</span> <span class="pre">-T</span> <span class="pre">git&#64;gitlab.optimusprime.ai</span></code> in the <em>Git Bash</em> window and hit <strong>Enter</strong></p></li>
+<li><p>Type in <strong>yes</strong> when prompted and then hit enter</p></li>
+<li><p>Copy and paste <code class="docutils literal notranslate"><span class="pre">ssh-keygen</span> <span class="pre">-t</span> <span class="pre">rsa</span></code> into the <em>GitBash</em> window and hit <strong>Enter</strong> (may require multiple <strong>Enters</strong>)</p></li>
+<li><p>For Windows:</p>
+<ul>
+<li><p>Navigate to the folder to <code class="docutils literal notranslate"><span class="pre">c:/Users/Name/.ssh/</span></code> where <code class="docutils literal notranslate"><span class="pre">Name</span></code> is your name (i.e., JohnSmith)</p></li>
+<li><p>Open <code class="docutils literal notranslate"><span class="pre">id.rsa.pub</span></code> using a text editor (i.e., <em>notepad++</em>) and copy the entire line found inside the file</p></li>
+</ul>
+</li>
+<li><p>For Linux:</p>
+<ul>
+<li><p>Run <code class="docutils literal notranslate"><span class="pre">cat</span> <span class="pre">~/.ssh/id_rsa.pub</span></code></p></li>
+<li><p>Copy the output</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="cloning-a-repository">
+<h3>Cloning a Repository<a class="headerlink" href="#cloning-a-repository" title="Permalink to this headline"></a></h3>
+<ul class="simple">
+<li><p>Visit <a class="reference external" href="https://gitlab.optimusprime.ai/">https://gitlab.optimusprime.ai/</a></p></li>
+<li><p>Click on the profile icon in the top right corner of the window</p>
+<ul>
+<li><p>Click <strong>Preferences</strong> from the list</p></li>
+</ul>
+</li>
+<li><p>Click <strong>SSH Keys</strong> on the left side of the screen</p></li>
+<li><p>Paste the SSH key copied from <code class="docutils literal notranslate"><span class="pre">id.rsa.pub</span></code> into the field</p>
+<ul>
+<li><p>Click the <strong>Add key</strong> button</p></li>
+</ul>
+</li>
+<li><p>In <em>GitLab</em>, navigate to the <code class="docutils literal notranslate"><span class="pre">qtoken-cpp</span></code> project, or whichever one that is required</p></li>
+<li><p>Click the blue <strong>Clone</strong> button</p></li>
+<li><p>Copy the link in field under the heading <strong>Clone with SSH</strong> (e.g., <code class="docutils literal notranslate"><span class="pre">git&#64;gitlab.optimusprime.ai:virgilsystems/prototypes/qtoken-cpp.git</span></code>)</p></li>
+<li><p>Type <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">clone</span></code> and paste the copied link into <em>Git Bash</em> and hit <strong>Enter</strong></p></li>
+<li><p>The project should now be cloned to computer in the location <em>Git Bash</em> was run from</p></li>
+</ul>
+</section>
+<section id="setting-up-branches-and-committing">
+<h3>Setting up Branches and Committing<a class="headerlink" href="#setting-up-branches-and-committing" title="Permalink to this headline"></a></h3>
+<p>The <code class="docutils literal notranslate"><span class="pre">master</span></code> branch will be checked out upon completing the cloning process. As the <code class="docutils literal notranslate"><span class="pre">dev</span></code> branch contains the latest changes, immediately check out this branch by running <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">checkout</span> <span class="pre">dev</span></code> in the <em>Git Bash</em> window. The <code class="docutils literal notranslate"><span class="pre">master</span></code> branch is for releases only and should never be pushed to directly. Similarly, <code class="docutils literal notranslate"><span class="pre">dev</span></code> should never be pused to directly as any updated code must pass a review.</p>
+<p>The process for updating a branch is as follows:</p>
+<ul class="simple">
+<li><p>From the <code class="docutils literal notranslate"><span class="pre">dev</span></code> branch, after making sure the latest changes have been pulled (i.e., running <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">pull</span> <span class="pre">origin</span> <span class="pre">dev</span></code>), create a new branch called <code class="docutils literal notranslate"><span class="pre">vinXXX_feature</span></code>, where <code class="docutils literal notranslate"><span class="pre">XXX</span></code> refers to the <em>Jira</em> ticket number (i.e., <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">checkout</span> <span class="pre">-b</span> <span class="pre">vinXXX_feature</span></code>). This number can be found in the top-left corner of the <em>Jira</em> ticket. For example, if working on a streaming branch, with a ticket number of 123, the name would be <code class="docutils literal notranslate"><span class="pre">vin123_streaming</span></code>.</p></li>
+<li><p>When development of the task has been finished, commit the changes, making sure to add any files and folders required (see <a class="reference internal" href="#basic-git-commands">Basic Git Commands</a> for more information).</p></li>
+<li><p>Following this, make sure to pull down (i.e., <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">pull</span> <span class="pre">origin</span> <span class="pre">dev</span></code>) and merge (if necessary) from the <code class="docutils literal notranslate"><span class="pre">dev</span></code> branch as there may be additional changes from other developers.</p></li>
+<li><p>After the merge changes have been completed, commit, and push once more, then proceed to <em>GitLab</em> on a browser. On the left side, click <strong>Merge Requests</strong>. Create a new merge request from the current working branch (e.g., <code class="docutils literal notranslate"><span class="pre">vin123_streaming</span></code>) into the <code class="docutils literal notranslate"><span class="pre">dev</span></code> branch and assign a reviewer to go through the changes. If you are unsure which reviewer to choose, contact the team lead.</p></li>
+<li><p>Once the review is finished, view their recommended changes by going to the <strong>Changes</strong> tab under <strong>Merge Requests</strong>.</p></li>
+<li><p>Make the suggested changes, commit, and push them once more.</p></li>
+<li><p>Finally, the reviewer will approve your merge request and they will merge it into <code class="docutils literal notranslate"><span class="pre">dev</span></code> where it will begin validation through the CI/CD pipeline.</p></li>
+</ul>
+</section>
+<section id="basic-git-commands">
+<h3>Basic Git Commands<a class="headerlink" href="#basic-git-commands" title="Permalink to this headline"></a></h3>
+<section id="creating-new-branch">
+<h4>Creating new branch<a class="headerlink" href="#creating-new-branch" title="Permalink to this headline"></a></h4>
+<p><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">checkout</span> <span class="pre">-b</span> <span class="pre">yourBranchName</span></code> and once the branch has been created, <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">checkout</span> <span class="pre">yourBranchName</span></code> will switch to that branch.</p>
+</section>
+<section id="pulling-from-branch">
+<h4>Pulling from branch<a class="headerlink" href="#pulling-from-branch" title="Permalink to this headline"></a></h4>
+<p><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">pull</span> <span class="pre">origin</span> <span class="pre">dev</span></code> pulls from the remote dev branch.</p>
+</section>
+<section id="committing-to-a-repository">
+<h4>Committing to a Repository<a class="headerlink" href="#committing-to-a-repository" title="Permalink to this headline"></a></h4>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">status</span></code> generates a list of changes made in your branch. It is important to do this in order to see which files need to be added to the commit.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">add</span></code> adds the newly added files to the commit. A folder can be added by putting quotations around it (i.e., “folder”).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">commit</span> <span class="pre">-a</span> <span class="pre">-m</span> <span class="pre">“Message</span> <span class="pre">regarding</span> <span class="pre">what’s</span> <span class="pre">being</span> <span class="pre">committed”</span></code> where <code class="docutils literal notranslate"><span class="pre">-a</span></code> is for all tracked files and <code class="docutils literal notranslate"><span class="pre">-m</span></code> is for the message</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">push</span> <span class="pre">-u</span> <span class="pre">origin</span> <span class="pre">yourBranchName</span></code> pushes the changes to the branch on the repository.</p></li>
+</ul>
+</section>
+</section>
+</section>
+<section id="linux-environment-setup">
+<h2>Linux Environment Setup<a class="headerlink" href="#linux-environment-setup" title="Permalink to this headline"></a></h2>
+<p>ADD INFORMATION ONCE AVAILABLE.</p>
+</section>
+<section id="windows-environment-setup">
+<h2>Windows Environment Setup<a class="headerlink" href="#windows-environment-setup" title="Permalink to this headline"></a></h2>
+<p>Be sure to follow each and every instruction step-by-step in order to ensure the prper set up of the Windows Environment. If an issue occurs during the setup, refer to the <a class="reference internal" href="#troubleshooting">Troubleshooting</a> section. If the issue is not documented, contact a Virgil System employee for assitance.</p>
+<section id="pre-requisites">
+<h3>Pre-Requisites<a class="headerlink" href="#pre-requisites" title="Permalink to this headline"></a></h3>
+<p>Before beginning the environment set up, it is necessary to have the following:</p>
+<ul class="simple">
+<li><p>Access to Virgil System’s <em>GitLab</em>. Contact the Virgil Systems’ administrative team for more information if required.</p></li>
+<li><p>A SSH key registered to your account which is required to clone the repositories. Refer to the <a class="reference internal" href="#setting-up-git">Setting up Git</a> section and follow the instructions if needed.</p></li>
+<li><p>Virgil Systems’ VPN (<code class="docutils literal notranslate"><span class="pre">vpn.optimusprime.ai</span></code>) is set up and the connection is established. Contact the Virgil Systems’ administrative team for more information if required.</p></li>
+<li><p>If you wish to use pre-built libraries, access to Virgil Systems’ <em>JFrog</em> account is necessary. Contact the Virgil Systems’ administrative team for more information if required.</p></li>
+</ul>
+</section>
+<section id="gitlab-branch-information">
+<h3>GitLab Branch Information<a class="headerlink" href="#gitlab-branch-information" title="Permalink to this headline"></a></h3>
+<p>The following branches, located in Virgil Systems’ <em>GitLab</em>, are used for the creation of the VIN™ Windows Environment.</p>
+<p><a class="reference external" href="https://gitlab.optimusprime.ai/virgilsystems/external/aff3ct/-/tree/master">https://gitlab.optimusprime.ai/virgilsystems/external/aff3ct/-/tree/master</a>
+<a class="reference external" href="https://gitlab.optimusprime.ai/virgilsystems/prototypes/poco/-/tree/virgil">https://gitlab.optimusprime.ai/virgilsystems/prototypes/poco/-/tree/virgil</a>
+<a class="reference external" href="https://gitlab.optimusprime.ai/virgilsystems/external/lvm/-/tree/WindowsDev">https://gitlab.optimusprime.ai/virgilsystems/external/lvm/-/tree/WindowsDev</a>
+<a class="reference external" href="https://gitlab.optimusprime.ai/virgilsystems/prototypes/qtoken-cpp/-/tree/dev">https://gitlab.optimusprime.ai/virgilsystems/prototypes/qtoken-cpp/-/tree/dev</a></p>
+<p>While these may be updated, the environment setup can still be used with older versions of these branches. However, the information for the environment creation should be updated periodically to ensure the functionality of the resources required.</p>
+</section>
+<section id="software-and-tool-installation">
+<h3>Software and Tool Installation<a class="headerlink" href="#software-and-tool-installation" title="Permalink to this headline"></a></h3>
+<section id="installing-visual-studio">
+<h4>Installing Visual Studio<a class="headerlink" href="#installing-visual-studio" title="Permalink to this headline"></a></h4>
+<p>Visit <a class="reference external" href="https://visualstudio.microsoft.com/downloads/">https://visualstudio.microsoft.com/downloads/</a> to download <em>Visual Studio 2022 Community Edition</em>.</p>
+<p>Click on the <strong>Free download</strong> button underneath <strong>Community</strong>. This will open a new page and will start the download of a file with a name similar to <code class="docutils literal notranslate"><span class="pre">vs_community__XX.exe</span></code>, where <code class="docutils literal notranslate"><span class="pre">XX</span></code> will be a series of letters and numbers.</p>
+<p>Run the executable file to begin the installation and follow the steps until reaching the following screen:</p>
+<figure class="align-center" id="id2">
+<a class="reference internal image-reference" href="_images/vs2022_install_window.png"><img alt="Visual Studio 2022 Install Window" src="_images/vs2022_install_window.png" style="width: 700px;" /></a>
+<figcaption>
+<p><span class="caption-text">Visual Studio 2022 Install Window</span><a class="headerlink" href="#id2" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+<p>Be sure to check the following to include the required and recommended packages:</p>
+<ul class="simple">
+<li><p>Mobile development with .NET</p></li>
+<li><p>.NET desktop development</p></li>
+<li><p>Desktop development with C++</p></li>
+<li><p>Mobile development with C++</p></li>
+<li><p>Linux development with C++</p></li>
+</ul>
+<p>Note: while all of these may not be required to install the VIN™, they may be used in future development projects. Thus, it is recommended to include them.</p>
+<ul class="simple">
+<li><p>Click <strong>Install</strong> in the bottom right corner. Note: the installation process may take 5-10 minutes.</p></li>
+<li><p>Click <strong>Not now, maybe later</strong> (if desired, click <strong>Sign in</strong> or <strong>Create an Account</strong>)</p></li>
+<li><p>Keep <strong>General</strong> selected for the <strong>Development Settings</strong>, choose whichever color theme is preferred and click <strong>Start Visual Studio</strong>.</p></li>
+<li><p>After confirming that <em>Visual Studio</em> loads, close it and re-run the <code class="docutils literal notranslate"><span class="pre">vs_community__XX.exe</span></code>.</p></li>
+<li><p>Click <strong>Modify</strong> and make sure that all of the packages that were required are checked.</p></li>
+</ul>
+</section>
+<section id="installing-powershell-7">
+<h4>Installing PowerShell 7<a class="headerlink" href="#installing-powershell-7" title="Permalink to this headline"></a></h4>
+<p>Many command line tools will work for the upcoming steps, however as this is a Windows specific guide, PowerShell will be used to run commands from the command line. If for instance a Linux based tool is used, such as GitBash, be sure to change the back slashes to forward slashes in the command (other than when dealing with urls).</p>
+<p>While any PowerShell version should work, it is recommended to install 7 or higher. Visit <a class="reference external" href="https://docs.microsoft.com/en-us/powershell/scripting/install/installing-powershell-on-windows?view=powershell-7.2#msi">https://docs.microsoft.com/en-us/powershell/scripting/install/installing-powershell-on-windows?view=powershell-7.2#msi</a> for Windows specific versions of PowerShell.</p>
+<p>Click on <code class="docutils literal notranslate"><span class="pre">PowerShell-7.2.0-win-x64.msi</span></code> for a 64-bit operating system or <code class="docutils literal notranslate"><span class="pre">PowerShell-7.2.0-win-x86.msi</span></code> for a 32-bit (Note: 7.2.0 may vary depending on the version being downloaded). To determine if your device is 32 or 64-bit perform the following:</p>
+<ul class="simple">
+<li><p>Windows Start Menu -&gt; Settings -&gt; System -&gt; About -&gt; System type</p></li>
+</ul>
+<p>Finally, to install, run the PowerShell.exe file and follow the prompts. Be sure to select the following options during installation to enable the ability to run PowerShell from the context menu.</p>
+<figure class="align-center" id="id3">
+<a class="reference internal image-reference" href="_images/powershell_options.png"><img alt="PowerShell Options" src="_images/powershell_options.png" style="width: 350px;" /></a>
+<figcaption>
+<p><span class="caption-text">PowerShell Options</span><a class="headerlink" href="#id3" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+<section id="installing-cmake">
+<h4>Installing CMake<a class="headerlink" href="#installing-cmake" title="Permalink to this headline"></a></h4>
+<ul class="simple">
+<li><p>Navigate to <a class="reference external" href="https://cmake.org/download/">https://cmake.org/download/</a></p></li>
+<li><p>Scroll down and click on <code class="docutils literal notranslate"><span class="pre">cmake-3.22.0-windows-x86_64.msi</span></code> to download the file</p></li>
+<li><p>Run the <code class="docutils literal notranslate"><span class="pre">MSI</span></code> file and follow the prompts</p></li>
+<li><p>Select <strong>Add CMake to the system PATH for all users</strong></p></li>
+<li><p>Complete the installation</p></li>
+</ul>
+</section>
+<section id="installing-git-client">
+<h4>Installing Git Client<a class="headerlink" href="#installing-git-client" title="Permalink to this headline"></a></h4>
+<p>Note: if the <a class="reference internal" href="#setting-up-git">Setting up Git</a> section was completed was prior to the environment setup, this step can be skipped.</p>
+<p>The <em>Git Client</em> package includes the tools required to leverage <em>Git</em> functionality (e.g., <em>Git Bash</em>) on <em>Windows</em>. To download, navigate to <a class="reference external" href="https://git-scm.com/downloads/">https://git-scm.com/downloads/</a> and click on <strong>Windows</strong>.</p>
+<p>Run the downloaded executable file and follow the prompts while keeping the default settings.</p>
+</section>
+<section id="installing-wix-windows-installer-xml-extensible-markup-language-toolset">
+<h4>Installing WiX (Windows Installer XML (Extensible Markup Language)) Toolset<a class="headerlink" href="#installing-wix-windows-installer-xml-extensible-markup-language-toolset" title="Permalink to this headline"></a></h4>
+<p>The <em>WiX</em> toolset is used to create the installation, <code class="docutils literal notranslate"><span class="pre">MSI</span></code> files and <code class="docutils literal notranslate"><span class="pre">ZIP</span></code> files.</p>
+<ul class="simple">
+<li><p><em>WiX</em> requires <code class="docutils literal notranslate"><span class="pre">.net</span> <span class="pre">3.5</span></code> in order to function correctly. Thus, before installing <em>WiX</em>, visit <a class="reference external" href="https://dotnet.microsoft.com/download/dotnet-framework/net35-sp1">https://dotnet.microsoft.com/download/dotnet-framework/net35-sp1</a> and click <strong>Download .NET Framework 3.5 SP1 Runtime</strong>.</p></li>
+<li><p>Run <code class="docutils literal notranslate"><span class="pre">dotnetfx35.exe</span></code> and follow the prompts.</p></li>
+<li><p>To download <em>WiX</em>, visit <a class="reference external" href="https://wixtoolset.org/releases/">https://wixtoolset.org/releases/</a> and click on <strong>Download WIX V3.11.2</strong> (Note: the version number may vary) which will open a new page.</p></li>
+<li><p>Scroll down and choose <code class="docutils literal notranslate"><span class="pre">wix311.exe</span></code> to download the executable file.</p></li>
+<li><p>Run <code class="docutils literal notranslate"><span class="pre">wix311.exe</span></code>, click <strong>Install</strong> and <strong>Exit</strong> after the installation completes.</p></li>
+</ul>
+<p>The <em>WiX</em> binary folder must be included in the <em>Windows</em> system path in order to be correctly recognized. To do so, perform the following:</p>
+<ul class="simple">
+<li><p>Type <strong>Environment</strong> in the Windows search bar on the bottom left of the screen</p></li>
+<li><p>Click <strong>Edit the system environment variables</strong></p></li>
+<li><p>Click <strong>Environment Variables…</strong></p></li>
+<li><p>Under <strong>System Variables</strong>, click <strong>Path</strong> and then <strong>Edit</strong></p></li>
+<li><p>Copy <code class="docutils literal notranslate"><span class="pre">C:\Program</span> <span class="pre">Files</span> <span class="pre">(x86)\WiX</span> <span class="pre">Toolset</span> <span class="pre">v3.11\bin</span></code></p>
+<ul>
+<li><p>Note: this is the default <em>WiX</em> installation folder. If it was installed elsewhere, please use that location instead.</p></li>
+</ul>
+</li>
+<li><p>Click <strong>New</strong> and paste the copied directory path</p></li>
+<li><p>Click <strong>OK</strong> three times</p></li>
+</ul>
+</section>
+<section id="installing-microsoft-package-manager-vcpkg-and-required-packages">
+<h4>Installing Microsoft Package Manager (VCPKG) and Required Packages<a class="headerlink" href="#installing-microsoft-package-manager-vcpkg-and-required-packages" title="Permalink to this headline"></a></h4>
+<p>As the VIN™ leverages a number of libraries, using the <em>VCPKG</em> package manager is ideal. Furthermore, it is easiest to do so from a command line interface (e.g., <em>PowerShell</em>). For more information on <em>VCPKG</em> visit:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://vcpkg.io/en/index.html">https://vcpkg.io/en/index.html</a></p></li>
+<li><p><a class="reference external" href="https://github.com/microsoft/vcpkg">https://github.com/microsoft/vcpkg</a></p></li>
+<li><p><a class="reference external" href="https://vcpkg.io/en/getting-started.html">https://vcpkg.io/en/getting-started.html</a></p></li>
+</ul>
+<p>To begin, create a folder as the install location for <em>VCPKG</em>. It is recommended to use <code class="docutils literal notranslate"><span class="pre">C:\Dev</span></code>.</p>
+<ul class="simple">
+<li><p>Open <em>PowerShell</em> and type <code class="docutils literal notranslate"><span class="pre">cd</span> <span class="pre">C:\Dev</span></code> to point to the correct directory</p></li>
+<li><p>Copy, paste (right click on the <em>PowerShell</em> title bar, then edit and paste, or press <strong>ctrl + v</strong> with the window selected) and run (hit <strong>Enter</strong>) the following one at a time:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">clone</span> <span class="pre">https://github.com/microsoft/vcpkg</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">.\vcpkg\bootstrap-vcpkg.bat</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">.\vcpkg\vcpkg</span> <span class="pre">integrate</span> <span class="pre">install</span></code></p></li>
+</ul>
+</li>
+</ul>
+<p>To install the additional packages required for <em>Aff3ct</em>, <em>Poco</em> and <em>qToken</em>, copy, paste and run the following one at a time (Note: some of these may take 20+ minutes (e.g., boost:x64-windows) to complete):</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">.\vcpkg\vcpkg</span> <span class="pre">install</span> <span class="pre">openssl:x64-windows</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">.\vcpkg\vcpkg</span> <span class="pre">install</span> <span class="pre">boost:x64-windows</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">.\vcpkg\vcpkg</span> <span class="pre">install</span> <span class="pre">gflags:x64-windows</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">.\vcpkg\vcpkg</span> <span class="pre">install</span> <span class="pre">gtest:x64-windows</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">.\vcpkg\vcpkg</span> <span class="pre">install</span> <span class="pre">benchmark:x64-windows</span></code></p></li>
+</ul>
+<p>To install the additional packages required for LVM run the following:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">.\vcpkg\vcpkg</span> <span class="pre">install</span> <span class="pre">mpi:x64-windows</span></code></p></li>
+</ul>
+<p>After running <code class="docutils literal notranslate"><span class="pre">.\vcpkg\vcpkg</span> <span class="pre">install</span> <span class="pre">mpi:x64-windows</span></code> an error will occur as the <code class="docutils literal notranslate"><span class="pre">MPI</span></code> build requires a manual installation. Read the messages in <em>PowerShell</em> to determine the location of the installer; it should be located <code class="docutils literal notranslate"><span class="pre">C:/Dev/vcpkg/downloads/msmpisetup-10.1.12498.exe</span></code>. Run this executable and follow the prompts to complete a manual installation.</p>
+<p>Re-run the mpi installation and the rest of the required packages one at a time:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">.\vcpkg\vcpkg</span> <span class="pre">install</span> <span class="pre">mpi:x64-windows</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">.\vcpkg\vcpkg</span> <span class="pre">install</span> <span class="pre">pcre:x64-windows</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">.\vcpkg\vcpkg</span> <span class="pre">install</span> <span class="pre">zlib:x64-windows</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">.\vcpkg\vcpkg</span> <span class="pre">install</span> <span class="pre">expat:x64-windows</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">.\vcpkg\vcpkg</span> <span class="pre">install</span> <span class="pre">utf8proc:x64-windows</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">.\vcpkg\vcpkg</span> <span class="pre">install</span> <span class="pre">libtomcrypt:x64-windows</span></code></p></li>
+</ul>
+</section>
+<section id="install-conemu-recommended">
+<h4>Install ConEmu (Recommended)<a class="headerlink" href="#install-conemu-recommended" title="Permalink to this headline"></a></h4>
+<p>ConEmu is an advanced console window, also known as a local terminal emulator, which allows running multiple console windows within a single application with tabs and split options. ConEmu acts as terminal (aka console emulator) for “console” type applications (e.g., <em>PowerShell</em>, <em>GitBash</em>) and sort of tabbed environment (holder) for GUI applications (e.g., <em>notepad</em>, <em>putty</em>). While this is not necessary for the environment setup, it is a great tool for aiding in development. To install:</p>
+<ul class="simple">
+<li><p>Visit <a class="reference external" href="https://conemu.github.io/">https://conemu.github.io/</a></p></li>
+<li><p>Click <strong>Download</strong></p></li>
+<li><p>Click <strong>ConEmu Stable, Installer (32-bit, 64-bit)</strong></p></li>
+<li><p>Run the executable</p></li>
+<li><p>Choose the system architecture version and follow the promts to complete installation</p></li>
+</ul>
+<p>Vist <a class="reference external" href="https://conemu.github.io/en/SplitScreen.html">https://conemu.github.io/en/SplitScreen.html</a> for instructions on how to split console windows.</p>
+</section>
+</section>
+<section id="acquiring-projects">
+<h3>Acquiring Projects<a class="headerlink" href="#acquiring-projects" title="Permalink to this headline"></a></h3>
+<p>This method of acquiring projects requires cloning the projects using <em>Git</em> commands and building the projects with <em>Visual Studio</em>. This allows for more robust testing options, such as running them with a debugger and is recommended when developing the <em>qtoken-cpp</em> project on <em>Windows</em>. However, using the pre-built libraries is an option if simply running/testing the VIN™ is required or if the library projects (i.e., <em>Aff3ct</em>, <em>Poco</em>, and <em>LVM</em>) will not be changed. To acquire the pre-built libraries, and build <em>qtoken-cpp</em> with them, please refer to the <a class="reference internal" href="#pre-built-library">Pre-Built Library</a> section.</p>
+<section id="cloning-repositories">
+<h4>Cloning Repositories<a class="headerlink" href="#cloning-repositories" title="Permalink to this headline"></a></h4>
+<p>Open an instance of <em>PowerShell</em> and follow the steps below to acquire them directly from the <em>GitLab</em> repositories.</p>
+<section id="aff3ct">
+<h5>Aff3ct<a class="headerlink" href="#aff3ct" title="Permalink to this headline"></a></h5>
+<ul class="simple">
+<li><p>Navigate to <code class="docutils literal notranslate"><span class="pre">dev</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">clone</span> <span class="pre">--recursive</span> <span class="pre">-j8</span> <span class="pre">git&#64;gitlab.optimusprime.ai:virgilsystems/external/aff3ct.git</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">cd</span> <span class="pre">aff3ct</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">checkout</span> <span class="pre">master</span></code></p></li>
+</ul>
+</section>
+</section>
+<section id="poco">
+<h4>Poco<a class="headerlink" href="#poco" title="Permalink to this headline"></a></h4>
+<ul class="simple">
+<li><p>Navigate to <code class="docutils literal notranslate"><span class="pre">dev</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">clone</span> <span class="pre">git&#64;gitlab.optimusprime.ai:virgilsystems/prototypes/poco.git</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">cd</span> <span class="pre">poco</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">checkout</span> <span class="pre">virgil</span></code></p></li>
+</ul>
+</section>
+<section id="lvm">
+<h4>LVM<a class="headerlink" href="#lvm" title="Permalink to this headline"></a></h4>
+<ul class="simple">
+<li><p>Navigate to <code class="docutils literal notranslate"><span class="pre">dev</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">clone</span> <span class="pre">git&#64;gitlab.optimusprime.ai:virgilsystems/external/lvm.git</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">cd</span> <span class="pre">lvm</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">checkout</span> <span class="pre">WindowsDev</span></code></p></li>
+</ul>
+</section>
+<section id="qtoken-cpp">
+<h4>qToken-cpp<a class="headerlink" href="#qtoken-cpp" title="Permalink to this headline"></a></h4>
+<ul class="simple">
+<li><p>Navigate to <code class="docutils literal notranslate"><span class="pre">dev</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">clone</span> <span class="pre">--recursive</span> <span class="pre">-j8</span> <span class="pre">git&#64;gitlab.optimusprime.ai:virgilsystems/prototypes/qtoken-cpp.git</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">cd</span> <span class="pre">qtoken-cpp</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">checkout</span> <span class="pre">dev</span></code></p></li>
+</ul>
+<p>The <code class="docutils literal notranslate"><span class="pre">c:\dev</span></code> folder should now contain the following folders:</p>
+<ul class="simple">
+<li><p>aff3ct</p></li>
+<li><p>poco</p></li>
+<li><p>lvm</p></li>
+<li><p>qtoken-cpp</p></li>
+<li><p>vcpkg</p></li>
+</ul>
+</section>
+</section>
+<section id="building-the-projects-with-visual-studio">
+<h3>Building the Projects with Visual Studio<a class="headerlink" href="#building-the-projects-with-visual-studio" title="Permalink to this headline"></a></h3>
+<p>All of the projects will be built using the same method listed below:</p>
+<ul class="simple">
+<li><p>Open <em>Visual Studio 2022</em></p></li>
+<li><p>Select <strong>Open a local folder</strong></p></li>
+<li><p>Navigate to <code class="docutils literal notranslate"><span class="pre">C:\Dev\aff3ct</span></code></p></li>
+<li><p>Click <strong>Select Folder</strong></p></li>
+<li><p>Click <strong>Open CMake Settings editor</strong></p></li>
+<li><p>On the left, select <strong>x64-Debug</strong></p></li>
+<li><p>Under <strong>CMake variables and cache</strong>, click <strong>Save and generate CMake cache to load variables</strong></p></li>
+<li><p>On the top toolbar, select <strong>Build</strong> (Note: the build options may take some time to become available)</p></li>
+<li><p>Click <strong>Rebuild All</strong></p></li>
+<li><p>After it completes, on the top toolbar, select <strong>Build</strong></p></li>
+<li><p>Click <strong>Install aff3ct</strong></p></li>
+<li><p>In the upper right corner click <strong>File</strong></p></li>
+<li><p>Click <strong>Close Folder</strong></p></li>
+</ul>
+<p>This will copy all required files in a separate <code class="docutils literal notranslate"><span class="pre">out\install</span></code> folder inside the project folder (i.e., <code class="docutils literal notranslate"><span class="pre">C:\Dev\aff3ct</span></code>). The rest of the projects to build expect to find headers and libraries in that specific folder, not <code class="docutils literal notranslate"><span class="pre">build</span></code>. Next, complete all of the above steps for the <code class="docutils literal notranslate"><span class="pre">Poco</span></code>, <code class="docutils literal notranslate"><span class="pre">LVM</span></code> and <code class="docutils literal notranslate"><span class="pre">qtoken-cpp</span></code> projects, in that order.</p>
+<p>Note: During development you may need to clear and regenerate the cache by performing the following:</p>
+<ul class="simple">
+<li><p>Right-click <strong>CMakeLists.txt</strong></p></li>
+<li><p>Select <strong>Delete Cache and Reconfigure</strong></p></li>
+<li><p>Click <strong>Yes</strong></p></li>
+</ul>
+<p>To build the <code class="docutils literal notranslate"><span class="pre">Release</span></code> version of the code (this is not necessary during initial setup) do the following:</p>
+<ul class="simple">
+<li><p>Under <strong>CMake Settings</strong></p></li>
+<li><p>Click <strong>x64-Release</strong></p></li>
+<li><p>Click <strong>Save and generate CMake cache to load variables</strong></p></li>
+<li><p>On the top toolbar, select <strong>Build</strong></p></li>
+<li><p>Click <strong>Rebuild All</strong></p></li>
+<li><p>After it completes, on the top toolbar, select <strong>Build</strong></p></li>
+<li><p>Click <strong>Install</strong></p></li>
+</ul>
+<section id="creating-an-install-package-with-visual-studio">
+<h4>Creating an Install Package with Visual Studio<a class="headerlink" href="#creating-an-install-package-with-visual-studio" title="Permalink to this headline"></a></h4>
+<p>The previously installed WiX will be used to create an <code class="docutils literal notranslate"><span class="pre">MSI</span></code> file and a <code class="docutils literal notranslate"><span class="pre">ZIP</span></code> file of a project. With the <code class="docutils literal notranslate"><span class="pre">qtoken-cpp</span></code> folder open in <em>Visual Studio 2022</em>, switch to <strong>Target View</strong> by clicking on the button in the image below:</p>
+<figure class="align-center" id="id4">
+<a class="reference internal image-reference" href="_images/vs2022_target_button.png"><img alt="Visual Studio 2022 Target Button" src="_images/vs2022_target_button.png" style="width: 350px;" /></a>
+<figcaption>
+<p><span class="caption-text">Visual Studio 2022 Target Button</span><a class="headerlink" href="#id4" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+<ul class="simple">
+<li><p>Click <strong>CMake Targets View</strong></p></li>
+<li><p>Expand <strong>QToken-CPP Project</strong></p></li>
+<li><p>Right-click <strong>Packages</strong></p></li>
+<li><p>Click <strong>Build</strong> and wait for the process to complete</p></li>
+</ul>
+</section>
+</section>
+<section id="building-the-projects-using-scripts">
+<h3>Building the Projects using Scripts<a class="headerlink" href="#building-the-projects-using-scripts" title="Permalink to this headline"></a></h3>
+<p>The method of building projects with Visual Studio is suited for a development environment, especially in regard to <code class="docutils literal notranslate"><span class="pre">qtoken-cpp</span></code>, as it allows for more control over changes to the code. However, a simpler and faster way is to build the projects is using the batch files located in the <code class="docutils literal notranslate"><span class="pre">zbuild</span></code> folder of each project. This process will build and install the libraries in the proper folder structure, the same way that <em>Visual Studio</em> does, to ensure that the <code class="docutils literal notranslate"><span class="pre">qtoken-cpp</span></code> project will have all of the necessary files to build correctly. Additionally, they will build both <code class="docutils literal notranslate"><span class="pre">Debug</span></code> and <code class="docutils literal notranslate"><span class="pre">Release</span></code> version of the projects. Be sure to build these projects in the order they appear below as there are dependencies between them. To build the projects, open an instance of <em>PowerShell</em> and complete the following:</p>
+<ul class="simple">
+<li><p>Navigate to <code class="docutils literal notranslate"><span class="pre">cd</span> <span class="pre">C:\Dev\aff3ct\zbuild</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">.\winbuild.bat</span></code></p></li>
+<li><p>Navigate to <code class="docutils literal notranslate"><span class="pre">cd</span> <span class="pre">C:\Dev\poco\zbuild</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">.\winbuild.bat</span></code></p></li>
+<li><p>Navigate to <code class="docutils literal notranslate"><span class="pre">cd</span> <span class="pre">C:\Dev\lvm\zbuild</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">.\winbuild.bat</span></code></p></li>
+<li><p>Navigate to <code class="docutils literal notranslate"><span class="pre">cd</span> <span class="pre">C:\Dev\qtoken-cpp\zbuild</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">.\winbuild.bat</span></code></p></li>
+</ul>
+<p>With this complete, the VIN™ applications will be available to run and the install packages for the VIN™ will also be generated.</p>
+<p>Note: the batch files expect <em>Visual Studio 2022 Community Edition</em> to be installed in its default location. If a different version of <em>Visual Studio</em> is used or it is installed in a different location the batch must be modified. Furthermore, the batch file requires that <em>VCPKG</em> and the <em>Aff3t</em>, <em>Poco</em>, <em>LVM</em> and <em>qtoken-cpp</em> projects are stored in the <code class="docutils literal notranslate"><span class="pre">C:/Dev</span></code> folder. If not, the batch file will also need to be modified to accomandate the location change.</p>
+</section>
+<section id="acquiring-projects-and-building-with-pre-built-libraries">
+<span id="pre-built-library"></span><h3>Acquiring Projects and Building with Pre-Built Libraries<a class="headerlink" href="#acquiring-projects-and-building-with-pre-built-libraries" title="Permalink to this headline"></a></h3>
+<p>Using this method allows for bypassing the build process for <em>Aff3ct</em>, <em>Poco</em> and <em>LVM</em>. With <em>JFrog</em> access granted, visit <a class="reference external" href="https://opai.jfrog.io/ui/packages">https://opai.jfrog.io/ui/packages</a> and do the following:</p>
+<ul class="simple">
+<li><p>In the left pane, <strong>Artifactory</strong> -&gt; <strong>Artifacts</strong> -&gt; <strong>VIN</strong></p></li>
+<li><p>Download <code class="docutils literal notranslate"><span class="pre">VCPKG_build_libs.zip</span></code></p></li>
+<li><p>Extract the contents of <code class="docutils literal notranslate"><span class="pre">VCPKG_build_libs.zip</span></code> into <code class="docutils literal notranslate"><span class="pre">C:\Dev</span></code></p></li>
+</ul>
+<section id="cloning-qtoken-cpp">
+<h4>Cloning qToken-cpp<a class="headerlink" href="#cloning-qtoken-cpp" title="Permalink to this headline"></a></h4>
+<p>With access to <em>Gitlab</em> and a ssh key registered to your account open <em>PowerShell</em> and run:</p>
+<ul class="simple">
+<li><p>Navigate to <code class="docutils literal notranslate"><span class="pre">cd</span> <span class="pre">C:\Dev</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">clone</span> <span class="pre">--recursive</span> <span class="pre">-j8</span> <span class="pre">git&#64;gitlab.optimusprime.ai:virgilsystems/prototypes/qtoken-cpp.git</span></code></p></li>
+<li><p>Navigate to <code class="docutils literal notranslate"><span class="pre">cd</span> <span class="pre">C:\Dev\qtoken-cpp</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">checkout</span> <span class="pre">dev</span></code></p></li>
+</ul>
+<p>The <code class="docutils literal notranslate"><span class="pre">C:\Dev</span></code> folder should now contain the following folders:</p>
+<ul class="simple">
+<li><p>aff3ct</p></li>
+<li><p>poco</p></li>
+<li><p>lvm</p></li>
+<li><p>qtoken-cpp</p></li>
+<li><p>vcpkg</p></li>
+</ul>
+</section>
+</section>
+<section id="installing-the-vin">
+<h3>Installing the VIN™<a class="headerlink" href="#installing-the-vin" title="Permalink to this headline"></a></h3>
+<p>Regardless of the build method, follow these steps to install the <em>VIN™</em>:</p>
+<ul class="simple">
+<li><p>Navigate to the <code class="docutils literal notranslate"><span class="pre">‘C:\Dev\qtoken-cpp\out\install\x64-Debug\PACKAGES</span></code> folder where the <code class="docutils literal notranslate"><span class="pre">MSI</span></code> and <code class="docutils literal notranslate"><span class="pre">ZIP</span></code> files will be located</p></li>
+<li><p>Double-click <code class="docutils literal notranslate"><span class="pre">Virgil-VIN-Install-POCO.msi</span></code> (Note: depending on the installation, the word POCO may vary)</p></li>
+<li><p>Follow the prompts to install the <em>VIN™</em></p></li>
+</ul>
+<p>The <code class="docutils literal notranslate"><span class="pre">MSI</span></code> will install the <em>VIN™</em> application as a service. The service name is <code class="docutils literal notranslate"><span class="pre">VIN</span></code> and can be seen under <code class="docutils literal notranslate"><span class="pre">Services</span></code> (search <code class="docutils literal notranslate"><span class="pre">services</span></code> in the <em>Windows</em> search bar). The installation currently sets the service as automatic, and it starts it immediately upon install. For the upcoming example, please stop this service by right-clicking on it and clicking <strong>Stop</strong>. All the <em>VIN™</em> parameters are taken from the configuration file (refer to <a class="reference internal" href="configuration.html"><span class="doc">Configuration Options</span></a> section for more information) and the configuration file parameters are only read when the service starts. Therefore, if they are changed, the <em>VIN™</em> service needs to be restarted. While the service can log some failures during start-up in the Windows Event Log, once the application is running, the application’s log files are found in <code class="docutils literal notranslate"><span class="pre">C:\ProgramData\VIN\logs</span></code>.</p>
+<p>The installation will also add the program binary folder to the system path environment variable allowing <code class="docutils literal notranslate"><span class="pre">VIN</span></code> and any other test utility programs to be started using <em>PowerShell</em> or other command line applications from any location on the PC. Finally, the <code class="docutils literal notranslate"><span class="pre">VIN_CLI</span></code> application will also be installed with the <code class="docutils literal notranslate"><span class="pre">MSI</span></code> package which allows <em>VIN™</em> commands to be run. More information on the <code class="docutils literal notranslate"><span class="pre">VIN_CLI</span></code> can be seen in the <a class="reference internal" href="vin_cli.html"><span class="doc">VIN™ Command Line Interface (CLI)</span></a> section of the documentation.</p>
+</section>
+<section id="configuration">
+<h3>Configuration<a class="headerlink" href="#configuration" title="Permalink to this headline"></a></h3>
+<p>The <code class="docutils literal notranslate"><span class="pre">MSI</span></code> package will install a file named <code class="docutils literal notranslate"><span class="pre">defaults.cfg</span></code> in the <code class="docutils literal notranslate"><span class="pre">C:\Dev\qtoken-cpp\out\install\x64-Debug\config</span></code> folder. This file can be used to modify a number of <em>VIN™</em> parameters (refer to <a class="reference internal" href="configuration.html"><span class="doc">Configuration Options</span></a> section for more information). Furthermore, the temporary file (i.e., outputs, logs, etc.) locations are created and stored based on the information in this file. The base directory for these files is <code class="docutils literal notranslate"><span class="pre">C:\ProgramData\VIN</span></code> which is accessible by all users. For example, the log files are stored in <code class="docutils literal notranslate"><span class="pre">C:\ProgramData\VIN\logs</span></code>.</p>
+</section>
+<section id="running-the-vin">
+<h3>Running the VIN™<a class="headerlink" href="#running-the-vin" title="Permalink to this headline"></a></h3>
+<p>By installing the <em>VIN™</em> using the <code class="docutils literal notranslate"><span class="pre">MSI</span></code> package, a bootstrap node will begin running immediately. However, if the instructions listed above were followed, the service has been stopped to allow for the below example to proceed correctly.</p>
+<p>To begine start a <em>PowerShell</em> instance and run:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">vin</span> <span class="pre">-app</span> <span class="pre">-b</span> <span class="pre">127.0.0.1</span></code></p></li>
+</ul>
+<p>This will start the <em>VIN™</em> application as a console (i.e., a node) in bootstrap mode at the IP defined (i.e., 127.0.0.1). Note: By default, the bootstrap node will run on IP address 0.0.0.0, defined in <code class="docutils literal notranslate"><span class="pre">defaults.cfg</span></code>. Thus, running <code class="docutils literal notranslate"><span class="pre">vin</span> <span class="pre">-app</span> <span class="pre">-b</span></code> would also work.</p>
+<p>Start another <em>PowerShell</em> instance and run:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">vin</span> <span class="pre">-app</span> <span class="pre">-n</span> <span class="pre">-a</span> <span class="pre">127.0.0.1</span> <span class="pre">-h</span> <span class="pre">7080</span> <span class="pre">-p</span> <span class="pre">8080</span> <span class="pre">-r</span> <span class="pre">9090</span></code></p></li>
+</ul>
+<p>This will start the <em>VIN™</em> application as a console in normal mode with the bootstrap IP (<code class="docutils literal notranslate"><span class="pre">-a</span></code> command) set to 127.0.0.1, the HTTP server port set (<code class="docutils literal notranslate"><span class="pre">-h</span></code> command) set to 7080 Kademlia port (<code class="docutils literal notranslate"><span class="pre">-p</span></code> command) set to 8080, and the receipt port (<code class="docutils literal notranslate"><span class="pre">-r</span></code> command) to 9090. Note: the defaults for these values are located in the <code class="docutils literal notranslate"><span class="pre">defaults.cfg</span></code> file.</p>
+<p>If everything is working as it should, the following should be outputted in the PowerShell window:</p>
+<figure class="align-center" id="id5">
+<a class="reference internal image-reference" href="_images/vin_success_peer.png"><img alt="VIN™ Successful Peer Connection" src="_images/vin_success_peer.png" style="width: 500px;" /></a>
+<figcaption>
+<p><span class="caption-text">VIN™ Successful Peer Connection</span><a class="headerlink" href="#id5" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+<p>Note: if a <em>PowerShell</em> instance is run from the folder location containing the <code class="docutils literal notranslate"><span class="pre">VIN.exe</span></code> file (e.g., <code class="docutils literal notranslate"><span class="pre">C:\Dev\qtoken-cpp\out\install\x64-Debug\bin</span></code>), the command to run the <em>VIN™</em> can be <code class="docutils literal notranslate"><span class="pre">.\VIN</span></code> instead of just <code class="docutils literal notranslate"><span class="pre">VIN</span></code>. This is useful for testing as it points to the currently built <code class="docutils literal notranslate"><span class="pre">VIN.exe</span></code> and not the one that was installed by the <code class="docutils literal notranslate"><span class="pre">MSI</span></code> package.</p>
+</section>
+<section id="testing-the-vin">
+<span id="id1"></span><h3>Testing the VIN™<a class="headerlink" href="#testing-the-vin" title="Permalink to this headline"></a></h3>
+<p>The following will do a simple test to ensure the <em>VIN™</em> was set up and it functions correctly. This example assumes that all <em>PowerShell</em> instances are ran on the same, local machine (i.e., each nodes IP address will be set to 127.0.0.1).</p>
+<ul class="simple">
+<li><p>Close any instances of <em>PowerShell</em> which contain the <em>VIN™</em></p></li>
+<li><p>Ensure the <em>VIN™</em> service is stopped by doing the following:</p>
+<ul>
+<li><p>Search <strong>service</strong> in the Windows search bar</p></li>
+<li><p>Click <strong>Services</strong></p></li>
+<li><p>Locate <strong>VIN</strong> and right-click on it</p></li>
+<li><p>Click <strong>Stop</strong> if it is running</p></li>
+</ul>
+</li>
+<li><p>Open a <em>PowerShell</em> instance and run:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">vin</span> <span class="pre">-app</span> <span class="pre">-b</span> <span class="pre">127.0.0.1</span></code></p></li>
+</ul>
+</li>
+<li><p>Open a <em>PowerShell</em> instance and run:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">vin</span> <span class="pre">-app</span> <span class="pre">-n</span> <span class="pre">-a</span> <span class="pre">127.0.0.1</span> <span class="pre">-h</span> <span class="pre">7071</span> <span class="pre">-p</span> <span class="pre">8081</span> <span class="pre">-r</span> <span class="pre">9091</span></code></p></li>
+</ul>
+</li>
+<li><p>Open a <em>PowerShell</em> instance and run:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">vin</span> <span class="pre">-app</span> <span class="pre">-n</span> <span class="pre">-a</span> <span class="pre">127.0.0.1</span> <span class="pre">-h</span> <span class="pre">7080</span> <span class="pre">-p</span> <span class="pre">8080</span> <span class="pre">-r</span> <span class="pre">9090</span></code></p></li>
+</ul>
+</li>
+<li><p>Open a <em>PowerShell</em> instance and run:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">vin_cli</span> <span class="pre">127.0.0.1</span> <span class="pre">7080</span></code></p></li>
+</ul>
+</li>
+</ul>
+<p>If successful, the output in <em>PowerShell</em> should look like the following:</p>
+<figure class="align-center" id="id6">
+<a class="reference internal image-reference" href="_images/vincli_success.png"><img alt="VIN™ CLI Successful Connection" src="_images/vincli_success.png" style="width: 500px;" /></a>
+<figcaption>
+<p><span class="caption-text">VIN™ CLI Successful Connection</span><a class="headerlink" href="#id6" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+<p>Choose or create a file that will be used for testing. For example, a simple <code class="docutils literal notranslate"><span class="pre">vin_text.txt</span></code> file containing “This is a test of the share function.” Now, in the <code class="docutils literal notranslate"><span class="pre">vin_cli</span></code> <em>PowerShell</em> instance run</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">share</span> <span class="pre">&lt;file_name&gt;</span> <span class="pre">127.0.0.1</span> <span class="pre">9091</span></code></p></li>
+</ul>
+<p>Where <code class="docutils literal notranslate"><span class="pre">&lt;file_name&gt;</span></code> is the location and name of the file, in this example it’s <code class="docutils literal notranslate"><span class="pre">C:\test\vin_test.txt</span></code>. If the command worked the following output should be observed:</p>
+<figure class="align-center" id="id7">
+<a class="reference internal image-reference" href="_images/vin_success_share.png"><img alt="VIN™ Successful Share" src="_images/vin_success_share.png" style="width: 500px;" /></a>
+<figcaption>
+<p><span class="caption-text">VIN™ Successful Share</span><a class="headerlink" href="#id7" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+<p>To manually verify that the file was received and is intact, navigate to <code class="docutils literal notranslate"><span class="pre">C:\ProgramData\VIN\outputs</span></code> and check its contents. Additionally, <code class="docutils literal notranslate"><span class="pre">C:\ProgramData\VIN\receipts\sent</span></code> should contain a new cryptographic receipt.</p>
+<p>For more information on the commands available to the <em>VIN™ CLI</em>, please type <code class="docutils literal notranslate"><span class="pre">help</span></code> with a <em>VIN™ CLI</em> running or refer to the <a class="reference internal" href="vin_cli.html"><span class="doc">VIN™ Command Line Interface (CLI)</span></a> section of the documentation.</p>
+</section>
+<section id="debug-the-vin-using-qtoken-cpp-with-visual-studio">
+<h3>Debug the VIN™ using qtoken-cpp with Visual Studio<a class="headerlink" href="#debug-the-vin-using-qtoken-cpp-with-visual-studio" title="Permalink to this headline"></a></h3>
+<p>To run the qtoken-cpp in debug (or release) within Visual Studio, a file name <code class="docutils literal notranslate"><span class="pre">launch.vs.json</span></code> must be edited to contain the correct information. The file can be found in <code class="docutils literal notranslate"><span class="pre">C:\Dev\qtoken-cpp\windows</span></code> and opened with a text editor or it can be modified within <em>Visual Studio</em> itself by locating it in right pane, in <strong>Folder View</strong> under the same directory structure. Whichever method is used the file should contain the following:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="nt">&quot;version&quot;</span><span class="p">:</span> <span class="s2">&quot;0.2.1&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;defaults&quot;</span><span class="p">:</span> <span class="p">{},</span>
+    <span class="nt">&quot;configurations&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+            <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;default&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;project&quot;</span><span class="p">:</span> <span class="s2">&quot;CMakeLists.txt&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;projectTarget&quot;</span><span class="p">:</span> <span class="s2">&quot;VIN.exe (apps\\VIN.exe)&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;VIN.exe (apps\\VIN.exe)&quot;</span>
+        <span class="p">}</span>
+    <span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>In order to start an instance of the <em>VIN™</em> in the <em>Visual Studio</em> debugger, the <code class="docutils literal notranslate"><span class="pre">launch.vs.json</span></code> file must contain additional information. In particular, the following code should be copied and pasted to the file, overwriting the current code. This example will allow the debugger to run as a peer that matches the IP addresses and ports for the bootstrap and peers used in the <a class="reference internal" href="#testing-the-vin">Testing_the_VIN</a> section.</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="nt">&quot;version&quot;</span><span class="p">:</span> <span class="s2">&quot;0.2.1&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;defaults&quot;</span><span class="p">:</span> <span class="p">{},</span>
+    <span class="nt">&quot;configurations&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+            <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;default&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;project&quot;</span><span class="p">:</span> <span class="s2">&quot;CMakeLists.txt&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;projectTarget&quot;</span><span class="p">:</span> <span class="s2">&quot;VIN.exe (apps\\VIN.exe)&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;VIN.exe (apps\\VIN.exe)&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;args&quot;</span><span class="p">:</span> <span class="p">[</span>
+                <span class="s2">&quot;-app&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;-n&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;-a&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;127.0.0.1&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;-h&quot;</span><span class="p">,</span>
+                <span class="mi">7071</span><span class="p">,</span>
+                <span class="s2">&quot;-p&quot;</span><span class="p">,</span>
+                <span class="mi">8081</span><span class="p">,</span>
+                <span class="s2">&quot;-r&quot;</span><span class="p">,</span>
+                <span class="mi">9091</span>
+            <span class="p">]</span>
+        <span class="p">}</span>
+    <span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Note: each time the <code class="docutils literal notranslate"><span class="pre">qtoken-cpp</span></code> project is cloned from the repository, the <code class="docutils literal notranslate"><span class="pre">launch.vs.json</span></code> file will be overwritten, removing the added information. Thus, <code class="docutils literal notranslate"><span class="pre">launch.vs.json</span></code> will need to be updated every time this occurs.</p>
+<p>Before running the debugger, the bootstrap node, and a peer must be run by doing the following:</p>
+<ul class="simple">
+<li><p>Close any instances of PowerShell which contain the VIN</p></li>
+<li><p>Ensure the VIN service is stopped</p>
+<ul>
+<li><p>Search <strong>service</strong> in the Windows search bar</p></li>
+<li><p>Click <strong>Services</strong></p></li>
+<li><p>Locate <strong>VIN</strong> and right-click</p></li>
+<li><p>Click <strong>Stop</strong> if it is running</p></li>
+</ul>
+</li>
+<li><p>Open a <em>PowerShell</em> instance and run:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">vin</span> <span class="pre">-app</span> <span class="pre">-b</span> <span class="pre">127.0.0.1</span></code></p></li>
+</ul>
+</li>
+<li><p>Open a <em>PowerShell</em> instance and run:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">vin</span> <span class="pre">-app</span> <span class="pre">-n</span> <span class="pre">-a</span> <span class="pre">127.0.0.1</span> <span class="pre">-h</span> <span class="pre">7080</span> <span class="pre">-p</span> <span class="pre">8080</span> <span class="pre">-r</span> <span class="pre">9090</span></code></p></li>
+</ul>
+</li>
+</ul>
+<p>With the <code class="docutils literal notranslate"><span class="pre">qtoken-cpp</span></code> project open in <em>Visual Studio</em>, be sure that the <strong>x64-Debug CMake settings</strong> are selected. With the solution explorer still showing the <strong>CMake Targets View</strong>:</p>
+<ul class="simple">
+<li><p>Right-click <strong>VIN (Executable)</strong></p></li>
+<li><p>Hover over <strong>Debug</strong></p></li>
+<li><p>Click <strong>VIN.exe (appsVIN.exe)</strong></p></li>
+<li><p>If the debugger runs the code successfully the following should appear in the debug window:</p></li>
+</ul>
+<figure class="align-center" id="id8">
+<a class="reference internal image-reference" href="_images/vs2022_debugger.png"><img alt="Visual Studio 2022 Debugger VIN™ Successful Peer Connection" src="_images/vs2022_debugger.png" style="width: 500px;" /></a>
+<figcaption>
+<p><span class="caption-text">Visual Studio 2022 Debugger VIN™ Successful Peer Connection</span><a class="headerlink" href="#id8" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+<p>Choose or create a file that will be used for testing. For example, a simple <code class="docutils literal notranslate"><span class="pre">vin_text.txt</span></code> file containing “This is a test of the share function.” Open a new <em>PowerShell</em> instance and run:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">vin_cli</span> <span class="pre">127.0.0.1</span> <span class="pre">7080</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">share</span> <span class="pre">&lt;file_name&gt;</span> <span class="pre">127.0.0.1</span> <span class="pre">9091</span></code></p></li>
+</ul>
+<p>Where <code class="docutils literal notranslate"><span class="pre">&lt;file_name&gt;</span></code> is the location and name of the file, in this example it’s <code class="docutils literal notranslate"><span class="pre">‘C:\test\vin_test.txt’</span></code>. If the command was successful, the debugger window should display the following information (Note: some values may differ depending on the shared file):</p>
+<figure class="align-center" id="id9">
+<a class="reference internal image-reference" href="_images/vs2022_debugger_share.png"><img alt="Visual Studio 2022 Debugger VIN™ Successful Share" src="_images/vs2022_debugger_share.png" style="width: 500px;" /></a>
+<figcaption>
+<p><span class="caption-text">Visual Studio 2022 Debugger VIN™ Successful Share</span><a class="headerlink" href="#id9" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+<p>To manually verify that the file was received and is intact, navigate to <code class="docutils literal notranslate"><span class="pre">C:\ProgramData\VIN\outputs</span></code>. Additionally, <code class="docutils literal notranslate"><span class="pre">C:\ProgramData\VIN\receipts\sent</span></code> should contain a cryptographic receipt.</p>
+</section>
+<section id="troubleshooting">
+<h3>Troubleshooting<a class="headerlink" href="#troubleshooting" title="Permalink to this headline"></a></h3>
+<section id="installation-issues-with-vcpkg">
+<h4>Installation Issues with VCPKG<a class="headerlink" href="#installation-issues-with-vcpkg" title="Permalink to this headline"></a></h4>
+<p>If VCPKG fails to install a package it may generate a error message similiar to the one shown below:</p>
+<figure class="align-center" id="id10">
+<a class="reference internal image-reference" href="_images/vcpkg_install_error.png"><img alt="VCPKG Insallation Error" src="_images/vcpkg_install_error.png" style="width: 700px;" /></a>
+<figcaption>
+<p><span class="caption-text">VCPKG Insallation Error</span><a class="headerlink" href="#id10" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+<p>The first thing attempt at fixing the error is to remove the package that is causing the error by entering <code class="docutils literal notranslate"><span class="pre">./vcpkg</span> <span class="pre">remove</span> <span class="pre">&lt;pkg&gt;</span></code> where <code class="docutils literal notranslate"><span class="pre">&lt;pkg&gt;</span></code> is the name of the package (e.g., <code class="docutils literal notranslate"><span class="pre">boost:x64-windows</span></code>)</p>
+<p>If the installation of the package still doesn’t work, try deleting the VCPKG cache located at <code class="docutils literal notranslate"><span class="pre">C:\Users\&lt;user&gt;\AppData\Local\vcpkg</span></code>.</p>
+<p>If this still doesn’t solve the issue, the final step is to completely remove VCPKG and start from the beginning with the VCPKG installation process.</p>
+</section>
+<section id="failure-to-clone-repository">
+<h4>Failure to Clone Repository<a class="headerlink" href="#failure-to-clone-repository" title="Permalink to this headline"></a></h4>
+<figure class="align-center" id="id11">
+<a class="reference internal image-reference" href="_images/failure_to_clone_repository_error.png"><img alt="Failure to Clone Repository" src="_images/failure_to_clone_repository_error.png" style="width: 700px;" /></a>
+<figcaption>
+<p><span class="caption-text">Failure to Clone Repository</span><a class="headerlink" href="#id11" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+<p>Establish a connectiong with the Virgil System’s VPN and run the command once connected.</p>
+</section>
+<section id="benchmark-build-error">
+<h4>Benchmark Build Error<a class="headerlink" href="#benchmark-build-error" title="Permalink to this headline"></a></h4>
+<figure class="align-center" id="id12">
+<a class="reference internal image-reference" href="_images/benchmark_error.png"><img alt="Benchmark Error" src="_images/benchmark_error.png" style="width: 700px;" /></a>
+<figcaption>
+<p><span class="caption-text">Benchmark Error</span><a class="headerlink" href="#id12" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+<p>The <code class="docutils literal notranslate"><span class="pre">.\vcpkg\vcpkg</span> <span class="pre">install</span> <span class="pre">benchmark:x64-windows</span></code> was not executed correctly. Please run this command in a command line tool to fix the issue.</p>
+</section>
+<section id="install-option-unvailable-in-visual-studio-2022">
+<h4>Install Option Unvailable in Visual Studio 2022<a class="headerlink" href="#install-option-unvailable-in-visual-studio-2022" title="Permalink to this headline"></a></h4>
+<p>After building a project in Visual Studio 2022 the <strong>Install &lt;project&gt;</strong> option is unavailable, shutdown Visual Studio and re-open. If it is still unavailable, generate the CMake cache and rebuild the project.</p>
+</section>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021, Virgil Systems.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>  
+
+  <style>
+    
+    /* Sidebar header (and topbar for mobile) */
+    .wy-side-nav-search, .wy-nav-top {background: #00ff00;}
+    
+    /* Sidebar */
+    .wy-nav-side {background: #000000;}
+    
+    /* Make a class to allow for center alignment of text */
+    .text-align-center { text-align: center; }
+
+    /* Change the background color to pure white so that images with white backgrounds look ok */
+    /* while this changes the background, it also affects the sidebar and search bar. will need to find another way to do this if needed.*/
+    /*div {background-color: #ffffff;}*/
+    
+
+  </style>
+
+
+</body>
+</html>

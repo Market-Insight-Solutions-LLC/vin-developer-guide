@@ -1,0 +1,50 @@
+*********************************************************
+Virgil Integrity Network™ (VIN™) Reference Guide
+*********************************************************
+
+Welcome to the Virgil Integrity Network™ (VIN™) Reference Guide! This guide provides all the informaiton pertaining to the VIN™. This includes a detailed description of the VIN™, a few ways to get the VIN™ up and running, configuring the VIN™, details on the tokenization process, and more. This documentation is meant for internal use by Virgil System employees and parters only. For Virgil's customer facing documentation on the VIN™, please refer to the Virgil Integrity Network™ Developers Guide.
+
+.. image:: images/logo/virgil_v_white.png
+  :width: 100
+  :alt: Virgil Logo
+
+Check out the :doc:`developing_with_windows` or :doc:`developing_with_linux_wsl` section to begin developing. Upon completion, be sure to read the :doc:`vin_cli` page to get a better understanding on how to operate the VIN™. Finally, to customize an instance of the VIN™, refer to the :doc:`configuration` section.
+
+.. note::
+
+   This project is under active development.
+
+.. toctree::
+   :maxdepth: 2
+   :hidden:
+
+   vin_description
+   getting_started_at_virgil
+   developing_with_windows
+   developing_with_linux_wsl
+   developing_as_customer
+   vin_cli
+   configuration
+   sample_use_cases
+   key_concepts
+   dashboard
+   vin_statistics
+   vin_metrics
+   release_notes
+   glossary
+
+.. This hides the titles
+   .. toctree::
+      :hidden:
+      :titlesonly:
+
+      vin_description
+      getting_started
+      vin_cli
+      configuration
+      sample_use_cases
+      vin_statistics
+      release_notes
+      glossary
+
+

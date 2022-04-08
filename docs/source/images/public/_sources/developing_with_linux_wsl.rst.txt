@@ -1,0 +1,523 @@
+*****************************
+Developing with Linux and WSL
+*****************************
+
+This section contains a step-by-step guide of how to set up and install all of the components required to run the VIN™ on *Linux* and using *WSL (Windows Subsystem for Linux* on *Windows*. It provides a number of ways to acquire and build the necessary projects based upon the needs of the user. 
+
+Be sure to follow each and every instruction step-by-step in order to ensure the proper set up of the Linux and WSL Environments. If an issue occurs during the setup, refer to the `Troubleshooting`_ section. If the issue is not documented, contact a Virgil System employee for assitance.
+
+
+Pre-Requisites
+==============
+
+Before beginning the environment set up, it is necessary to have the following:
+
+* Access to Virgil System’s *GitLab*. Contact the Virgil Systems’ administrative team for more information if required.
+
+* A SSH key registered to your account which is required to clone the repositories. Refer to the :ref:`setting-up-git` section and follow the instructions if needed.
+	
+* Virgil Systems’ VPN (``vpn.optimusprime.ai``) is set up and the connection is established. Contact the Virgil Systems’ administrative team for more information if required.
+
+* If you wish to use pre-built libraries, access to Virgil Systems’ *JFrog* account is necessary. Contact the Virgil Systems’ administrative team for more information if required.
+
+
+Required GitLab Branches 
+========================
+
+The following branches, located in Virgil Systems’ GitLab, are used for the creation of the Linux and WSL Environments. 
+
+* https://gitlab.optimusprime.ai/virgilsystems/external/aff3ct/-/tree/master
+* https://gitlab.optimusprime.ai/virgilsystems/prototypes/poco/-/tree/virgil
+* https://gitlab.optimusprime.ai/virgilsystems/external/lvm/-/tree/WindowsDev
+* https://gitlab.optimusprime.ai/virgilsystems/prototypes/qtoken-cpp/-/tree/dev
+
+While these may be updated, the environment setup can still be used for older versions of these branches. However, the information for the environment creation will be updated periodically to ensure the functionality of the resources required.
+
+
+Tool Installation
+=================
+
+Installing Windows Subsystem for Linux (WSL) 2
+-----------------------------------------------
+
+This step is only required for *WSL*. If *Linux* is to be used, skip ahead to :ref:`linux-tools`.
+
+Windows 10 Build 2004 or Newer Version
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+* Open command line tool as an **Administrator** and run: ``wsl.exe --install``
+* It enables the *WSL* optional features required, downloads the latest *WSL Linux* kernel version, and installs *Ubuntu* as your default distro.
+* Restart the PC to and wait for the install to complete
+
+The distro should create a **Start Menu** item (i.e., *Ubuntu*) which can be clicked on to start the distro with *WSL*. **Be sure to run it as an Administrator otherwise some functionality will not be available.**
+
+* Set a username and password for use on the distro
+* Run ``sudo apt update``
+* Run ``sudo apt upgrade``
+  
+
+
+Windows 10 Build Older Version
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+If the above method didn’t work due to the *Windows* OS being an older build, follow the steps below.
+
+* To enable *WSL*, open the *PowerShell* tool as an **Administrator** and run ``dism.exe /online /enable-feature /featurename:Microsoft-Windows-Subsystem-Linux /all /norestart``
+* *WSL2* requires *Windows 10’s* **Virtual Machine Platform** feature to be enabled. To do so run ``Enable-WindowsOptionalFeature -Online -FeatureName VirtualMachinePlatform -NoRestart``
+* It is recommended that the PC be restarted at this point.
+* Set *WSL2* as the default by running ``wsl --set-default-version 2``
+* Install Ubuntu on Windows 10 by opening the Microsoft Store app (search Microsoft Store in the Windows search bar), search for **Ubuntu 20.04**, and hit the **Get** button. 
+
+  * If another Linux distro is required (e.g., Debian) download it in the same manner.
+
+* Restart the PC to and wait for the install to complete
+* Set a username and password for use on the distro
+* Run ``sudo apt update``
+* Run ``sudo apt upgrade``
+* Type **y** to upgrade
+
+The distro should create a **Start Menu** item (i.e., *Ubuntu*) which can be clicked on to start the distro with *WSL*. **Be sure to run it as an Administrator otherwise some functionality will not be available.**
+
+.. _linux-tools:
+
+Installing Tools for Linux
+--------------------------
+
+Run the following commands whether a *Linux* or *WSL* environment is being created:
+
+* ``sudo apt update``
+* ``sudo apt upgrade``
+
+  * Type **y** and hit **Enter**
+
+* ``sudo apt install git`` (skip this for now)
+* ``sudo apt install g++ gdb make ninja-build rsync zip``
+  
+  * Type **y** and hit **Enter**
+  
+* ``sudo apt install curl zip unzip tar`` (skip for now as well)
+* ``sudo apt install libtool-bin pkg-config``
+  
+  * Type **y** and hit **Enter**
+  
+* ``sudo apt install libssl-dev``
+  
+Command Details
+^^^^^^^^^^^^^^^
+
+* ``sudo apt update``
+  
+  * Used to download package information from all configured sources
+  
+* ``sudo apt upgrade``
+  
+  * This will fetch new versions of packages existing on the machine if APT knows about these new versions by way of ``apt-get update``
+  
+* ``sudo apt install git``
+  
+  * Software for tracking changes in any set of files, usually used for coordinating work among programmers collaboratively developing source code during software development.
+  
+* ``sudo apt install g++ gdb make ninja-build rsync zip``
+  
+  * ``g++``: a GNU c++ compiler
+  * ``gdb``: the GNU Project debugger, allows you to see what is going on inside another program while it executes or what another program was doing at the moment it crashed.
+  * ``make``: The purpose of the make utility is to determine automatically which pieces of a large program need to be recompiled and issue the commands to recompile them. you can use make with any programming language whose compiler can be run with a shell command.
+  * ``ninja-build``: a small build system with a focus on speed. It differs from other build systems in two major respects: it is designed to have its input files generated by a higher-level build system, and it is designed to run builds as fast as possible.
+  
+* ``sudo apt-get install curl zip unzip tar``
+
+  * ``curl``: a command line tool to transfer data to or from a server, using any of the supported protocols
+  * ``zip``: a compression and file packaging utility for Unix
+  * ``unzip``: is a decompression and file unpackaging utility for Unix
+  
+* ``sudo apt install libtool-bin pkg-config``
+
+  * ``libtool-bin``: a generic library support script. *Libtool* hides the complexity of generating special library types (such as shared libraries) behind a consistent interface
+  * ``pkg-config``: a helper tool used when compiling applications and libraries. It helps insert the correct compiler options on the command line.
+  
+* ``sudo apt install libssl-dev``
+  
+  * Part of the *OpenSSL* project's implementation of the SSL and TLS cryptographic protocols for secure communication over the Internet. It contains development libraries, header files, and manpages for libssl and libcrypto.
+
+
+CMake
+-----
+
+Installing *CMake* by using ``sudo apt install cmake`` will likely install an older version. Therefore, it needs to be installed manually by either of the following options.
+
+
+Option 1 – Using Kitware’s Repository
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+The following commands obtain Kitware’s signature key, adds *Kitware’s* repository, ensures Kitware’s key stays up-to-date, grabs the key again, updates the repository and finally installs *CMake*. Completing this option, ensures the newest version of *CMake* is installed and is easily updatable.
+
+* ``sudo apt remove --purge --auto-remove cmake``
+* ``wget -O - https://apt.kitware.com/keys/kitware-archive-latest.asc 2>/dev/null | gpg --dearmor - | sudo tee /etc/apt/trusted.gpg.d/kitware.gpg >/dev/null``
+* ``sudo apt-add-repository "deb https://apt.kitware.com/ubuntu/ $(lsb_release -cs) main"``
+* ``sudo apt update``
+* ``sudo apt install kitware-archive-keyring``
+* ``sudo rm /etc/apt/trusted.gpg.d/kitware.gpg``
+* ``wget -O - https://apt.kitware.com/keys/kitware-archive-latest.asc 2>/dev/null | gpg --dearmor - | sudo tee /etc/apt/trusted.gpg.d/kitware.gpg >/dev/null``
+* ``sudo apt update``
+* ``sudo apt install cmake``
+
+  * Type **y** then hit **Enter**
+
+
+Option 2 – Using a Script
+^^^^^^^^^^^^^^^^^^^^^^^^^
+
+For a more controlled option which will allow a version to be chosen, download the Linux sh package from the `CMake website <https://cmake.org/>`_ manually or run the following (be aware that version may already have changed):
+
+* ``version=3.21``
+* ``build=3``
+* ``mkdir ~/temp``
+* ``cd ~/temp``
+* ``wget https://cmake.org/files/v$version/cmake-$version.$build-linux-x86_64.sh``
+* ``sudo mkdir /opt/cmake``
+* ``sudo sh cmake-$version.$build-linux-x86_64.sh --prefix=/opt/cmake``
+
+
+Whichever option is used, be sure to add the installed binary link to ``/usr/local/bin/cmake`` by running 
+
+* ``sudo ln -s /opt/cmake/bin/cmake /usr/local/bin/cmake``
+
+Finally, to ensure CMake was installed and to check its version, run ``cmake --version``.
+
+
+Installing Microsoft Package Manager (*VCPKG*) 
+----------------------------------------------
+
+As the VIN™ leverages a number of libraries, using the *VCPKG* package manager is ideal. For more information on *VCPKG* visit: 
+
+* https://vcpkg.io/en/index.html 
+* https://github.com/microsoft/vcpkg
+* https://vcpkg.io/en/getting-started.html
+
+Create a folder as the install location for *VCPKG* (it is recommended to use HOME (~/Dev) for *Linux* and ``mnt/c/Dev`` for *WSL*). **Be sure to capitalize Dev as Linux is case sensitive and the build scripts will not work if Dev is not capitalized.** 
+
+* ``cd ~`` for *Linux* or ``cd /mnt/c/`` for *WSL*
+* ``mkdir Dev``
+* ``cd Dev``
+* ``sudo git clone https://github.com/Microsoft/vcpkg.git``
+
+
+Changing Library Type
+^^^^^^^^^^^^^^^^^^^^^
+
+Before building the *VCPKG* libraries and required projects the ``VCPKG_LIBRARY_LINKAGE`` type must be changed from ``static`` to ``dynamic`` by doing the following: 
+
+* Navigate to ``vcpkg/triplets`` 
+* ``sudo nano x64-linux.cmake``
+  
+  * Change ``set(VCPKG_LIBRARY_LINKAGE static)`` to ``set(VCPKG_LIBRARY_LINKAGE dynamic)``
+  * Hit **ctrl + X** to exit
+  * Hit **y** and **Enter** to save
+
+
+Installing and Required Packages
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+To install the required packages, complete the following (Note: some of the packages may take a long time (20+ minutes) to install):]
+
+* Navigate to ``vcpkg`` by running ``cd ..``
+* ``sudo ./bootstrap-vcpkg.sh``
+* ``sudo ./vcpkg install openssl:x64-linux``
+* ``sudo ./vcpkg install boost:x64-linux``
+
+  * ``boost`` may take a very long time (hours) to install. As it is not part of the current version of VIN™, it is recommended to skip unless needed for some other purpose.
+  
+* ``sudo ./vcpkg install gflags:x64-linux``
+* ``sudo ./vcpkg install gtest:x64-linux``
+* ``sudo ./vcpkg install benchmark:x64-linux``
+* ``sudo ./vcpkg install libtomcrypt:x64-linux``
+* ``sudo ./vcpkg install mpi:x64-linux``
+  
+  * ``mpi`` may have trouble installing. As it was required for older versions of LVM, if trouble occurs during installation skip it and only install if necessary.
+
+* ``sudo ./vcpkg install utf8proc:x64-linux``
+* ``sudo ./vcpkg install zlib:x64-linux``
+* ``sudo ./vcpkg install pcre:x64-linux``  
+
+  * This generates an erorr which can be ignored.
+  
+* ``sudo ./vcpkg install expat:x64-linux``
+* ``sudo ./vcpkg install pthread:x64-linux``
+
+
+Acquiring the Projects and Build Libraries
+==========================================
+
+The ``aff3ct``, ``poco`` and ``lvm`` projects can be obtained in two different ways. One is by cloning the repositories from Virgil Systems’ *GitLab*, the other by downloading them, in a pre-built condition, from *JFrog*. While cloning the repositories requires taking the time to build them, it allows for more options as the projects may need to be modified by the developer. Instructions for both methods are listed below but note that whichever way is chosen, the ``qtoken-cpp`` project must be cloned and built.
+
+
+Cloning the Projects and Build Libraries
+----------------------------------------
+
+Run the following commands to clone the required build libraries and projects. The location for these projects for Linux should be ``~/Dev`` and WSL should be ``/mnt/c/Dev``. Be sure that a connection with Virgil System’s VPN (vpn.optimusprime.ai) is established and run ``ssh -T git@gitlab.optimusprime.ai`` to ensure communication with *GitLab* is okay.
+
+
+Aff3ct
+^^^^^^
+
+* Navigate to ``Dev`` by running ``cd ..``
+* ``git clone --recursive -j8 git@gitlab.optimusprime.ai:virgilsystems/external/aff3ct.git``
+* ``cd aff3ct``
+* ``git checkout master``
+
+Poco
+^^^^
+
+* Navigate to ``Dev`` by running ``cd ..``
+* ``git clone git@gitlab.optimusprime.ai:virgilsystems/prototypes/poco.git``
+* ``cd poco``
+* ``git checkout virgil``
+
+LVM
+^^^
+
+* Navigate to ``Dev`` by running ``cd ..``
+* ``git clone git@gitlab.optimusprime.ai:virgilsystems/external/lvm.git``
+* ``cd lvm``
+* ``git checkout WindowsDev``
+
+
+Acquiring Pre-Built Projects
+----------------------------
+
+**THIS STILL NEEDS TO BE FIGURED OUT. DO NOT USE THIS METHOD AS IT IS CURRENTLY!**
+
+Using this method allows for bypassing the build process for the ``aff3ct``, ``poco`` and ``lvm`` projects. Make sure that JFrog access has been granted and visit https://opai.jfrog.io/ui/packages and do the following:
+
+* In the left pane, Artifactory -> Artifacts -> VIN
+* Download VCPKG_build_libs.zip
+* Extract the contents of VCPKG_build_libs.zip into ``Dev``
+
+
+Cloning qtoken-cpp
+------------------
+
+qToken-cpp:
+
+* Navigate to ``Dev``
+* ``git clone --recursive -j8 git@gitlab.optimusprime.ai:virgilsystems/prototypes/qtoken-cpp.git``
+* ``cd qtoken-cpp``
+* ``git checkout dev``
+
+
+Upon completion, the ``Dev`` folder should now contain the following folders:
+
+* ``aff3ct``
+* ``lvm``
+* ``poco``
+* ``qtoken-cpp``
+* ``vcpkg``
+
+
+Building the Projects 
+---------------------
+
+This process will build and install the projects using scripts (``linuxbuild.sh`` for *Linux* and ``wslbuild.sh`` for WSL) found in the ``zbuild`` folder of each project (Note: builds (e.g., ``affc3t``) may take over one hour to complete). Furthermore, the scripts will be build the projects in the proper folder structure to ensure that the ``qtoken-cpp`` project will have all of the necessary files to build correctly. Additionally, they will build both ``Debug`` and ``Release`` version of the projects. Be sure to build these projects in the order they appear below (i.e., ``affct``, ``poco``, ``lvm``, and ``qtoken-cpp``) as there are dependencies between them. Note that only ``qtoken-cpp`` needs to be built if the other projects were obtained from *JFrog*. To complete the following:
+
+* Navigate to ``Dev/aff3ct/zbuild``
+* ``./linuxbuild.sh`` or ``./wslbuild.sh``
+* Navigate to ``Dev/poco/zbuild``
+* ``./linuxbuild.sh`` or ``./wslbuild.sh``
+* Navigate to ``Dev/lvm/zbuild``
+* ``./linuxbuild.sh`` or ``./wslbuild.sh``
+* Navigate to ``Dev/qtoken-cpp/zbuild``
+* ``sudo ./linuxbuild.sh`` or ``sudo ./wslbuild.sh``
+
+Building ``qtoken-cpp`` does not copy any files to the Linux standard folders; thus, to run the application, the libraries can be manually copied, or accomplished by the recommended approach, by adding the output install folder to the system library search. In the ``qtoken-cpp/scripts/linuxhelper`` folder there are script files for *Linux* and *WSL* named ``instcfg_linux.sh`` and ``instcfg_wsl.sh``, respectively. The respective script should be run after all of the projects are built in order to set ``qtoken-cpp`` libs in the system libs path. This will allow the executables to run without manually copying the libs. 
+
+Run the following scripts for Linux or WSL:
+
+* Navigate to ``Dev/qtoken-cpp/scripts/linuxhelper/``
+* Run ``./instcfg_linux.sh`` for *Linux* or ``./instcfg_wsl.sh`` for *WSL*
+
+The build scripts (i.e., ``linuxbuild.sh`` and ``wslbuild.sh``) set the parameter ``-DLINUX_VCPKG="False"`` to ``-DLINUX_VCPKG="True"``. This switch sets specific settings in the ``CMakeList.txt`` files to ensure that the appropriate libraries (in *VCPKG*) are located.
+
+
+Installing the VIN™
+===================
+
+After finishing building the ``qtoken-cpp`` project, installing the VIN™ using the most up-to-date ``.DEB`` file will allow it to be run from any directory. To do so for either *Linux* or *WSL* complete the following:
+
+* Navigate to ``Dev/qtoken-cpp/out/install/WSL-GCC-Release/PACKAGES`` for the release build or ``Dev/qtoken-cpp/out/install/WSL-GCC-Debug/PACKAGES`` for the debug build. Note: the following examples will use the release version.
+* Run ``ls`` and copy the ``<name>`` of the installation file. For example, ``QToken-CPP_1.1.0-x86_64-POCO.deb``
+* Run ``sudo apt install ./<name>.deb`` where ``<name>`` is copied file name
+
+
+Configuration
+=============
+
+The ``DEB`` package will install a file named ``defaults.cfg`` in the ``/etc/opt/VIN/`` folder. This file can be used to modify a number of *VIN™* parameters (refer to :doc:`configuration` section for more information). Furthermore, the temporary file (i.e., outputs, logs, etc.) locations are created and stored based on the information in this file. The base directory for these files is ``/opt/VIN`` and ``/var/log/VIN`` which is accessible by all users. For example, the log files are stored in ``/var/log/VIN/logs/``.
+
+
+Running the VIN™
+================
+
+These instructions will run instances of the VIN™ from the ``qtoken-cpp`` project folder (release in this example but debug may also be used). However, if the VIN™ was installed correctly by following the steps above, it can be run from any directory. Be aware that there may be differences between the installed version and those found in the release/debug folders.
+
+
+Start a Bootstrap Node
+----------------------
+
+* Navigate to ``Dev/qtoken-cpp/out/install/WSL-GCC-Release/bin``
+* ``./VIN -app -b 127.0.01``
+* If successful, the output should look like the figure below:
+
+.. figure:: images/developing_with_linux_wsl/linux_bootstrap_connected.png
+  :width: 500
+  :align: center
+  :alt: VIN™ Successful Bootstrap Connection
+
+  VIN™ Successful Bootstrap Connection
+
+Run the First Peer Node
+-----------------------
+
+* Navigate to ``Dev/qtoken-cpp/out/install/WSL-GCC-Release/bin``
+* ``./VIN -app -n -a 127.0.0.1 -h 7071 -p 8081 -r 9091``
+* If successful, the output should look like the figure below:
+
+.. figure:: images/developing_with_linux_wsl/linux_peer_connected.png
+  :width: 500
+  :align: center
+  :alt: VIN™ Successful Peer Connection
+
+  VIN™ Successful Peer Connection
+
+Run the Second Peer Node
+------------------------
+
+* Navigate to ``Dev/qtoken-cpp/out/install/WSL-GCC-Release/bin``
+* ``./VIN -app -n -a 127.0.0.1 -h 7080 -p 8080 -r 9090``
+* If successful, the output should look similar to the above figure.
+
+Running the VIN™ Command Line Interface (VIN_CLI)
+--------------------------------------------------
+
+* Navigate to ``Dev/qtoken-cpp/out/install/WSL-GCC-Release/bin``
+* ``./VIN_CLI 127.0.0.1 7080``
+* If successful, the output should look like the figure below:
+
+.. figure:: images/developing_with_linux_wsl/linux_vincli_connected.png
+  :width: 500
+  :align: center
+  :alt: Succesful VIN_CLI Connection
+
+  Successful VIN_CLI Connection
+
+For more information on the commands available to the *VIN™ CLI*, please type ``help`` with a *VIN™ CLI* running or refer to the :doc:`vin_cli` section of the documentation.
+
+Sharing a File
+--------------
+
+Start by creating a test file named ``vin_test.txt``. For this example, it will be created in ``Dev/test`` and contain the text “This is a test of the VIN”. Do so by completing the following:
+
+* In a new command line instance, navigate to ``Dev``
+* ``mkdir test``
+* ``cd test``
+* ``nano vin_test.txt`` 
+* Add the text “This is a test of the VIN”
+  
+  * **ctrl + x** -> **y** -> Hit **Enter**
+ 
+* ``readlink -f vin_test.txt``
+  
+  * Copy the output as the ``<file_path>``
+
+* To share the file, in the VIN_CLI instance run ``share <file_path> 127.0.0.1 9091`` 
+* If the command worked the following output should be observed:
+
+.. figure:: images/developing_with_linux_wsl/linux_share.png
+  :width: 500
+  :align: center
+  :alt: Succesful Share
+
+  Successful Share
+
+* To manually confirm that the file was shared successfully, run ``cd /opt/VIN/outputs/vin_test`` (in a command line window that isn't running any VIN™ instances) and run ``nano vin_test.txt`` to verify the contents of the text file.
+
+
+Troubleshooting
+===============
+
+This section contains all presently known issues and potential solutions to these issues that may occur during the Linux and WSL environment setup.
+
+
+./linux.sh Build Error
+----------------------
+
+On possible cause is that the ``Dev`` folder may have been created as ``dev``. Linux is case sensitive so the folder must be capitalized (i.e., ``Dev``). Renaming the folder will not work as *VCPKG* and the cloned repositories will remember it as ``dev``. To fix it, either delete the folder and start the installation process over or run ``ln -s dev Dev`` to create a symbolic link between the two folders. 
+
+.. figure:: images/developing_with_linux_wsl/linux_sh_build_error.png
+  :width: 500
+  :align: center
+  :alt: ./linux.sh Build Error
+
+  ./linux.sh Build Error
+
+
+LVM Build Issue using ./wslbuild.sh
+-----------------------------------
+
+If the following output appears when attempting to build *LVM*, it indicates that a library from ``openssl`` may be missing.
+
+.. figure:: images/developing_with_linux_wsl/lvm_wsl_build_issue.png
+  :width: 500
+  :align: center
+  :alt: LVM Build Issue
+
+  LVM Build Issue
+
+To fix this issue, complete the following:
+
+* Navigate to ``Dev/vcpkg``
+* ``sudo ./vcpkg remove --recurse openssl:x64-linux`` to remove ``openssl``
+* ``sudo ./bootstrap-vcpkg.sh``
+* ``sudo ./vcpkg install openssl:x64-linux`` to re-install ``openssl``
+* Navigate to ``Dev/lvm/zbuild``
+* ``./wslbuild.sh``
+
+
+Issues with VCPKG Packages and/or ./linuxbuild.sh
+-------------------------------------------------
+
+If an error occurs during the building of any project which cannot be identified, removing all traces of *VCPKG* and reinstalling them may fix it.
+
+To begin, the cached versions of the *VCPKG* packages should be deleted. To do so: 
+
+* Log on as a *superuser* by running ``sudo -i`` and entering a password
+* ``cd /root/.cache``
+* ``ls`` to make sure the ``vcpkg`` folder is there
+* ``cd vcpkg``
+* ``rm -rf vcpkg``
+
+Next uninstall all of the packages:
+
+* ``cd /home/<user_name>/Dev/vcpkg/``
+* ``./vcpkg remove --recurse <pkg_name>:x64-linux``
+
+  * Where ``<pkg_name>`` is the name of the pacakge, for example ``openssl``
+
+* After uninstalling, check the list of installed packages
+
+  * ``./vcpkg list --triplet x64-windows``
+
+* Exit *superuser* by running ``exit``
+* Reinstall all of the *VCPKG* packages and try building once again
+
+
+Error Building qtoken-cpp with ./linuxbuild.sh
+----------------------------------------------
+
+If the error in the figure below occurs when trying to build ``qtoken-cpp`` using ``./linuxbuild.sh``, build the project by running ``sudo ./linuxbuild.sh`` instead.
+
+.. figure:: images/developing_with_linux_wsl/linux_building_qtoken_error.png
+  :width: 500
+  :align: center
+  :alt: qtoken-cpp Build Issue
+
+  qtoken-cpp Build Issue

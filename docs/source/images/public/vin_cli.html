@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>VIN™ Command Line Interface (CLI) &mdash; VIN™ Reference Guide 0.1 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/custom.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Configuration Options" href="configuration.html" />
+    <link rel="prev" title="Developing with Linux and WSL" href="developing_with_linux_wsl.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> VIN™ Reference Guide
+            <img src="_static/virgil_v_black.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="vin_description.html">VIN™ Description</a></li>
+<li class="toctree-l1"><a class="reference internal" href="getting_started_at_virgil.html">Getting Started at Virgil Systems</a></li>
+<li class="toctree-l1"><a class="reference internal" href="developing_with_windows.html">Developing with Windows</a></li>
+<li class="toctree-l1"><a class="reference internal" href="developing_with_linux_wsl.html">Developing with Linux and WSL</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">VIN™ Command Line Interface (CLI)</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#running-the-vin-cli">Running the VIN™ CLI</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#running-a-simple-network-and-basic-functionality">Running a Simple Network and Basic Functionality</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#ip-network">IP Network</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#sharing-a-file">Sharing a File</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#gathering-a-file">Gathering a File</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#spreading-a-file">Spreading a File</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#deleting-a-node">Deleting a Node</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#shutting-down-a-network">Shutting Down a Network</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#vin-cli-flags">VIN™ CLI Flags</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="configuration.html">Configuration Options</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sample_use_cases.html">Sample Use Cases</a></li>
+<li class="toctree-l1"><a class="reference internal" href="key_concepts.html">Key Concepts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dashboard.html">VIN™ Dashboard</a></li>
+<li class="toctree-l1"><a class="reference internal" href="vin_statistics.html">VIN™ Statistics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="vin_metrics.html">VIN™ Metrics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="release_notes.html">Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="glossary.html">Glossary</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">VIN™ Reference Guide</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>VIN™ Command Line Interface (CLI)</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/vin_cli.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="vin-command-line-interface-cli">
+<h1>VIN™ Command Line Interface (CLI)<a class="headerlink" href="#vin-command-line-interface-cli" title="Permalink to this headline"></a></h1>
+<p>The VIN™ CLI acts as a Hypertext Transfer Protocol (HTTP) client for reaching the VIN™ HTTP server from the command line in a Linux environment. It will be installed during the installation of the VIN™.</p>
+<section id="running-the-vin-cli">
+<h2>Running the VIN™ CLI<a class="headerlink" href="#running-the-vin-cli" title="Permalink to this headline"></a></h2>
+<p>The VIN™ CLI can be used for VIN™ nodes on both a local machine and on the network with the following being the command for starting up the VIN™ CLI:</p>
+<p>For a local machine with default settings:</p>
+<ul class="simple">
+<li><p>Run a terminal session and enter:</p></li>
+</ul>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">./VIN_cli &lt;vinnode_hostname_or_IP&gt; &lt;vinnode_http_server_port&gt;</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>For example, a VIN™ running on a local machine would be <code class="docutils literal notranslate"><span class="pre">./VIN_cli</span> <span class="pre">localhost</span> <span class="pre">9980</span></code> where 9980 is the default HTTP port for the node.</p></li>
+</ul>
+<p>If a port other than 9980 needs to be specified, it can be done so using the <code class="docutils literal notranslate"><span class="pre">-h</span> <span class="pre">flag</span></code>:</p>
+<ul class="simple">
+<li><p>As an example, executing the following:</p></li>
+</ul>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">./VIN -p 60001 -r 60601 -h 60660</span>
+</pre></div>
+</div>
+<p>has the internode comm port set to 60001, the secure receipt port to 60601 and the HTTP command port at 60660.</p>
+<p>Once a connection with the VIN™ CLI has been established, clicking help in the CLI allows for the viewing of commands and their usages. (Note: these are also listed below for reference.)</p>
+<p>The following table displays a list of commands that are accessible by the VIN™ CLI:</p>
+<table class="colwidths-given docutils align-default" id="id1">
+<caption><span class="caption-text">VIN™ CLI Supported Commands</span><a class="headerlink" href="#id1" title="Permalink to this table"></a></caption>
+<colgroup>
+<col style="width: 15%" />
+<col style="width: 35%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Command</p></th>
+<th class="head"><p>Command Line Instruction</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Put</p></td>
+<td><p>put &lt;key&gt; &lt;value&gt;</p></td>
+<td><p>Puts a user provided value onto the network which corresponds to the user provided key.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Get</p></td>
+<td><p>get &lt;key&gt;</p></td>
+<td><p>Requires a given key and returns the Key-Value pair from the respective node. The value is displayed in the CLI window. No other output is displayed.</p></td>
+</tr>
+<tr class="row-even"><td><p>Spread</p></td>
+<td><p>spread &lt;filepath&gt;</p></td>
+<td><p>Splits a file of any type located in a given path into tokens and then spreads them across the network. An encrypted cryptographic receipt is then generated and stored in ‘/opt/VIN/receipts/sent’.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Share</p></td>
+<td><p>share &lt;filepath&gt; &lt;ip address&gt; &lt;port of another node&gt;</p></td>
+<td><p>Spreads a file, then the peer will automatically establish a secure channel with the IP address and receipt port of specified peer in the network and transfer the encrypted cryptographic receipt. The receiver peer will automatically call ‘gather’ on the receipt once decrypted.</p></td>
+</tr>
+<tr class="row-even"><td><p>Gather</p></td>
+<td><p>gather &lt;receipt filepath&gt;</p></td>
+<td><p>Gathers a spread file using the given receipt. It will be reassembled into the output directory ‘/opt/VIN/outputs’.</p></td>
+</tr>
+<tr class="row-odd"><td><p>GetPeers</p></td>
+<td><p>getPeers</p></td>
+<td><p>Get the addresses and ports for all nodes connected on this network.</p></td>
+</tr>
+<tr class="row-even"><td><p>Shutdown</p></td>
+<td><p>shutdown</p></td>
+<td><p>Send a shutdown signal to the current node that the user is connected to.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="running-a-simple-network-and-basic-functionality">
+<h2>Running a Simple Network and Basic Functionality<a class="headerlink" href="#running-a-simple-network-and-basic-functionality" title="Permalink to this headline"></a></h2>
+<p>To run a simple VIN™ on a local machine a minimum of three VIN™ nodes (one bootstrap node and two sender/receiver nodes) must be instantiated. To do so, the following steps should be completed:</p>
+<ul class="simple">
+<li><p>Open three terminal sessions in the directory where the VIN™ executable resides.</p></li>
+<li><p>Within one of the sessions, run:</p></li>
+</ul>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">./VIN -b</span>
+</pre></div>
+</div>
+<p>This will serve as the bootstrap node and will occupy port 8000 for incoming connections.</p>
+<ul class="simple">
+<li><p>On another session, run:</p></li>
+</ul>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">./VIN</span>
+</pre></div>
+</div>
+<p>This will start a VIN peer on the default port for data (8080) and the default receipt server (9090)</p>
+<ul class="simple">
+<li><p>On the final terminal window, run:</p></li>
+</ul>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">./VIN -p &lt;DATA_PORT&gt; -r &lt;RECEIPT_PORT&gt;</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Where <code class="docutils literal notranslate"><span class="pre">&lt;DATA_PORT&gt;</span></code> and <code class="docutils literal notranslate"><span class="pre">&lt;RECEIPT_PORT&gt;</span></code> must be different than that of the other peer (i.e., different than 8080 and 9090, respectively).</p></li>
+</ul>
+<section id="ip-network">
+<h3>IP Network<a class="headerlink" href="#ip-network" title="Permalink to this headline"></a></h3>
+<p>To run a simple VIN™ on an IP based network, such as Amazon Web Service (AWS), a Local Area Network (LAN) with routers/switches and Dynamic Host Communication Protocol (DHCP), VMware, etc., these steps should be followed:</p>
+<ul class="simple">
+<li><p>Complete the <code class="docutils literal notranslate"><span class="pre">Installation</span></code> steps for all systems that will be in the network (Note: mass deployment will be an upcoming feature).</p></li>
+<li><p>For each system, from the VIN executable directory, run:</p></li>
+</ul>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">./VIN -b</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>This will start a bootstrap node. Be sure to record the IP address of this device.</p></li>
+<li><p>In all subsequent nodes, use a text editor to edit the configuration file located in the directory: /etc/opt/VIN/defaults.cfg. (For more information on defaults.cfg, please refer to the <a class="reference internal" href="configuration.html"><span class="doc">Configuration Options</span></a> section).</p></li>
+<li><p>Replace the <code class="docutils literal notranslate"><span class="pre">bootstrap_ip</span></code> variable with <code class="docutils literal notranslate"><span class="pre">bootstrap_ip</span> <span class="pre">=</span> <span class="pre">&quot;&lt;bootstrap_ip&gt;:&lt;bootstrap_port&gt;:&quot;</span></code>; (Note: be sure to leave the quotes (”) intact.</p></li>
+<li><p>Following this, on all non-bootstrap nodes, run:</p></li>
+</ul>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">./VIN</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>At this point, a Virgil Integrity Network™ has been successfully launched with each peer having access to a VIN™ CLI window and its commands.</p></li>
+</ul>
+<p>Note: any node can run in the background (i.e., as a background process) if it is needed. To do so, within a VIN™ CLI from the VIN executable directory, simply enter the command:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">./VIN &amp; &gt; /dev/null or /VIN -p &lt;DATA_PORT&gt; -r &lt;RECEIPT_PORT&gt; &amp; &gt; /dev/null</span>
+</pre></div>
+</div>
+<p>These nodes can be shutdown from the VIN™ CLI (refer to the VIN™ CLI Installation and Usage section). To ensure correct functionality, please confirm that no other processes are using any of the previously assigned ports.</p>
+</section>
+</section>
+<section id="sharing-a-file">
+<h2>Sharing a File<a class="headerlink" href="#sharing-a-file" title="Permalink to this headline"></a></h2>
+</section>
+<section id="gathering-a-file">
+<h2>Gathering a File<a class="headerlink" href="#gathering-a-file" title="Permalink to this headline"></a></h2>
+</section>
+<section id="spreading-a-file">
+<h2>Spreading a File<a class="headerlink" href="#spreading-a-file" title="Permalink to this headline"></a></h2>
+</section>
+<section id="deleting-a-node">
+<h2>Deleting a Node<a class="headerlink" href="#deleting-a-node" title="Permalink to this headline"></a></h2>
+</section>
+<section id="shutting-down-a-network">
+<h2>Shutting Down a Network<a class="headerlink" href="#shutting-down-a-network" title="Permalink to this headline"></a></h2>
+</section>
+<section id="vin-cli-flags">
+<h2>VIN™ CLI Flags<a class="headerlink" href="#vin-cli-flags" title="Permalink to this headline"></a></h2>
+<p>const std::string HELP_FLAG = “–help”;
+const std::string LIST_FLAG = “-l”;
+const std::string BOOT_FLAG = “-b”;
+const std::string NODE_FLAG = “-n”;
+const std::string CONFIG_DIR_FLAG = “-c”;
+const std::string BOOTSTRAP_IP_FLAG = “-a”;
+const std::string BOOTSTRAP_PORT_FLAG = “-s”;
+const std::string KADEMLIA_PORT_FLAG = “-p”;
+const std::string RECEIPT_PORT_FLAG = “-r”;
+const std::string HTTP_PORT_FLAG = “-h”;
+const std::string LVM_PORT_FLAG = “-v”;</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="developing_with_linux_wsl.html" class="btn btn-neutral float-left" title="Developing with Linux and WSL" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="configuration.html" class="btn btn-neutral float-right" title="Configuration Options" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021, Virgil Systems.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>  
+
+  <style>
+    
+    /* Sidebar header (and topbar for mobile) */
+    .wy-side-nav-search, .wy-nav-top {background: #00ff00;}
+    
+    /* Sidebar */
+    .wy-nav-side {background: #000000;}
+    
+    /* Make a class to allow for center alignment of text */
+    .text-align-center { text-align: center; }
+
+    /* Change the background color to pure white so that images with white backgrounds look ok */
+    /* while this changes the background, it also affects the sidebar and search bar. will need to find another way to do this if needed.*/
+    /*div {background-color: #ffffff;}*/
+    
+
+  </style>
+
+
+</body>
+</html>
