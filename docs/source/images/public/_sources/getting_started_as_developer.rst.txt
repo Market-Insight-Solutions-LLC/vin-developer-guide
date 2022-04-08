@@ -1,0 +1,707 @@
+******************************
+Getting Started as a Developer
+******************************
+
+
+Setting up Git
+==============
+
+Before development can begin, it is imperative that access to Virgil Systems’ *GitLab* be acquired and that *Git* tools are installed. To install *Git* and the required tools do the following:
+
+* Download and install *Git* by visiting https://git-scm.com/downloads 
+* Click on the link for the required operating system and follow the instructions to install *Git*
+
+
+Generating an SSH key 
+---------------------
+
+* Connect to the Virgil Network via *Cisco AnyConnect* (if this is not available contact the Virgil Systems’ administrative team for assistance).
+* Right-click on the desktop, or wherever you wish to clone the repository, and click **Git Bash Here**
+* Copy and paste ``ssh -T git@gitlab.optimusprime.ai`` in the *Git Bash* window and hit **Enter**
+* Type in **yes** when prompted and then hit enter
+* Copy and paste ``ssh-keygen -t rsa`` into the *GitBash* window and hit **Enter** (may require multiple **Enters**)
+* For Windows:
+  
+  * Navigate to the folder to ``c:/Users/Name/.ssh/`` where ``Name`` is your name (i.e., JohnSmith)
+  * Open ``id.rsa.pub`` using a text editor (i.e., *notepad++*) and copy the entire line found inside the file
+
+* For Linux:
+  
+  * Run ``cat ~/.ssh/id_rsa.pub``
+  * Copy the output
+
+
+Cloning a Repository 
+--------------------
+
+* Visit https://gitlab.optimusprime.ai/ 
+* Click on the profile icon in the top right corner of the window
+   
+  * Click **Preferences** from the list
+
+* Click **SSH Keys** on the left side of the screen
+* Paste the SSH key copied from ``id.rsa.pub`` into the field 
+  
+  * Click the **Add key** button
+  
+* In *GitLab*, navigate to the ``qtoken-cpp`` project, or whichever one that is required
+* Click the blue **Clone** button
+* Copy the link in field under the heading **Clone with SSH** (e.g., ``git@gitlab.optimusprime.ai:virgilsystems/prototypes/qtoken-cpp.git``)
+* Type ``git clone`` and paste the copied link into *Git Bash* and hit **Enter**
+* The project should now be cloned to computer in the location *Git Bash* was run from
+
+
+Setting up Branches and Committing
+----------------------------------
+
+The ``master`` branch will be checked out upon completing the cloning process. As the ``dev`` branch contains the latest changes, immediately check out this branch by running ``git checkout dev`` in the *Git Bash* window. The ``master`` branch is for releases only and should never be pushed to directly. Similarly, ``dev`` should never be pused to directly as any updated code must pass a review.
+
+The process for updating a branch is as follows:
+
+* From the ``dev`` branch, after making sure the latest changes have been pulled (i.e., running ``git pull origin dev``), create a new branch called ``vinXXX_feature``, where ``XXX`` refers to the *Jira* ticket number (i.e., ``git checkout -b vinXXX_feature``). This number can be found in the top-left corner of the *Jira* ticket. For example, if working on a streaming branch, with a ticket number of 123, the name would be ``vin123_streaming``. 
+* When development of the task has been finished, commit the changes, making sure to add any files and folders required (see `Basic Git Commands`_ for more information).
+* Following this, make sure to pull down (i.e., ``git pull origin dev``) and merge (if necessary) from the ``dev`` branch as there may be additional changes from other developers.
+* After the merge changes have been completed, commit, and push once more, then proceed to *GitLab* on a browser. On the left side, click **Merge Requests**. Create a new merge request from the current working branch (e.g., ``vin123_streaming``) into the ``dev`` branch and assign a reviewer to go through the changes. If you are unsure which reviewer to choose, contact the team lead.
+* Once the review is finished, view their recommended changes by going to the **Changes** tab under **Merge Requests**.
+* Make the suggested changes, commit, and push them once more.
+* Finally, the reviewer will approve your merge request and they will merge it into ``dev`` where it will begin validation through the CI/CD pipeline.
+
+
+Basic Git Commands
+------------------
+
+Creating new branch
+^^^^^^^^^^^^^^^^^^^
+
+``git checkout -b yourBranchName`` and once the branch has been created, ``git checkout yourBranchName`` will switch to that branch.
+
+
+Pulling from branch
+^^^^^^^^^^^^^^^^^^^
+
+``git pull origin dev`` pulls from the remote dev branch.
+
+
+Committing to a Repository
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+* ``git status`` generates a list of changes made in your branch. It is important to do this in order to see which files need to be added to the commit.
+
+* ``git add`` adds the newly added files to the commit. A folder can be added by putting quotations around it (i.e., “folder”).
+	
+* ``git commit -a -m “Message regarding what’s being committed”`` where ``-a`` is for all tracked files and ``-m`` is for the message
+
+* ``git push -u origin yourBranchName`` pushes the changes to the branch on the repository.
+ 
+
+Linux Environment Setup
+=======================
+
+ADD INFORMATION ONCE AVAILABLE.
+
+
+Windows Environment Setup
+=========================
+
+Be sure to follow each and every instruction step-by-step in order to ensure the prper set up of the Windows Environment. If an issue occurs during the setup, refer to the `Troubleshooting`_ section. If the issue is not documented, contact a Virgil System employee for assitance.
+
+Pre-Requisites
+--------------
+
+Before beginning the environment set up, it is necessary to have the following:
+
+* Access to Virgil System’s *GitLab*. Contact the Virgil Systems’ administrative team for more information if required.
+
+* A SSH key registered to your account which is required to clone the repositories. Refer to the `Setting up Git`_ section and follow the instructions if needed.
+	
+* Virgil Systems’ VPN (``vpn.optimusprime.ai``) is set up and the connection is established. Contact the Virgil Systems’ administrative team for more information if required.
+
+* If you wish to use pre-built libraries, access to Virgil Systems’ *JFrog* account is necessary. Contact the Virgil Systems’ administrative team for more information if required.
+
+
+GitLab Branch Information
+-------------------------
+
+The following branches, located in Virgil Systems’ *GitLab*, are used for the creation of the VIN™ Windows Environment. 
+
+https://gitlab.optimusprime.ai/virgilsystems/external/aff3ct/-/tree/master
+https://gitlab.optimusprime.ai/virgilsystems/prototypes/poco/-/tree/virgil
+https://gitlab.optimusprime.ai/virgilsystems/external/lvm/-/tree/WindowsDev
+https://gitlab.optimusprime.ai/virgilsystems/prototypes/qtoken-cpp/-/tree/dev
+
+While these may be updated, the environment setup can still be used with older versions of these branches. However, the information for the environment creation should be updated periodically to ensure the functionality of the resources required.
+
+
+Software and Tool Installation
+------------------------------
+
+Installing Visual Studio
+^^^^^^^^^^^^^^^^^^^^^^^^
+
+Visit https://visualstudio.microsoft.com/downloads/ to download *Visual Studio 2022 Community Edition*. 
+
+Click on the **Free download** button underneath **Community**. This will open a new page and will start the download of a file with a name similar to ``vs_community__XX.exe``, where ``XX`` will be a series of letters and numbers.
+
+Run the executable file to begin the installation and follow the steps until reaching the following screen:
+
+.. figure:: images/getting_started_as_developer/windows/vs2022_install_window.png
+  :width: 700
+  :align: center
+  :alt: Visual Studio 2022 Install Window
+
+  Visual Studio 2022 Install Window
+
+Be sure to check the following to include the required and recommended packages:
+
+* Mobile development with .NET
+* .NET desktop development
+* Desktop development with C++
+* Mobile development with C++
+* Linux development with C++
+
+Note: while all of these may not be required to install the VIN™, they may be used in future development projects. Thus, it is recommended to include them.
+
+* Click **Install** in the bottom right corner. Note: the installation process may take 5-10 minutes.
+* Click **Not now, maybe later** (if desired, click **Sign in** or **Create an Account**)
+* Keep **General** selected for the **Development Settings**, choose whichever color theme is preferred and click **Start Visual Studio**.
+* After confirming that *Visual Studio* loads, close it and re-run the ``vs_community__XX.exe``. 
+* Click **Modify** and make sure that all of the packages that were required are checked.
+
+
+Installing PowerShell 7
+^^^^^^^^^^^^^^^^^^^^^^^
+
+Many command line tools will work for the upcoming steps, however as this is a Windows specific guide, PowerShell will be used to run commands from the command line. If for instance a Linux based tool is used, such as GitBash, be sure to change the back slashes to forward slashes in the command (other than when dealing with urls).
+
+While any PowerShell version should work, it is recommended to install 7 or higher. Visit https://docs.microsoft.com/en-us/powershell/scripting/install/installing-powershell-on-windows?view=powershell-7.2#msi for Windows specific versions of PowerShell.
+
+Click on ``PowerShell-7.2.0-win-x64.msi`` for a 64-bit operating system or ``PowerShell-7.2.0-win-x86.msi`` for a 32-bit (Note: 7.2.0 may vary depending on the version being downloaded). To determine if your device is 32 or 64-bit perform the following:
+
+* Windows Start Menu -> Settings -> System -> About -> System type
+  
+Finally, to install, run the PowerShell.exe file and follow the prompts. Be sure to select the following options during installation to enable the ability to run PowerShell from the context menu.
+
+.. figure:: images/getting_started_as_developer/windows/powershell_options.png
+  :width: 350
+  :align: center
+  :alt: PowerShell Options
+
+  PowerShell Options
+
+
+Installing CMake
+^^^^^^^^^^^^^^^^
+
+* Navigate to https://cmake.org/download/
+* Scroll down and click on ``cmake-3.22.0-windows-x86_64.msi`` to download the file
+* Run the ``MSI`` file and follow the prompts
+* Select **Add CMake to the system PATH for all users**
+* Complete the installation
+
+
+Installing Git Client
+^^^^^^^^^^^^^^^^^^^^^
+
+Note: if the `Setting up Git`_ section was completed was prior to the environment setup, this step can be skipped. 
+
+The *Git Client* package includes the tools required to leverage *Git* functionality (e.g., *Git Bash*) on *Windows*. To download, navigate to https://git-scm.com/downloads/ and click on **Windows**.
+
+Run the downloaded executable file and follow the prompts while keeping the default settings.
+
+
+Installing WiX (Windows Installer XML (Extensible Markup Language)) Toolset
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+The *WiX* toolset is used to create the installation, ``MSI`` files and ``ZIP`` files.
+
+* *WiX* requires ``.net 3.5`` in order to function correctly. Thus, before installing *WiX*, visit https://dotnet.microsoft.com/download/dotnet-framework/net35-sp1 and click **Download .NET Framework 3.5 SP1 Runtime**.
+* Run ``dotnetfx35.exe`` and follow the prompts. 
+* To download *WiX*, visit https://wixtoolset.org/releases/ and click on **Download WIX V3.11.2** (Note: the version number may vary) which will open a new page.
+* Scroll down and choose ``wix311.exe`` to download the executable file.
+* Run ``wix311.exe``, click **Install** and **Exit** after the installation completes.
+
+The *WiX* binary folder must be included in the *Windows* system path in order to be correctly recognized. To do so, perform the following:
+
+* Type **Environment** in the Windows search bar on the bottom left of the screen
+* Click **Edit the system environment variables**
+* Click **Environment Variables…**
+* Under **System Variables**, click **Path** and then **Edit**
+* Copy ``C:\Program Files (x86)\WiX Toolset v3.11\bin``
+
+  * Note: this is the default *WiX* installation folder. If it was installed elsewhere, please use that location instead.
+
+* Click **New** and paste the copied directory path
+* Click **OK** three times
+
+
+Installing Microsoft Package Manager (VCPKG) and Required Packages
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+As the VIN™ leverages a number of libraries, using the *VCPKG* package manager is ideal. Furthermore, it is easiest to do so from a command line interface (e.g., *PowerShell*). For more information on *VCPKG* visit: 
+
+* https://vcpkg.io/en/index.html 
+* https://github.com/microsoft/vcpkg
+* https://vcpkg.io/en/getting-started.html
+
+
+To begin, create a folder as the install location for *VCPKG*. It is recommended to use ``C:\Dev``.
+
+* Open *PowerShell* and type ``cd C:\Dev`` to point to the correct directory
+* Copy, paste (right click on the *PowerShell* title bar, then edit and paste, or press **ctrl + v** with the window selected) and run (hit **Enter**) the following one at a time:
+   
+  * ``git clone https://github.com/microsoft/vcpkg``
+  * ``.\vcpkg\bootstrap-vcpkg.bat``  
+  * ``.\vcpkg\vcpkg integrate install``  
+
+To install the additional packages required for *Aff3ct*, *Poco* and *qToken*, copy, paste and run the following one at a time (Note: some of these may take 20+ minutes (e.g., boost:x64-windows) to complete):
+
+* ``.\vcpkg\vcpkg install openssl:x64-windows``
+* ``.\vcpkg\vcpkg install boost:x64-windows``
+* ``.\vcpkg\vcpkg install gflags:x64-windows``
+* ``.\vcpkg\vcpkg install gtest:x64-windows``
+* ``.\vcpkg\vcpkg install benchmark:x64-windows``
+
+To install the additional packages required for LVM run the following:
+
+* ``.\vcpkg\vcpkg install mpi:x64-windows``
+
+After running ``.\vcpkg\vcpkg install mpi:x64-windows`` an error will occur as the ``MPI`` build requires a manual installation. Read the messages in *PowerShell* to determine the location of the installer; it should be located ``C:/Dev/vcpkg/downloads/msmpisetup-10.1.12498.exe``. Run this executable and follow the prompts to complete a manual installation.
+
+Re-run the mpi installation and the rest of the required packages one at a time: 
+
+* ``.\vcpkg\vcpkg install mpi:x64-windows``
+* ``.\vcpkg\vcpkg install pcre:x64-windows``
+* ``.\vcpkg\vcpkg install zlib:x64-windows``
+* ``.\vcpkg\vcpkg install expat:x64-windows``
+* ``.\vcpkg\vcpkg install utf8proc:x64-windows``
+* ``.\vcpkg\vcpkg install libtomcrypt:x64-windows``
+
+
+
+Install ConEmu (Recommended)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ConEmu is an advanced console window, also known as a local terminal emulator, which allows running multiple console windows within a single application with tabs and split options. ConEmu acts as terminal (aka console emulator) for "console" type applications (e.g., *PowerShell*, *GitBash*) and sort of tabbed environment (holder) for GUI applications (e.g., *notepad*, *putty*). While this is not necessary for the environment setup, it is a great tool for aiding in development. To install:
+
+* Visit https://conemu.github.io/
+* Click **Download**
+* Click **ConEmu Stable, Installer (32-bit, 64-bit)**
+* Run the executable
+* Choose the system architecture version and follow the promts to complete installation
+
+Vist https://conemu.github.io/en/SplitScreen.html for instructions on how to split console windows.
+
+Acquiring Projects
+------------------
+
+This method of acquiring projects requires cloning the projects using *Git* commands and building the projects with *Visual Studio*. This allows for more robust testing options, such as running them with a debugger and is recommended when developing the *qtoken-cpp* project on *Windows*. However, using the pre-built libraries is an option if simply running/testing the VIN™ is required or if the library projects (i.e., *Aff3ct*, *Poco*, and *LVM*) will not be changed. To acquire the pre-built libraries, and build *qtoken-cpp* with them, please refer to the `Pre-Built Library`_ section.
+
+Cloning Repositories
+^^^^^^^^^^^^^^^^^^^^
+Open an instance of *PowerShell* and follow the steps below to acquire them directly from the *GitLab* repositories.
+
+Aff3ct
+""""""
+
+* Navigate to ``dev``
+* ``git clone --recursive -j8 git@gitlab.optimusprime.ai:virgilsystems/external/aff3ct.git``
+* ``cd aff3ct``
+* ``git checkout master``
+
+Poco
+^^^^
+
+* Navigate to ``dev``
+* ``git clone git@gitlab.optimusprime.ai:virgilsystems/prototypes/poco.git``
+* ``cd poco``
+* ``git checkout virgil``
+
+LVM
+^^^
+
+* Navigate to ``dev``
+* ``git clone git@gitlab.optimusprime.ai:virgilsystems/external/lvm.git``
+* ``cd lvm``
+* ``git checkout WindowsDev``
+
+qToken-cpp
+^^^^^^^^^^
+
+* Navigate to ``dev``
+* ``git clone --recursive -j8 git@gitlab.optimusprime.ai:virgilsystems/prototypes/qtoken-cpp.git``
+* ``cd qtoken-cpp``
+* ``git checkout dev``
+
+The ``c:\dev`` folder should now contain the following folders:
+
+* aff3ct
+* poco
+* lvm
+* qtoken-cpp
+* vcpkg
+
+
+Building the Projects with Visual Studio
+----------------------------------------
+
+All of the projects will be built using the same method listed below:
+
+* Open *Visual Studio 2022*
+* Select **Open a local folder**
+* Navigate to ``C:\Dev\aff3ct``
+* Click **Select Folder**
+* Click **Open CMake Settings editor**
+* On the left, select **x64-Debug**
+* Under **CMake variables and cache**, click **Save and generate CMake cache to load variables**
+* On the top toolbar, select **Build** (Note: the build options may take some time to become available)
+* Click **Rebuild All**
+* After it completes, on the top toolbar, select **Build**
+* Click **Install aff3ct**
+* In the upper right corner click **File**
+* Click **Close Folder**
+  
+This will copy all required files in a separate ``out\install`` folder inside the project folder (i.e., ``C:\Dev\aff3ct``). The rest of the projects to build expect to find headers and libraries in that specific folder, not ``build``. Next, complete all of the above steps for the ``Poco``, ``LVM`` and ``qtoken-cpp`` projects, in that order.
+
+Note: During development you may need to clear and regenerate the cache by performing the following: 
+
+* Right-click **CMakeLists.txt**
+* Select **Delete Cache and Reconfigure** 
+* Click **Yes**
+
+To build the ``Release`` version of the code (this is not necessary during initial setup) do the following:
+
+* Under **CMake Settings**
+* Click **x64-Release**
+* Click **Save and generate CMake cache to load variables**
+* On the top toolbar, select **Build**
+* Click **Rebuild All**
+* After it completes, on the top toolbar, select **Build**
+* Click **Install**
+
+
+Creating an Install Package with Visual Studio
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+The previously installed WiX will be used to create an ``MSI`` file and a ``ZIP`` file of a project. With the ``qtoken-cpp`` folder open in *Visual Studio 2022*, switch to **Target View** by clicking on the button in the image below:
+
+.. figure:: images/getting_started_as_developer/windows/vs2022_target_button.png
+  :width: 350
+  :align: center
+  :alt: Visual Studio 2022 Target Button
+
+  Visual Studio 2022 Target Button
+
+* Click **CMake Targets View**
+* Expand **QToken-CPP Project**
+* Right-click **Packages**
+* Click **Build** and wait for the process to complete
+
+
+Building the Projects using Scripts
+-----------------------------------
+
+The method of building projects with Visual Studio is suited for a development environment, especially in regard to ``qtoken-cpp``, as it allows for more control over changes to the code. However, a simpler and faster way is to build the projects is using the batch files located in the ``zbuild`` folder of each project. This process will build and install the libraries in the proper folder structure, the same way that *Visual Studio* does, to ensure that the ``qtoken-cpp`` project will have all of the necessary files to build correctly. Additionally, they will build both ``Debug`` and ``Release`` version of the projects. Be sure to build these projects in the order they appear below as there are dependencies between them. To build the projects, open an instance of *PowerShell* and complete the following:
+
+* Navigate to ``cd C:\Dev\aff3ct\zbuild``
+* ``.\winbuild.bat``
+* Navigate to ``cd C:\Dev\poco\zbuild``
+* ``.\winbuild.bat``
+* Navigate to ``cd C:\Dev\lvm\zbuild``
+* ``.\winbuild.bat``
+* Navigate to ``cd C:\Dev\qtoken-cpp\zbuild``
+* ``.\winbuild.bat``
+
+With this complete, the VIN™ applications will be available to run and the install packages for the VIN™ will also be generated.
+
+Note: the batch files expect *Visual Studio 2022 Community Edition* to be installed in its default location. If a different version of *Visual Studio* is used or it is installed in a different location the batch must be modified. Furthermore, the batch file requires that *VCPKG* and the *Aff3t*, *Poco*, *LVM* and *qtoken-cpp* projects are stored in the ``C:/Dev`` folder. If not, the batch file will also need to be modified to accomandate the location change. 
+
+
+.. _Pre-Built Library:
+
+Acquiring Projects and Building with Pre-Built Libraries
+--------------------------------------------------------
+
+Using this method allows for bypassing the build process for *Aff3ct*, *Poco* and *LVM*. With *JFrog* access granted, visit https://opai.jfrog.io/ui/packages and do the following:
+
+* In the left pane, **Artifactory** -> **Artifacts** -> **VIN**
+* Download ``VCPKG_build_libs.zip``
+* Extract the contents of ``VCPKG_build_libs.zip`` into ``C:\Dev``
+
+Cloning qToken-cpp
+^^^^^^^^^^^^^^^^^^
+
+With access to *Gitlab* and a ssh key registered to your account open *PowerShell* and run:
+
+* Navigate to ``cd C:\Dev``
+* ``git clone --recursive -j8 git@gitlab.optimusprime.ai:virgilsystems/prototypes/qtoken-cpp.git``
+* Navigate to ``cd C:\Dev\qtoken-cpp``
+* ``git checkout dev`` 
+
+The ``C:\Dev`` folder should now contain the following folders:
+
+* aff3ct
+* poco
+* lvm
+* qtoken-cpp
+* vcpkg
+
+
+Installing the VIN™
+-------------------
+
+Regardless of the build method, follow these steps to install the *VIN™*:
+
+* Navigate to the ``‘C:\Dev\qtoken-cpp\out\install\x64-Debug\PACKAGES`` folder where the ``MSI`` and ``ZIP`` files will be located
+* Double-click ``Virgil-VIN-Install-POCO.msi`` (Note: depending on the installation, the word POCO may vary)
+* Follow the prompts to install the *VIN™*
+
+The ``MSI`` will install the *VIN™* application as a service. The service name is ``VIN`` and can be seen under ``Services`` (search ``services`` in the *Windows* search bar). The installation currently sets the service as automatic, and it starts it immediately upon install. For the upcoming example, please stop this service by right-clicking on it and clicking **Stop**. All the *VIN™* parameters are taken from the configuration file (refer to :doc:`configuration` section for more information) and the configuration file parameters are only read when the service starts. Therefore, if they are changed, the *VIN™* service needs to be restarted. While the service can log some failures during start-up in the Windows Event Log, once the application is running, the application’s log files are found in ``C:\ProgramData\VIN\logs``.
+
+The installation will also add the program binary folder to the system path environment variable allowing ``VIN`` and any other test utility programs to be started using *PowerShell* or other command line applications from any location on the PC. Finally, the ``VIN_CLI`` application will also be installed with the ``MSI`` package which allows *VIN™* commands to be run. More information on the ``VIN_CLI`` can be seen in the :doc:`vin_cli` section of the documentation.
+
+
+Configuration
+-------------
+
+The ``MSI`` package will install a file named ``defaults.cfg`` in the ``C:\Dev\qtoken-cpp\out\install\x64-Debug\config`` folder. This file can be used to modify a number of *VIN™* parameters (refer to :doc:`configuration` section for more information). Furthermore, the temporary file (i.e., outputs, logs, etc.) locations are created and stored based on the information in this file. The base directory for these files is ``C:\ProgramData\VIN`` which is accessible by all users. For example, the log files are stored in ``C:\ProgramData\VIN\logs``.
+
+
+Running the VIN™
+----------------
+
+By installing the *VIN™* using the ``MSI`` package, a bootstrap node will begin running immediately. However, if the instructions listed above were followed, the service has been stopped to allow for the below example to proceed correctly.
+
+To begine start a *PowerShell* instance and run:
+
+* ``vin -app -b 127.0.0.1``
+
+This will start the *VIN™* application as a console (i.e., a node) in bootstrap mode at the IP defined (i.e., 127.0.0.1). Note: By default, the bootstrap node will run on IP address 0.0.0.0, defined in ``defaults.cfg``. Thus, running ``vin -app -b`` would also work.
+
+Start another *PowerShell* instance and run:
+
+* ``vin -app -n -a 127.0.0.1 -h 7080 -p 8080 -r 9090``
+  
+This will start the *VIN™* application as a console in normal mode with the bootstrap IP (``-a`` command) set to 127.0.0.1, the HTTP server port set (``-h`` command) set to 7080 Kademlia port (``-p`` command) set to 8080, and the receipt port (``-r`` command) to 9090. Note: the defaults for these values are located in the ``defaults.cfg`` file. 
+
+If everything is working as it should, the following should be outputted in the PowerShell window:
+
+.. figure:: images/getting_started_as_developer/windows/vin_success_peer.png
+  :width: 500
+  :align: center
+  :alt: VIN™ Successful Peer Connection
+
+  VIN™ Successful Peer Connection
+
+
+Note: if a *PowerShell* instance is run from the folder location containing the ``VIN.exe`` file (e.g., ``C:\Dev\qtoken-cpp\out\install\x64-Debug\bin``), the command to run the *VIN™* can be ``.\VIN`` instead of just ``VIN``. This is useful for testing as it points to the currently built ``VIN.exe`` and not the one that was installed by the ``MSI`` package.
+
+.. _Testing_the_VIN:
+
+Testing the VIN™
+----------------
+
+The following will do a simple test to ensure the *VIN™* was set up and it functions correctly. This example assumes that all *PowerShell* instances are ran on the same, local machine (i.e., each nodes IP address will be set to 127.0.0.1).
+
+* Close any instances of *PowerShell* which contain the *VIN™*
+* Ensure the *VIN™* service is stopped by doing the following:
+  
+  * Search **service** in the Windows search bar
+  * Click **Services**
+  * Locate **VIN** and right-click on it
+  * Click **Stop** if it is running
+
+* Open a *PowerShell* instance and run: 
+
+  * ``vin -app -b 127.0.0.1``
+  
+* Open a *PowerShell* instance and run:
+   
+  * ``vin -app -n -a 127.0.0.1 -h 7071 -p 8081 -r 9091``
+	
+* Open a *PowerShell* instance and run: 
+
+  * ``vin -app -n -a 127.0.0.1 -h 7080 -p 8080 -r 9090``
+	
+* Open a *PowerShell* instance and run: 
+
+  * ``vin_cli 127.0.0.1 7080``
+
+If successful, the output in *PowerShell* should look like the following:
+
+.. figure:: images/getting_started_as_developer/windows/vincli_success.png
+  :width: 500
+  :align: center
+  :alt: VIN™ CLI Successful Connection
+
+  VIN™ CLI Successful Connection
+
+Choose or create a file that will be used for testing. For example, a simple ``vin_text.txt`` file containing “This is a test of the share function.” Now, in the ``vin_cli`` *PowerShell* instance run
+
+* ``share <file_name> 127.0.0.1 9091``
+  
+Where ``<file_name>`` is the location and name of the file, in this example it’s ``C:\test\vin_test.txt``. If the command worked the following output should be observed:
+
+.. figure:: images/getting_started_as_developer/windows/vin_success_share.png
+  :width: 500
+  :align: center
+  :alt: VIN™ Successful Share
+
+  VIN™ Successful Share
+
+To manually verify that the file was received and is intact, navigate to ``C:\ProgramData\VIN\outputs`` and check its contents. Additionally, ``C:\ProgramData\VIN\receipts\sent`` should contain a new cryptographic receipt.
+
+For more information on the commands available to the *VIN™ CLI*, please type ``help`` with a *VIN™ CLI* running or refer to the :doc:`vin_cli` section of the documentation.
+
+
+Debug the VIN™ using qtoken-cpp with Visual Studio
+--------------------------------------------------
+
+To run the qtoken-cpp in debug (or release) within Visual Studio, a file name ``launch.vs.json`` must be edited to contain the correct information. The file can be found in ``C:\Dev\qtoken-cpp\windows`` and opened with a text editor or it can be modified within *Visual Studio* itself by locating it in right pane, in **Folder View** under the same directory structure. Whichever method is used the file should contain the following:
+
+.. code-block:: json
+
+    {
+        "version": "0.2.1",
+        "defaults": {},
+        "configurations": [
+            {
+                "type": "default",
+                "project": "CMakeLists.txt",
+                "projectTarget": "VIN.exe (apps\\VIN.exe)",
+                "name": "VIN.exe (apps\\VIN.exe)"
+            }
+        ]
+    }
+
+In order to start an instance of the *VIN™* in the *Visual Studio* debugger, the ``launch.vs.json`` file must contain additional information. In particular, the following code should be copied and pasted to the file, overwriting the current code. This example will allow the debugger to run as a peer that matches the IP addresses and ports for the bootstrap and peers used in the `Testing_the_VIN`_ section.
+
+.. code-block:: json
+
+    {
+        "version": "0.2.1",
+        "defaults": {},
+        "configurations": [
+            {
+                "type": "default",
+                "project": "CMakeLists.txt",
+                "projectTarget": "VIN.exe (apps\\VIN.exe)",
+                "name": "VIN.exe (apps\\VIN.exe)",
+                "args": [
+                    "-app",
+                    "-n",
+                    "-a",
+                    "127.0.0.1",
+                    "-h",
+                    7071,
+                    "-p",
+                    8081,
+                    "-r",
+                    9091
+                ]
+            }
+        ]
+    }
+
+Note: each time the ``qtoken-cpp`` project is cloned from the repository, the ``launch.vs.json`` file will be overwritten, removing the added information. Thus, ``launch.vs.json`` will need to be updated every time this occurs.
+
+Before running the debugger, the bootstrap node, and a peer must be run by doing the following:
+
+* Close any instances of PowerShell which contain the VIN
+* Ensure the VIN service is stopped
+  
+  * Search **service** in the Windows search bar
+  * Click **Services**
+  * Locate **VIN** and right-click
+  * Click **Stop** if it is running
+
+* Open a *PowerShell* instance and run: 
+
+  * ``vin -app -b 127.0.0.1``
+ 
+* Open a *PowerShell* instance and run: 
+  
+  * ``vin -app -n -a 127.0.0.1 -h 7080 -p 8080 -r 9090``
+
+With the ``qtoken-cpp`` project open in *Visual Studio*, be sure that the **x64-Debug CMake settings** are selected. With the solution explorer still showing the **CMake Targets View**:
+
+* Right-click **VIN (Executable)**
+* Hover over **Debug**
+* Click **VIN.exe (apps\VIN.exe)**
+* If the debugger runs the code successfully the following should appear in the debug window:
+
+.. figure:: images/getting_started_as_developer/windows/vs2022_debugger.png
+  :width: 500
+  :align: center
+  :alt: Visual Studio 2022 Debugger VIN™ Successful Peer Connection
+
+  Visual Studio 2022 Debugger VIN™ Successful Peer Connection
+
+Choose or create a file that will be used for testing. For example, a simple ``vin_text.txt`` file containing “This is a test of the share function.” Open a new *PowerShell* instance and run:
+
+* ``vin_cli 127.0.0.1 7080``
+* ``share <file_name> 127.0.0.1 9091``
+
+Where ``<file_name>`` is the location and name of the file, in this example it’s ``‘C:\test\vin_test.txt’``. If the command was successful, the debugger window should display the following information (Note: some values may differ depending on the shared file):
+
+.. figure:: images/getting_started_as_developer/windows/vs2022_debugger_share.png
+  :width: 500
+  :align: center
+  :alt: Visual Studio 2022 Debugger VIN™ Successful Share
+
+  Visual Studio 2022 Debugger VIN™ Successful Share
+
+To manually verify that the file was received and is intact, navigate to ``C:\ProgramData\VIN\outputs``. Additionally, ``C:\ProgramData\VIN\receipts\sent`` should contain a cryptographic receipt.
+
+
+
+Troubleshooting
+---------------
+
+Installation Issues with VCPKG
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+If VCPKG fails to install a package it may generate a error message similiar to the one shown below:
+
+.. figure:: images/getting_started_as_developer/windows/vcpkg_install_error.png
+  :width: 700
+  :align: center
+  :alt: VCPKG Insallation Error
+
+  VCPKG Insallation Error
+
+The first thing attempt at fixing the error is to remove the package that is causing the error by entering ``./vcpkg remove <pkg>`` where ``<pkg>`` is the name of the package (e.g., ``boost:x64-windows``)
+
+If the installation of the package still doesn't work, try deleting the VCPKG cache located at ``C:\Users\<user>\AppData\Local\vcpkg``.
+
+If this still doesn't solve the issue, the final step is to completely remove VCPKG and start from the beginning with the VCPKG installation process. 
+
+
+Failure to Clone Repository
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. figure:: images/getting_started_as_developer/windows/failure_to_clone_repository_error.png
+  :width: 700
+  :align: center
+  :alt: Failure to Clone Repository
+
+  Failure to Clone Repository
+
+Establish a connectiong with the Virgil System's VPN and run the command once connected.
+
+
+Benchmark Build Error
+^^^^^^^^^^^^^^^^^^^^^
+
+.. figure:: images/getting_started_as_developer/windows/benchmark_error.png
+  :width: 700
+  :align: center
+  :alt: Benchmark Error
+
+  Benchmark Error
+
+The ``.\vcpkg\vcpkg install benchmark:x64-windows`` was not executed correctly. Please run this command in a command line tool to fix the issue.
+
+
+Install Option Unvailable in Visual Studio 2022
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+After building a project in Visual Studio 2022 the **Install <project>** option is unavailable, shutdown Visual Studio and re-open. If it is still unavailable, generate the CMake cache and rebuild the project.

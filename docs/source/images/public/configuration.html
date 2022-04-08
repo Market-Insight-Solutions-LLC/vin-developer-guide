@@ -1,0 +1,989 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Configuration Options &mdash; VIN™ Reference Guide 0.1 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/custom.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Sample Use Cases" href="sample_use_cases.html" />
+    <link rel="prev" title="VIN™ Command Line Interface (CLI)" href="vin_cli.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> VIN™ Reference Guide
+            <img src="_static/virgil_v_black.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="vin_description.html">VIN™ Description</a></li>
+<li class="toctree-l1"><a class="reference internal" href="getting_started_at_virgil.html">Getting Started at Virgil Systems</a></li>
+<li class="toctree-l1"><a class="reference internal" href="developing_with_windows.html">Developing with Windows</a></li>
+<li class="toctree-l1"><a class="reference internal" href="developing_with_linux_wsl.html">Developing with Linux and WSL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="developing_as_customer.html">Getting Started as a Customer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="vin_cli.html">VIN™ Command Line Interface (CLI)</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Configuration Options</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#connections">connections</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#chunker">chunker</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#flags-linux">flags (Linux)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#win-flags-windows">win_flags (Windows)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#files-linux">files (Linux)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#receipts-linux">receipts (Linux)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#keys-linux">keys (Linux)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#win-files-windows">win_files (Windows)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#receipts-windows">receipts (Windows)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#keys-windows">keys (Windows)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#timeouts">timeouts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#encoders">encoders</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#reed-shard">reed_shard</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#alpha">alpha</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#cipher">cipher</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#concurrent">concurrent</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#polar">polar</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#self-entanglement">self-entanglement</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#validation">validation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#reed-block">reed_block</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#channels">channels</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="sample_use_cases.html">Sample Use Cases</a></li>
+<li class="toctree-l1"><a class="reference internal" href="key_concepts.html">Key Concepts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dashboard.html">VIN™ Dashboard</a></li>
+<li class="toctree-l1"><a class="reference internal" href="vin_statistics.html">VIN™ Statistics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="vin_metrics.html">VIN™ Metrics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="release_notes.html">Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="glossary.html">Glossary</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">VIN™ Reference Guide</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>Configuration Options</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/configuration.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="configuration-options">
+<h1>Configuration Options<a class="headerlink" href="#configuration-options" title="Permalink to this headline"></a></h1>
+<p>This section presents the configuration options available to the VIN™ upon its installation. The following tables highlight each parameter in the configuration file as well as a description of the parameter, its default value, and any options that the value may be set to.</p>
+<section id="connections">
+<h2>connections<a class="headerlink" href="#connections" title="Permalink to this headline"></a></h2>
+<p>The configuration items listed below relate to connection information for the various components that comprise the VIN™.</p>
+<table class="colwidths-given docutils align-default" id="id1">
+<caption><span class="caption-text">Connection Parameters</span><a class="headerlink" href="#id1" title="Permalink to this table"></a></caption>
+<colgroup>
+<col style="width: 15%" />
+<col style="width: 40%" />
+<col style="width: 10%" />
+<col style="width: 35%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Parameter</p></th>
+<th class="head"><p>Description</p></th>
+<th class="head"><p>Default</p></th>
+<th class="head"><p>Options</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><em>version</em></p></td>
+<td><p>The current version of the VIN™.</p></td>
+<td><p>0.1.0</p></td>
+<td><p>Do not modify.</p></td>
+</tr>
+<tr class="row-odd"><td><p><em>config_name</em></p></td>
+<td><p>The name of the VIN™’s configuration file.</p></td>
+<td><p>default_config</p></td>
+<td><p>Default value or user-defined.”</p></td>
+</tr>
+<tr class="row-even"><td><p><em>bootstrap_ip</em></p></td>
+<td><p>The bootstrap node’s IP address.</p></td>
+<td><p>0.0.0.0</p></td>
+<td><p>Default value or user-defined.</p></td>
+</tr>
+<tr class="row-odd"><td><p><em>bootstrap_port</em></p></td>
+<td><p>The port for node-to-bootstrap and bootstrap-to-node communications within the VIN™.</p></td>
+<td><p>8000</p></td>
+<td><p>Default value or user-defined.</p></td>
+</tr>
+<tr class="row-even"><td><p><em>kademlia_port</em></p></td>
+<td><p>The port through which each VIN™ node communications bi-directionally with the Kademlia network.</p></td>
+<td><p>8080</p></td>
+<td><p>Default value or user-defined.</p></td>
+</tr>
+<tr class="row-odd"><td><p><em>receipt_port</em></p></td>
+<td><p>The port through which each node within the VIN™ communicates its cryptographic receipt.</p></td>
+<td><p>9090</p></td>
+<td><p>Default value or user-defined.</p></td>
+</tr>
+<tr class="row-even"><td><p><em>http_port</em></p></td>
+<td><p>The port for all HTTP messages within the VIN™.</p></td>
+<td><p>9980</p></td>
+<td><p>Default value or user-defined.</p></td>
+</tr>
+<tr class="row-odd"><td><p><em>lvm_port</em></p></td>
+<td><p>The port through which each VIN™ node communicates with the LVM.</p></td>
+<td><p>60001</p></td>
+<td><p>Default value or user-defined.</p></td>
+</tr>
+<tr class="row-even"><td><p><em>redundancy</em></p></td>
+<td><p>The number of holograms that will be replicated from the original data shards and placed on the network.</p></td>
+<td><p>5</p></td>
+<td><p>It is recommended to keep the value between X and X. Lower redundancy leads to higher transmission speeds but lower data reliability/integrity.</p></td>
+</tr>
+<tr class="row-odd"><td><p><em>log_datasize</em></p></td>
+<td><p>Enables the logging/storing of the size of the file being stored on the network.</p></td>
+<td><p>true</p></td>
+<td><p>true: enables logging of the data size.</p>
+<p>false: disables logging of the data size.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="chunker">
+<h2>chunker<a class="headerlink" href="#chunker" title="Permalink to this headline"></a></h2>
+<p>The following options pertain to the configuration of the chunkers (shards) used by the VIN™.</p>
+<table class="colwidths-given docutils align-default" id="id2">
+<caption><span class="caption-text">Chunker Parameters</span><a class="headerlink" href="#id2" title="Permalink to this table"></a></caption>
+<colgroup>
+<col style="width: 15%" />
+<col style="width: 40%" />
+<col style="width: 10%" />
+<col style="width: 35%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Parameter</p></th>
+<th class="head"><p>Description</p></th>
+<th class="head"><p>Default</p></th>
+<th class="head"><p>Options</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><em>log</em></p></td>
+<td><p>Enables the logging/storing of the shards for inspection/debug purposes.</p></td>
+<td><p>true</p></td>
+<td><p>true: enables logging of shards.</p>
+<p>false: disables logging of shards.</p>
+</td>
+</tr>
+<tr class="row-odd"><td><p><em>default_size</em></p></td>
+<td><p>Specifies the default size of the chunks (shards), in bytes, that a file will be divided into before being distributed throughout the network.</p></td>
+<td><p>1500</p></td>
+<td><p>The default value of the chunk size. This can be over-ridden by the system optimization which will dynamically determine chunk sizes.</p></td>
+</tr>
+<tr class="row-even"><td><p><em>chunks_per_receipt</em></p></td>
+<td><p>The number of chunks that can be recorded in any single cryptographic receipt.</p></td>
+<td><p>200</p></td>
+<td><p>Any number between 1 and To Be Determined (TBD). The recommended value is 200.</p></td>
+</tr>
+<tr class="row-odd"><td><p><em>max_size</em></p></td>
+<td><p>The maximum chunk size in bytes.</p></td>
+<td><p>50000</p></td>
+<td><p>As the minimum transmission unit (MTU) for most networks is 65kB, ensure that this parameter is set below this value. Note: if using an encoder(s) that inflate(s) chunk size, be sure the inflated size does not exceed the MTU.</p></td>
+</tr>
+<tr class="row-even"><td><p><em>min_size</em></p></td>
+<td><p>The minimum chunk size in bytes.</p></td>
+<td><p>100</p></td>
+<td><p>When attempting to dynamically determine chunk size, this value sets the minimum optimal size for chunks.</p></td>
+</tr>
+<tr class="row-odd"><td><p><em>default_number</em></p></td>
+<td><p>When attempting to dynamically determine chunk size, this is the starting value of the number of chunks that the file will initially be split into. Note: depending on <em>min_size</em> and <em>max_size</em>, the final number of chunks may be less than or greater than this number.</p></td>
+<td><p>6</p></td>
+<td><p>The options vary depending on the <em>max_size</em>, <em>min_size</em> and the size of the files that are expected to be handled by the VIN™. The default is recommended for most cases.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<hr class="docutils" />
+<section id="flags-linux">
+<h2>flags (Linux)<a class="headerlink" href="#flags-linux" title="Permalink to this headline"></a></h2>
+<p>Any flags utilized by the VIN™ for a Linux operating system are listed in the table below.</p>
+<table class="colwidths-given docutils align-default" id="id3">
+<caption><span class="caption-text">Flag (Linux) Parameters</span><a class="headerlink" href="#id3" title="Permalink to this table"></a></caption>
+<colgroup>
+<col style="width: 15%" />
+<col style="width: 40%" />
+<col style="width: 10%" />
+<col style="width: 35%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Parameter</p></th>
+<th class="head"><p>Description</p></th>
+<th class="head"><p>Default</p></th>
+<th class="head"><p>Options</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><em>bootstrap</em></p></td>
+<td><p>Sets the current VIN™ node as a bootstrap node for a Linux OS.</p></td>
+<td><p>false</p></td>
+<td><p>true: set the node as bootstrap.</p>
+<p>false: do not set the node as bootstrap.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="win-flags-windows">
+<h2>win_flags (Windows)<a class="headerlink" href="#win-flags-windows" title="Permalink to this headline"></a></h2>
+<p>Any flags utilized by the VIN™ for a Windows operating system are listed in the table below.</p>
+<table class="colwidths-given docutils align-default" id="id4">
+<caption><span class="caption-text">Win_flag (Windows) Parameters</span><a class="headerlink" href="#id4" title="Permalink to this table"></a></caption>
+<colgroup>
+<col style="width: 15%" />
+<col style="width: 40%" />
+<col style="width: 10%" />
+<col style="width: 35%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Parameter</p></th>
+<th class="head"><p>Description</p></th>
+<th class="head"><p>Default</p></th>
+<th class="head"><p>Options</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><em>bootstrap</em></p></td>
+<td><p>Sets the current VIN™ node as a bootstrap node for a Windows OS.</p></td>
+<td><p>false</p></td>
+<td><p>true: set the node as bootstrap.</p>
+<p>false: do not set the node as bootstrap.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</section>
+<hr class="docutils" />
+<section id="files-linux">
+<h2>files (Linux)<a class="headerlink" href="#files-linux" title="Permalink to this headline"></a></h2>
+<p>The following options pertain to the locations of configuration and logs generated by the VIN™ for a Linux operating system.</p>
+<table class="colwidths-given docutils align-default" id="id5">
+<caption><span class="caption-text">File (Linux) Parameters</span><a class="headerlink" href="#id5" title="Permalink to this table"></a></caption>
+<colgroup>
+<col style="width: 15%" />
+<col style="width: 40%" />
+<col style="width: 10%" />
+<col style="width: 35%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Parameter</p></th>
+<th class="head"><p>Description</p></th>
+<th class="head"><p>Default</p></th>
+<th class="head"><p>Options</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><em>base</em></p></td>
+<td><p>The base location in the VIN™ folder structure.</p></td>
+<td><p>/opt/VIN/</p></td>
+<td><p>Default value or user-defined.</p></td>
+</tr>
+<tr class="row-odd"><td><p><em>config</em></p></td>
+<td><p>The location of the configuration file is located here.</p></td>
+<td><p>/etc/opt/VIN/</p></td>
+<td><p>Default value or user-defined.</p></td>
+</tr>
+<tr class="row-even"><td><p><em>logs</em></p></td>
+<td><p>The log files generated by the VIN™ will be stored here.</p></td>
+<td><p>/var/log/VIN/logs/</p></td>
+<td><p>Default value or user-defined.</p></td>
+</tr>
+<tr class="row-odd"><td><p><em>shards</em></p></td>
+<td><p>The shards that are gathered are stored here.</p></td>
+<td><p>/var/log/VIN/shards/</p></td>
+<td><p>Default value or user-defined.</p></td>
+</tr>
+<tr class="row-even"><td><p><em>rebuilt</em></p></td>
+<td><p>The storage location of the file that was rebuilt from the chunks (shards).</p></td>
+<td><p>/opt/VIN/outputs/</p></td>
+<td><p>Default value or user-defined.</p></td>
+</tr>
+<tr class="row-odd"><td><p><em>kaddata</em></p></td>
+<td><p>The location where kademlia shards are stored if on-disk storage is enabled in the VIN™.</p></td>
+<td><p>/opt/VIN/kademlia/data/</p></td>
+<td><p>Default value or user-defined.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="receipts-linux">
+<h2>receipts (Linux)<a class="headerlink" href="#receipts-linux" title="Permalink to this headline"></a></h2>
+<p>The options below configure the location of the files/folders related to the cryptographic receipts utilized by the VIN™ for a Linux operating system.</p>
+<table class="colwidths-given docutils align-default" id="id6">
+<caption><span class="caption-text">Receipt (Linux) Parameters</span><a class="headerlink" href="#id6" title="Permalink to this table"></a></caption>
+<colgroup>
+<col style="width: 15%" />
+<col style="width: 40%" />
+<col style="width: 10%" />
+<col style="width: 35%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Parameter</p></th>
+<th class="head"><p>Description</p></th>
+<th class="head"><p>Default</p></th>
+<th class="head"><p>Options</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><em>base</em></p></td>
+<td><p>The base storage location of the cryptographic receipts used by the VIN™.</p></td>
+<td><p>/opt/VIN/receipts/</p></td>
+<td><p>Default value or user-defined.</p></td>
+</tr>
+<tr class="row-odd"><td><p><em>received</em></p></td>
+<td><p>The location of any received cryptographic receipts.</p></td>
+<td><p>/opt/VIN/receipts/received/</p></td>
+<td><p>Default value or user-defined.</p></td>
+</tr>
+<tr class="row-even"><td><p><em>sent</em></p></td>
+<td><p>The location of any sent cryptographic receipts.</p></td>
+<td><p>/opt/VIN/receipts/sent/</p></td>
+<td><p>Default value or user-defined.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="keys-linux">
+<h2>keys (Linux)<a class="headerlink" href="#keys-linux" title="Permalink to this headline"></a></h2>
+<p>The configuration items below set the location of the files/folders associated with the public and private keys sent while using the VIN™ for a Linux operating system.</p>
+<table class="colwidths-given docutils align-default" id="id7">
+<caption><span class="caption-text">Receipt (Linux) Parameters</span><a class="headerlink" href="#id7" title="Permalink to this table"></a></caption>
+<colgroup>
+<col style="width: 15%" />
+<col style="width: 40%" />
+<col style="width: 10%" />
+<col style="width: 35%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Parameter</p></th>
+<th class="head"><p>Description</p></th>
+<th class="head"><p>Default</p></th>
+<th class="head"><p>Options</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><em>base</em></p></td>
+<td><p>The storage location for any public/private keys utilized by the VIN™.</p></td>
+<td><p>/opt/VIN/keys/</p></td>
+<td><p>Default value or user-defined.</p></td>
+</tr>
+<tr class="row-odd"><td><p><em>crt</em></p></td>
+<td><p>The location and name of the public key.</p></td>
+<td><p>/opt/VIN/keys/self.crt</p></td>
+<td><p>Default value or user-defined.</p></td>
+</tr>
+<tr class="row-even"><td><p><em>priv</em></p></td>
+<td><p>The location and name of the private key.</p></td>
+<td><p>/opt/VIN/keys/self.priv</p></td>
+<td><p>Default value or user-defined.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<hr class="docutils" />
+<section id="win-files-windows">
+<h2>win_files (Windows)<a class="headerlink" href="#win-files-windows" title="Permalink to this headline"></a></h2>
+<p>The following options pertain to the locations of configuration and logs generated by the VIN™ for a Windows operating system.</p>
+<table class="colwidths-given docutils align-default" id="id8">
+<caption><span class="caption-text">Win_file (Windows) Parameters</span><a class="headerlink" href="#id8" title="Permalink to this table"></a></caption>
+<colgroup>
+<col style="width: 15%" />
+<col style="width: 40%" />
+<col style="width: 10%" />
+<col style="width: 35%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Parameter</p></th>
+<th class="head"><p>Description</p></th>
+<th class="head"><p>Default</p></th>
+<th class="head"><p>Options</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><em>base</em></p></td>
+<td><p>The base location in the VIN™ folder structure.</p></td>
+<td><p>VIN\\</p></td>
+<td><p>Default value or user-defined.</p></td>
+</tr>
+<tr class="row-odd"><td><p><em>config</em></p></td>
+<td><p>The location of the configuration file is located here.</p></td>
+<td><p>VIN\\</p></td>
+<td><p>Default value or user-defined.</p></td>
+</tr>
+<tr class="row-even"><td><p><em>logs</em></p></td>
+<td><p>The log files generated by the VIN™ will be stored here.</p></td>
+<td><p>VIN\\logs\\</p></td>
+<td><p>Default value or user-defined.</p></td>
+</tr>
+<tr class="row-odd"><td><p><em>shards</em></p></td>
+<td><p>The shards that are gathered are stored here.</p></td>
+<td><p>VIN\\shards\\</p></td>
+<td><p>Default value or user-defined.</p></td>
+</tr>
+<tr class="row-even"><td><p><em>rebuilt</em></p></td>
+<td><p>The storage location of the file that was rebuilt from the chunks (shards).</p></td>
+<td><p>VIN\\outputs\\</p></td>
+<td><p>Default value or user-defined.</p></td>
+</tr>
+<tr class="row-odd"><td><p><em>kaddata</em></p></td>
+<td><p>The location where kademlia shards are stored if on-disk storage is enabled in the VIN™.</p></td>
+<td><p>VIN\\kademlia\\data\\</p></td>
+<td><p>Default value or user-defined.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="receipts-windows">
+<h2>receipts (Windows)<a class="headerlink" href="#receipts-windows" title="Permalink to this headline"></a></h2>
+<p>The options below configure the location of the files/folders related to the cryptographic receipts utilized by the VIN™ for a Windows operating system.</p>
+<table class="colwidths-given docutils align-default" id="id9">
+<caption><span class="caption-text">Receipt (Windows) Parameters</span><a class="headerlink" href="#id9" title="Permalink to this table"></a></caption>
+<colgroup>
+<col style="width: 15%" />
+<col style="width: 40%" />
+<col style="width: 10%" />
+<col style="width: 35%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Parameter</p></th>
+<th class="head"><p>Description</p></th>
+<th class="head"><p>Default</p></th>
+<th class="head"><p>Options</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><em>base</em></p></td>
+<td><p>The base storage location of the cryptographic receipts used by the VIN™.</p></td>
+<td><p>VIN\\receipts\\</p></td>
+<td><p>Default value or user-defined.</p></td>
+</tr>
+<tr class="row-odd"><td><p><em>received</em></p></td>
+<td><p>The location of any received cryptographic receipts.</p></td>
+<td><p>VIN\\receipts\\received\\</p></td>
+<td><p>Default value or user-defined.</p></td>
+</tr>
+<tr class="row-even"><td><p><em>sent</em></p></td>
+<td><p>The location of any sent cryptographic receipts.</p></td>
+<td><p>VIN\\receipts\\sent\\</p></td>
+<td><p>Default value or user-defined.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="keys-windows">
+<h2>keys (Windows)<a class="headerlink" href="#keys-windows" title="Permalink to this headline"></a></h2>
+<p>The configuration items below set the location of the files/folders associated with the public and private keys sent while using the VIN™ for a Windows operating system.</p>
+<table class="colwidths-given docutils align-default" id="id10">
+<caption><span class="caption-text">Key (Linux) Parameters</span><a class="headerlink" href="#id10" title="Permalink to this table"></a></caption>
+<colgroup>
+<col style="width: 15%" />
+<col style="width: 40%" />
+<col style="width: 10%" />
+<col style="width: 35%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Parameter</p></th>
+<th class="head"><p>Description</p></th>
+<th class="head"><p>Default</p></th>
+<th class="head"><p>Options</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><em>base</em></p></td>
+<td><p>The storage location for any public/private keys utilized by the VIN™.</p></td>
+<td><p>VIN\\keys\\</p></td>
+<td><p>Default value or user-defined.</p></td>
+</tr>
+<tr class="row-odd"><td><p><em>pub</em></p></td>
+<td><p>The location and name of the public key.</p></td>
+<td><p>VIN\\keys\\self.pub</p></td>
+<td><p>Default value or user-defined.</p></td>
+</tr>
+<tr class="row-even"><td><p><em>priv</em></p></td>
+<td><p>The location and name of the private key.</p></td>
+<td><p>VIN\\keys\\self.priv</p></td>
+<td><p>Default value or user-defined.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<hr class="docutils" />
+<section id="timeouts">
+<h2>timeouts<a class="headerlink" href="#timeouts" title="Permalink to this headline"></a></h2>
+<p>These options allow for the configuration of various timeouts used to ensure the correct functionality of the VIN™.</p>
+<table class="colwidths-given docutils align-default" id="id11">
+<caption><span class="caption-text">Timeout Parameters</span><a class="headerlink" href="#id11" title="Permalink to this table"></a></caption>
+<colgroup>
+<col style="width: 15%" />
+<col style="width: 40%" />
+<col style="width: 10%" />
+<col style="width: 35%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Parameter</p></th>
+<th class="head"><p>Description</p></th>
+<th class="head"><p>Default</p></th>
+<th class="head"><p>Options</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><em>dht</em></p></td>
+<td><p>The time (milliseconds) to wait before the failure of a request to/from the distributed hash table is confirmed.</p></td>
+<td><p>2000</p></td>
+<td><p>Default value or user-defined.</p></td>
+</tr>
+<tr class="row-odd"><td><p><em>receipt</em></p></td>
+<td><p>The time (microseconds) to wait before a failure on the sending side of the cryptographic receipt transmission is confirmed.</p></td>
+<td><p>600000000</p></td>
+<td><p>Default value or user-defined. Note: this must be greater than the reactor timeout.</p></td>
+</tr>
+<tr class="row-even"><td><p><em>reactor</em></p></td>
+<td><p>The time (microseconds) to wait before a failure on the recipient side of the cryptographic receipt transmission is confirmed.</p></td>
+<td><p>3000000</p></td>
+<td><p>Default value or user-defined if required. Note: this must be lower than the receipt timeout.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<hr class="docutils" />
+<section id="encoders">
+<h2>encoders<a class="headerlink" href="#encoders" title="Permalink to this headline"></a></h2>
+<p>The following configuration items allow for the enabling/disabling and customization of the various coders used by the VIN™.</p>
+<section id="reed-shard">
+<h3>reed_shard<a class="headerlink" href="#reed-shard" title="Permalink to this headline"></a></h3>
+<p>Configuration items for the Reed-Solomon coder on a per shard basis are listed in the following table.</p>
+<table class="colwidths-given docutils align-default" id="id12">
+<caption><span class="caption-text">Reed-Solomon Shard Coder Parameters</span><a class="headerlink" href="#id12" title="Permalink to this table"></a></caption>
+<colgroup>
+<col style="width: 15%" />
+<col style="width: 40%" />
+<col style="width: 10%" />
+<col style="width: 35%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Parameter</p></th>
+<th class="head"><p>Description</p></th>
+<th class="head"><p>Default</p></th>
+<th class="head"><p>Options</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><em>on</em></p></td>
+<td><p>Enables/disables the Reed-Solomon shard coding/decoding algorithm utilized by the VIN™.</p></td>
+<td><p>true</p></td>
+<td><p>true: enables the Reed-Solomon shard coder.</p>
+<p>false: disables the Reed-Solomon shard coder.</p>
+</td>
+</tr>
+<tr class="row-odd"><td><p><em>log</em></p></td>
+<td><p>Enables/disables log generation for the output of the Reed-Solomon shard coder.</p></td>
+<td><p>false</p></td>
+<td><p>true: enables logging.</p>
+<p>false: disables logging.</p>
+</td>
+</tr>
+<tr class="row-even"><td><p><em>perc_parity</em></p></td>
+<td><p>The percentage of parity bytes created per data byte. Every two parity bytes can find and correct a single corrupted byte among a set of bytes. Note: Not every parity byte can correct every data byte. Each parity byte only ‘covers’ for a certain set of data bytes.</p></td>
+<td><p>100</p></td>
+<td><p>0 – 100; where a higher number improves data recovery. The default is recommended.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="alpha">
+<h3>alpha<a class="headerlink" href="#alpha" title="Permalink to this headline"></a></h3>
+<p>Configuration items for Alpha-entanglement coder are listed in the following table.</p>
+<table class="colwidths-given docutils align-default" id="id13">
+<caption><span class="caption-text">Alpha Entanglement Coder Parameters</span><a class="headerlink" href="#id13" title="Permalink to this table"></a></caption>
+<colgroup>
+<col style="width: 15%" />
+<col style="width: 40%" />
+<col style="width: 10%" />
+<col style="width: 35%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Parameter</p></th>
+<th class="head"><p>Description</p></th>
+<th class="head"><p>Default</p></th>
+<th class="head"><p>Options</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><em>on</em></p></td>
+<td><p>Enables/disables the alpha entanglement coding/decoding algorithm utilized by the VIN™.</p></td>
+<td><p>true</p></td>
+<td><p>true: enables the alpha entanglement coder.</p>
+<p>false: disables the alpha entanglement coder.</p>
+</td>
+</tr>
+<tr class="row-odd"><td><p><em>log</em></p></td>
+<td><p>Enables/disables log generation for the output of the alpha entanglement coder.</p></td>
+<td><p>false</p></td>
+<td><p>true: enables logging.</p>
+<p>false: disables logging.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="cipher">
+<h3>cipher<a class="headerlink" href="#cipher" title="Permalink to this headline"></a></h3>
+<p>Configuration items for the cipher coder are listed in the following table.</p>
+<table class="colwidths-given docutils align-default" id="id14">
+<caption><span class="caption-text">Cipher Coder Parameters</span><a class="headerlink" href="#id14" title="Permalink to this table"></a></caption>
+<colgroup>
+<col style="width: 15%" />
+<col style="width: 40%" />
+<col style="width: 10%" />
+<col style="width: 35%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Parameter</p></th>
+<th class="head"><p>Description</p></th>
+<th class="head"><p>Default</p></th>
+<th class="head"><p>Options</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><em>on</em></p></td>
+<td><p>Enables/disables the cipher coding/decoding algorithm utilized by the VIN™.</p></td>
+<td><p>true</p></td>
+<td><p>true: enables the cipher coder.</p>
+<p>false: disables the cipher coder.</p>
+</td>
+</tr>
+<tr class="row-odd"><td><p><em>bits</em></p></td>
+<td><p>The size of the key used by the cipher coder algorithm.</p></td>
+<td><p>256</p></td>
+<td><p>128, 192, or 256.</p></td>
+</tr>
+<tr class="row-even"><td><p><em>log</em></p></td>
+<td><p>Enables/disables log generation for the output of the cipher coder.</p></td>
+<td><p>false</p></td>
+<td><p>true: enables logging.</p>
+<p>false: disables logging.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="concurrent">
+<h3>concurrent<a class="headerlink" href="#concurrent" title="Permalink to this headline"></a></h3>
+<p>Configuration items for the concurrent coder are listed in the following table.</p>
+<table class="colwidths-given docutils align-default" id="id15">
+<caption><span class="caption-text">Concurrent Coder Parameters</span><a class="headerlink" href="#id15" title="Permalink to this table"></a></caption>
+<colgroup>
+<col style="width: 15%" />
+<col style="width: 40%" />
+<col style="width: 10%" />
+<col style="width: 35%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Parameter</p></th>
+<th class="head"><p>Description</p></th>
+<th class="head"><p>Default</p></th>
+<th class="head"><p>Options</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><em>on</em></p></td>
+<td><p>Enables/disables the concurrent coding/decoding algorithm utilized by the VIN™.</p></td>
+<td><p>true</p></td>
+<td><p>true: enables the concurrent coder.</p>
+<p>false: disables the concurrent coder.</p>
+</td>
+</tr>
+<tr class="row-odd"><td><p><em>log</em></p></td>
+<td><p>Enables/disables log generation for the output of the concurrent coder.</p></td>
+<td><p>false</p></td>
+<td><p>true: enables logging.</p>
+<p>false: disables logging.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="polar">
+<h3>polar<a class="headerlink" href="#polar" title="Permalink to this headline"></a></h3>
+<p>Configuration items for the polar coder are listed in the following table.</p>
+<table class="colwidths-given docutils align-default" id="id16">
+<caption><span class="caption-text">Concurrent Coder Parameters</span><a class="headerlink" href="#id16" title="Permalink to this table"></a></caption>
+<colgroup>
+<col style="width: 15%" />
+<col style="width: 40%" />
+<col style="width: 10%" />
+<col style="width: 35%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Parameter</p></th>
+<th class="head"><p>Description</p></th>
+<th class="head"><p>Default</p></th>
+<th class="head"><p>Options</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><em>on</em></p></td>
+<td><p>Enables/disables the polar coding/decoding algorithm utilized by the VIN™.</p></td>
+<td><p>true</p></td>
+<td><p>true: enables the polar coder.</p>
+<p>false: disables the polar coder.</p>
+</td>
+</tr>
+<tr class="row-odd"><td><p><em>log</em></p></td>
+<td><p>Enables/disables log generation for the output of the polar coder.</p></td>
+<td><p>false</p></td>
+<td><p>true: enables logging.</p>
+<p>false: disables logging.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="self-entanglement">
+<h3>self-entanglement<a class="headerlink" href="#self-entanglement" title="Permalink to this headline"></a></h3>
+<p>Configuration items for the self-entanglement coder are listed in the following table.</p>
+<table class="colwidths-given docutils align-default" id="id17">
+<caption><span class="caption-text">Self-entanglement Coder Parameters</span><a class="headerlink" href="#id17" title="Permalink to this table"></a></caption>
+<colgroup>
+<col style="width: 15%" />
+<col style="width: 40%" />
+<col style="width: 10%" />
+<col style="width: 35%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Parameter</p></th>
+<th class="head"><p>Description</p></th>
+<th class="head"><p>Default</p></th>
+<th class="head"><p>Options</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><em>on</em></p></td>
+<td><p>Enables/disables the self-entanglement coding/decoding algorithm utilized by the VIN™.</p></td>
+<td><p>true</p></td>
+<td><p>true: enables the self-entanglement coder.</p>
+<p>false: disables the self-entanglement coder.</p>
+</td>
+</tr>
+<tr class="row-odd"><td><p><em>log</em></p></td>
+<td><p>Enables/disables log generation for the output of the self-entanglement coder.</p></td>
+<td><p>false</p></td>
+<td><p>true: enables logging.</p>
+<p>false: disables logging.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="validation">
+<h3>validation<a class="headerlink" href="#validation" title="Permalink to this headline"></a></h3>
+<p>Configuration items for the validation coder are listed in the following table.</p>
+<table class="colwidths-given docutils align-default" id="id18">
+<caption><span class="caption-text">Self-entanglement Coder Parameters</span><a class="headerlink" href="#id18" title="Permalink to this table"></a></caption>
+<colgroup>
+<col style="width: 15%" />
+<col style="width: 40%" />
+<col style="width: 10%" />
+<col style="width: 35%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Parameter</p></th>
+<th class="head"><p>Description</p></th>
+<th class="head"><p>Default</p></th>
+<th class="head"><p>Options</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><em>on</em></p></td>
+<td><p>Enables/disables the validation coder. This encoder creates a checksum for the entire file and each shard both before and after encoding. The checksums are used to log network degradation before error correction as well as any failures to correct/recreate the damaged file.</p></td>
+<td><p>true</p></td>
+<td><p>true: enables validation.</p>
+<p>false: disables validation.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="reed-block">
+<h3>reed_block<a class="headerlink" href="#reed-block" title="Permalink to this headline"></a></h3>
+<p>Configuration items for the Reed-Solomon coder on a per data block basis are listed in the following table.</p>
+<table class="colwidths-given docutils align-default" id="id19">
+<caption><span class="caption-text">Self-entanglement Coder Parameters</span><a class="headerlink" href="#id19" title="Permalink to this table"></a></caption>
+<colgroup>
+<col style="width: 15%" />
+<col style="width: 40%" />
+<col style="width: 10%" />
+<col style="width: 35%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Parameter</p></th>
+<th class="head"><p>Description</p></th>
+<th class="head"><p>Default</p></th>
+<th class="head"><p>Options</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><em>on</em></p></td>
+<td><p>Enables/disables the Reed-Solomon block coding/decoding algorithm utilized by the VIN™.</p></td>
+<td><p>true</p></td>
+<td><p>true: enables the Reed-Solomon block coder.</p>
+<p>false: disables the Reed-Solomon block coder.</p>
+</td>
+</tr>
+<tr class="row-odd"><td><p><em>log</em></p></td>
+<td><p>Enables/disables log generation for the output of the Reed-Solomon coder.</p></td>
+<td><p>false</p></td>
+<td><p>true: enables logging.</p>
+<p>false: disables logging.</p>
+</td>
+</tr>
+<tr class="row-even"><td><p><em>perc_parity</em></p></td>
+<td><p>The percentage of parity bytes created per data byte. Every two parity bytes can find and correct a single corrupted byte among a set of bytes. Note: Not every parity byte can correct every data byte. Each parity byte only ‘covers’ for a certain set of data bytes.</p></td>
+<td><p>100</p></td>
+<td><p>0 – 100; where a higher number improves data recovery. The default is recommended.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<hr class="docutils" />
+<section id="channels">
+<h2>channels<a class="headerlink" href="#channels" title="Permalink to this headline"></a></h2>
+<p>The VIN™ has the ability to operate with a Binary Symmetric Channel (BSC) with the intention of testing degradation on the network and the options pertaining to this channel are listed below.</p>
+<table class="colwidths-given docutils align-default" id="id20">
+<caption><span class="caption-text">Timeout Parameters</span><a class="headerlink" href="#id20" title="Permalink to this table"></a></caption>
+<colgroup>
+<col style="width: 15%" />
+<col style="width: 40%" />
+<col style="width: 10%" />
+<col style="width: 35%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Parameter</p></th>
+<th class="head"><p>Description</p></th>
+<th class="head"><p>Default</p></th>
+<th class="head"><p>Options</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><em>bsc</em></p></td>
+<td><p>Enables/disables the use of a BSC.</p></td>
+<td><p>false</p></td>
+<td><p>true: enables the channel.</p>
+<p>false: disables the channel.</p>
+</td>
+</tr>
+<tr class="row-odd"><td><p><em>log</em></p></td>
+<td><p>Enables/disables log generation for the output of the Binary Symmetric Channel.</p></td>
+<td><p>false</p></td>
+<td><p>true: enables logging.</p>
+<p>false: disables logging.</p>
+</td>
+</tr>
+<tr class="row-even"><td><p><em>bsc_p</em></p></td>
+<td><p>The percentage of bits that will be flipped during transmission.</p></td>
+<td><p>1.0</p></td>
+<td><p>Any number between 0 and 100.</p></td>
+</tr>
+<tr class="row-odd"><td><p><em>bsc_sym_size</em></p></td>
+<td><p>The symbol size of either bits (1) or bytes (8), which is affected by the ‘bsc_p.’ For example, if ‘bsc_p’ is 1.0 and ‘bsc_sym_size’ is set to 1, 1% of bits will be flipped. If ‘bsc_sym_size’ is 8, 1% of bytes will be flipped.</p></td>
+<td><p>8</p></td>
+<td><p>1 or 8.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="vin_cli.html" class="btn btn-neutral float-left" title="VIN™ Command Line Interface (CLI)" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="sample_use_cases.html" class="btn btn-neutral float-right" title="Sample Use Cases" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021, Virgil Systems.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>  
+
+  <style>
+    
+    /* Sidebar header (and topbar for mobile) */
+    .wy-side-nav-search, .wy-nav-top {background: #00ff00;}
+    
+    /* Sidebar */
+    .wy-nav-side {background: #000000;}
+    
+    /* Make a class to allow for center alignment of text */
+    .text-align-center { text-align: center; }
+
+    /* Change the background color to pure white so that images with white backgrounds look ok */
+    /* while this changes the background, it also affects the sidebar and search bar. will need to find another way to do this if needed.*/
+    /*div {background-color: #ffffff;}*/
+    
+
+  </style>
+
+
+</body>
+</html>

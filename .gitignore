@@ -1,5 +1,8 @@
 #vscode settings
 .vscode/
 
-#reStructuredText Extension files generated in vscode
+#reStructuredText html files generated for previewing wihtin VS code
 docs/source/_build/
+
+#html files generated using `make html` and pdf generated using `make latexpdf`
+docs/build/

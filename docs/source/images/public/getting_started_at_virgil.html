@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Getting Started at Virgil Systems &mdash; VIN™ Reference Guide 0.1 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/custom.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Developing with Windows" href="developing_with_windows.html" />
+    <link rel="prev" title="VIN™ Description" href="vin_description.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> VIN™ Reference Guide
+            <img src="_static/virgil_v_black.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="vin_description.html">VIN™ Description</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Getting Started at Virgil Systems</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#setting-up-git">Setting up Git</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#generating-an-ssh-key">Generating an SSH key</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#cloning-a-repository">Cloning a Repository</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#setting-up-branches-and-committing">Setting up Branches and Committing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#basic-git-commands">Basic Git Commands</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#creating-new-branch">Creating new branch</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#pulling-from-branch">Pulling from branch</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#committing-to-a-repository">Committing to a Repository</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="developing_with_windows.html">Developing with Windows</a></li>
+<li class="toctree-l1"><a class="reference internal" href="developing_with_linux_wsl.html">Developing with Linux and WSL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="vin_cli.html">VIN™ Command Line Interface (CLI)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="configuration.html">Configuration Options</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sample_use_cases.html">Sample Use Cases</a></li>
+<li class="toctree-l1"><a class="reference internal" href="key_concepts.html">Key Concepts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dashboard.html">VIN™ Dashboard</a></li>
+<li class="toctree-l1"><a class="reference internal" href="vin_statistics.html">VIN™ Statistics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="vin_metrics.html">VIN™ Metrics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="release_notes.html">Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="glossary.html">Glossary</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">VIN™ Reference Guide</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>Getting Started at Virgil Systems</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/getting_started_at_virgil.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="getting-started-at-virgil-systems">
+<h1>Getting Started at Virgil Systems<a class="headerlink" href="#getting-started-at-virgil-systems" title="Permalink to this headline"></a></h1>
+<section id="setting-up-git">
+<span id="id1"></span><h2>Setting up Git<a class="headerlink" href="#setting-up-git" title="Permalink to this headline"></a></h2>
+<p>Before development can begin, it is imperative that access to Virgil Systems’ <em>GitLab</em> be acquired and that <em>Git</em> tools are installed. To install <em>Git</em> and the required tools do the following:</p>
+<ul class="simple">
+<li><p>Download and install <em>Git</em> by visiting <a class="reference external" href="https://git-scm.com/downloads">https://git-scm.com/downloads</a></p></li>
+<li><p>Click on the link for the required operating system and follow the instructions to install <em>Git</em></p></li>
+</ul>
+<section id="generating-an-ssh-key">
+<h3>Generating an SSH key<a class="headerlink" href="#generating-an-ssh-key" title="Permalink to this headline"></a></h3>
+<ul class="simple">
+<li><p>Connect to the Virgil Network via <em>Cisco AnyConnect</em> (if this is not available contact the Virgil Systems’ administrative team for assistance).</p></li>
+<li><p>Right-click on the desktop, or wherever you wish to clone the repository, and click <strong>Git Bash Here</strong></p></li>
+<li><p>Copy and paste <code class="docutils literal notranslate"><span class="pre">ssh</span> <span class="pre">-T</span> <span class="pre">git&#64;gitlab.optimusprime.ai</span></code> in the <em>Git Bash</em> window and hit <strong>Enter</strong></p></li>
+<li><p>Type in <strong>yes</strong> when prompted and then hit enter</p></li>
+<li><p>Copy and paste <code class="docutils literal notranslate"><span class="pre">ssh-keygen</span> <span class="pre">-t</span> <span class="pre">rsa</span></code> into the <em>GitBash</em> window and hit <strong>Enter</strong> (may require multiple <strong>Enters</strong>)</p></li>
+<li><p>For Windows:</p>
+<ul>
+<li><p>Navigate to the folder to <code class="docutils literal notranslate"><span class="pre">c:/Users/Name/.ssh/</span></code> where <code class="docutils literal notranslate"><span class="pre">Name</span></code> is your name (i.e., JohnSmith)</p></li>
+<li><p>Open <code class="docutils literal notranslate"><span class="pre">id.rsa.pub</span></code> using a text editor (i.e., <em>notepad++</em>) and copy the entire line found inside the file</p></li>
+</ul>
+</li>
+<li><p>For Linux:</p>
+<ul>
+<li><p>Run <code class="docutils literal notranslate"><span class="pre">cat</span> <span class="pre">~/.ssh/id_rsa.pub</span></code></p></li>
+<li><p>Copy the output</p></li>
+</ul>
+</li>
+<li><p>Visit <a class="reference external" href="https://gitlab.optimusprime.ai/">https://gitlab.optimusprime.ai/</a></p></li>
+<li><p>Click on the profile icon in the top right corner of the window</p>
+<ul>
+<li><p>Click <strong>Preferences</strong> from the list</p></li>
+</ul>
+</li>
+<li><p>Click <strong>SSH Keys</strong> on the left side of the screen</p></li>
+<li><p>Paste the SSH key copied from <code class="docutils literal notranslate"><span class="pre">id.rsa.pub</span></code> into the field under <strong>Key</strong></p>
+<ul>
+<li><p>Click the <strong>Add key</strong> button</p></li>
+</ul>
+</li>
+<li><p>Click <strong>SSH Keys</strong> on the left side of the screen and the newly added key should be in the list under <strong>Your SSH keys</strong></p></li>
+</ul>
+</section>
+<section id="cloning-a-repository">
+<h3>Cloning a Repository<a class="headerlink" href="#cloning-a-repository" title="Permalink to this headline"></a></h3>
+<ul class="simple">
+<li><p>In <em>GitLab</em>, navigate to the <code class="docutils literal notranslate"><span class="pre">qtoken-cpp</span></code> project, or whichever one that is required</p></li>
+<li><p>Click the blue <strong>Clone</strong> button</p></li>
+<li><p>Copy the link in field under the heading <strong>Clone with SSH</strong> (e.g., <code class="docutils literal notranslate"><span class="pre">git&#64;gitlab.optimusprime.ai:virgilsystems/prototypes/qtoken-cpp.git</span></code>)</p></li>
+<li><p>Type <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">clone</span></code> and paste the copied link into <em>Git Bash</em> and hit <strong>Enter</strong></p></li>
+<li><p>The project should now be cloned to computer in the location <em>Git Bash</em> was run from</p></li>
+</ul>
+</section>
+<section id="setting-up-branches-and-committing">
+<h3>Setting up Branches and Committing<a class="headerlink" href="#setting-up-branches-and-committing" title="Permalink to this headline"></a></h3>
+<p>The <code class="docutils literal notranslate"><span class="pre">master</span></code> branch will be checked out upon completing the cloning process. As the <code class="docutils literal notranslate"><span class="pre">dev</span></code> branch contains the latest changes, immediately check out this branch by running <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">checkout</span> <span class="pre">dev</span></code> in the <em>Git Bash</em> window. The <code class="docutils literal notranslate"><span class="pre">master</span></code> branch is for releases only and should never be pushed to directly. Similarly, <code class="docutils literal notranslate"><span class="pre">dev</span></code> should never be pused to directly as any updated code must pass a review.</p>
+<p>The process for updating a branch is as follows:</p>
+<ul class="simple">
+<li><p>From the <code class="docutils literal notranslate"><span class="pre">dev</span></code> branch, after making sure the latest changes have been pulled (i.e., running <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">pull</span> <span class="pre">origin</span> <span class="pre">dev</span></code>), create a new branch called <code class="docutils literal notranslate"><span class="pre">vinXXX_feature</span></code>, where <code class="docutils literal notranslate"><span class="pre">XXX</span></code> refers to the <em>Jira</em> ticket number (i.e., <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">checkout</span> <span class="pre">-b</span> <span class="pre">vinXXX_feature</span></code>). This number can be found in the top-left corner of the <em>Jira</em> ticket. For example, if working on a streaming branch, with a ticket number of 123, the name would be <code class="docutils literal notranslate"><span class="pre">vin123_streaming</span></code>.</p></li>
+<li><p>When development of the task has been finished, commit the changes, making sure to add any files and folders required (see <a class="reference internal" href="#basic-git-commands">Basic Git Commands</a> for more information).</p></li>
+<li><p>Following this, make sure to pull down (i.e., <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">pull</span> <span class="pre">origin</span> <span class="pre">dev</span></code>) and merge (if necessary) from the <code class="docutils literal notranslate"><span class="pre">dev</span></code> branch as there may be additional changes from other developers.</p></li>
+<li><p>After the merge changes have been completed, commit, and push once more, then proceed to <em>GitLab</em> on a browser. On the left side, click <strong>Merge Requests</strong>. Create a new merge request from the current working branch (e.g., <code class="docutils literal notranslate"><span class="pre">vin123_streaming</span></code>) into the <code class="docutils literal notranslate"><span class="pre">dev</span></code> branch and assign a reviewer to go through the changes. If you are unsure which reviewer to choose, contact the team lead.</p></li>
+<li><p>Once the review is finished, view their recommended changes by going to the <strong>Changes</strong> tab under <strong>Merge Requests</strong>.</p></li>
+<li><p>Make the suggested changes, commit, and push them once more.</p></li>
+<li><p>Finally, the reviewer will approve your merge request and they will merge it into <code class="docutils literal notranslate"><span class="pre">dev</span></code> where it will begin validation through the CI/CD pipeline.</p></li>
+</ul>
+</section>
+<section id="basic-git-commands">
+<h3>Basic Git Commands<a class="headerlink" href="#basic-git-commands" title="Permalink to this headline"></a></h3>
+<section id="creating-new-branch">
+<h4>Creating new branch<a class="headerlink" href="#creating-new-branch" title="Permalink to this headline"></a></h4>
+<p><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">checkout</span> <span class="pre">-b</span> <span class="pre">yourBranchName</span></code> and once the branch has been created, <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">checkout</span> <span class="pre">yourBranchName</span></code> will switch to that branch.</p>
+</section>
+<section id="pulling-from-branch">
+<h4>Pulling from branch<a class="headerlink" href="#pulling-from-branch" title="Permalink to this headline"></a></h4>
+<p><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">pull</span> <span class="pre">origin</span> <span class="pre">dev</span></code> pulls from the remote dev branch.</p>
+</section>
+<section id="committing-to-a-repository">
+<h4>Committing to a Repository<a class="headerlink" href="#committing-to-a-repository" title="Permalink to this headline"></a></h4>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">status</span></code> generates a list of changes made in your branch. It is important to do this in order to see which files need to be added to the commit.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">add</span></code> adds the newly added files to the commit. A folder can be added by putting quotations around it (i.e., “folder”).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">commit</span> <span class="pre">-a</span> <span class="pre">-m</span> <span class="pre">“Message</span> <span class="pre">regarding</span> <span class="pre">what’s</span> <span class="pre">being</span> <span class="pre">committed”</span></code> where <code class="docutils literal notranslate"><span class="pre">-a</span></code> is for all tracked files and <code class="docutils literal notranslate"><span class="pre">-m</span></code> is for the message</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">push</span> <span class="pre">-u</span> <span class="pre">origin</span> <span class="pre">yourBranchName</span></code> pushes the changes to the branch on the repository.</p></li>
+</ul>
+</section>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="vin_description.html" class="btn btn-neutral float-left" title="VIN™ Description" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="developing_with_windows.html" class="btn btn-neutral float-right" title="Developing with Windows" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021, Virgil Systems.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>  
+
+  <style>
+    
+    /* Sidebar header (and topbar for mobile) */
+    .wy-side-nav-search, .wy-nav-top {background: #00ff00;}
+    
+    /* Sidebar */
+    .wy-nav-side {background: #000000;}
+    
+    /* Make a class to allow for center alignment of text */
+    .text-align-center { text-align: center; }
+
+    /* Change the background color to pure white so that images with white backgrounds look ok */
+    /* while this changes the background, it also affects the sidebar and search bar. will need to find another way to do this if needed.*/
+    /*div {background-color: #ffffff;}*/
+    
+
+  </style>
+
+
+</body>
+</html>

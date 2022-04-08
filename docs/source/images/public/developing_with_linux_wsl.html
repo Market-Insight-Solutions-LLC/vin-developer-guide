@@ -1,0 +1,683 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Developing with Linux and WSL &mdash; VIN™ Reference Guide 0.1 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/custom.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="VIN™ Command Line Interface (CLI)" href="vin_cli.html" />
+    <link rel="prev" title="Developing with Windows" href="developing_with_windows.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> VIN™ Reference Guide
+            <img src="_static/virgil_v_black.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="vin_description.html">VIN™ Description</a></li>
+<li class="toctree-l1"><a class="reference internal" href="getting_started_at_virgil.html">Getting Started at Virgil Systems</a></li>
+<li class="toctree-l1"><a class="reference internal" href="developing_with_windows.html">Developing with Windows</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Developing with Linux and WSL</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#pre-requisites">Pre-Requisites</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#required-gitlab-branches">Required GitLab Branches</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#tool-installation">Tool Installation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#installing-windows-subsystem-for-linux-wsl-2">Installing Windows Subsystem for Linux (WSL) 2</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#windows-10-build-2004-or-newer-version">Windows 10 Build 2004 or Newer Version</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#windows-10-build-older-version">Windows 10 Build Older Version</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#installing-tools-for-linux">Installing Tools for Linux</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#command-details">Command Details</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#cmake">CMake</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#option-1-using-kitwares-repository">Option 1 – Using Kitware’s Repository</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#option-2-using-a-script">Option 2 – Using a Script</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#installing-microsoft-package-manager-vcpkg">Installing Microsoft Package Manager (<em>VCPKG</em>)</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#changing-library-type">Changing Library Type</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#installing-and-required-packages">Installing and Required Packages</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#acquiring-the-projects-and-build-libraries">Acquiring the Projects and Build Libraries</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#cloning-the-projects-and-build-libraries">Cloning the Projects and Build Libraries</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#aff3ct">Aff3ct</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#poco">Poco</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#lvm">LVM</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#acquiring-pre-built-projects">Acquiring Pre-Built Projects</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#cloning-qtoken-cpp">Cloning qtoken-cpp</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#building-the-projects">Building the Projects</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#installing-the-vin">Installing the VIN™</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#configuration">Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#running-the-vin">Running the VIN™</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#start-a-bootstrap-node">Start a Bootstrap Node</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#run-the-first-peer-node">Run the First Peer Node</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#run-the-second-peer-node">Run the Second Peer Node</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#running-the-vin-command-line-interface-vin-cli">Running the VIN™ Command Line Interface (VIN_CLI)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#sharing-a-file">Sharing a File</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#troubleshooting">Troubleshooting</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#linux-sh-build-error">./linux.sh Build Error</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#lvm-build-issue-using-wslbuild-sh">LVM Build Issue using ./wslbuild.sh</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#issues-with-vcpkg-packages-and-or-linuxbuild-sh">Issues with VCPKG Packages and/or ./linuxbuild.sh</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#error-building-qtoken-cpp-with-linuxbuild-sh">Error Building qtoken-cpp with ./linuxbuild.sh</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="vin_cli.html">VIN™ Command Line Interface (CLI)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="configuration.html">Configuration Options</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sample_use_cases.html">Sample Use Cases</a></li>
+<li class="toctree-l1"><a class="reference internal" href="key_concepts.html">Key Concepts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dashboard.html">VIN™ Dashboard</a></li>
+<li class="toctree-l1"><a class="reference internal" href="vin_statistics.html">VIN™ Statistics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="vin_metrics.html">VIN™ Metrics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="release_notes.html">Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="glossary.html">Glossary</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">VIN™ Reference Guide</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>Developing with Linux and WSL</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/developing_with_linux_wsl.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="developing-with-linux-and-wsl">
+<h1>Developing with Linux and WSL<a class="headerlink" href="#developing-with-linux-and-wsl" title="Permalink to this headline"></a></h1>
+<p>This section contains a step-by-step guide of how to set up and install all of the components required to run the VIN™ on <em>Linux</em> and using <em>WSL (Windows Subsystem for Linux</em> on <em>Windows</em>. It provides a number of ways to acquire and build the necessary projects based upon the needs of the user.</p>
+<p>Be sure to follow each and every instruction step-by-step in order to ensure the proper set up of the Linux and WSL Environments. If an issue occurs during the setup, refer to the <a class="reference internal" href="#troubleshooting">Troubleshooting</a> section. If the issue is not documented, contact a Virgil System employee for assitance.</p>
+<section id="pre-requisites">
+<h2>Pre-Requisites<a class="headerlink" href="#pre-requisites" title="Permalink to this headline"></a></h2>
+<p>Before beginning the environment set up, it is necessary to have the following:</p>
+<ul class="simple">
+<li><p>Access to Virgil System’s <em>GitLab</em>. Contact the Virgil Systems’ administrative team for more information if required.</p></li>
+<li><p>A SSH key registered to your account which is required to clone the repositories. Refer to the <a class="reference internal" href="getting_started_at_virgil.html#setting-up-git"><span class="std std-ref">Setting up Git</span></a> section and follow the instructions if needed.</p></li>
+<li><p>Virgil Systems’ VPN (<code class="docutils literal notranslate"><span class="pre">vpn.optimusprime.ai</span></code>) is set up and the connection is established. Contact the Virgil Systems’ administrative team for more information if required.</p></li>
+<li><p>If you wish to use pre-built libraries, access to Virgil Systems’ <em>JFrog</em> account is necessary. Contact the Virgil Systems’ administrative team for more information if required.</p></li>
+</ul>
+</section>
+<section id="required-gitlab-branches">
+<h2>Required GitLab Branches<a class="headerlink" href="#required-gitlab-branches" title="Permalink to this headline"></a></h2>
+<p>The following branches, located in Virgil Systems’ GitLab, are used for the creation of the Linux and WSL Environments.</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://gitlab.optimusprime.ai/virgilsystems/external/aff3ct/-/tree/master">https://gitlab.optimusprime.ai/virgilsystems/external/aff3ct/-/tree/master</a></p></li>
+<li><p><a class="reference external" href="https://gitlab.optimusprime.ai/virgilsystems/prototypes/poco/-/tree/virgil">https://gitlab.optimusprime.ai/virgilsystems/prototypes/poco/-/tree/virgil</a></p></li>
+<li><p><a class="reference external" href="https://gitlab.optimusprime.ai/virgilsystems/external/lvm/-/tree/WindowsDev">https://gitlab.optimusprime.ai/virgilsystems/external/lvm/-/tree/WindowsDev</a></p></li>
+<li><p><a class="reference external" href="https://gitlab.optimusprime.ai/virgilsystems/prototypes/qtoken-cpp/-/tree/dev">https://gitlab.optimusprime.ai/virgilsystems/prototypes/qtoken-cpp/-/tree/dev</a></p></li>
+</ul>
+<p>While these may be updated, the environment setup can still be used for older versions of these branches. However, the information for the environment creation will be updated periodically to ensure the functionality of the resources required.</p>
+</section>
+<section id="tool-installation">
+<h2>Tool Installation<a class="headerlink" href="#tool-installation" title="Permalink to this headline"></a></h2>
+<section id="installing-windows-subsystem-for-linux-wsl-2">
+<h3>Installing Windows Subsystem for Linux (WSL) 2<a class="headerlink" href="#installing-windows-subsystem-for-linux-wsl-2" title="Permalink to this headline"></a></h3>
+<p>This step is only required for <em>WSL</em>. If <em>Linux</em> is to be used, skip ahead to <a class="reference internal" href="#linux-tools"><span class="std std-ref">Installing Tools for Linux</span></a>.</p>
+<section id="windows-10-build-2004-or-newer-version">
+<h4>Windows 10 Build 2004 or Newer Version<a class="headerlink" href="#windows-10-build-2004-or-newer-version" title="Permalink to this headline"></a></h4>
+<ul class="simple">
+<li><p>Open command line tool as an <strong>Administrator</strong> and run: <code class="docutils literal notranslate"><span class="pre">wsl.exe</span> <span class="pre">--install</span></code></p></li>
+<li><p>It enables the <em>WSL</em> optional features required, downloads the latest <em>WSL Linux</em> kernel version, and installs <em>Ubuntu</em> as your default distro.</p></li>
+<li><p>Restart the PC to and wait for the install to complete</p></li>
+</ul>
+<p>The distro should create a <strong>Start Menu</strong> item (i.e., <em>Ubuntu</em>) which can be clicked on to start the distro with <em>WSL</em>. <strong>Be sure to run it as an Administrator otherwise some functionality will not be available.</strong></p>
+<ul class="simple">
+<li><p>Set a username and password for use on the distro</p></li>
+<li><p>Run <code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">apt</span> <span class="pre">update</span></code></p></li>
+<li><p>Run <code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">apt</span> <span class="pre">upgrade</span></code></p></li>
+</ul>
+</section>
+<section id="windows-10-build-older-version">
+<h4>Windows 10 Build Older Version<a class="headerlink" href="#windows-10-build-older-version" title="Permalink to this headline"></a></h4>
+<p>If the above method didn’t work due to the <em>Windows</em> OS being an older build, follow the steps below.</p>
+<ul class="simple">
+<li><p>To enable <em>WSL</em>, open the <em>PowerShell</em> tool as an <strong>Administrator</strong> and run <code class="docutils literal notranslate"><span class="pre">dism.exe</span> <span class="pre">/online</span> <span class="pre">/enable-feature</span> <span class="pre">/featurename:Microsoft-Windows-Subsystem-Linux</span> <span class="pre">/all</span> <span class="pre">/norestart</span></code></p></li>
+<li><p><em>WSL2</em> requires <em>Windows 10’s</em> <strong>Virtual Machine Platform</strong> feature to be enabled. To do so run <code class="docutils literal notranslate"><span class="pre">Enable-WindowsOptionalFeature</span> <span class="pre">-Online</span> <span class="pre">-FeatureName</span> <span class="pre">VirtualMachinePlatform</span> <span class="pre">-NoRestart</span></code></p></li>
+<li><p>It is recommended that the PC be restarted at this point.</p></li>
+<li><p>Set <em>WSL2</em> as the default by running <code class="docutils literal notranslate"><span class="pre">wsl</span> <span class="pre">--set-default-version</span> <span class="pre">2</span></code></p></li>
+<li><p>Install Ubuntu on Windows 10 by opening the Microsoft Store app (search Microsoft Store in the Windows search bar), search for <strong>Ubuntu 20.04</strong>, and hit the <strong>Get</strong> button.</p>
+<ul>
+<li><p>If another Linux distro is required (e.g., Debian) download it in the same manner.</p></li>
+</ul>
+</li>
+<li><p>Restart the PC to and wait for the install to complete</p></li>
+<li><p>Set a username and password for use on the distro</p></li>
+<li><p>Run <code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">apt</span> <span class="pre">update</span></code></p></li>
+<li><p>Run <code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">apt</span> <span class="pre">upgrade</span></code></p></li>
+<li><p>Type <strong>y</strong> to upgrade</p></li>
+</ul>
+<p>The distro should create a <strong>Start Menu</strong> item (i.e., <em>Ubuntu</em>) which can be clicked on to start the distro with <em>WSL</em>. <strong>Be sure to run it as an Administrator otherwise some functionality will not be available.</strong></p>
+</section>
+</section>
+<section id="installing-tools-for-linux">
+<span id="linux-tools"></span><h3>Installing Tools for Linux<a class="headerlink" href="#installing-tools-for-linux" title="Permalink to this headline"></a></h3>
+<p>Run the following commands whether a <em>Linux</em> or <em>WSL</em> environment is being created:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">apt</span> <span class="pre">update</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">apt</span> <span class="pre">upgrade</span></code></p>
+<ul>
+<li><p>Type <strong>y</strong> and hit <strong>Enter</strong></p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">apt</span> <span class="pre">install</span> <span class="pre">git</span></code> (skip this for now)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">apt</span> <span class="pre">install</span> <span class="pre">g++</span> <span class="pre">gdb</span> <span class="pre">make</span> <span class="pre">ninja-build</span> <span class="pre">rsync</span> <span class="pre">zip</span></code></p>
+<ul>
+<li><p>Type <strong>y</strong> and hit <strong>Enter</strong></p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">apt</span> <span class="pre">install</span> <span class="pre">curl</span> <span class="pre">zip</span> <span class="pre">unzip</span> <span class="pre">tar</span></code> (skip for now as well)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">apt</span> <span class="pre">install</span> <span class="pre">libtool-bin</span> <span class="pre">pkg-config</span></code></p>
+<ul>
+<li><p>Type <strong>y</strong> and hit <strong>Enter</strong></p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">apt</span> <span class="pre">install</span> <span class="pre">libssl-dev</span></code></p></li>
+</ul>
+<section id="command-details">
+<h4>Command Details<a class="headerlink" href="#command-details" title="Permalink to this headline"></a></h4>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">apt</span> <span class="pre">update</span></code></p>
+<ul>
+<li><p>Used to download package information from all configured sources</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">apt</span> <span class="pre">upgrade</span></code></p>
+<ul>
+<li><p>This will fetch new versions of packages existing on the machine if APT knows about these new versions by way of <code class="docutils literal notranslate"><span class="pre">apt-get</span> <span class="pre">update</span></code></p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">apt</span> <span class="pre">install</span> <span class="pre">git</span></code></p>
+<ul>
+<li><p>Software for tracking changes in any set of files, usually used for coordinating work among programmers collaboratively developing source code during software development.</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">apt</span> <span class="pre">install</span> <span class="pre">g++</span> <span class="pre">gdb</span> <span class="pre">make</span> <span class="pre">ninja-build</span> <span class="pre">rsync</span> <span class="pre">zip</span></code></p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">g++</span></code>: a GNU c++ compiler</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">gdb</span></code>: the GNU Project debugger, allows you to see what is going on inside another program while it executes or what another program was doing at the moment it crashed.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">make</span></code>: The purpose of the make utility is to determine automatically which pieces of a large program need to be recompiled and issue the commands to recompile them. you can use make with any programming language whose compiler can be run with a shell command.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ninja-build</span></code>: a small build system with a focus on speed. It differs from other build systems in two major respects: it is designed to have its input files generated by a higher-level build system, and it is designed to run builds as fast as possible.</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">apt-get</span> <span class="pre">install</span> <span class="pre">curl</span> <span class="pre">zip</span> <span class="pre">unzip</span> <span class="pre">tar</span></code></p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">curl</span></code>: a command line tool to transfer data to or from a server, using any of the supported protocols</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">zip</span></code>: a compression and file packaging utility for Unix</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">unzip</span></code>: is a decompression and file unpackaging utility for Unix</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">apt</span> <span class="pre">install</span> <span class="pre">libtool-bin</span> <span class="pre">pkg-config</span></code></p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">libtool-bin</span></code>: a generic library support script. <em>Libtool</em> hides the complexity of generating special library types (such as shared libraries) behind a consistent interface</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pkg-config</span></code>: a helper tool used when compiling applications and libraries. It helps insert the correct compiler options on the command line.</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">apt</span> <span class="pre">install</span> <span class="pre">libssl-dev</span></code></p>
+<ul>
+<li><p>Part of the <em>OpenSSL</em> project’s implementation of the SSL and TLS cryptographic protocols for secure communication over the Internet. It contains development libraries, header files, and manpages for libssl and libcrypto.</p></li>
+</ul>
+</li>
+</ul>
+</section>
+</section>
+<section id="cmake">
+<h3>CMake<a class="headerlink" href="#cmake" title="Permalink to this headline"></a></h3>
+<p>Installing <em>CMake</em> by using <code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">apt</span> <span class="pre">install</span> <span class="pre">cmake</span></code> will likely install an older version. Therefore, it needs to be installed manually by either of the following options.</p>
+<section id="option-1-using-kitwares-repository">
+<h4>Option 1 – Using Kitware’s Repository<a class="headerlink" href="#option-1-using-kitwares-repository" title="Permalink to this headline"></a></h4>
+<p>The following commands obtain Kitware’s signature key, adds <em>Kitware’s</em> repository, ensures Kitware’s key stays up-to-date, grabs the key again, updates the repository and finally installs <em>CMake</em>. Completing this option, ensures the newest version of <em>CMake</em> is installed and is easily updatable.</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">apt</span> <span class="pre">remove</span> <span class="pre">--purge</span> <span class="pre">--auto-remove</span> <span class="pre">cmake</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">wget</span> <span class="pre">-O</span> <span class="pre">-</span> <span class="pre">https://apt.kitware.com/keys/kitware-archive-latest.asc</span> <span class="pre">2&gt;/dev/null</span> <span class="pre">|</span> <span class="pre">gpg</span> <span class="pre">--dearmor</span> <span class="pre">-</span> <span class="pre">|</span> <span class="pre">sudo</span> <span class="pre">tee</span> <span class="pre">/etc/apt/trusted.gpg.d/kitware.gpg</span> <span class="pre">&gt;/dev/null</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">apt-add-repository</span> <span class="pre">&quot;deb</span> <span class="pre">https://apt.kitware.com/ubuntu/</span> <span class="pre">$(lsb_release</span> <span class="pre">-cs)</span> <span class="pre">main&quot;</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">apt</span> <span class="pre">update</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">apt</span> <span class="pre">install</span> <span class="pre">kitware-archive-keyring</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">rm</span> <span class="pre">/etc/apt/trusted.gpg.d/kitware.gpg</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">wget</span> <span class="pre">-O</span> <span class="pre">-</span> <span class="pre">https://apt.kitware.com/keys/kitware-archive-latest.asc</span> <span class="pre">2&gt;/dev/null</span> <span class="pre">|</span> <span class="pre">gpg</span> <span class="pre">--dearmor</span> <span class="pre">-</span> <span class="pre">|</span> <span class="pre">sudo</span> <span class="pre">tee</span> <span class="pre">/etc/apt/trusted.gpg.d/kitware.gpg</span> <span class="pre">&gt;/dev/null</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">apt</span> <span class="pre">update</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">apt</span> <span class="pre">install</span> <span class="pre">cmake</span></code></p>
+<ul>
+<li><p>Type <strong>y</strong> then hit <strong>Enter</strong></p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="option-2-using-a-script">
+<h4>Option 2 – Using a Script<a class="headerlink" href="#option-2-using-a-script" title="Permalink to this headline"></a></h4>
+<p>For a more controlled option which will allow a version to be chosen, download the Linux sh package from the <a class="reference external" href="https://cmake.org/">CMake website</a> manually or run the following (be aware that version may already have changed):</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">version=3.21</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">build=3</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">mkdir</span> <span class="pre">~/temp</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">cd</span> <span class="pre">~/temp</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">wget</span> <span class="pre">https://cmake.org/files/v$version/cmake-$version.$build-linux-x86_64.sh</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">mkdir</span> <span class="pre">/opt/cmake</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">sh</span> <span class="pre">cmake-$version.$build-linux-x86_64.sh</span> <span class="pre">--prefix=/opt/cmake</span></code></p></li>
+</ul>
+<p>Whichever option is used, be sure to add the installed binary link to <code class="docutils literal notranslate"><span class="pre">/usr/local/bin/cmake</span></code> by running</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">ln</span> <span class="pre">-s</span> <span class="pre">/opt/cmake/bin/cmake</span> <span class="pre">/usr/local/bin/cmake</span></code></p></li>
+</ul>
+<p>Finally, to ensure CMake was installed and to check its version, run <code class="docutils literal notranslate"><span class="pre">cmake</span> <span class="pre">--version</span></code>.</p>
+</section>
+</section>
+<section id="installing-microsoft-package-manager-vcpkg">
+<h3>Installing Microsoft Package Manager (<em>VCPKG</em>)<a class="headerlink" href="#installing-microsoft-package-manager-vcpkg" title="Permalink to this headline"></a></h3>
+<p>As the VIN™ leverages a number of libraries, using the <em>VCPKG</em> package manager is ideal. For more information on <em>VCPKG</em> visit:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://vcpkg.io/en/index.html">https://vcpkg.io/en/index.html</a></p></li>
+<li><p><a class="reference external" href="https://github.com/microsoft/vcpkg">https://github.com/microsoft/vcpkg</a></p></li>
+<li><p><a class="reference external" href="https://vcpkg.io/en/getting-started.html">https://vcpkg.io/en/getting-started.html</a></p></li>
+</ul>
+<p>Create a folder as the install location for <em>VCPKG</em> (it is recommended to use HOME (~/Dev) for <em>Linux</em> and <code class="docutils literal notranslate"><span class="pre">mnt/c/Dev</span></code> for <em>WSL</em>). <strong>Be sure to capitalize Dev as Linux is case sensitive and the build scripts will not work if Dev is not capitalized.</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">cd</span> <span class="pre">~</span></code> for <em>Linux</em> or <code class="docutils literal notranslate"><span class="pre">cd</span> <span class="pre">/mnt/c/</span></code> for <em>WSL</em></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">mkdir</span> <span class="pre">Dev</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">cd</span> <span class="pre">Dev</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">git</span> <span class="pre">clone</span> <span class="pre">https://github.com/Microsoft/vcpkg.git</span></code></p></li>
+</ul>
+<section id="changing-library-type">
+<h4>Changing Library Type<a class="headerlink" href="#changing-library-type" title="Permalink to this headline"></a></h4>
+<p>Before building the <em>VCPKG</em> libraries and required projects the <code class="docutils literal notranslate"><span class="pre">VCPKG_LIBRARY_LINKAGE</span></code> type must be changed from <code class="docutils literal notranslate"><span class="pre">static</span></code> to <code class="docutils literal notranslate"><span class="pre">dynamic</span></code> by doing the following:</p>
+<ul class="simple">
+<li><p>Navigate to <code class="docutils literal notranslate"><span class="pre">vcpkg/triplets</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">nano</span> <span class="pre">x64-linux.cmake</span></code></p>
+<ul>
+<li><p>Change <code class="docutils literal notranslate"><span class="pre">set(VCPKG_LIBRARY_LINKAGE</span> <span class="pre">static)</span></code> to <code class="docutils literal notranslate"><span class="pre">set(VCPKG_LIBRARY_LINKAGE</span> <span class="pre">dynamic)</span></code></p></li>
+<li><p>Hit <strong>ctrl + X</strong> to exit</p></li>
+<li><p>Hit <strong>y</strong> and <strong>Enter</strong> to save</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="installing-and-required-packages">
+<h4>Installing and Required Packages<a class="headerlink" href="#installing-and-required-packages" title="Permalink to this headline"></a></h4>
+<p>To install the required packages, complete the following (Note: some of the packages may take a long time (20+ minutes) to install):]</p>
+<ul class="simple">
+<li><p>Navigate to <code class="docutils literal notranslate"><span class="pre">vcpkg</span></code> by running <code class="docutils literal notranslate"><span class="pre">cd</span> <span class="pre">..</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">./bootstrap-vcpkg.sh</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">./vcpkg</span> <span class="pre">install</span> <span class="pre">openssl:x64-linux</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">./vcpkg</span> <span class="pre">install</span> <span class="pre">boost:x64-linux</span></code></p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">boost</span></code> may take a very long time (hours) to install. As it is not part of the current version of VIN™, it is recommended to skip unless needed for some other purpose.</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">./vcpkg</span> <span class="pre">install</span> <span class="pre">gflags:x64-linux</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">./vcpkg</span> <span class="pre">install</span> <span class="pre">gtest:x64-linux</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">./vcpkg</span> <span class="pre">install</span> <span class="pre">benchmark:x64-linux</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">./vcpkg</span> <span class="pre">install</span> <span class="pre">libtomcrypt:x64-linux</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">./vcpkg</span> <span class="pre">install</span> <span class="pre">mpi:x64-linux</span></code></p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">mpi</span></code> may have trouble installing. As it was required for older versions of LVM, if trouble occurs during installation skip it and only install if necessary.</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">./vcpkg</span> <span class="pre">install</span> <span class="pre">utf8proc:x64-linux</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">./vcpkg</span> <span class="pre">install</span> <span class="pre">zlib:x64-linux</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">./vcpkg</span> <span class="pre">install</span> <span class="pre">pcre:x64-linux</span></code></p>
+<ul>
+<li><p>This generates an erorr which can be ignored.</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">./vcpkg</span> <span class="pre">install</span> <span class="pre">expat:x64-linux</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">./vcpkg</span> <span class="pre">install</span> <span class="pre">pthread:x64-linux</span></code></p></li>
+</ul>
+</section>
+</section>
+</section>
+<section id="acquiring-the-projects-and-build-libraries">
+<h2>Acquiring the Projects and Build Libraries<a class="headerlink" href="#acquiring-the-projects-and-build-libraries" title="Permalink to this headline"></a></h2>
+<p>The <code class="docutils literal notranslate"><span class="pre">aff3ct</span></code>, <code class="docutils literal notranslate"><span class="pre">poco</span></code> and <code class="docutils literal notranslate"><span class="pre">lvm</span></code> projects can be obtained in two different ways. One is by cloning the repositories from Virgil Systems’ <em>GitLab</em>, the other by downloading them, in a pre-built condition, from <em>JFrog</em>. While cloning the repositories requires taking the time to build them, it allows for more options as the projects may need to be modified by the developer. Instructions for both methods are listed below but note that whichever way is chosen, the <code class="docutils literal notranslate"><span class="pre">qtoken-cpp</span></code> project must be cloned and built.</p>
+<section id="cloning-the-projects-and-build-libraries">
+<h3>Cloning the Projects and Build Libraries<a class="headerlink" href="#cloning-the-projects-and-build-libraries" title="Permalink to this headline"></a></h3>
+<p>Run the following commands to clone the required build libraries and projects. The location for these projects for Linux should be <code class="docutils literal notranslate"><span class="pre">~/Dev</span></code> and WSL should be <code class="docutils literal notranslate"><span class="pre">/mnt/c/Dev</span></code>. Be sure that a connection with Virgil System’s VPN (vpn.optimusprime.ai) is established and run <code class="docutils literal notranslate"><span class="pre">ssh</span> <span class="pre">-T</span> <span class="pre">git&#64;gitlab.optimusprime.ai</span></code> to ensure communication with <em>GitLab</em> is okay.</p>
+<section id="aff3ct">
+<h4>Aff3ct<a class="headerlink" href="#aff3ct" title="Permalink to this headline"></a></h4>
+<ul class="simple">
+<li><p>Navigate to <code class="docutils literal notranslate"><span class="pre">Dev</span></code> by running <code class="docutils literal notranslate"><span class="pre">cd</span> <span class="pre">..</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">clone</span> <span class="pre">--recursive</span> <span class="pre">-j8</span> <span class="pre">git&#64;gitlab.optimusprime.ai:virgilsystems/external/aff3ct.git</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">cd</span> <span class="pre">aff3ct</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">checkout</span> <span class="pre">master</span></code></p></li>
+</ul>
+</section>
+<section id="poco">
+<h4>Poco<a class="headerlink" href="#poco" title="Permalink to this headline"></a></h4>
+<ul class="simple">
+<li><p>Navigate to <code class="docutils literal notranslate"><span class="pre">Dev</span></code> by running <code class="docutils literal notranslate"><span class="pre">cd</span> <span class="pre">..</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">clone</span> <span class="pre">git&#64;gitlab.optimusprime.ai:virgilsystems/prototypes/poco.git</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">cd</span> <span class="pre">poco</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">checkout</span> <span class="pre">virgil</span></code></p></li>
+</ul>
+</section>
+<section id="lvm">
+<h4>LVM<a class="headerlink" href="#lvm" title="Permalink to this headline"></a></h4>
+<ul class="simple">
+<li><p>Navigate to <code class="docutils literal notranslate"><span class="pre">Dev</span></code> by running <code class="docutils literal notranslate"><span class="pre">cd</span> <span class="pre">..</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">clone</span> <span class="pre">git&#64;gitlab.optimusprime.ai:virgilsystems/external/lvm.git</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">cd</span> <span class="pre">lvm</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">checkout</span> <span class="pre">WindowsDev</span></code></p></li>
+</ul>
+</section>
+</section>
+<section id="acquiring-pre-built-projects">
+<h3>Acquiring Pre-Built Projects<a class="headerlink" href="#acquiring-pre-built-projects" title="Permalink to this headline"></a></h3>
+<p><strong>THIS STILL NEEDS TO BE FIGURED OUT. DO NOT USE THIS METHOD AS IT IS CURRENTLY!</strong></p>
+<p>Using this method allows for bypassing the build process for the <code class="docutils literal notranslate"><span class="pre">aff3ct</span></code>, <code class="docutils literal notranslate"><span class="pre">poco</span></code> and <code class="docutils literal notranslate"><span class="pre">lvm</span></code> projects. Make sure that JFrog access has been granted and visit <a class="reference external" href="https://opai.jfrog.io/ui/packages">https://opai.jfrog.io/ui/packages</a> and do the following:</p>
+<ul class="simple">
+<li><p>In the left pane, Artifactory -&gt; Artifacts -&gt; VIN</p></li>
+<li><p>Download VCPKG_build_libs.zip</p></li>
+<li><p>Extract the contents of VCPKG_build_libs.zip into <code class="docutils literal notranslate"><span class="pre">Dev</span></code></p></li>
+</ul>
+</section>
+<section id="cloning-qtoken-cpp">
+<h3>Cloning qtoken-cpp<a class="headerlink" href="#cloning-qtoken-cpp" title="Permalink to this headline"></a></h3>
+<p>qToken-cpp:</p>
+<ul class="simple">
+<li><p>Navigate to <code class="docutils literal notranslate"><span class="pre">Dev</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">clone</span> <span class="pre">--recursive</span> <span class="pre">-j8</span> <span class="pre">git&#64;gitlab.optimusprime.ai:virgilsystems/prototypes/qtoken-cpp.git</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">cd</span> <span class="pre">qtoken-cpp</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">checkout</span> <span class="pre">dev</span></code></p></li>
+</ul>
+<p>Upon completion, the <code class="docutils literal notranslate"><span class="pre">Dev</span></code> folder should now contain the following folders:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">aff3ct</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">lvm</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">poco</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">qtoken-cpp</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">vcpkg</span></code></p></li>
+</ul>
+</section>
+<section id="building-the-projects">
+<h3>Building the Projects<a class="headerlink" href="#building-the-projects" title="Permalink to this headline"></a></h3>
+<p>This process will build and install the projects using scripts (<code class="docutils literal notranslate"><span class="pre">linuxbuild.sh</span></code> for <em>Linux</em> and <code class="docutils literal notranslate"><span class="pre">wslbuild.sh</span></code> for WSL) found in the <code class="docutils literal notranslate"><span class="pre">zbuild</span></code> folder of each project (Note: builds (e.g., <code class="docutils literal notranslate"><span class="pre">affc3t</span></code>) may take over one hour to complete). Furthermore, the scripts will be build the projects in the proper folder structure to ensure that the <code class="docutils literal notranslate"><span class="pre">qtoken-cpp</span></code> project will have all of the necessary files to build correctly. Additionally, they will build both <code class="docutils literal notranslate"><span class="pre">Debug</span></code> and <code class="docutils literal notranslate"><span class="pre">Release</span></code> version of the projects. Be sure to build these projects in the order they appear below (i.e., <code class="docutils literal notranslate"><span class="pre">affct</span></code>, <code class="docutils literal notranslate"><span class="pre">poco</span></code>, <code class="docutils literal notranslate"><span class="pre">lvm</span></code>, and <code class="docutils literal notranslate"><span class="pre">qtoken-cpp</span></code>) as there are dependencies between them. Note that only <code class="docutils literal notranslate"><span class="pre">qtoken-cpp</span></code> needs to be built if the other projects were obtained from <em>JFrog</em>. To complete the following:</p>
+<ul class="simple">
+<li><p>Navigate to <code class="docutils literal notranslate"><span class="pre">Dev/aff3ct/zbuild</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">./linuxbuild.sh</span></code> or <code class="docutils literal notranslate"><span class="pre">./wslbuild.sh</span></code></p></li>
+<li><p>Navigate to <code class="docutils literal notranslate"><span class="pre">Dev/poco/zbuild</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">./linuxbuild.sh</span></code> or <code class="docutils literal notranslate"><span class="pre">./wslbuild.sh</span></code></p></li>
+<li><p>Navigate to <code class="docutils literal notranslate"><span class="pre">Dev/lvm/zbuild</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">./linuxbuild.sh</span></code> or <code class="docutils literal notranslate"><span class="pre">./wslbuild.sh</span></code></p></li>
+<li><p>Navigate to <code class="docutils literal notranslate"><span class="pre">Dev/qtoken-cpp/zbuild</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">./linuxbuild.sh</span></code> or <code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">./wslbuild.sh</span></code></p></li>
+</ul>
+<p>Building <code class="docutils literal notranslate"><span class="pre">qtoken-cpp</span></code> does not copy any files to the Linux standard folders; thus, to run the application, the libraries can be manually copied, or accomplished by the recommended approach, by adding the output install folder to the system library search. In the <code class="docutils literal notranslate"><span class="pre">qtoken-cpp/scripts/linuxhelper</span></code> folder there are script files for <em>Linux</em> and <em>WSL</em> named <code class="docutils literal notranslate"><span class="pre">instcfg_linux.sh</span></code> and <code class="docutils literal notranslate"><span class="pre">instcfg_wsl.sh</span></code>, respectively. The respective script should be run after all of the projects are built in order to set <code class="docutils literal notranslate"><span class="pre">qtoken-cpp</span></code> libs in the system libs path. This will allow the executables to run without manually copying the libs.</p>
+<p>Run the following scripts for Linux or WSL:</p>
+<ul class="simple">
+<li><p>Navigate to <code class="docutils literal notranslate"><span class="pre">Dev/qtoken-cpp/scripts/linuxhelper/</span></code></p></li>
+<li><p>Run <code class="docutils literal notranslate"><span class="pre">./instcfg_linux.sh</span></code> for <em>Linux</em> or <code class="docutils literal notranslate"><span class="pre">./instcfg_wsl.sh</span></code> for <em>WSL</em></p></li>
+</ul>
+<p>The build scripts (i.e., <code class="docutils literal notranslate"><span class="pre">linuxbuild.sh</span></code> and <code class="docutils literal notranslate"><span class="pre">wslbuild.sh</span></code>) set the parameter <code class="docutils literal notranslate"><span class="pre">-DLINUX_VCPKG=&quot;False&quot;</span></code> to <code class="docutils literal notranslate"><span class="pre">-DLINUX_VCPKG=&quot;True&quot;</span></code>. This switch sets specific settings in the <code class="docutils literal notranslate"><span class="pre">CMakeList.txt</span></code> files to ensure that the appropriate libraries (in <em>VCPKG</em>) are located.</p>
+</section>
+</section>
+<section id="installing-the-vin">
+<h2>Installing the VIN™<a class="headerlink" href="#installing-the-vin" title="Permalink to this headline"></a></h2>
+<p>After finishing building the <code class="docutils literal notranslate"><span class="pre">qtoken-cpp</span></code> project, installing the VIN™ using the most up-to-date <code class="docutils literal notranslate"><span class="pre">.DEB</span></code> file will allow it to be run from any directory. To do so for either <em>Linux</em> or <em>WSL</em> complete the following:</p>
+<ul class="simple">
+<li><p>Navigate to <code class="docutils literal notranslate"><span class="pre">Dev/qtoken-cpp/out/install/WSL-GCC-Release/PACKAGES</span></code> for the release build or <code class="docutils literal notranslate"><span class="pre">Dev/qtoken-cpp/out/install/WSL-GCC-Debug/PACKAGES</span></code> for the debug build. Note: the following examples will use the release version.</p></li>
+<li><p>Run <code class="docutils literal notranslate"><span class="pre">ls</span></code> and copy the <code class="docutils literal notranslate"><span class="pre">&lt;name&gt;</span></code> of the installation file. For example, <code class="docutils literal notranslate"><span class="pre">QToken-CPP_1.1.0-x86_64-POCO.deb</span></code></p></li>
+<li><p>Run <code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">apt</span> <span class="pre">install</span> <span class="pre">./&lt;name&gt;.deb</span></code> where <code class="docutils literal notranslate"><span class="pre">&lt;name&gt;</span></code> is copied file name</p></li>
+</ul>
+</section>
+<section id="configuration">
+<h2>Configuration<a class="headerlink" href="#configuration" title="Permalink to this headline"></a></h2>
+<p>The <code class="docutils literal notranslate"><span class="pre">DEB</span></code> package will install a file named <code class="docutils literal notranslate"><span class="pre">defaults.cfg</span></code> in the <code class="docutils literal notranslate"><span class="pre">/etc/opt/VIN/</span></code> folder. This file can be used to modify a number of <em>VIN™</em> parameters (refer to <a class="reference internal" href="configuration.html"><span class="doc">Configuration Options</span></a> section for more information). Furthermore, the temporary file (i.e., outputs, logs, etc.) locations are created and stored based on the information in this file. The base directory for these files is <code class="docutils literal notranslate"><span class="pre">/opt/VIN</span></code> and <code class="docutils literal notranslate"><span class="pre">/var/log/VIN</span></code> which is accessible by all users. For example, the log files are stored in <code class="docutils literal notranslate"><span class="pre">/var/log/VIN/logs/</span></code>.</p>
+</section>
+<section id="running-the-vin">
+<h2>Running the VIN™<a class="headerlink" href="#running-the-vin" title="Permalink to this headline"></a></h2>
+<p>These instructions will run instances of the VIN™ from the <code class="docutils literal notranslate"><span class="pre">qtoken-cpp</span></code> project folder (release in this example but debug may also be used). However, if the VIN™ was installed correctly by following the steps above, it can be run from any directory. Be aware that there may be differences between the installed version and those found in the release/debug folders.</p>
+<section id="start-a-bootstrap-node">
+<h3>Start a Bootstrap Node<a class="headerlink" href="#start-a-bootstrap-node" title="Permalink to this headline"></a></h3>
+<ul class="simple">
+<li><p>Navigate to <code class="docutils literal notranslate"><span class="pre">Dev/qtoken-cpp/out/install/WSL-GCC-Release/bin</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">./VIN</span> <span class="pre">-app</span> <span class="pre">-b</span> <span class="pre">127.0.01</span></code></p></li>
+<li><p>If successful, the output should look like the figure below:</p></li>
+</ul>
+<figure class="align-center" id="id1">
+<a class="reference internal image-reference" href="_images/linux_bootstrap_connected.png"><img alt="VIN™ Successful Bootstrap Connection" src="_images/linux_bootstrap_connected.png" style="width: 500px;" /></a>
+<figcaption>
+<p><span class="caption-text">VIN™ Successful Bootstrap Connection</span><a class="headerlink" href="#id1" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+<section id="run-the-first-peer-node">
+<h3>Run the First Peer Node<a class="headerlink" href="#run-the-first-peer-node" title="Permalink to this headline"></a></h3>
+<ul class="simple">
+<li><p>Navigate to <code class="docutils literal notranslate"><span class="pre">Dev/qtoken-cpp/out/install/WSL-GCC-Release/bin</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">./VIN</span> <span class="pre">-app</span> <span class="pre">-n</span> <span class="pre">-a</span> <span class="pre">127.0.0.1</span> <span class="pre">-h</span> <span class="pre">7071</span> <span class="pre">-p</span> <span class="pre">8081</span> <span class="pre">-r</span> <span class="pre">9091</span></code></p></li>
+<li><p>If successful, the output should look like the figure below:</p></li>
+</ul>
+<figure class="align-center" id="id2">
+<a class="reference internal image-reference" href="_images/linux_peer_connected.png"><img alt="VIN™ Successful Peer Connection" src="_images/linux_peer_connected.png" style="width: 500px;" /></a>
+<figcaption>
+<p><span class="caption-text">VIN™ Successful Peer Connection</span><a class="headerlink" href="#id2" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+<section id="run-the-second-peer-node">
+<h3>Run the Second Peer Node<a class="headerlink" href="#run-the-second-peer-node" title="Permalink to this headline"></a></h3>
+<ul class="simple">
+<li><p>Navigate to <code class="docutils literal notranslate"><span class="pre">Dev/qtoken-cpp/out/install/WSL-GCC-Release/bin</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">./VIN</span> <span class="pre">-app</span> <span class="pre">-n</span> <span class="pre">-a</span> <span class="pre">127.0.0.1</span> <span class="pre">-h</span> <span class="pre">7080</span> <span class="pre">-p</span> <span class="pre">8080</span> <span class="pre">-r</span> <span class="pre">9090</span></code></p></li>
+<li><p>If successful, the output should look similar to the above figure.</p></li>
+</ul>
+</section>
+<section id="running-the-vin-command-line-interface-vin-cli">
+<h3>Running the VIN™ Command Line Interface (VIN_CLI)<a class="headerlink" href="#running-the-vin-command-line-interface-vin-cli" title="Permalink to this headline"></a></h3>
+<ul class="simple">
+<li><p>Navigate to <code class="docutils literal notranslate"><span class="pre">Dev/qtoken-cpp/out/install/WSL-GCC-Release/bin</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">./VIN_CLI</span> <span class="pre">127.0.0.1</span> <span class="pre">7080</span></code></p></li>
+<li><p>If successful, the output should look like the figure below:</p></li>
+</ul>
+<figure class="align-center" id="id3">
+<a class="reference internal image-reference" href="_images/linux_vincli_connected.png"><img alt="Succesful VIN_CLI Connection" src="_images/linux_vincli_connected.png" style="width: 500px;" /></a>
+<figcaption>
+<p><span class="caption-text">Successful VIN_CLI Connection</span><a class="headerlink" href="#id3" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+<p>For more information on the commands available to the <em>VIN™ CLI</em>, please type <code class="docutils literal notranslate"><span class="pre">help</span></code> with a <em>VIN™ CLI</em> running or refer to the <a class="reference internal" href="vin_cli.html"><span class="doc">VIN™ Command Line Interface (CLI)</span></a> section of the documentation.</p>
+</section>
+<section id="sharing-a-file">
+<h3>Sharing a File<a class="headerlink" href="#sharing-a-file" title="Permalink to this headline"></a></h3>
+<p>Start by creating a test file named <code class="docutils literal notranslate"><span class="pre">vin_test.txt</span></code>. For this example, it will be created in <code class="docutils literal notranslate"><span class="pre">Dev/test</span></code> and contain the text “This is a test of the VIN”. Do so by completing the following:</p>
+<ul class="simple">
+<li><p>In a new command line instance, navigate to <code class="docutils literal notranslate"><span class="pre">Dev</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">mkdir</span> <span class="pre">test</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">cd</span> <span class="pre">test</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">nano</span> <span class="pre">vin_test.txt</span></code></p></li>
+<li><p>Add the text “This is a test of the VIN”</p>
+<ul>
+<li><p><strong>ctrl + x</strong> -&gt; <strong>y</strong> -&gt; Hit <strong>Enter</strong></p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">readlink</span> <span class="pre">-f</span> <span class="pre">vin_test.txt</span></code></p>
+<ul>
+<li><p>Copy the output as the <code class="docutils literal notranslate"><span class="pre">&lt;file_path&gt;</span></code></p></li>
+</ul>
+</li>
+<li><p>To share the file, in the VIN_CLI instance run <code class="docutils literal notranslate"><span class="pre">share</span> <span class="pre">&lt;file_path&gt;</span> <span class="pre">127.0.0.1</span> <span class="pre">9091</span></code></p></li>
+<li><p>If the command worked the following output should be observed:</p></li>
+</ul>
+<figure class="align-center" id="id4">
+<a class="reference internal image-reference" href="_images/linux_share.png"><img alt="Succesful Share" src="_images/linux_share.png" style="width: 500px;" /></a>
+<figcaption>
+<p><span class="caption-text">Successful Share</span><a class="headerlink" href="#id4" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+<ul class="simple">
+<li><p>To manually confirm that the file was shared successfully, run <code class="docutils literal notranslate"><span class="pre">cd</span> <span class="pre">/opt/VIN/outputs/vin_test</span></code> (in a command line window that isn’t running any VIN™ instances) and run <code class="docutils literal notranslate"><span class="pre">nano</span> <span class="pre">vin_test.txt</span></code> to verify the contents of the text file.</p></li>
+</ul>
+</section>
+</section>
+<section id="troubleshooting">
+<h2>Troubleshooting<a class="headerlink" href="#troubleshooting" title="Permalink to this headline"></a></h2>
+<p>This section contains all presently known issues and potential solutions to these issues that may occur during the Linux and WSL environment setup.</p>
+<section id="linux-sh-build-error">
+<h3>./linux.sh Build Error<a class="headerlink" href="#linux-sh-build-error" title="Permalink to this headline"></a></h3>
+<p>On possible cause is that the <code class="docutils literal notranslate"><span class="pre">Dev</span></code> folder may have been created as <code class="docutils literal notranslate"><span class="pre">dev</span></code>. Linux is case sensitive so the folder must be capitalized (i.e., <code class="docutils literal notranslate"><span class="pre">Dev</span></code>). Renaming the folder will not work as <em>VCPKG</em> and the cloned repositories will remember it as <code class="docutils literal notranslate"><span class="pre">dev</span></code>. To fix it, either delete the folder and start the installation process over or run <code class="docutils literal notranslate"><span class="pre">ln</span> <span class="pre">-s</span> <span class="pre">dev</span> <span class="pre">Dev</span></code> to create a symbolic link between the two folders.</p>
+<figure class="align-center" id="id5">
+<a class="reference internal image-reference" href="_images/linux_sh_build_error.png"><img alt="./linux.sh Build Error" src="_images/linux_sh_build_error.png" style="width: 500px;" /></a>
+<figcaption>
+<p><span class="caption-text">./linux.sh Build Error</span><a class="headerlink" href="#id5" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+<section id="lvm-build-issue-using-wslbuild-sh">
+<h3>LVM Build Issue using ./wslbuild.sh<a class="headerlink" href="#lvm-build-issue-using-wslbuild-sh" title="Permalink to this headline"></a></h3>
+<p>If the following output appears when attempting to build <em>LVM</em>, it indicates that a library from <code class="docutils literal notranslate"><span class="pre">openssl</span></code> may be missing.</p>
+<figure class="align-center" id="id6">
+<a class="reference internal image-reference" href="_images/lvm_wsl_build_issue.png"><img alt="LVM Build Issue" src="_images/lvm_wsl_build_issue.png" style="width: 500px;" /></a>
+<figcaption>
+<p><span class="caption-text">LVM Build Issue</span><a class="headerlink" href="#id6" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+<p>To fix this issue, complete the following:</p>
+<ul class="simple">
+<li><p>Navigate to <code class="docutils literal notranslate"><span class="pre">Dev/vcpkg</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">./vcpkg</span> <span class="pre">remove</span> <span class="pre">--recurse</span> <span class="pre">openssl:x64-linux</span></code> to remove <code class="docutils literal notranslate"><span class="pre">openssl</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">./bootstrap-vcpkg.sh</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">./vcpkg</span> <span class="pre">install</span> <span class="pre">openssl:x64-linux</span></code> to re-install <code class="docutils literal notranslate"><span class="pre">openssl</span></code></p></li>
+<li><p>Navigate to <code class="docutils literal notranslate"><span class="pre">Dev/lvm/zbuild</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">./wslbuild.sh</span></code></p></li>
+</ul>
+</section>
+<section id="issues-with-vcpkg-packages-and-or-linuxbuild-sh">
+<h3>Issues with VCPKG Packages and/or ./linuxbuild.sh<a class="headerlink" href="#issues-with-vcpkg-packages-and-or-linuxbuild-sh" title="Permalink to this headline"></a></h3>
+<p>If an error occurs during the building of any project which cannot be identified, removing all traces of <em>VCPKG</em> and reinstalling them may fix it.</p>
+<p>To begin, the cached versions of the <em>VCPKG</em> packages should be deleted. To do so:</p>
+<ul class="simple">
+<li><p>Log on as a <em>superuser</em> by running <code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">-i</span></code> and entering a password</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">cd</span> <span class="pre">/root/.cache</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ls</span></code> to make sure the <code class="docutils literal notranslate"><span class="pre">vcpkg</span></code> folder is there</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">cd</span> <span class="pre">vcpkg</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">rm</span> <span class="pre">-rf</span> <span class="pre">vcpkg</span></code></p></li>
+</ul>
+<p>Next uninstall all of the packages:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">cd</span> <span class="pre">/home/&lt;user_name&gt;/Dev/vcpkg/</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">./vcpkg</span> <span class="pre">remove</span> <span class="pre">--recurse</span> <span class="pre">&lt;pkg_name&gt;:x64-linux</span></code></p>
+<ul>
+<li><p>Where <code class="docutils literal notranslate"><span class="pre">&lt;pkg_name&gt;</span></code> is the name of the pacakge, for example <code class="docutils literal notranslate"><span class="pre">openssl</span></code></p></li>
+</ul>
+</li>
+<li><p>After uninstalling, check the list of installed packages</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">./vcpkg</span> <span class="pre">list</span> <span class="pre">--triplet</span> <span class="pre">x64-windows</span></code></p></li>
+</ul>
+</li>
+<li><p>Exit <em>superuser</em> by running <code class="docutils literal notranslate"><span class="pre">exit</span></code></p></li>
+<li><p>Reinstall all of the <em>VCPKG</em> packages and try building once again</p></li>
+</ul>
+</section>
+<section id="error-building-qtoken-cpp-with-linuxbuild-sh">
+<h3>Error Building qtoken-cpp with ./linuxbuild.sh<a class="headerlink" href="#error-building-qtoken-cpp-with-linuxbuild-sh" title="Permalink to this headline"></a></h3>
+<p>If the error in the figure below occurs when trying to build <code class="docutils literal notranslate"><span class="pre">qtoken-cpp</span></code> using <code class="docutils literal notranslate"><span class="pre">./linuxbuild.sh</span></code>, build the project by running <code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">./linuxbuild.sh</span></code> instead.</p>
+<figure class="align-center" id="id7">
+<a class="reference internal image-reference" href="_images/linux_building_qtoken_error.png"><img alt="qtoken-cpp Build Issue" src="_images/linux_building_qtoken_error.png" style="width: 500px;" /></a>
+<figcaption>
+<p><span class="caption-text">qtoken-cpp Build Issue</span><a class="headerlink" href="#id7" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="developing_with_windows.html" class="btn btn-neutral float-left" title="Developing with Windows" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="vin_cli.html" class="btn btn-neutral float-right" title="VIN™ Command Line Interface (CLI)" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021, Virgil Systems.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>  
+
+  <style>
+    
+    /* Sidebar header (and topbar for mobile) */
+    .wy-side-nav-search, .wy-nav-top {background: #00ff00;}
+    
+    /* Sidebar */
+    .wy-nav-side {background: #000000;}
+    
+    /* Make a class to allow for center alignment of text */
+    .text-align-center { text-align: center; }
+
+    /* Change the background color to pure white so that images with white backgrounds look ok */
+    /* while this changes the background, it also affects the sidebar and search bar. will need to find another way to do this if needed.*/
+    /*div {background-color: #ffffff;}*/
+    
+
+  </style>
+
+
+</body>
+</html>

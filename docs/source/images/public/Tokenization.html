@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tokenization &mdash; VIN™ Reference Guide 0.1 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/custom.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Release Notes" href="release_notes.html" />
+    <link rel="prev" title="Key Concepts" href="key_concepts.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> VIN™ Reference Guide
+            <img src="_static/virgil_v_black.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="vin_description.html">VIN™ Description</a></li>
+<li class="toctree-l1"><a class="reference internal" href="getting_started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="vin_cli.html">VIN™ Command Line Interface (CLI)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="configuration.html">Configuration Options</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sample_use_cases.html">Sample Use Cases</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dashboard.html">VIN™ Dashboard</a></li>
+<li class="toctree-l1"><a class="reference internal" href="vin_statistics.html">VIN™ Statistics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="vin_metrics.html">VIN™ Metrics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="key_concepts.html">Key Concepts</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Tokenization</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#deterministic-shard-size">Deterministic Shard Size</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#sha-256-hash-generation">SHA-256 Hash Generation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#cryptographic-receipt">Cryptographic Receipt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#unique-shard-name-generation">Unique Shard Name Generation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#concurrent-coding">Concurrent Coding</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#reed-solomon-coding">Reed-Solomon Coding</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#polar-coding">Polar Coding</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#polar-transform">Polar Transform</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#channel-polarization-polar-code-and-encoding">Channel Polarization, Polar Code, and Encoding</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#independent-random-shard-encryption-cipher-coding">Independent Random Shard Encryption (Cipher Coding)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#alpha-entanglement">Alpha Entanglement</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#self-entanglement">Self-Entanglement</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#distance-superimpose-codes">Distance/Superimpose Codes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#smart-contracting">Smart Contracting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#data-integrity-calculator-and-alerts">Data Integrity Calculator and Alerts</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="release_notes.html">Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="glossary.html">Glossary</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">VIN™ Reference Guide</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>Tokenization</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/tokenization.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="tokenization">
+<h1>Tokenization<a class="headerlink" href="#tokenization" title="Permalink to this headline"></a></h1>
+<p>The following details the components of the tokenization process.</p>
+<section id="deterministic-shard-size">
+<h2>Deterministic Shard Size<a class="headerlink" href="#deterministic-shard-size" title="Permalink to this headline"></a></h2>
+<p>To ensure optimal data transmission rates and network stability, each file is divided into the ideal shard size before undergoing further encryption and tokenization.</p>
+</section>
+<section id="sha-256-hash-generation">
+<h2>SHA-256 Hash Generation<a class="headerlink" href="#sha-256-hash-generation" title="Permalink to this headline"></a></h2>
+<p>Hash of the file to be sent over the network. Used to detect issues with the data upon retrieval.</p>
+</section>
+<section id="cryptographic-receipt">
+<h2>Cryptographic Receipt<a class="headerlink" href="#cryptographic-receipt" title="Permalink to this headline"></a></h2>
+<p>The cryptographic receipt is receipt sent by a ‘sender’ to a ‘receiver’ consisting of all the hashes of the data shards combined with the Distributed Ledger network node structure. It encodes the set of all private keys and subnetwork map of QTokens entangled at relative locations. The receipt accomplishes this by using a special cyberspace measurement based on the symmetric distance properties of the XOR operation which is sent on a set of (multiple) side channels using FIPS-140 compliant public key infrastructure (PKI) to further mitigate interception probability by a man-in-the-middle attack.
+The cryptographic receipt is known as the Proof-Of-Data-Integrity (PoDI) and can also contain an encrypted reference to the Proof-of-Source-Identity (PoSI) for provenance and attribution purposes. These are important in chain of custody or other digital supply chains (e.g., proof of designs to mitigate risks of fake manufacturing).
+In particular it is a unique identifier containing the following information of the data stored on the network:
+* Shard filenames (key) to access data (value)
+* Encoders used
+* File hash</p>
+</section>
+<section id="unique-shard-name-generation">
+<h2>Unique Shard Name Generation<a class="headerlink" href="#unique-shard-name-generation" title="Permalink to this headline"></a></h2>
+<ul class="simple">
+<li><p>Add information</p></li>
+</ul>
+</section>
+<section id="concurrent-coding">
+<h2>Concurrent Coding<a class="headerlink" href="#concurrent-coding" title="Permalink to this headline"></a></h2>
+<p>Concurrent codes are error correcting block codes which operate by mapping every possible prefix of the info data to a single bit of the encoded block. The data inflation of concurrent is significant as an n bit block results in an encoded block with 2n+1 - 2 bits.</p>
+<p>Concurrent coding uses the unique linear sequence of 0’s and 1’s in a message word to generate a pattern of 0’s and 1’s uniquely distributed across a larger codeword space. A message is broken down into linearly expanding sub-sequences of bits—pre-fixes starting from the least significant bit and incrementally increasing in length. Each pre-fix is then passed through a hashing function. The output of the hashing function is used as the address of a mark to be placed in the codeword space. As a simplistic example the message 1101 will produce addresses from the arbitrary hash sequences H(1), H(01), H(101), and H(1101). Multiple messages can be combined via an OR process into a single codeword before transmission.</p>
+<figure class="align-center" id="id1">
+<a class="reference internal image-reference" href="_images/concurrent_encoding.png"><img alt="Concurrent Code Encoding Process" src="_images/concurrent_encoding.png" style="width: 500px;" /></a>
+<figcaption>
+<p><span class="caption-text">Concurrent Code Encoding Process</span><a class="headerlink" href="#id1" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+<p>The values 0 and 1, (the first potential message bits) are each passed through the hashing function, and the received codeword is then examined. If a mark is found at the position indicated by the output of the hash functions, then the message value is retained for further analysis—represented by the white boxes in Fig 3. If no mark is found all possibilities with the input sequence cannot be found and analysis not pursued (grey boxes). For each retained value the next step in the sequence is examined with both 0 and 1 appended i.e., if H(1) found, next step is H(01) and H(11), again retaining those attempts that result in an associated mark present in the codeword. The process is repeated for the number of bits in each message. The process forms a decoding tree.</p>
+<figure class="align-center" id="id2">
+<a class="reference internal image-reference" href="_images/concurrent_decoding.png"><img alt="Concurrent Code Decoding Process" src="_images/concurrent_decoding.png" style="width: 500px;" /></a>
+<figcaption>
+<p><span class="caption-text">Concurrent Code Decoding Process</span><a class="headerlink" href="#id2" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+<p>For more information refer to the following:
+* <a class="reference external" href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4773133/">https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4773133/</a>
+* <a class="reference external" href="http://citeseerx.ist.psu.edu/viewdoc/download;jsessionid=A658FA2EB8725BF7F555317FDCEAD939?doi=10.1.1.113.8569&amp;rep=rep1&amp;type=pdf">http://citeseerx.ist.psu.edu/viewdoc/download;jsessionid=A658FA2EB8725BF7F555317FDCEAD939?doi=10.1.1.113.8569&amp;rep=rep1&amp;type=pdf</a></p>
+</section>
+<section id="reed-solomon-coding">
+<h2>Reed-Solomon Coding<a class="headerlink" href="#reed-solomon-coding" title="Permalink to this headline"></a></h2>
+<p>Reed–Solomon codes are a group of error-correcting codes which operate on a block of data treated as a set of finite-field elements called symbols. Reed–Solomon codes are able to detect and correct multiple symbol errors. By adding t = n − k check symbols to the data, a Reed–Solomon code can detect (but not correct) any combination of up to t erroneous symbols or locate and correct up to ⌊t/2⌋ erroneous symbols at unknown locations. As an erasure code, it can correct up to t erasures at locations that are known and provided to the algorithm, or it can detect and correct combinations of errors and erasures. Reed–Solomon codes are also suitable as multiple-burst bit-error correcting codes, since a sequence of b + 1 consecutive bit errors can affect at most two symbols of size b. The choice of t is up to the designer of the code and may be selected within wide limits.
+For more information refer to the following:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://www.youtube.com/watch?v=jgO09opx56o">https://www.youtube.com/watch?v=jgO09opx56o</a></p></li>
+<li><p><a class="reference external" href="https://www.youtube.com/watch?v=fBRMaEAFLE0">https://www.youtube.com/watch?v=fBRMaEAFLE0</a></p></li>
+</ul>
+</section>
+<section id="polar-coding">
+<h2>Polar Coding<a class="headerlink" href="#polar-coding" title="Permalink to this headline"></a></h2>
+<p>Polar codes are error correcting block codes which excel at efficient error correction. Polar codes require that the encoded block size be a power of 2 but places no other restrictions on block size or data inflation.</p>
+<p>The below graphs illustrate how the error correcting capacity of a polar encoder might change in relation to the block size and data inflation. Errors are simulated with a binary symmetric channel where P is the probability the channel will flip any given bit.</p>
+<p>Note: Pol(N, K) is the polar encoder which takes K bit info blocks to N bit encoded blocks.</p>
+<section id="polar-transform">
+<h3>Polar Transform<a class="headerlink" href="#polar-transform" title="Permalink to this headline"></a></h3>
+<ul class="simple">
+<li><p><a class="reference external" href="https://www.youtube.com/watch?v=rB0rhQKyV34">https://www.youtube.com/watch?v=rB0rhQKyV34</a></p></li>
+</ul>
+</section>
+<section id="channel-polarization-polar-code-and-encoding">
+<h3>Channel Polarization, Polar Code, and Encoding<a class="headerlink" href="#channel-polarization-polar-code-and-encoding" title="Permalink to this headline"></a></h3>
+<ul class="simple">
+<li><p><a class="reference external" href="https://www.youtube.com/watch?v=1uYEq4ueOok">https://www.youtube.com/watch?v=1uYEq4ueOok</a></p></li>
+</ul>
+</section>
+</section>
+<section id="independent-random-shard-encryption-cipher-coding">
+<h2>Independent Random Shard Encryption (Cipher Coding)<a class="headerlink" href="#independent-random-shard-encryption-cipher-coding" title="Permalink to this headline"></a></h2>
+<ul class="simple">
+<li><p>AES-128 or AES-256 occurs on a per shard basis.</p></li>
+<li><p>May also perform GMAC (Galois Counter Mode (GCM) Message Authentication Code) as a default instead of AES</p></li>
+<li><p><a class="reference external" href="https://www.youtube.com/watch?v=V2TlG3JbGp0">https://www.youtube.com/watch?v=V2TlG3JbGp0</a></p></li>
+</ul>
+</section>
+<section id="alpha-entanglement">
+<h2>Alpha Entanglement<a class="headerlink" href="#alpha-entanglement" title="Permalink to this headline"></a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="https://medium.com/unitychain/an-introduction-to-alpha-entanglement-codes-66a8835308c5">https://medium.com/unitychain/an-introduction-to-alpha-entanglement-codes-66a8835308c5</a></p></li>
+<li><p><a class="reference external" href="https://www.youtube.com/watch?v=qcO2XBg6nnk">https://www.youtube.com/watch?v=qcO2XBg6nnk</a></p></li>
+</ul>
+</section>
+<section id="self-entanglement">
+<h2>Self-Entanglement<a class="headerlink" href="#self-entanglement" title="Permalink to this headline"></a></h2>
+<ul class="simple">
+<li><p>XOR with SHA hash of file.</p></li>
+</ul>
+</section>
+<section id="distance-superimpose-codes">
+<h2>Distance/Superimpose Codes<a class="headerlink" href="#distance-superimpose-codes" title="Permalink to this headline"></a></h2>
+<ul class="simple">
+<li><p>Add information</p></li>
+</ul>
+</section>
+<section id="smart-contracting">
+<h2>Smart Contracting<a class="headerlink" href="#smart-contracting" title="Permalink to this headline"></a></h2>
+<p>Smart contracts refer to computer protocols that digitally facilitate the verification, control, or execution  of an agreement. Smart contracts run on the blockchain platform, which will process all the transactions in a contract; hence, middlemen are not required for executing the transactions.</p>
+<p>Similar to traditional contracts, smart contracts define rules and penalties around an agreement and automatically enforce those obligations. While they can work independently, many smart contracts can also be implemented together.</p>
+<p>The integral components of a smart contract are termed as objects. There are essentially three objects in a smart contract – the signatories, who are the parties involved in the smart contracts that use digital signatures to approve or disapprove the contractual terms; the subject of agreement or contract; and the specific terms.</p>
+<p>For more information refer to the following:
+* <a class="reference external" href="https://corpgov.law.harvard.edu/2018/05/26/an-introduction-to-smart-contracts-and-their-potential-and-inherent-limitations/">https://corpgov.law.harvard.edu/2018/05/26/an-introduction-to-smart-contracts-and-their-potential-and-inherent-limitations/</a>
+* <a class="reference external" href="https://www.youtube.com/watch?v=pWGLtjG-F5c">https://www.youtube.com/watch?v=pWGLtjG-F5c</a></p>
+</section>
+<section id="data-integrity-calculator-and-alerts">
+<h2>Data Integrity Calculator and Alerts<a class="headerlink" href="#data-integrity-calculator-and-alerts" title="Permalink to this headline"></a></h2>
+<p>After the modular decoding and self-healing process, the VIN™ does a mathematical verification of proof of integrity by comparing the unique hash of the sent file calculated before and after data transmission; thus, determining whether or not data integrity was maintained. The system generates operator alerts depending on the status of the data:
+* ‘green’ if data was unaffected during transmission
+* ‘yellow’ if &lt;80% of data was affected but was recovered/corrected by the VIN™
+* ‘red’ if &gt;80% of data was loss/corrupted and could not be recovered/corrected</p>
+<p>Due to proprietary encoding/decoding method used in the Qtoken, data integrity can be maintained even under significant degradation of the data itself and/or the network. Qtokens are able to guarantee data integrity by replicating themselves on several nodes, entangling them with other data to hide their identity, and regenerating replicas if loss or damage is detected (e.g., after a disk crash) by using a simple nearest neighbor gossip protocol.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="key_concepts.html" class="btn btn-neutral float-left" title="Key Concepts" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="release_notes.html" class="btn btn-neutral float-right" title="Release Notes" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021, Virgil Systems.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>  
+
+  <style>
+    /* Sidebar header (and topbar for mobile) */
+    .wy-side-nav-search, .wy-nav-top {
+      background: #06b600;
+    }
+    /* Sidebar */
+    /*.wy-nav-side {
+      background: #000000;
+    }*/
+    
+    .center { text-align: center; }
+
+  </style>
+
+
+</body>
+</html>

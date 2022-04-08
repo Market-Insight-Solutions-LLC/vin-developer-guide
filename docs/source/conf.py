@@ -18,8 +18,8 @@ placeholder_replacements = {
 }
 # -- Project information
 
-project = 'VIN Developer Guide'
-copyright = '2021, Virgil Systems'
+project = 'VIN™ Developer Guide'
+copyright = '2022, Virgil Systems'
 author = 'Dion Hicks'
 
 release = '0.1'
@@ -53,6 +53,16 @@ epub_show_urls = 'footnote'
 html_static_path = ['_static']
 
 html_style = 'css/custom.css'
+
+html_logo = "images/logo/virgil_v_black.png"
+
+html_theme_options = {
+    'logo_only': False,
+    'display_version': False,
+}
+
+# Enables the numbering of figures and tables
+#numfig = True
 
 #def setup(app):
 #    app.add_css_file('custom.css', 900)
