@@ -1,5 +1,5 @@
 *******************************
-Getting Started with the VIN™
+Installing the VIN™
 *******************************
 
 
