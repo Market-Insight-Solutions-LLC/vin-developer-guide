@@ -14,7 +14,8 @@ The configuration items listed below relate to connection information for the va
     :widths: 15 40 15 30
 
     *version*, "The current version of the *VIN™*.", 0.1.0, "Do not modify."
-    *config_name*, The name of the *VIN™’s* configuration file., "default_config", Default value or user-defined."
+    *config_name*, "The name of the *VIN™’s* configuration file.", default_config, "Default value or user-defined."
+    *fuse_peers_name*, "The name of the fuse peers.", fuse_peers, "Default value or user-defined."
     *bootstrap_ip*, The bootstrap node’s IP address., 0.0.0.0, "Default value or user-defined."
     *bootstrap_port*, The port fora node's node-to-bootstrap and bootstrap-to-node communications within the *VIN™*., 8000, "Default value or user-defined."
     *kademlia_port*, The port through which a *VIN™* node communications bi-directionally with the Kademlia network., 8080, "Default value or user-defined."
@@ -28,6 +29,10 @@ The configuration items listed below relate to connection information for the va
     *parallel_mode*, Enables the sending/receiving of data in parallel., true,  "true: data will be sent/received in parallel.
     
     false: data will be sent/received serially."
+    *reconnect*, "Enables a node to attempt to reconnect to the bootstrap upon losing the connection.", true, "true: node will attempt to reconnect.
+    
+    false: node will not attempt to reconnect."
+    *reconnect_time*, "Time between a node's attempt to reconnect to the bootstrap in seconds.", 60, "Default value or user-defined."
 
 
 chunker
@@ -74,7 +79,7 @@ Any flags utilized by the *VIN™* for a *Windows* operating system are listed i
     :header: Parameter, Description, Default, Options 
     :widths: 15 40 15 30
 
-    *bootstrap*, "Sets the current *VIN™* node as a bootstrap node for a *Windows* OS.", false, "true: set the node as bootstrap. 
+    *bootstrap*, "Sets the current *VIN™* node as a bootstrap node for a *Windows* OS.", true, "true: set the node as bootstrap. 
     
     false: do not set the node as bootstrap."
 
@@ -96,6 +101,7 @@ The following options pertain to the locations of configuration and logs generat
     *shards*, "The shards that are gathered are stored here.", ``/var/log/VIN/shards/``, "Default value or user-defined."
     *rebuilt*, "The storage location of the file that was rebuilt from the chunks (shards).", ``/opt/VIN/outputs/``, "Default value or user-defined."
     *kaddata*, "The location where *Kademlia* shards are stored if on-disk storage is enabled in the *VIN™*.", ``/opt/VIN/kademlia/data/``, "Default value or user-defined."
+    *fuse_root*, "The location of FUSE related files.", ``/home/user/target/``, "Default value or user-defined."
 
 
 receipts (*Linux*)
@@ -143,6 +149,7 @@ The following options pertain to the locations of configuration and logs generat
     *shards*, "The shards that are gathered are stored here.", "``VIN\\shards\\ (e.g., C:\ProgramData\VIN\shards\``", "Default value or user-defined."
     *rebuilt*, "The storage location of the file that was rebuilt from the chunks (shards).", "``VIN\\outputs\\ (e.g., C:\ProgramData\VIN\outputs\)``", "Default value or user-defined."
     *kaddata*, "The location where *Kademlia* shards are stored if on-disk storage is enabled in the *VIN™*.", "``VIN\\kademlia\\data\\ (e.g., C:\ProgramData\VIN\kademlia\data\)``", "Default value or user-defined."
+    *fuse_root*, "The location of FUSE related files.", "``VIN\\fuse\\ (e.g., C:\ProgramData\VIN\fuse\)``", "Default value or user-defined."
 
 
 receipts (*Windows*)
@@ -250,29 +257,6 @@ The following configuration items allow for the customization of the various enc
 channels
 --------
 
-.. csv-table:: Binary Symmetric Channel (BSC) Parameters
-    :header: Parameter, Description, Default, Options 
-    :widths: 15 40 15 30
-
-    *name*, "The name of the channel.", BSCChannel, "Default value."
-    *log*, "Enables/disables log generation for the output of the channel.", false, "true: enables logging of the output. 
-    
-    false: enables logging of the output."
-    *p*, "The percentage of bits that will be flipped during transmission.", 1.0, "Any number between 0 and 100."
-    *symbol_size*, "The symbol size of either bits (1) or bytes (8), which is affected by the 'bsc_p.' For example, if 'bsc_p' is 1.0 and 'bsc_sym_size' is set to 1, 1% of bits will be flipped. If 'bsc_sym_size' is 8, 1% of bytes will be flipped.", 8, "1 or 8." 
-
-
-.. csv-table:: Jammer Channel Parameters
-    :header: Parameter, Description, Default, Options 
-    :widths: 15 40 15 30
-
-    *name*, "The name of the channel.", JammerChannel, "Default value."
-    *log*, "Enables/disables log generation for the output of the channel.", false, "true: enables logging of the output. 
-    
-    false: enables logging of the output."
-    *p*, "The percentage of bits that will be flipped during transmission.", 1.0, "Any number between 0 and 100."
-    *symbol_size*, "The symbol size of either bits (1) or bytes (8), which is affected by the 'bsc_p.' For example, if 'bsc_p' is 1.0 and 'bsc_sym_size' is set to 1, 1% of bits will be flipped. If 'bsc_sym_size' is 8, 1% of bytes will be flipped.", 8, "1 or 8." 
-
 
 decoders
 --------
@@ -336,6 +320,16 @@ The following configuration items allow for the customization of the various enc
 
     *name*, "The name of the encoder.", CipherEncoder, "Default value."
     *bits*, "The size of the key used by the cipher coder algorithm.", 256, "128, 192, or 256."
+    *log*, "Enables/disables log generation for the output of the encoder.", false, "true: enables logging of the output. 
+    
+    false: enables logging of the output."
+
+
+.. csv-table:: Pipeline Prep Encoder Parameters
+    :header: Parameter, Description, Default, Options 
+    :widths: 15 40 15 30
+
+    *name*, "The name of the encoder.", PipelinePreEncoder, "Default value."
     *log*, "Enables/disables log generation for the output of the encoder.", false, "true: enables logging of the output. 
     
     false: enables logging of the output."
@@ -512,6 +506,16 @@ The following configuration items allow for the customization of the various dec
     :widths: 15 40 15 30
 
     *name*, "The name of the decoder.", ConcurrentDecoder, "Default value."
+    *log*, "Enables/disables log generation for the output of the decoder.", false, "true: enables logging of the output. 
+    
+    false: enables logging of the output."
+
+
+.. csv-table:: Pipeline Prep Decoder Parameters
+    :header: Parameter, Description, Default, Options 
+    :widths: 15 40 15 30
+
+    *name*, "The name of the decoder.", PipelinePreDecoder, "Default value."
     *log*, "Enables/disables log generation for the output of the decoder.", false, "true: enables logging of the output. 
     
     false: enables logging of the output."
