@@ -1,6 +1,6 @@
 
 **************************************
-Installing and Working with FUSE
+Installing and using FUSE
 **************************************
 
 \1\. Make sure that the latest *VIN™* is built and installed.  This requires that you follow the document in qtoken-cpp for the appropriate environment:
