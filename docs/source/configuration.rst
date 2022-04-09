@@ -17,7 +17,7 @@ The configuration items listed below relate to connection information for the va
 
     *version*, "The current version of the *VIN™*.", 0.1.0, "Do not modify."
     *config_name*, "The name of the *VIN™’s* configuration file.", default_config, "Default value or user-defined."
-    *fuse_peers_name*, "The name of the fuse peers.", fuse_peers, "Default value or user-defined."
+    *fuse_peers_name*, "", fuse_peers, ""
     *bootstrap_ip*, The bootstrap node’s IP address., 0.0.0.0, "Default value or user-defined."
     *bootstrap_port*, The port fora node's node-to-bootstrap and bootstrap-to-node communications within the *VIN™*., 8000, "Default value or user-defined."
     *kademlia_port*, The port through which a *VIN™* node communications bi-directionally with the Kademlia network., 8080, "Default value or user-defined."
@@ -31,10 +31,8 @@ The configuration items listed below relate to connection information for the va
     *parallel_mode*, Enables the sending/receiving of data in parallel., true,  "true: data will be sent/received in parallel.
     
     false: data will be sent/received serially."
-    *reconnect*, "Enables a node to attempt to reconnect to the bootstrap upon losing the connection.", true, "true: node will attempt to reconnect.
-    
-    false: node will not attempt to reconnect."
-    *reconnect_time*, "Time between a node's attempt to reconnect to the bootstrap in seconds.", 60, "Default value or user-defined."
+    *reconnect*, "", true, ""
+    *reconnect_time*, "", 60, ""
 
 
 chunker
@@ -103,7 +101,7 @@ The following options pertain to the locations of configuration and logs generat
     *shards*, "The shards that are gathered are stored here.", ``/var/log/VIN/shards/``, "Default value or user-defined."
     *rebuilt*, "The storage location of the file that was rebuilt from the chunks (shards).", ``/opt/VIN/outputs/``, "Default value or user-defined."
     *kaddata*, "The location where *Kademlia* shards are stored if on-disk storage is enabled in the *VIN™*.", ``/opt/VIN/kademlia/data/``, "Default value or user-defined."
-    *fuse_root*, "The location of FUSE related files.", ``/home/user/target/``, "Default value or user-defined."
+    *fuse_root*, "", ``/home/user/target/``, ""
 
 
 receipts (*Linux*)
@@ -151,7 +149,7 @@ The following options pertain to the locations of configuration and logs generat
     *shards*, "The shards that are gathered are stored here.", "``VIN\\shards\\ (e.g., C:\ProgramData\VIN\shards\``", "Default value or user-defined."
     *rebuilt*, "The storage location of the file that was rebuilt from the chunks (shards).", "``VIN\\outputs\\ (e.g., C:\ProgramData\VIN\outputs\)``", "Default value or user-defined."
     *kaddata*, "The location where *Kademlia* shards are stored if on-disk storage is enabled in the *VIN™*.", "``VIN\\kademlia\\data\\ (e.g., C:\ProgramData\VIN\kademlia\data\)``", "Default value or user-defined."
-    *fuse_root*, "The location of FUSE related files.", "``VIN\\fuse\\ (e.g., C:\ProgramData\VIN\fuse\)``", "Default value or user-defined."
+    *fuse_root*, "", "``VIN\\fuse\\ (e.g., C:\ProgramData\VIN\fuse\)``", ""
 
 
 receipts (*Windows*)
