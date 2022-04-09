@@ -14,13 +14,10 @@ Check out the :doc:`getting_started_with_vin` section to install the *VIN™* an
    :maxdepth: 2
    :hidden:
 
-   ..vin_description
    getting_started_with_vin
    vin_demo
    configuration
    vin_cli
-   ..sample_use_cases
-   ..release_notes
    glossary
 
 .. This hides the titles
