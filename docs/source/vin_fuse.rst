@@ -26,15 +26,14 @@ Also it needs access to a number of projects available under our GitLab reposito
 A prebuild *Debian* package can be provided. In that case skip building steps and install the DEB package.
 
 NOTE:
-
 Fuse (*rvault*) is curently only supported in Linux. A future version will add an equivalent for *Windows*.
 
-\2\. Download and build the *rvault* project (``git@gitlab.optimusprime.ai:tbrown/rvault``):
+\2\. Download and build the *rvault* project (``git@gitlab.optimusprime.ai:tbrown/rvault``). 
 
-Alternatively get the rvault from from a provided ZIP file.
+Alternatively get the *rvault* from from a provided ZIP file.
 
 * NOTE: Make sure you clone *rvault* into the dev folder off your home directory just as you would any other project like *aff3ct*, *poco*, *lvm*, *qtoken-cpp*
-* Review the README.md document in the *rvault* project for complete information on how to setup/configure *rvault*.  It should be noted that this is the rvault documentation and various things will differ from our implementation/enhancements of rvault which are tied to the *VIN™*.
+* Review the ``README.md`` document in the *rvault* project for complete information on how to setup/configure *rvault*.  It should be noted that this is the rvault documentation and various things will differ from our implementation/enhancements of rvault which are tied to the *VIN™*.
 * make sure that the appropriate development libraries are installed:
    
   * ``sudo apt install -y libssl-dev``
@@ -47,13 +46,14 @@ Alternatively get the rvault from from a provided ZIP file.
   * if this is for AWS you will need to install the following as well:
        
     * ``sudo apt install pkg-config``
-    * ``cd rvault/src``
-    * ``make``
+  
+  * ``cd rvault/src``
+  * ``make``
 
 * Make sure that the rvault executable has been created (ls -la).
 * Put *rvault* in ``/usr/local/bin`` using:
 
-  * ``sudo ln -s $HOME/Dev/rvault/src/rvault /usr/local/bin/rvault``  (if $HOME is not supported use /home/<user>)
+  * ``sudo ln -s $HOME/Dev/rvault/src/rvault /usr/local/bin/rvault``  (if ``$HOME`` is not supported use ``/home/<user>``)
   * ``ls -la /usr/local/bin/rvault``
 
 * Validate that *rvault* is now in your path by running it with no options:
@@ -76,15 +76,15 @@ Alternatively get the rvault from from a provided ZIP file.
 
 * Create the UUID unique to this rvault:
 
-  * export UUID=`uuidgen`  
+  * export UUID=`uuidgen`
   * An example of a valid looking ``uuidgen`` is ``0224f0cf-f453-43e1-b16e-124b15e4a64a``
   * NOTE: This is only done once at the creation of the rvault and is essentially a manner for initializing the vault
 
 * Mount the *rvault* (using the unique UUID which was generated in the previous command):
     
   * ``rvault create -n $UUID``
-  * NOTE: It will ask you for a passphrase.  For the purpose of the demo, etc. I have been using an empty passphrase (i.e. just hit <enter> twice)
-  * You can look in the rvault folder (not to be confused with the target folder, to see that a few files have been created (e.g. ``rvault.error_log`` and ``rvault.metadata``)
+  * NOTE: It will ask you for a passphrase.  For the purpose of the demo, etc. I have been using an empty passphrase (i.e. just hit ``<enter>`` twice)
+  * You can look in the *rvault* folder (not to be confused with the target folder, to see that a few files have been created (e.g. ``rvault.error_log`` and ``rvault.metadata``)
 
 * Mount the *rvault*:
 
@@ -94,7 +94,7 @@ Alternatively get the rvault from from a provided ZIP file.
 
 * Ensure *VIN™* knows the location of your mounted rvault folder
 
-  * Update the *VIN™* configuration file at ``/etc/opt/VIN/defaults.cfg`` such that the path under ``files -> fuse_root`` is the absolute path of your mounted *fuse* folder (default value is ``"/home/user/target/"``). If you used recommended example this will be ``home/<user>/target`` (change <user> with the actual user)
+  * Update the *VIN™* configuration file at ``/etc/opt/VIN/defaults.cfg`` such that the path under ``files -> fuse_root`` is the absolute path of your mounted *fuse* folder (default value is ``/home/user/target/``). If you used recommended example this will be ``home/<user>/target`` (change <user> with the actual user)
 
 * Create a folder for sharing files
   
