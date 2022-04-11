@@ -174,26 +174,28 @@ Installing and using FUSE
 
 * On non graceful exit of the *VIN™* the named semaphore ``sem.VIN_Fuse_Sem`` will sometimes not close properly. When copying a file to target/share this bug will cause the *VIN™* to produce no logging output when we would otherwise expect to see the *VIN™* perform a share. Shutting down the *VIN™* node and deleting the semaphore (``rm /dev/shm/sem.VIN_Fuse_Sem``) will resolve the issue.
 
-\6\. *VIN™* UI Demo
 
-* Unzip the provided *rvault* ``ZIP`` file. The document requires that you unzip under the ``$HOME/Dev/vin_demo_draft``.
+..
+  \6\. *VIN™* UI Demo
 
-* Terminal 1
+  * Unzip the provided *rvault* ``ZIP`` file. The document requires that you unzip under the ``$HOME/Dev/vin_demo_draft``.
 
-  * ``cd $HOME/Dev/vin_demo_draft``
-  * ``sudo apt install -y npm``
-  * ``npm i``
-    
-    * NOTE: If this fails to do an inability to get the issuer certificate locally, you can run the command:
+  * Terminal 1
 
-      * ``npm config set strict-ssl false`` before retrying the previous command (``npm -i``).
+    * ``cd $HOME/Dev/vin_demo_draft``
+    * ``sudo apt install -y npm``
+    * ``npm i``
+      
+      * NOTE: If this fails to do an inability to get the issuer certificate locally, you can run the command:
 
-    * NOTE: "npm ERR! The unauthenticated git protocol on port 9418 is no longer supported." will sometimes appear and can be fixed by modifying the url of the git repository. Try the command ``git config --global url."https://".insteadOf git://`` or, ``git config url."https://".insteadOf git://``.  
+        * ``npm config set strict-ssl false`` before retrying the previous command (``npm -i``).
 
-  * ``npm start``
-  * This will enable you to access the demo at the URL: ``http://localhost:3000/dashboard``
+      * NOTE: "npm ERR! The unauthenticated git protocol on port 9418 is no longer supported." will sometimes appear and can be fixed by modifying the url of the git repository. Try the command ``git config --global url."https://".insteadOf git://`` or, ``git config url."https://".insteadOf git://``.  
 
-* Terminal 2
+    * ``npm start``
+    * This will enable you to access the demo at the URL: ``http://localhost:3000/dashboard``
 
-  * ``npx serve /opt/VIN/outputs -p 5000``
-  * This will enable you to access the list of files available (from ``/opt/VIN/outputs``) at the URL: ``http://localhost:5000/``
+  * Terminal 2
+
+    * ``npx serve /opt/VIN/outputs -p 5000``
+    * This will enable you to access the list of files available (from ``/opt/VIN/outputs``) at the URL: ``http://localhost:5000/``
