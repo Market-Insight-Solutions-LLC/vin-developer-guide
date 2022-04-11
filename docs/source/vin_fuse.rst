@@ -6,9 +6,9 @@ Installing and using FUSE
 \1\. Building the project is a complex process requiring a number of dependency projects and libraries to be built. For this demo, a prebuilt DEB package is provided. Install the ``DEB`` file in a Debian system (tested in *Ubuntu*).
 
 
-\2\. Unzip the provided rvault ``ZIP`` file. The document requires that you unzip under the ``$HOME/Dev/rvault`` folder so the root of the project is in that location. The project can be placed in any other place but the commands will need to be changed accordingly.
+\2\. Unzip the provided *rvault* ``ZIP`` file. The document requires that you unzip under the ``$HOME/Dev/rvault`` folder so the root of the project is in that location. The project can be placed in any other place but the commands will need to be changed accordingly.
 
-* Review the ``README.md`` document in the rvault project for complete information on how to setup/configure *rvault*. It should be noted that this is the *rvault* documentation and various things will differ from our implementation/enhancements of *rvault* which are tied to the *VIN™*.
+* Review the ``README.md`` document in the *rvault* project for complete information on how to setup/configure *rvault*. It should be noted that this is the *rvault* documentation and various things will differ from our implementation/enhancements of *rvault* which are tied to the *VIN™*.
 * Make sure that the appropriate development libraries are installed:
 
   * ``sudo apt install -y libssl-dev``
@@ -116,7 +116,7 @@ Installing and using FUSE
           }
         }
 
-* Copying a file, either through the *Navigator* interface or via standard commands (``cp``) into the target/share folder should start a share in the VIN to the peer ``192.0.2.0:9090``. On a successful share the received file is saved on the peer machine (defaults location: ``/opt/VIN/outputs)``.
+* Copying a file, either through the *Navigator* interface or via standard commands (``cp``) into the target/share folder should start a share in the *VIN™* to the peer ``192.0.2.0:9090``. On a successful share the received file is saved on the peer machine (defaults location: ``/opt/VIN/outputs)``.
 
   * Example copy: ``cp somefile.txt /home/<user>/target/share``
 
