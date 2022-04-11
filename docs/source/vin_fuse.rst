@@ -3,7 +3,9 @@
 Installing and using FUSE
 **************************************
 
-\1\. Building the project is a complex process requiring a number of dependency projects and libraries to be built. For this demo, a prebuilt ``DEB`` package is provided. Install the ``DEB`` file in a *Debian* system (tested in *Ubuntu*).
+\1\. Building the project is a complex process requiring a number of dependency projects and libraries to be built. For this demo, a prebuilt ``DEB`` package is provided. Install the ``DEB`` file in a *Debian* system (tested in *Ubuntu*) using the following:
+
+* ``sudo dpkg -i QToken-CPP_1.12.3-x86_64.deb``
 
 
 \2\. Unzip the provided *rvault* ``ZIP`` file. The document requires that you unzip under the ``$HOME/Dev/rvault`` folder so the root of the project is in that location. The project can be placed in any other place but the commands will need to be changed accordingly.
