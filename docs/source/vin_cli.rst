@@ -25,7 +25,10 @@ The following table displays a list of commands that are accessible by the *VINâ
     Share, share <command> <filepath> <ip_address> <receipt_port> <runs>, "Performs a spread, enables control over how the file is stored and specifies the number of runs (string) to attempt to successfully spread the file."
     Shutdown, shutdown, "Send a shutdown signal to the current node that the user is connected to."
     Exit, exit, "Quits the current session of the *VINâ„¢ CLI*."
-
+    Download, download <file_path> <save_path>, "Download file from provided <file_path> absolute path to crypto receipt file. File saved at given path <save_path>."
+    Update FUSE Peer, update_peer <ip_add_rec> <recp_port_rec> <folder_path>, "Add a receiver peer via its IP address, receipt port, to a fuse folder path."
+    Health Check, health_check, "Displays health information for the node."
+    Receipt Validation, receipt_validation <file_path>, "Validates a cryptographic receipt at the given file path (including receipt name)."
 
 .. _vincli-func:
 
