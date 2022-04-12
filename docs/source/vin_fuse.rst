@@ -9,19 +9,22 @@ This document will provide instructions on testing *VIN™* nodes with *rvault*.
 Installing VIN™
 =================
 
+Note: if :doc:`getting_started_with_vin` was followed, *VIN™* will already be installed and the steps in the subsection may be skipped. 
+
 Building the project is a complex process requiring a number of dependency projects and libraries to be built. For this demo, a prebuilt ``DEB`` package is provided. Install the ``DEB`` file in a *Debian* system (tested in *Ubuntu*) using the following:
 
-* Navigate to the folder containing the ``DEB`` file on the system.
-* ``sudo dpkg -i QToken-CPP_1.12.3-x86_64.deb``
+* Navigate to the folder containing the ``DEB`` file on the system and run:  
 
-If installing the *VIN™* on a system with a previous installation, ``dpkg`` may produce errors regarding overwriting files. Make a backup of those files and then run the following command to do the upgrade:
+  * ``sudo dpkg -i QToken-CPP_1.12.3-x86_64.deb``
 
-* ``sudo dpkg -i --force-overwrite QToken-CPP_1.12.3-x86_64.deb``
+* Note: If installing the *VIN™* on a system with a previous installation, ``dpkg`` may produce errors regarding overwriting files. Make a backup of those files and then run the following command to do the upgrade:
+
+  * ``sudo dpkg -i --force-overwrite QToken-CPP_1.12.3-x86_64.deb``
 
 To ensure the *VIN™* is directed to the required libraries run:
 
 * ``echo "export LD_LIBRARY_PATH=/usr/local/lib:/usr/lib" > ~/.profile``
-* ``export LD_LIBRARY_PATH=/usr/local/lib:/usr/lib``
+* ``export LD_LIBRARY_PATH=/usr/local/lib:/usr/lib`` 
 
 Note: You will need to merge configuration files manually. At this point in time the configuration file format does not update itself.
 
@@ -64,12 +67,12 @@ The document requires that you unzip he provided *rvault* ``ZIP`` file under the
 
   * ``export UUID=`uuidgen```
   * ``echo $UUID > ~/rvault.uuid.txt``
-  * NOTE: This is only done once at the creation of the *rvault* and is essentially a manner for initializing the vault.
+  * Note: This is only done once at the creation of the *rvault* and is essentially a manner for initializing the vault.
 
 * Mount *rvault* (using the unique UUID which was generated in the previous command):
 
   * ``rvault create -n $UUID``
-  * NOTE: It will ask you for a passphrase. For the purpose of the demo, an empty passphrase will suffice (i.e. just hit **enter** twice).
+  * Note: It will ask you for a passphrase. For the purpose of the demo, an empty passphrase will suffice (i.e. just hit **enter** twice).
   * To confirm the completion of the above command run ``ls -l $RVAULT_PATH``. THe ``rvault.error_log`` and ``rvault.metadata`` files should be listed.
 
 * Mount the *rvault*:
@@ -78,7 +81,7 @@ The document requires that you unzip he provided *rvault* ``ZIP`` file under the
   * If prompted for a passphrase, hit **enter** as no passphrase was set during the previous step.
 
 
-Performing a ``SHARE`` with *rvault*
+Performing a SHARE with *rvault*
 =======================================
 
 This section details instructions to perform a ``SHARE`` using *rvault* with the *VIN™*. Three nodes will be required: a bootstrap, the sharing node and the receiving node.
@@ -96,7 +99,7 @@ This section details instructions to perform a ``SHARE`` using *rvault* with the
   * ``mkdir share``
 
 
-* The test will require the instantiation of three separate nodes (one bootstrap and two *VIN™* nodes). To accomplish this, please refer to the instructions listed in :ref:`local-network` for the required operating system and be sure to record which nodes are bootstrap, sharing and receiving. NOTE: the method described in :ref:`local-network` sets up the bootstrap node on the same host as a *VIN™* node. If required, the bootstrap may be run on a node separate from the *VIN™* node.
+* The test will require the instantiation of three separate nodes (one bootstrap and two *VIN™* nodes). To accomplish this, please refer to the instructions listed in :ref:`local-network` for the required operating system and be sure to record which nodes are bootstrap, sharing and receiving. Note: the method described in :ref:`local-network` sets up the bootstrap node on the same host as a *VIN™* node. If required, the bootstrap may be run on a node separate from the *VIN™* node.
 * To add a peer to a shareable folder, in another terminal window, start the *VIN™ CLI* and connect it to the node that will be sharing the file by running:
   
   * ``VIN_CLI <ip_addr_share> <http_port_share>``, where ``<ip_addr_share>`` and ``<http_port_share>`` are the IP address and HTTP port of the sharing node, respectively. If running the VIN with default settings ``<http_port_share>`` will be ``7070``.
@@ -104,7 +107,7 @@ This section details instructions to perform a ``SHARE`` using *rvault* with the
 * In the *VIN™ CLI* terminal, run: 
 
   * ``update_peer <ip_add_rec> <recp_port_rec> share/``, where ``<ip_add_rec>`` and ``<recp_port_rec>`` are the IP address and Receipt port of the receiving node, respectively. If running the *VIN™* with default settings, ``<http_port_share>`` will be ``9090``.
-  * NOTE: only files copied into the ``share/`` folder or a subfolder of ``share/`` will trigger a *VIN™* ``SHARE``.
+  * Note: only files copied into the ``share/`` folder or a subfolder of ``share/`` will trigger a *VIN™* ``SHARE``.
 
 * Alternatively, adding a peer to a shareable folder may be accomplished by modifying ``fuse_peers.cfg`` before running the sharing *VIN™* and is detailed below:
 
@@ -212,11 +215,11 @@ Common Issues
     * ``sudo apt install -y npm``
     * ``npm i``
       
-      * NOTE: If this fails to do an inability to get the issuer certificate locally, you can run the command:
+      * Note: If this fails to do an inability to get the issuer certificate locally, you can run the command:
 
         * ``npm config set strict-ssl false`` before retrying the previous command (``npm -i``).
 
-      * NOTE: "npm ERR! The unauthenticated git protocol on port 9418 is no longer supported." will sometimes appear and can be fixed by modifying the url of the git repository. Try the command ``git config --global url."https://".insteadOf git://`` or, ``git config url."https://".insteadOf git://``.  
+      * Note: "npm ERR! The unauthenticated git protocol on port 9418 is no longer supported." will sometimes appear and can be fixed by modifying the url of the git repository. Try the command ``git config --global url."https://".insteadOf git://`` or, ``git config url."https://".insteadOf git://``.  
 
     * ``npm start``
     * This will enable you to access the demo at the URL: ``http://localhost:3000/dashboard``

@@ -15,12 +15,13 @@ Installation
 Linux (Ubuntu 20.04+)
 ----------------------
   
-* Navigate to the folder containing the ``DEB`` file on the system.  
-* ``sudo dpkg -i QToken-CPP_1.12.3-x86_64.deb``
+* Navigate to the folder containing the ``DEB`` file on the system and run:  
 
-If installing the *VIN™* on a system with a previous installation, ``dpkg`` may produce errors regarding overwriting files. Make a backup of those files and then run the following command to do the upgrade:
+  * ``sudo dpkg -i QToken-CPP_1.12.3-x86_64.deb``
 
-* ``sudo dpkg -i --force-overwrite QToken-CPP_1.12.3-x86_64.deb``
+* Note: If installing the *VIN™* on a system with a previous installation, ``dpkg`` may produce errors regarding overwriting files. Make a backup of those files and then run the following command to do the upgrade:
+
+  * ``sudo dpkg -i --force-overwrite QToken-CPP_1.12.3-x86_64.deb``
 
 To ensure the *VIN™* is directed to the required libraries run:
 
