@@ -12,14 +12,20 @@ The sections below contain instructions for installing the *VIN™* for both *Wi
 Installation
 ============
 
-Linux
---------
-
-* *Ubuntu 20.04+*
+Linux (Ubuntu 20.04+)
+----------------------
   
-  * Navigate to the folder containing the ``VIN.zip`` file on the system
-  * Run ``unzip VIN.zip`` from a command line interface (CLI) session (as an administrator) or double click the file and follow the prompts to extract the contents 
-  * Navigate to the extracted folder and run ``VIN.deb`` from a CLI session (as an administrator) or double click the file and follow the prompts to install the *VIN™*  
+* Navigate to the folder containing the ``DEB`` file on the system.  
+* ``sudo dpkg -i QToken-CPP_1.12.3-x86_64.deb``
+
+If installing the *VIN™* on a system with a previous installation, ``dpkg`` may produce errors regarding overwriting files. Make a backup of those files and then run the following command to do the upgrade:
+
+* ``sudo dpkg -i --force-overwrite QToken-CPP_1.12.3-x86_64.deb``
+
+To ensure the *VIN™* is directed to the required libraries run:
+
+* ``echo "export LD_LIBRARY_PATH=/usr/local/lib:/usr/lib" > ~/.profile``
+* ``export LD_LIBRARY_PATH=/usr/local/lib:/usr/lib`` 
 
 
 Windows
@@ -53,7 +59,24 @@ Debug Logs
 Running the *VIN™* 
 ====================
 
-Currently there are two ways in setting up the *VIN™*: on the same host system or through a local network. Both require very similar setups but differ in the way that peers are configured. The method for instantiating the *VIN™* for both cases and a example to demonstrate the *VIN™'s* share function are described below.
+Currently there are two ways in setting up the *VIN™*: on the same host system or through a local network. Both require very similar setups but differ in the way that peers are configured. The method for instantiating the *VIN™* for both cases and a example to demonstrate the *VIN™'s* share function are described below. Futhermore, flags to control the functionality of the *VIN™ CLI* commands are listed in the following table:
+
+.. This information came from C:\Dev\qtoken-cpp\apps\helper.cpp 
+
+.. csv-table:: VIN™ Command Flags
+    :header: Flag Name, Command Line Instruction, Description
+    :widths: 20 10 70 
+
+    List Flag, -l, "Displays a list out all *VIN™* flags along with their descriptions."
+    Bootstrap Flag, -b, "Indicates that the node being instantiated will be a bootstrap node."
+    Node Flag, -n, "Indicates that the node being instantiated will be a peer node."
+    Configuration Directory Flag, -c, "Specify the location of a configuration file to start with."
+    Bootstrap IP Flag, -a, "This flag specifies that the next string will be the bootstrap node's IP address which the peer will connect to."
+    Bootstrap Port Flag, -s, "Specify a custom bootstrap port."
+    Kademlia Port Flag, -p, "This flag specifies that the next string will be the Kademlia port through which the node will communicate bi-directionally with the Kademlia network."
+    Receipt Port Flag, -r, "This flag specifies that the next string will be the port through which the node will receive its cryptographic receipts."
+    HTTP Port Flag, -h, "This flag specifies that the next string will be the port utilized for HTTP messages by the node."
+    LVM Port Flag, -v, "This flag specifies that the next string will be the port through which the node communicates with the *LVM*."
 
 
 Running the *VIN™* on a *Linux* Operating System
@@ -200,6 +223,8 @@ Shutting Down the Network
 * To exit from the *VIN™ CLI*, type **exit** and hit **Enter** in the *VIN™ CLI* session. Alternatively, press **ctrl + c** while theCLI session containing the *VIN™ CLI* is active to kill the process.
 
 
+.. _local-network:
+
 A Local Network (*Linux*)
 -------------------------
 
@@ -213,7 +238,7 @@ To run a basic *VIN™* on an IP based network, such as *Amazon Web Services (AW
 * Complete the *VIN™* installation procedure on each system.
 * On each system, open three CLI sessions. 
 * Since each system will have it's own IP address, deemed ``<ip_1>`` and ``<ip_2>`` for this example, it is imperative to determine and record it.
-* Run ``ifconifg`` in one of the CLI sessions. Note: if this feature is not installed a message will appear recommending that ``sudo install net-tools`` be run. If this is the case, run this command and re-run ``ifconfig`` to generate an output similar to the one below. 
+* Run ``ifconfig`` in one of the CLI sessions. Note: if this feature is not installed a message will appear recommending that ``sudo install net-tools`` be run. If this is the case, run this command and re-run ``ifconfig`` to generate an output similar to the one below. 
   
 .. figure:: images/getting_started_with_vin/linux/ifconfig_results.png
   :scale: 100

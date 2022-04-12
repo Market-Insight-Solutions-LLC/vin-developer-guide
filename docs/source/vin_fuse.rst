@@ -3,128 +3,150 @@
 Installing and using FUSE
 **************************************
 
-\1\. Building the project is a complex process requiring a number of dependency projects and libraries to be built. For this demo, a prebuilt ``DEB`` package is provided. Install the ``DEB`` file in a *Debian* system (tested in *Ubuntu*) using the following:
+This document will provide instructions on testing *VIN™* nodes with *rvault*. It requires that *VIN™* be installed on a minimum of three nodes (one bootstrap and two peers). Before beginning with this procedure, please follow the instructions in :doc:`getting_started_with_vin` to gain a better understanding of the *VIN™* and its functionality.
 
+
+Installing VIN™
+=================
+
+Building the project is a complex process requiring a number of dependency projects and libraries to be built. For this demo, a prebuilt ``DEB`` package is provided. Install the ``DEB`` file in a *Debian* system (tested in *Ubuntu*) using the following:
+
+* Navigate to the folder containing the ``DEB`` file on the system.
 * ``sudo dpkg -i QToken-CPP_1.12.3-x86_64.deb``
 
+If installing the *VIN™* on a system with a previous installation, ``dpkg`` may produce errors regarding overwriting files. Make a backup of those files and then run the following command to do the upgrade:
 
-\2\. Unzip the provided *rvault* ``ZIP`` file. The document requires that you unzip under the ``$HOME/Dev/rvault`` folder so the root of the project is in that location. The project can be placed in any other place but the commands will need to be changed accordingly.
+* ``sudo dpkg -i --force-overwrite QToken-CPP_1.12.3-x86_64.deb``
 
-* Review the ``README.md`` document in the *rvault* project for complete information on how to setup/configure *rvault*. It should be noted that this is the *rvault* documentation and various things will differ from our implementation/enhancements of *rvault* which are tied to the *VIN™*.
-* Make sure that the appropriate development libraries are installed:
+To ensure the *VIN™* is directed to the required libraries run:
 
-  * ``sudo apt install -y libssl-dev``
-  * ``sudo apt install -y libscrypt-dev``
-  * ``sudo apt install -y libcurl3-dev``
-  * ``sudo apt install -y libfuse-dev``
-  * ``sudo apt install clang``
-  * ``sudo apt install make``
+* ``echo "export LD_LIBRARY_PATH=/usr/local/lib:/usr/lib" > ~/.profile``
+* ``export LD_LIBRARY_PATH=/usr/local/lib:/usr/lib``
 
-  * If this is for use with *AWS* you will need to install the following as well:
-    
-    * ``sudo apt install pkg-config``
+Note: You will need to merge configuration files manually. At this point in time the configuration file format does not update itself.
 
-  * ``cd rvault/src``
+
+Setting up rvault
+=================
+
+The document requires that you unzip he provided *rvault* ``ZIP`` file under the ``~/Dev`` folder. The project can be placed in any location but the commands will need to be changed accordingly. To unzip the file with the recommended folder structure, complete the following:
+
+* ``mkdir ~/Dev``
+* ``unzip "dir" -d ~/Dev``, where ``"dir"`` is the file path (including file name) of the *rvault* ``ZIP`` file (e.g., ``/tmp/rvault-master.zip``).
+* Install the appropriate development libraries by running:
+
+  * ``sudo apt install -y libssl-dev libscrypt-dev libcurl3-dev libfuse-dev clang make pkg-config uuid-dev``
+  * ``cd ~/Dev/rvault-master/src``
   * ``make``
 
-* Make sure that the *rvault* executable has been created (``ls -la``).
-* Put *rvault* in ``/usr/local/bin`` using:
+* Be sure that the *rvault* executable has been created by running ``ls -l rvault``.
+* Place *rvault* in ``/usr/local/bin`` using:
 
-  * ``sudo ln -s $HOME/Dev/rvault/src/rvault /usr/local/bin/rvault``  (if ``$HOME`` is not supported use ``/home/<user>``)
-  * ``ls -la /usr/local/bin/rvault``
+  * ``sudo cp rvault /usr/local/bin/rvault``
+  * Run ``ls -la /usr/local/bin/rvault`` to validate the above command
 
 * Validate that *rvault* is now in your path by running it with no options:
 
-  * ``rvault``
+  * ``rvault`` should list options and commands available to *rvault*
 
-* This should produce the help output from *rvault*. If it does not, you need to add ``/usr/local/bin`` to your path using the appropriate method for whatever shell you use.
-* Make sure you have the UUID library:
+* This should produce the ``help`` output from *rvault*. If it does not, ``/usr/local/bin`` must be added to the system path using the appropriate method for whichever shell is in use.
+* Create an *rvault* folder (the folder name can be customized by user preference. The example below uses ``my_vault``).
 
-  * ``sudo apt install -y uuid-dev``
+  * ``export RVAULT_PATH=~/my_vault``
+  * ``mkdir $RVAULT_PATH``
 
-* Create an *rvault* folder (folder name can be customized to suit). From your home folder:
+* Create the folder that you will mount *rvault* into (the folder name can be customized by user preference. The example below uses ``target``):
 
-  * ``mkdir my_vault``
-  * ``export RVAULT_PATH=$HOME/my_vault``
-
-* Create the folder that you will mount *rvault* into (folder name can be customized to suit):
-
-  * ``mkdir target``
+  * ``export TARGET_PATH=~/target``
+  * ``mkdir $TARGET_PATH``
 
 * Create the UUID unique to this *rvault*:
 
-  * ``export UUID="uuidgen"``
-  * An example of a valid looking ``"uuidgen"`` is ``0224f0cf-f453-43e1-b16e-124b15e4a64a``
+  * ``export UUID=`uuidgen```
+  * ``echo $UUID > ~/rvault.uuid.txt``
   * NOTE: This is only done once at the creation of the *rvault* and is essentially a manner for initializing the vault.
 
-* Mount the *rvault* (using the unique UUID which was generated in the previous command):
+* Mount *rvault* (using the unique UUID which was generated in the previous command):
 
   * ``rvault create -n $UUID``
-  * NOTE: It will ask you for a passphrase. For the purpose of the demo, etc., I have been using an empty passphrase (i.e. just hit **<enter>** twice)
-  * You can look in the *rvault* folder (not to be confused with the target folder, to see that a few files have been created (e.g. ``rvault.error_log`` and ``rvault.metadata``)
+  * NOTE: It will ask you for a passphrase. For the purpose of the demo, an empty passphrase will suffice (i.e. just hit **enter** twice).
+  * To confirm the completion of the above command run ``ls -l $RVAULT_PATH``. THe ``rvault.error_log`` and ``rvault.metadata`` files should be listed.
 
 * Mount the *rvault*:
 
-  * ``rvault mount target``
+  * ``rvault mount $TARGET_PATH``
+  * If prompted for a passphrase, hit **enter** as no passphrase was set during the previous step.
 
 
-\3\. Performing a Share with *rvault*:
+Performing a ``SHARE`` with *rvault*
+=======================================
 
-* Ensure *VIN™* knows the location of your mounted *rvault* folder
+This section details instructions to perform a ``SHARE`` using *rvault* with the *VIN™*. Three nodes will be required: a bootstrap, the sharing node and the receiving node.
 
-  * Update the *VIN™* configuration file at ``/etc/opt/VIN/defaults.cfg`` such that the path under ``files -> fuse_root`` is the absolute path of your mounted fuse folder (default value is ``/home/user/target/``). If you used recommended example this will be ``home/<user>/target`` (change ``<user>`` with the actual user).
+* Ensure *VIN™* is aware of the location of the mounted *rvault* folder:
+
+  * Update the *VIN™* configuration file at ``/etc/opt/VIN/defaults.cfg`` such that the path under ``files -> fuse_root`` is the absolute path of the mounted fuse folder (the default value is ``~/target/``). If you used the recommended setting this will be ``$TARGET_PATH`` but the full path must be explicitly specified in the configuration file.
+
+  * Run ``echo $TARGET_PATH`` to output the full path (e.g., it should be similar to ``/home/<user_name>/target``)
+  * Replace ``/home/user/target/`` under ``files -> fuse_root`` in the ``defaults.cfg`` file with the output from the above command.
 
 * Create a folder for sharing files:
 
-  * ``cd target``
+  * ``cd $TARGET_PATH``
   * ``mkdir share``
 
-* Start the *VIN™*  to be used with the *rvault*:
 
-  * Only files copied into the share folder or a subfolder of share will trigger a *VIN™* share
-  * Adding a peer to a folder can be done in two ways:
+* The test will require the instantiation of three separate nodes (one bootstrap and two *VIN™* nodes). To accomplish this, please refer to the instructions listed in :ref:`local-network` for the required operating system and be sure to record which nodes are bootstrap, sharing and receiving. NOTE: the method described in :ref:`local-network` sets up the bootstrap node on the same host as a *VIN™* node. If required, the bootstrap may be run on a node separate from the *VIN™* node.
+* To add a peer to a shareable folder, in another terminal window, start the *VIN™ CLI* and connect it to the node that will be sharing the file by running:
+  
+  * ``VIN_CLI <ip_addr_share> <http_port_share>``, where ``<ip_addr_share>`` and ``<http_port_share>`` are the IP address and HTTP port of the sharing node, respectively. If running the VIN with default settings ``<http_port_share>`` will be ``7070``.
 
-    * The *VIN CLI™* ``update_peer`` command adds a peer to a folder:
+* In the *VIN™ CLI* terminal, run: 
 
-      * ``update_peer 192.0.2.0 9090 share/``
+  * ``update_peer <ip_add_rec> <recp_port_rec> share/``, where ``<ip_add_rec>`` and ``<recp_port_rec>`` are the IP address and Receipt port of the receiving node, respectively. If running the *VIN™* with default settings, ``<http_port_share>`` will be ``9090``.
+  * NOTE: only files copied into the ``share/`` folder or a subfolder of ``share/`` will trigger a *VIN™* ``SHARE``.
 
-    * Alternatively the ``fuse_peers.cfg`` configuration file adds peers to folders on startup:
+* Alternatively, adding a peer to a shareable folder may be accomplished by modifying ``fuse_peers.cfg`` before running the sharing *VIN™* and is detailed below:
 
-      * ``fuse_peers.cfg`` is a *JSON* file found in ``/etc/opt/VIN/`` 
-      * The following ``fuse_peers.cfg`` is equivalent to running the *VIN CLI™* command ``update_peer 192.0.2.0 9090 share/``
+  * Navigate to the ``fuse_peers.cfg`` folder location (by default it is ``/etc/opt/VIN/``) and open ``fuse_peers.cfg``. By default it will contain the following:
 
-      .. code-block:: json
+  .. code-block:: json
 
-        {
-          "share": {
-            "peers": ["192.0.2.0:9090"]
-          }
-        }
-
- 
-      * The default is (for ``VIN -a <bootstrap> -h 7071 -p 8081 -r 9091``):
-
-      .. code-block:: json
-
-        {
-          "share": {
-            "peers": [],
+    {
+      "share": {
+          "peers": [],
 
             "localhost-9091": {
               "peers": [
-            "127.0.0.1:9091"
+                "127.0.0.1:9091"
               ]
-            }
           }
-        }
+      }
+    }
+    
+  * Modify it to look as follows:
 
-* Copying a file, either through the *Navigator* interface or via standard commands (``cp``) into the target/share folder should start a share in the *VIN™* to the peer ``192.0.2.0:9090``. On a successful share the received file is saved on the peer machine (defaults location: ``/opt/VIN/outputs)``.
+  .. code-block:: json
 
-  * Example copy: ``cp somefile.txt /home/<user>/target/share``
+    {
+      "share": {
+        "peers": ["<ip_add_rec>:<recp_port_rec>"]
+      }
+    }
 
-\4\. Additional Features
+  * Where ``<ip_add_rec>`` and ``<recp_port_rec>`` are the IP address and Receipt port of the receiving node, respectively. If running the *VIN™* with default settings, ``<http_port_share>`` will be ``9090``.
+  * The result is the same as running ``update_peer <ip_add_rec> <recp_port_rec> share/`` within *VIN™ CLI*.
 
-* ``fuse_peers.cfg`` supports multiple peers per folder and creates folders on startup. For example:
+
+* Copying a file, either through the *Navigator* interface or via standard commands (e.g., ``cp <test_file.txt> $TARGET_PATH/share``) into the ``$TARGET_PATH/share`` folder will start a share from the sharing *VIN™* node to the receiving node. 
+* On a successful share, the received file is saved on the receiving node system (the default location is ``/opt/VIN/outputs``).
+
+
+Fuse Peers Configuration File
+==============================
+
+* ``fuse_peers.cfg`` supports multiple receiving peers per folder and creates the shared folders when starting a *VIN™* node. 
+* As an example, a ``fuse_peers.cfg`` file containing the following:
 
 .. code-block:: json
 
@@ -155,24 +177,26 @@ Installing and using FUSE
     }
   }
 
-* The above ``fuse_peers.cfg`` *JSON* is equal to executing the below console and *VIN CLI™* commands on startup:
+* Would be the same as running *VIN CLI™* commands listed below:
 
-  * Folder creation:
+* Folder creation:
 
-    * ``mkdir target/share/local_peers``
-    * ``mkdir target/share/virgil_peers``
-    * ``mkdir target/share/virgil_peers/canada``
-    * ``mkdir target/share/virgil_peers/usa``
+  * ``mkdir target/share/local_peers``
+  * ``mkdir target/share/virgil_peers``
+  * ``mkdir target/share/virgil_peers/canada``
+  * ``mkdir target/share/virgil_peers/usa``
 
-  * *VIN CLI™*:
+* *VIN CLI™*:
 
-    * ``update_peer 192.0.2.0 9090 share/``
-    * ``update_peer 127.0.0.1 9091 share/local_peers``
-    * ``update_peer 203.0.113.0 9090 share/virgil_peers/canada``
-    * ``update_peer 203.0.113.255 9090 share/virgil_peers/canada``
-    * ``update_peer 192.0.2.255 9090 share/virgil_peers/usa``
+  * ``update_peer 192.0.2.0 9090 share/``
+  * ``update_peer 127.0.0.1 9091 share/local_peers``
+  * ``update_peer 203.0.113.0 9090 share/virgil_peers/canada``
+  * ``update_peer 203.0.113.255 9090 share/virgil_peers/canada``
+  * ``update_peer 192.0.2.255 9090 share/virgil_peers/usa``
 
-\5\. Common Issues
+
+Common Issues
+===============
 
 * On non graceful exit of the *VIN™* the named semaphore ``sem.VIN_Fuse_Sem`` will sometimes not close properly. When copying a file to target/share this bug will cause the *VIN™* to produce no logging output when we would otherwise expect to see the *VIN™* perform a share. Shutting down the *VIN™* node and deleting the semaphore (``rm /dev/shm/sem.VIN_Fuse_Sem``) will resolve the issue.
 
@@ -180,11 +204,11 @@ Installing and using FUSE
 ..
   \6\. *VIN™* UI Demo
 
-  * Unzip the provided *rvault* ``ZIP`` file. The document requires that you unzip under the ``$HOME/Dev/vin_demo_draft``.
+  * Unzip the provided *rvault* ``ZIP`` file. The document requires that you unzip under the ``~/Dev/vin_demo_draft``.
 
   * Terminal 1
 
-    * ``cd $HOME/Dev/vin_demo_draft``
+    * ``cd ~/Dev/vin_demo_draft``
     * ``sudo apt install -y npm``
     * ``npm i``
       

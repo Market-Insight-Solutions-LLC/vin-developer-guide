@@ -17,7 +17,7 @@ The configuration items listed below relate to connection information for the va
 
     *version*, "The current version of the *VIN™*.", 0.1.0, "Do not modify."
     *config_name*, "The name of the *VIN™’s* configuration file.", default_config, "Default value or user-defined."
-    *fuse_peers_name*, "", fuse_peers, ""
+    *fuse_peers_name*, "The name of the fuse peers configuration file.", fuse_peers, "Default or user-defined."
     *bootstrap_ip*, The bootstrap node’s IP address., 0.0.0.0, "Default value or user-defined."
     *bootstrap_port*, The port fora node's node-to-bootstrap and bootstrap-to-node communications within the *VIN™*., 8000, "Default value or user-defined."
     *kademlia_port*, The port through which a *VIN™* node communications bi-directionally with the Kademlia network., 8080, "Default value or user-defined."
@@ -31,8 +31,10 @@ The configuration items listed below relate to connection information for the va
     *parallel_mode*, Enables the sending/receiving of data in parallel., true,  "true: data will be sent/received in parallel.
     
     false: data will be sent/received serially."
-    *reconnect*, "", true, ""
-    *reconnect_time*, "", 60, ""
+    *reconnect*, "Specifies whether or not a *VIN™* node will attempt to reconnect to the network upon errors/failures.", true, "true: enables reconnection attempts.
+    
+    false: disables reconnection attempts."
+    *reconnect_time*, "The time, in seconds, between *VIN™* node reconnection attempts.", 60, "Default value or user-defined but must be, at minimum, one second."
 
 
 chunker
@@ -101,7 +103,7 @@ The following options pertain to the locations of configuration and logs generat
     *shards*, "The shards that are gathered are stored here.", ``/var/log/VIN/shards/``, "Default value or user-defined."
     *rebuilt*, "The storage location of the file that was rebuilt from the chunks (shards).", ``/opt/VIN/outputs/``, "Default value or user-defined."
     *kaddata*, "The location where *Kademlia* shards are stored if on-disk storage is enabled in the *VIN™*.", ``/opt/VIN/kademlia/data/``, "Default value or user-defined."
-    *fuse_root*, "", ``/home/user/target/``, ""
+    *fuse_root*, "The mounted ``FUSE`` folder path. This directory must match directory where ``rvault`` is mounted.", ``/home/user/target/``, "Default or user-defined."
 
 
 receipts (*Linux*)
@@ -149,7 +151,7 @@ The following options pertain to the locations of configuration and logs generat
     *shards*, "The shards that are gathered are stored here.", "``shards\\ (e.g., C:\ProgramData\VIN\shards\``", "Default value or user-defined."
     *rebuilt*, "The storage location of the file that was rebuilt from the chunks (shards).", "``outputs\\ (e.g., C:\ProgramData\VIN\outputs\)``", "Default value or user-defined."
     *kaddata*, "The location where *Kademlia* shards are stored if on-disk storage is enabled in the *VIN™*.", "``kademlia\\data\\ (e.g., C:\ProgramData\VIN\kademlia\data\)``", "Default value or user-defined."
-    *fuse_root*, "", "``fuse\\ (e.g., C:\ProgramData\VIN\fuse\)``", ""
+    *fuse_root*, "The mounted ``FUSE`` folder path. This directory must match directory where ``rvault`` is mounted.", "``fuse\\ (e.g., C:\ProgramData\VIN\fuse\)``", "Default or user-defined."
 
 
 receipts (*Windows*)
@@ -217,10 +219,10 @@ The following configuration items allow for the customization of the various enc
     *log*, "Enables/disables log generation for the output of the encoder.", false, "true: enables logging of the output. 
     
     false: enables logging of the output."
-    *cw_size_2_pow*, "Code word size. Take the number as a power of 2. E.g., 2 :superscript:`15`", 15, ""
-    *msg_len*, "The length of the message in bits", 1000, ""
-    *red_bits*, " ", 30, ""
-    *cw_density*, " ", 0.33, ""
+    *cw_size_2_pow*, "Code word size. Take the number as a power of 2. E.g., 2 :superscript:`15`", 15, "Default or user-defined."
+    *msg_len*, "The length of encoded message in bits. All messages are to be divisible by this number.", 1000, "Default or user-defined."
+    *red_bits*, "The number redundancy bits per message.", 30, "Default or user-defined."
+    *cw_density*, "The number of encoded messages per code word.", 0.33, "Default or user-defined."
 
 
 .. csv-table:: Entanglement Encoder Parameters
@@ -248,7 +250,7 @@ The following configuration items allow for the customization of the various enc
     :widths: 15 40 15 30
 
     *name*, "The name of the encoder.", ValidationEncoder, "Default value."
-    *id*, "", "network_data", ""
+    *id*, "Errors related to this encoder will be stored under this id name.", "network_data", "Default or user-defined."
     *log*, "Enables/disables log generation for the output of the encoder.", false, "true: enables logging of the output. 
     
     false: enables logging of the output."
@@ -268,7 +270,7 @@ The following configuration items allow for the enabling/disabling and customiza
     :widths: 15 40 15 30
 
     *name*, "The name of the decoder.", ValidationDecoder, "Default value."
-    *id*, "", "network_data", " "
+    *id*, "Errors related to this encoder will be stored under this id name.", "network_data", "Default or user-defined."
     *log*, "Enables/disables log generation for the output of the decoder.", false, "true: enables logging of the output. 
     
     false: enables logging of the output."
@@ -343,10 +345,10 @@ The following configuration items allow for the customization of the various enc
     *log*, "Enables/disables log generation for the output of the encoder.", false, "true: enables logging of the output. 
     
     false: enables logging of the output."
-    *cw_size_2_pow*, "Code word size. Take the the number as a power of 2. E.g., 2 :superscript:`15`", 15, ""
-    *msg_len*, "The length of the message in bits.", 1000, ""
-    *red_bits*, " ", 30, ""
-    *cw_density*, " ", 0.33, ""
+    *cw_size_2_pow*, "Code word size. Take the the number as a power of 2. E.g., 2 :superscript:`15`", 15, "Default or user-defined."
+    *msg_len*, "The length of encoded message in bits. All messages are to be divisible by this number.", 1000, "Default or user-defined."
+    *red_bits*, "The number redundancy bits per message.", 30, "Default or user-defined."
+    *cw_density*, "The number of encoded messages per code word.", 0.33, "Default or user-defined."
 
 
 .. csv-table:: Entanglement Encoder Parameters
@@ -374,9 +376,9 @@ The following configuration items allow for the customization of the various enc
     :widths: 15 40 15 30
 
     *name*, "The name of the encoder.", PolarEncoder, "Default value."
-    *frames*, "", "1", ""
-    "N", "The number of bit channels used by the coder.", "128", "Default or user-defined (powers of 2). It must adhere to the reliability sequence of the coder."
-    "K", "The message length in bits.", "32", "Default or user-defined. It must be less than N."
+    *frames*, "The number of K-byte segments in the message to be encoded (is not currently implemented in the Polar Encoder).", "1", "Default or user-defined."
+    "N", "The number encoded bits resulting form a portion of the message (K) being encoded.", "128", "Default or user-defined (powers of 2). It must adhere to the reliability sequence of the coder."
+    "K", "A portion, in bits, of the message to be encoded.", "32", "Default or user-defined. It must be less than N."
     *log*, "Enables/disables log generation for the output of the encoder.", false, "true: enables logging of the output. 
     
     false: enables logging of the output."
@@ -408,7 +410,7 @@ The following configuration items allow for the customization of the various enc
     :widths: 15 40 15 30
 
     *name*, "The name of the encoder.", ValidationEncoder, "Default value."
-    *id*, "", "network_data", " "
+    *id*, "Errors related to this encoder will be stored under this id name.", "network_data", "Default or user-defined."
     *log*, "Enables/disables log generation for the output of the encoder.", false, "true: enables logging of the output. 
     
     false: enables logging of the output."
@@ -451,7 +453,7 @@ The following configuration items allow for the customization of the various dec
     :widths: 15 40 15 30
 
     *name*, "The name of the decoder.", ValidationDecoder, "Default value."
-    *id*, "", "network_data", " "
+    *id*, "Errors related to this encoder will be stored under this id name.", "network_data", "Default or user-defined."
     *log*, "Enables/disables log generation for the output of the decoder.", false, "true: enables logging of the output. 
     
     false: enables logging of the output."
@@ -483,9 +485,9 @@ The following configuration items allow for the customization of the various dec
     :widths: 15 40 15 30
 
     *name*, "The name of the decoder.", PolarDecoder, "Default value."
-    *frames*, "", "1", ""
-    "N", "The number of bit channels used by the coder.", "128", "Default or user-defined (powers of 2). It must adhere to the reliability sequence of the coder."
-    "K", "The message length.", "32", "Default or user-defined. It must be less than N."
+    *frames*, "The number of K-byte segments in the message to be encoded (is not currently implemented in the Polar Encoder)", "1", "Default or user-defined."
+    "N", "The number encoded bits resulting form a portion of the message (K) being encoded.", "128", "Default or user-defined (powers of 2). It must adhere to the reliability sequence of the coder."
+    "K", "A portion, in bits, of the message to be encoded.", "32", "Default or user-defined. It must be less than N."
     *log*, "Enables/disables log generation for the output of the decoder.", false, "true: enables logging of the output. 
     
     false: enables logging of the output."

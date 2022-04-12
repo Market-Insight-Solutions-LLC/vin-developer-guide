@@ -26,25 +26,6 @@ The following table displays a list of commands that are accessible by the *VIN�
     Shutdown, shutdown, "Send a shutdown signal to the current node that the user is connected to."
     Exit, exit, "Quits the current session of the *VIN™ CLI*."
 
-Flags to control the functionality of the *VIN™ CLI* commands are listed in the following table:
-
-.. This information came from C:\Dev\qtoken-cpp\apps\helper.cpp 
-
-.. csv-table:: VIN™ CLI Flags
-    :header: Flag Name, Command Line Instruction, Description
-    :widths: 20 10 70 
-
-    List Flag, -l, ``NEED INFORMATION``
-    Bootstrap Flag, -b, "Indicates that the node being instantiated will be a bootstrap node."
-    Node Flag, -n, "Indicates that the node being instantiated will be a peer node."
-    Configuration Directory Flag, -c, ``NEED INFORMATION``
-    Bootstrap IP Flag, -a, "This flag specifies that the next string will be the bootstrap node's IP address which the peer will connect to."
-    Bootstrap Port Flag, -s, ``NEED INFORMATION``
-    Kademlia Port Flag, -p, "This flag specifies that the next string will be the Kademlia port through which the node will communicate bi-directionally with the Kademlia network."
-    Receipt Port Flag, -r, "This flag specifies that the next string will be the port through which the node will receive its cryptographic receipts."
-    HTTP Port Flag, -h, "This flag specifies that the next string will be the port utilized for HTTP messages by the node."
-    LVM Port Flag, -v, "This flag specifies that the next string will be the port through which the node communicates with the LVM."
-
 
 .. _vincli-func:
 
