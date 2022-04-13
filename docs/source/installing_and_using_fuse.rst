@@ -3,13 +3,13 @@
 Installing and using FUSE
 **************************************
 
-This document will provide instructions on testing *VIN™* nodes with *rvault*. It requires that *VIN™* be installed on a minimum of three nodes (one bootstrap and two peers). Before beginning with this procedure, please follow the instructions in :doc:`getting_started_with_vin` to gain a better understanding of the *VIN™* and its functionality.
+This document will provide instructions on testing *VIN™* nodes with *rvault*. It requires that *VIN™* be installed on a minimum of three nodes (one bootstrap and two peers). Before beginning with this procedure, please follow the instructions in :ref:`install-vin` to gain a better understanding of the *VIN™* and its functionality.
 
 
 Installing VIN™
 =================
 
-Note: if :doc:`getting_started_with_vin` was followed, *VIN™* will already be installed and the steps in the subsection may be skipped. 
+Note: if :ref:`install-vin` was followed, *VIN™* will already be installed and the steps in the subsection may be skipped. 
 
 Building the project is a complex process requiring a number of dependency projects and libraries to be built. For this demo, a prebuilt ``DEB`` package is provided. Install the ``DEB`` file in a *Debian* system (tested in *Ubuntu*) using the following:
 

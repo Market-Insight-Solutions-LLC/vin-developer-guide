@@ -4,7 +4,7 @@ Virgil Integrity Network™ (VIN™) Developer Guide
 
 Welcome to the Virgil Integrity Network™ (*VIN™*) Developer Guide! This guide provides all the information required to get the *VIN™* functioning properly. Additionally, information on some of the core functionality of the VIN™ is also included.
 
-Check out the :doc:`getting_started_with_vin` section to install the *VIN™* and for some of its commands. To setup *FUSE*, please refer to the :doc:`vin_fuse` section. Be sure to read the :doc:`vin_cli` page to get a better understanding on how to operate the *VIN™*. Finally, to customize an instance of the *VIN™*, refer to the :doc:`configuration` section.
+Check out the :ref:`install-vin` section to install the *VIN™* and for some of its commands. To setup *FUSE*, please refer to the :doc:`installing_and_using_fuse` section. Be sure to read the :ref:`vin-cli` page to get a better understanding on how to operate the *VIN™*. Finally, to customize an instance of the *VIN™*, refer to the :ref:`vin-configuration` section.
 
 .. note::
 
@@ -14,8 +14,9 @@ Check out the :doc:`getting_started_with_vin` section to install the *VIN™* an
    :maxdepth: 2
    :hidden:
 
-   getting_started_with_vin
-   vin_fuse
+   installing_the_vin
+   vin_api
+   installing_and_using_fuse
    configuration
    vin_cli
    glossary

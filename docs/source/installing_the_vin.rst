@@ -1,3 +1,5 @@
+.. _install-vin:
+
 **************************************
 Installing and using the VIN™
 **************************************
@@ -6,7 +8,7 @@ Installing and using the VIN™
 Introduction
 ============
 
-The sections below contain instructions for installing the *VIN™* for both *Windows* and *Linux* operating systems. Furthermore, setting up the  *VIN™* and running *VIN™* commands using the *VIN™ CLI* (refer to :doc:`vin_cli` for more information) are detailed.
+The sections below contain instructions for installing the *VIN™* for both *Windows* and *Linux* operating systems. Furthermore, setting up the *VIN™* and running *VIN™* commands using the *VIN™ CLI* (refer to :doc:`vin_cli` for more information) are detailed.
 
 
 Installation
@@ -29,20 +31,24 @@ To ensure the *VIN™* is directed to the required libraries run:
 * ``export LD_LIBRARY_PATH=/usr/local/lib:/usr/lib`` 
 
 
-Windows
-----------
 
-* Navigate to the folder containing the ``VIN.zip`` file on the system
-* Run ``tar -xf VIN.zip`` from a CLI session (as an administrator) or double click the file and follow the prompts to extract the contents 
-* Navigate to the extracted folder and run ``msiexec /i VIN.msi`` from a CLI session (as an administrator) or double click the file and follow the prompts to install the *VIN™*  
-  
+..
+  Windows
+  ----------
 
+  * Navigate to the folder containing the ``VIN.zip`` file on the system
+  * Run ``tar -xf VIN.zip`` from a CLI session (as an administrator) or double click the file and follow the prompts to extract the contents 
+  * Navigate to the extracted folder and run ``msiexec /i VIN.msi`` from a CLI session (as an administrator) or double click the file and follow the prompts to install the *VIN™*  
+    
 
 Components
 ----------
 
 * *VIN™ Command Line Interface (CLI)*: the *VIN™ CLI* acts as a Hypertext Transfer Protocol (HTTP) client for reaching the *VIN™* HTTP server from the command line in a *Linux* environment. 
-* ``defaults.cfg``: a modifiable configuration file located in the ``/etc/opt/VIN/`` directory for *Linux* and under ``Program Files\Virgil\VIN`` for *Windows*. For more information on the configuration, refer to the :doc:`configuration` section.
+* ``defaults.cfg``: a modifiable configuration file located in the ``/etc/opt/VIN/``. For more information on the configuration, refer to the :ref:`vin-configuration` section.
+
+..
+  * ``defaults.cfg``: a modifiable configuration file located in the ``/etc/opt/VIN/`` directory for *Linux* and under ``Program Files\Virgil\VIN`` for *Windows*. For more information on the configuration, refer to the :doc:`configuration` section.
   
 
 Disk
@@ -198,7 +204,7 @@ The following will describe how to share files between the peers on the same hos
   Successful Share Between Peers (*VIN™ CLI* = top, Peer_1 = left, Peer_2 = right)
 
 * To manually confirm that the file was shared correctly, enter ``ls`` in the CLI session pointing to the ``/opt/VIN/outputs`` folder directory. A folder with the name of the file which was shared should be listed. Enter this folder (``cd <folder_name>``) and run ``ls``. The file which was shared will be displayed and can be inspected to ensure it was successfully shared.
-* Additionally, the cryptographic receipt for the share is stored in ``/opt/VIN/receipts/sent``, the encrypted data can be seen in ``/opt/VIN/kademlia/data/``, and the sharded data is viewable in ``/var/log/VIN/shards/``. Note: the number of shards is dependant on the size of the file and the parameters set in the ``chunker`` object, which is set in ``defaults.cfg`` (see :ref:`configuration` for more details).
+* Additionally, the cryptographic receipt for the share is stored in ``/opt/VIN/receipts/sent``, the encrypted data can be seen in ``/opt/VIN/kademlia/data/``, and the sharded data is viewable in ``/var/log/VIN/shards/``. Note: the number of shards is dependant on the size of the file and the parameters set in the ``chunker`` object, which is set in ``defaults.cfg`` (see :ref:`vin-configuration` for more details).
 
 
 Getting Peers Connected to the Bootstrap
@@ -239,7 +245,7 @@ To run a basic *VIN™* on an IP based network, such as *Amazon Web Services (AW
 * Complete the *VIN™* installation procedure on each system.
 * On each system, open three CLI sessions. 
 * Since each system will have it's own IP address, deemed ``<ip_1>`` and ``<ip_2>`` for this example, it is imperative to determine and record it.
-* Run ``ifconfig`` in one of the CLI sessions. Note: if this feature is not installed a message will appear recommending that ``sudo install net-tools`` be run. If this is the case, run this command and re-run ``ifconfig`` to generate an output similar to the one below. 
+* Run ``ifconfig`` in one of the CLI sessions. Note: if this feature is not installed a message will appear recommending that ``sudo apt-get install -y net-tools`` be run. If this is the case, run this command and re-run ``ifconfig`` to generate an output similar to the one below. 
   
 .. figure:: images/getting_started_with_vin/linux/ifconfig_results.png
   :scale: 100
@@ -287,7 +293,7 @@ To run a basic *VIN™* on an IP based network, such as *Amazon Web Services (AW
 Network Interaction - Local Network (*Linux*)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-With *VIN™* peers successfully running on both systems, a number of commands can be entered to interact with the instantiated network and between the peers themselves. The following examples will highlight the use of the ``put``, ``get``, ``share``, ``getPeers`` and ``shutdown`` commands with the *VIN™ CLI*. Note: ``spread`` and ``gather`` are not shown for a local network as the cryptographic receipt generated by ``spread``, which is required by ``gather``, is stored on the system that performed the ``spread``. While manually copying the file to the other system and then running ``gather`` is feasible, testing ``spread`` and ``gather`` is best done on a single host network. For a full list of the *VIN™ CLI's* functionality refer to :doc:`vin_cli`. Additionally, refer to :doc:`configuration` for more information regarding locations of files generated while using the *VIN™ CLI*.
+With *VIN™* peers successfully running on both systems, a number of commands can be entered to interact with the instantiated network and between the peers themselves. The following examples will highlight the use of the ``put``, ``get``, ``share``, ``getPeers`` and ``shutdown`` commands with the *VIN™ CLI*. Note: ``spread`` and ``gather`` are not shown for a local network as the cryptographic receipt generated by ``spread``, which is required by ``gather``, is stored on the system that performed the ``spread``. While manually copying the file to the other system and then running ``gather`` is feasible, testing ``spread`` and ``gather`` is best done on a single host network. For a full list of the *VIN™ CLI's* functionality refer to :ref:`vin-cli`. Additionally, refer to :ref:`vin-configuration` for more information regarding locations of files generated while using the *VIN™ CLI*.
 
 
 Putting and Getting A Key-Value Pair
@@ -332,7 +338,7 @@ The following will describe how to share files between the peer on ``system_1`` 
 
 
 * To manually confirm that the file was shared correctly, enter ``ls`` in the CLI session on ``system_2`` pointing to the ``/opt/VIN/outputs`` folder directory. A folder with the name of the file which was shared should be listed. Enter this folder (``cd <folder_name>``) and run ``ls``. The file which was shared will be displayed and can be inspected to ensure it was successfully shared.
-* Additionally, the cryptographic receipt for the share is stored in ``/opt/VIN/receipts/sent``, the encrypted data can be seen in ``/opt/VIN/kademlia/data/``, and the sharded data is viewable in ``/var/log/VIN/shards/``. Note: the number of shards is dependant on the size of the file and the parameters set in the ``chunker`` object, which is set in ``defaults.cfg`` (see :ref:`configuration` for more details).
+* Additionally, the cryptographic receipt for the share is stored in ``/opt/VIN/receipts/sent``, the encrypted data can be seen in ``/opt/VIN/kademlia/data/``, and the sharded data is viewable in ``/var/log/VIN/shards/``. Note: the number of shards is dependant on the size of the file and the parameters set in the ``chunker`` object, which is set in ``defaults.cfg`` (see :ref:`vin-configuration` for more details).
 
 
 Getting Peers Connected to the Bootstrap
@@ -405,7 +411,7 @@ To run a simple *VIN™* on a local machine, a minimum of three *VIN™* nodes, 
 
   *VIN™ CLI* Connected Successfully
 
-With the simple, two-peer network established and the *VIN™ CLI* connected, transmission between the two peers and the network is now possible. To get started using the *VIN™* and for details on the commands available to the *VIN™ CLI*, including examples of each, refer to :doc:`vin_cli`. Note: the :doc:`vin_cli` section and it's examples correspond with the single host network. For setting up and using a multi-host network, see the section below.
+With the simple, two-peer network established and the *VIN™ CLI* connected, transmission between the two peers and the network is now possible. To get started using the *VIN™* and for details on the commands available to the *VIN™ CLI*, including examples of each, refer to :ref:`vin-cli`. Note: the :ref:`vin-cli` section and it's examples correspond with the single host network. For setting up and using a multi-host network, see the section below.
 
 
 Network Interaction - Single Host (*Windows*)
@@ -441,7 +447,7 @@ Spreading and Gathering a File
 
 The *VIN™* can spread any file type onto it's network. To do a ``spread``, perform the following:
 
-* In the *VIN™ CLI* session run ``spread <filepath>``; where the ``<filepath>`` is the absolute path and name of the file to be spread. For this example, it is ``C:\Dev\test\vin_test.txt``. An encrypted cryptographic receipt is generated upon spreading and is stored in ``C:\ProgramData\VIN\receipts\sent\`` and the encrypted data is placed onto the *Kademlia* network and can be seen in ``C:\ProgramData\VIN\kademlia\data``. Additionally, the data, broken into shards, is viewable in ``C:\ProgramData\VIN\shards\``. Note: the number of shards is dependant on the size of the file and the parameters set in the ``chunker`` object, which is set in ``defaults.cfg`` (see :ref:`configuration` for more details).
+* In the *VIN™ CLI* session run ``spread <filepath>``; where the ``<filepath>`` is the absolute path and name of the file to be spread. For this example, it is ``C:\Dev\test\vin_test.txt``. An encrypted cryptographic receipt is generated upon spreading and is stored in ``C:\ProgramData\VIN\receipts\sent\`` and the encrypted data is placed onto the *Kademlia* network and can be seen in ``C:\ProgramData\VIN\kademlia\data``. Additionally, the data, broken into shards, is viewable in ``C:\ProgramData\VIN\shards\``. Note: the number of shards is dependant on the size of the file and the parameters set in the ``chunker`` object, which is set in ``defaults.cfg`` (see :ref:`vin-configuration` for more details).
 * The output of a successful ``spread`` is shown below.
 
 .. figure:: images/getting_started_with_vin/windows/vincli_spread_host.png
@@ -480,7 +486,7 @@ The following will describe how to share files between the peers on the same hos
   Successful Share Between Peers (*VIN™ CLI* = top, Peer_1 = left, Peer_2 = right)
 
 * To manually confirm that the file was shared correctly, enter ``ls`` in the CLI session pointing to the ``/opt/VIN/outputs`` folder directory. A folder with the name of the file which was shared should be listed. Enter this folder (``cd <folder_name>``) and run ``ls``. The file which was shared will be displayed and can be inspected to ensure it was successfully shared.
-* Additionally, the cryptographic receipt for the share is stored in ``C:\ProgramData\VIN\receipts\sent\``, the encrypted data can be seen in ``C:\ProgramData\VIN\kademlia\data``, and the sharded data is viewable in ``C:\ProgramData\VIN\shards\``. Note: the number of shards is dependant on the size of the file and the parameters set in the ``chunker`` object, which is set in ``defaults.cfg`` (see :ref:`configuration` for more details).
+* Additionally, the cryptographic receipt for the share is stored in ``C:\ProgramData\VIN\receipts\sent\``, the encrypted data can be seen in ``C:\ProgramData\VIN\kademlia\data``, and the sharded data is viewable in ``C:\ProgramData\VIN\shards\``. Note: the number of shards is dependant on the size of the file and the parameters set in the ``chunker`` object, which is set in ``defaults.cfg`` (see :ref:`vin-configuration` for more details).
 
 
 Getting Peers Connected to the Bootstrap
@@ -566,7 +572,7 @@ To run a basic *VIN™* on an IP based network, such as *Amazon Web Services (AW
 Network Interaction - Local Network (*Windows*)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-With *VIN™* peers successfully running on both systems, a number of commands can be entered to interact with the instantiated network and between the peers themselves. The following examples will highlight the use of the ``put``, ``get``, ``share``, ``getPeers`` and ``shutdown`` commands with the *VIN™ CLI*. Note: ``spread`` and ``gather`` are not shown for a local network as the cryptographic receipt generated by ``spread``, which is required by ``gather``, is stored on the system that performed the ``spread``. While manually copying the file to the other system and then running ``gather`` is feasible, testing ``spread`` and ``gather`` is best done on a single host network. For a full list of the *VIN™ CLI's* functionality refer to :doc:`vin_cli`. Additionally, refer to :doc:`configuration` for more information regarding locations of files generated while using the *VIN™ CLI*.
+With *VIN™* peers successfully running on both systems, a number of commands can be entered to interact with the instantiated network and between the peers themselves. The following examples will highlight the use of the ``put``, ``get``, ``share``, ``getPeers`` and ``shutdown`` commands with the *VIN™ CLI*. Note: ``spread`` and ``gather`` are not shown for a local network as the cryptographic receipt generated by ``spread``, which is required by ``gather``, is stored on the system that performed the ``spread``. While manually copying the file to the other system and then running ``gather`` is feasible, testing ``spread`` and ``gather`` is best done on a single host network. For a full list of the *VIN™ CLI's* functionality refer to :ref:`vin-cli`. Additionally, refer to :ref:`vin-configuration` for more information regarding locations of files generated while using the *VIN™ CLI*.
 
 
 Putting and Getting A Key-Value Pair
@@ -610,7 +616,7 @@ The following will describe how to share files between the peer on ``system_1`` 
   Successful Share Between Peers (*VIN™ CLI* = top, Peer_1 = left, Peer_2 = right)
 
 * To manually confirm that the file was shared correctly, enter ``ls`` in the CLI session on ``system_2`` pointing to the ``Program Files\Virgil\VIN\outputs`` folder directory. A folder with the name of the file which was shared should be listed. Enter this folder (``cd <folder_name>``) and run ``ls``. The file which was shared will be displayed and can be inspected to ensure it was successfully shared.
-* Additionally, the cryptographic receipt for the share is stored in ``C:\ProgramData\VIN\receipts\sent\``, the encrypted data can be seen in ``C:\ProgramData\VIN\kademlia\data``, and the sharded data is viewable in ``C:\ProgramData\VIN\shards\``. Note: the number of shards is dependant on the size of the file and the parameters set in the ``chunker`` object, which is set in ``defaults.cfg`` (see :ref:`configuration` for more details).
+* Additionally, the cryptographic receipt for the share is stored in ``C:\ProgramData\VIN\receipts\sent\``, the encrypted data can be seen in ``C:\ProgramData\VIN\kademlia\data``, and the sharded data is viewable in ``C:\ProgramData\VIN\shards\``. Note: the number of shards is dependant on the size of the file and the parameters set in the ``chunker`` object, which is set in ``defaults.cfg`` (see :ref:`vin-configuration` for more details).
 
 
 Getting Peers Connected to the Bootstrap

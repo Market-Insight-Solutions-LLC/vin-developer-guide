@@ -1,4 +1,4 @@
-.. _configuration:
+.. _vin-configuration:
 
 ****************************
 VIN™ Configuration Options

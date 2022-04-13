@@ -1,3 +1,5 @@
+.. _vin-cli:
+
 **************************************
 VIN™ Command Line Interface (CLI)
 **************************************
@@ -13,29 +15,78 @@ The following table displays a list of commands that are accessible by the *VIN�
     :widths: 15 40 50 
 
     Help, help, "Displays a list of commands available to the *VIN™ CLI*."
+    Exit, exit, "Quits the current session of the *VIN™ CLI*."
     Ping, ping, "Pings the connected node to check its status. The connected node responds with a 'Server pong!' message if successful."
     GetPeers, getPeers, "Get the IP addresses and data ports for all nodes connected on this network. Note: some of the nodes may be stale."
-    Put, put <key> <value>, "Puts a user provided value (string) onto the network which corresponds to the user provided key (string)."
-    Get, get <key>, "Requires a given key (string) and returns the Key-Value pair from the respective node. The value is displayed in the *VIN™ CLI* window. No other output is displayed."
-    Spread, spread <filepath>, "Splits a file of any type located in a given filepath (string) into tokens and then spreads them across the network. An encrypted cryptographic receipt is then generated and stored in ``/opt/VIN/receipts/sent`` in *Linux* and ``VIN\receipts\sent\`` in *Windows*."
-    Gather, gather <receipt_filepath>, "Gathers a spread file using the given receipt_filepath (string). It will be reassembled as a new file into the output directory ``/opt/VIN/outputs`` in *Linux* and ``VIN\outputs\`` in *Windows*."
-    Gather, gather <command> <receipt_filepath>, "Gathers a file but enables control over how the file is stored after gathered. The commands available are: ``append``, ``-a``, ``a`` to append data to existing file; ``overwrite``, ``-o``, ``o`` to overwrite the existing file; ``create``, ``-c``, ``c`` to create a new file." 
-    Share, share <filepath> <ip_address> <receipt_port>, "The peer spreads a file from a given filepath (string), automatically establishes a secure channel with the ip_address (string) and receipt port (string) of another peer in the network, and transfers the encrypted cryptographic receipt. The receiver peer will automatically call ``gather`` on the receipt once decrypted."
-    Share, share <command> <filepath> <ip_address> <receipt_port>, "Performs a spread but enables control over how the file is stored after gathered. The commands available are: ``append``, ``-a``, ``a`` to append data to existing file; ``overwrite``, ``-o``, ``o`` to overwrite the existing file; ``create``, ``-c``, ``c`` to create a new file." 
-    Share, share <command> <filepath> <ip_address> <receipt_port> <runs>, "Performs a spread, enables control over how the file is stored and specifies the number of runs (string) to attempt to successfully spread the file."
-    Shutdown, shutdown, "Send a shutdown signal to the current node that the user is connected to."
-    Exit, exit, "Quits the current session of the *VIN™ CLI*."
-    Download, download <file_path> <save_path>, "Download file from provided <file_path> absolute path to crypto receipt file. File saved at given path <save_path>."
-    Update FUSE Peer, update_peer <ip_add_rec> <recp_port_rec> <folder_path>, "Add a receiver peer via its IP address, receipt port, to a fuse folder path."
+    Put, put <key> <value>, "Puts a user provided value (string) onto the network which corresponds to the user provided key (string).
+    
+    Example: ``put k1 v1``"
+    Get, get <key>, "Requires a given key (string) and returns the Key-Value pair from the respective node. The value is displayed in the *VIN™ CLI* window. No other output is displayed.
+    
+    Example: ``get k1``"
+    Spread, spread <filepath>, "Splits a file of any type located in a given filepath (string) into tokens and then spreads them across the network. An encrypted cryptographic receipt is then generated and stored in ``/opt/VIN/receipts/sent`` in *Linux* and ``VIN\receipts\sent\`` in *Windows*.
+    
+    Example: ``spread /home/foo/baz.zip``"
+    Spread, spread <filepath> <pipe_confg>, "Splits a file of any type located in a given filepath (string) into tokens and then spreads them across the network with a stated pipeline configuration. An encrypted cryptographic receipt is then generated and stored in ``/opt/VIN/receipts/sent`` in *Linux* and ``VIN\receipts\sent\`` in *Windows*.
+    
+    Example 1: ``spread /home/foo/baz.zip /home/foo/pipeline.json``
+    
+    Example 2: ``spread /home/foo/baz.zip [ConcurrentEncoder,EntanglementEncoder,NamingEncoder,ValidationEncoder,ValidationDecoder,EntanglementDecoder,ConcurrentDecoder]``
+    
+    Example 3: ``spread /home/foo/baz.zip [coe,ene,nae,vae,vad,end,cod]``
+    
+    Example 4: ``spread /home/foo/baz.zip {'pipeline string'}``"
+    Gather, gather <receipt_filepath>, "Gathers a spread file using the given receipt_filepath (string). It will be reassembled as a new file into the output directory ``/opt/VIN/outputs`` in *Linux* and ``VIN\outputs\`` in *Windows*.
+    
+    Example: ``gather /home/foo/CR1593084390``"
+    Gather, gather <command> <receipt_filepath>, "Gathers a file but enables control over how the file is stored after gathered. The commands available are: ``append``, ``-a``, ``a`` to append data to existing file; ``overwrite``, ``-o``, ``o`` to overwrite the existing file; ``create``, ``-c``, ``c`` to create a new file.
+    
+    Example: ``gather append /home/foo/CR1593084390``" 
+    Share, share <filepath> <ip_address> <receipt_port>, "The peer spreads a file from a given filepath (string), automatically establishes a secure channel with the ip_address (string) and receipt port (string) of another peer in the network, and transfers the encrypted cryptographic receipt. The receiver peer will automatically call ``gather`` on the receipt once decrypted.
+    
+    Example: ``share /home/foo/baz.zip 12.345.678.90 9091``"
+    Share, share <command> <filepath> <ip_address> <receipt_port>, "Performs a spread but enables control over how the file is stored after gathered. The commands available are: ``append``, ``-a``, ``a`` to append data to existing file; ``overwrite``, ``-o``, ``o`` to overwrite the existing file; ``create``, ``-c``, ``c`` to create a new file.
+    
+    Example: ``share append /home/foo/baz.zip 12.345.678.90 9091``" 
+    Share, share <command> <filepath> <ip_address> <receipt_port> <pipe_config>, "Performs a spread, enables control over how the file is stored and specifies a stated pipeline configuration. The commands available are: ``append``, ``-a``, ``a`` to append data to existing file; ``overwrite``, ``-o``, ``o`` to overwrite the existing file; ``create``, ``-c``, ``c`` to create a new file.
+    
+    Example 1: ``share append /home/foo/baz.zip 12.345.678.90 9091 /home/foo/pipeline.json``
+    
+    Example 2: ``share append /home/foo/baz.zip 12.345.678.90 9091 [ConcurrentEncoder,EntanglementEncoder,NamingEncoder, ValidationEncoder,ValidationDecoder,EntanglementDecoder,ConcurrentDecoder]``
+    
+    Example 3: ``share create /home/foo/baz.zip 12.345.678.90 9091 [coe,ene,nae,vae,vad,end,cod]``
+    
+    Example 4: ``share create /home/foo/baz.zip 12.345.678.90 9091 {'pipeline string'}``"
+    Share, share <command> <filepath> <ip_address> <receipt_port> <runs>, "Performs a spread, enables control over how the file is stored, specifies a stated pipeline configuration and specifies the number of runs (string) to attempt to successfully spread the file. The commands available are: ``append``, ``-a``, ``a`` to append data to existing file; ``overwrite``, ``-o``, ``o`` to overwrite the existing file; ``create``, ``-c``, ``c`` to create a new file.
+    
+    Example 1: ``share append /home/foo/baz.zip 12.345.678.90 9091 /home/foo/pipeline.json 10``
+    
+    Example 2: ``share append /home/foo/baz.zip 12.345.678.90 9091 [ConcurrentEncoder,EntanglementEncoder,NamingEncoder, ValidationEncoder,ValidationDecoder,EntanglementDecoder,ConcurrentDecoder] 10``
+    
+    Example 3: ``share create /home/foo/baz.zip 12.345.678.90 9091 [coe,ene,nae,vae,vad,end,cod] 10``
+    
+    Example 4: ``share create /home/foo/baz.zip 12.345.678.90 9091 {'pipeline string'} 10``"
+    Download, download <file_path> <save_path>, "Download file from provided absolute path to crypto receipt file. File saved at given path.
+    
+    Example: ``download /home/foo/CR1593084390``"
+    Update Peer, update_peer <ip_add_rec> <recp_port_rec> <folder_path>, "Add a receiver peer via its IP address, receipt port, to a fuse folder path.
+    
+    Example: ``update_peer 12.345.678.90 9091 /home/target/share/foo/``"
     Health Check, health_check, "Displays health information for the node."
-    Receipt Validation, receipt_validation <file_path>, "Validates a cryptographic receipt at the given file path (including receipt name)."
+    Receipt Validation, receipt_validation <file_path>, "Validates a cryptographic receipt at the given file path (including receipt name).
+    
+    Example: ``receipt_validation /opt/VIN/receipts/sent/CR3736596702``"
+    Shutdown, shutdown, "Send a shutdown signal to the current node that the user is connected to."
+
 
 .. _vincli-func:
+
+
 
 VIN™ CLI Functionality
 ===========================
 
-The following instructions assume that a *VIN™* has been instantiated and that at least one instance of the *VIN™ CLI* is running. For more information on how to get these working, refer to :doc:`getting_started_with_vin`.
+The following instructions assume that a *VIN™* has been instantiated and that at least one instance of the *VIN™ CLI* is running. For more information on how to get these working, refer to :ref:`vin-api`.
 
 
 Putting a Value onto the Network
