@@ -10,7 +10,7 @@ This document will provide instructions on testing *VIN™* nodes with *rvault*.
 Installing the VIN™
 ====================
 
-Note: if :ref:`install-vin` was followed, *VIN™* will already be installed and the steps in the subsection may be skipped. 
+Note: if the :ref:`install-vin` section was followed, *VIN™* will already be installed and the steps in this subsection may be skipped. 
 
 Building the project is a complex process requiring a number of dependency projects and libraries to be built. For this demo, a prebuilt ``DEB`` package is provided. Install the ``DEB`` file in a *Debian* system (tested in *Ubuntu*) using the following:
 

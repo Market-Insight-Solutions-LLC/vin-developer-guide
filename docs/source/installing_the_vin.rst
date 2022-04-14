@@ -8,7 +8,7 @@ Installing the VIN™
 Introduction
 ============
 
-The sections below contain instructions for installing the *VIN™* for both *Windows* and *Linux* operating systems. Furthermore, setting up the *VIN™* and running *VIN™* commands using the *VIN™ CLI* (refer to :ref:`vin-cli` for more information) are detailed.
+The sections below contain the instructions for installing the *VIN™* for multiple operating systems. After installation, it is recommended the instructions in :ref:`running-the-vin-linux`, or :ref:`running-the-vin-windows`, depending on the operating system in use, be followed to gain an understand on how to interact with the *VIN™*.
 
 
 Installation
