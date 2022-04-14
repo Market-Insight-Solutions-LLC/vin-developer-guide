@@ -4,7 +4,7 @@
 Installing and using FUSE
 **************************************
 
-This document will provide instructions on testing *VIN™* nodes with *rvault*. It requires that *VIN™* be installed on a minimum of three nodes (one bootstrap and two peers). Before beginning with this procedure, please follow the instructions in :ref:`install-vin` :ref:`setting-up-the-vin` to gain a better understanding of the *VIN™* and its functionality.
+This document will provide instructions on testing *VIN™* nodes with *rvault*. It requires that *VIN™* be installed on a minimum of three nodes (one bootstrap and two peers). Before beginning with this procedure, please follow the instructions in :ref:`install-vin` and :ref:`running-the-vin-linux` (or :ref:`running-the-vin-windows`) to gain a better understanding of the *VIN™* and its functionality.
 
 
 Installing the VIN™
@@ -100,7 +100,7 @@ This section details instructions to perform a ``SHARE`` using *rvault* with the
   * ``mkdir share``
 
 
-* The test will require the instantiation of three separate nodes (one bootstrap and two *VIN™* nodes). To accomplish this, please refer to the instructions listed in :ref:`local-network` for the required operating system and be sure to record which nodes are bootstrap, sharing and receiving. Note: the method described in :ref:`local-network` sets up the bootstrap node on the same host as a *VIN™* node. If required, the bootstrap may be run on a node separate from the *VIN™* node.
+* The test will require the instantiation of three separate nodes (one bootstrap and two *VIN™* nodes). To accomplish this, please refer to the instructions listed in :ref:`running-the-vin-linux` (or :ref:`running-the-vin-windows`) for the required operating system and be sure to record which nodes are bootstrap, sharing and receiving. Note: the method described in these documents sets up the bootstrap node on the same host as a *VIN™* node. If required, the bootstrap may be run on a node separate from the *VIN™* node.
 * To add a peer to a shareable folder, in another terminal window, start the *VIN™ CLI* and connect it to the node that will be sharing the file by running:
   
   * ``VIN_CLI <ip_addr_share> <http_port_share>``, where ``<ip_addr_share>`` and ``<http_port_share>`` are the IP address and HTTP port of the sharing node, respectively. If running the VIN with default settings ``<http_port_share>`` will be ``7070``.

@@ -84,7 +84,7 @@ The following table displays a list of APIs that are accessible through the *VIN
 VIN™ CLI Functionality 
 =======================
 
-The following instructions assume that a two *VIN™* nodes and one bootstrap node have been instantiated and that one instance of the *VIN™ CLI* is running. For more information on how to get these set up, refer to :ref:`setting-up-the-vin`.
+The following instructions assume that a two *VIN™* nodes and one bootstrap node have been instantiated and that one instance of the *VIN™ CLI* is running. For more information on how to get these set up, refer to :ref:`running-the-vin-linux` (or :ref:`running-the-vin-windows`).
 
 
 HELP
