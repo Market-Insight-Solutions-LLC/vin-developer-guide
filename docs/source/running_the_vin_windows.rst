@@ -1,12 +1,8 @@
 .. _running-the-vin-windows:
 
 ***********************************
-Setting up the VIN™ on Windows
+Running the VIN™ on Windows
 ***********************************
-
-
-Running the *VIN™* on a *Windows* Operating System
-==================================================
 
 Currently, there are two ways to set up the *VIN™*: on the same host system or through a local network. Both require very similar setups but differ in the way that peers are configured. The method for instantiating the *VIN™* for both cases and a example to demonstrate the *VIN™'s* ``PUT``, ``GET``, ``SPREAD``, ``GATER``, ``SHARE``, ``GETPEERS``, and ``SHUTDOWN`` commands are detailed in the upcoming sections. Before running the *VIN™*, it is good to become familiar with the *VIN™* command flags listed in the following table. Examples of how these are used will be shown when setting up the *VIN™*. 
 
