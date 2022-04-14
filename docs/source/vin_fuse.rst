@@ -1,3 +1,5 @@
+.. _vin-install-fuse:
+
 
 **************************************
 Installing and using FUSE

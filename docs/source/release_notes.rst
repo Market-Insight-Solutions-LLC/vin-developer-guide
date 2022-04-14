@@ -1,5 +1,7 @@
 :orphan:
 
+.. _vin-release-notes:
+
 *************
 Release Notes
 *************
