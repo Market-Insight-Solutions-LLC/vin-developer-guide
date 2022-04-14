@@ -56,10 +56,10 @@ html_style = 'css/custom.css'
 
 html_logo = "images/logo/virgil_v_black.png"
 
-html_theme_options = {
-    'logo_only': False,
-    'display_version': False,
-}
+#html_theme_options = {
+#    'logo_only': False,
+#    'display_version': False,
+#}
 
 # Enables the numbering of figures and tables
 #numfig = True
