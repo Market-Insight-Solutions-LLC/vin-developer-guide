@@ -1,4 +1,4 @@
-.. _install-vin:
+.. _vin-install:
 
 **************************************
 Installing the VIN™
