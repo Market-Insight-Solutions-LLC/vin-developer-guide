@@ -1,13 +1,14 @@
+.. _installing_and_using_fuse:
 
 **************************************
 Installing and using FUSE
 **************************************
 
-This document will provide instructions on testing *VIN™* nodes with *rvault*. It requires that *VIN™* be installed on a minimum of three nodes (one bootstrap and two peers). Before beginning with this procedure, please follow the instructions in :ref:`install-vin` to gain a better understanding of the *VIN™* and its functionality.
+This document will provide instructions on testing *VIN™* nodes with *rvault*. It requires that *VIN™* be installed on a minimum of three nodes (one bootstrap and two peers). Before beginning with this procedure, please follow the instructions in :ref:`install-vin` :ref:`setting-up-the-vin` to gain a better understanding of the *VIN™* and its functionality.
 
 
-Installing VIN™
-=================
+Installing the VIN™
+====================
 
 Note: if :ref:`install-vin` was followed, *VIN™* will already be installed and the steps in the subsection may be skipped. 
 
@@ -15,11 +16,11 @@ Building the project is a complex process requiring a number of dependency proje
 
 * Navigate to the folder containing the ``DEB`` file on the system and run:  
 
-  * ``sudo dpkg -i QToken-CPP_1.12.3-x86_64.deb``
+  * ``sudo dpkg -i <deb_name>.deb``, where ``<deb_name>`` is the name of the file (e.g., ``QToken-CPP_1.12.3-x86_64.deb``).
 
 * Note: If installing the *VIN™* on a system with a previous installation, ``dpkg`` may produce errors regarding overwriting files. Make a backup of those files and then run the following command to do the upgrade:
 
-  * ``sudo dpkg -i --force-overwrite QToken-CPP_1.12.3-x86_64.deb``
+  * ``sudo dpkg -i --force-overwrite <deb_name>.deb``, where ``<deb_name>`` is the name of the file (e.g., ``QToken-CPP_1.12.3-x86_64.deb``).
 
 To ensure the *VIN™* is directed to the required libraries run:
 

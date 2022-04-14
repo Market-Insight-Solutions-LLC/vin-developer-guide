@@ -1,5 +1,8 @@
 :orphan:
 
+
+.. _sample_use_cases:
+
 ****************
 Sample Use Cases
 ****************

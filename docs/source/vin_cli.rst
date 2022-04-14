@@ -1,16 +1,16 @@
 .. _vin-cli:
 
-**************************************
+***********************************
 VIN™ Command Line Interface (CLI)
-**************************************
+***********************************
 
-The VIN™ CLI acts as a Hypertext Transfer Protocol (HTTP) client for reaching the *VIN™* HTTP server from the command line in a *Linux* environment. It will be installed during the installation of the *VIN™*.
+*VIN™* commands are assessable through the *VIN™ Command Line Interface (CLI)* which acts as a Hypertext Transfer Protocol (HTTP) client for reaching the *VIN™* HTTP server from the command line. Note: the *VIN™ CLI* will be installed during the installation of the *VIN™*.
 
-The following table displays a list of commands that are accessible by the *VIN™ CLI*. For examples and the results of each command, please refer to the :ref:`vincli-func` section.
+The following table displays a list of APIs that are accessible through the *VIN™ CLI*. For examples, and the outputs of each API, please refer to the :ref:`vin-cli-func` section.
 
 .. _supported-commands:
 
-.. csv-table:: VIN™ CLI Supported Commands
+.. csv-table:: VIN™ CLI Commands
     :header: Command, Command Line Instruction, Description
     :widths: 15 40 50 
 
@@ -79,17 +79,27 @@ The following table displays a list of commands that are accessible by the *VIN�
     Shutdown, shutdown, "Send a shutdown signal to the current node that the user is connected to."
 
 
-.. _vincli-func:
+.. _vin-cli-func:
+
+VIN™ CLI Functionality 
+=======================
+
+The following instructions assume that a two *VIN™* nodes and one bootstrap node have been instantiated and that one instance of the *VIN™ CLI* is running. For more information on how to get these set up, refer to :ref:`setting-up-the-vin`.
 
 
-
-VIN™ CLI Functionality
-===========================
-
-The following instructions assume that a *VIN™* has been instantiated and that at least one instance of the *VIN™ CLI* is running. For more information on how to get these working, refer to :ref:`vin-api`.
+HELP
+----
 
 
-Putting a Value onto the Network
+EXIT
+-----
+
+
+PING
+-----
+
+
+PUT
 --------------------------------
 A simple way to ensure that the network as been properly configured is to put a key-value pair onto the network. To do so, in the *VIN™ CLI* window, run ``put <key> <value>``. For this example ``test_key`` was used for the ``<key>`` and ``test_value`` for the ``<value>``. Note that the ``<key>`` and ``<value>`` can be any string that doesn't contain spaces. The figure below is the result of the successful ``put``.
 
@@ -101,8 +111,8 @@ A simple way to ensure that the network as been properly configured is to put a 
   Successful Put (*VIN™ CLI* = top, Peer_1 = bottom)
 
 
-Getting a Value from the Network
---------------------------------
+GET
+-----
 With the value on the network it can be retrieved by running ``get <key>``. For this example ``test_key`` was used for the ``<key>``. The figure below is the result of the successful ``get``.
 
 .. figure:: images/vin_cli/vincli_get.png
@@ -115,8 +125,8 @@ With the value on the network it can be retrieved by running ``get <key>``. For 
 
 .. _spread-file:
 
-Spreading a File
-----------------
+SPREAD
+---------
 The *VIN™* can spread any file type onto it's network. To do a basic spread run ``spread <filepath>`` where the ``<filepath>`` is the absolute path and name of the file to be spread. For this example, it is ``/home/user/Dev/test/vin_test.txt``. An encrypted cryptographic receipt is generated upon spreading, is outputted in the terminal window, and is stored in ``/opt/VIN/receipts/sent`` and ``VIN\receipts\sent\`` directories in *Linux* and *Windows*, respectively. The output of a successful ``spread`` is shown below.
 
 .. figure:: images/vin_cli/vincli_spread.png
@@ -127,8 +137,8 @@ The *VIN™* can spread any file type onto it's network. To do a basic spread ru
   Successful Get (*VIN™ CLI* = top, Peer_1 = bottom)
 
 
-Gathering a File
-----------------
+GATHER
+--------
 After a file as been spread to the network a cryptographic receipt will be generated. Using this receipt, the file can be retrieved from the network via the ``gather`` command. To do a basic ``gather``, run ``gather <receipt_path>``. Copy the ``<receipt_path>`` generated from the :ref:`spread-file` example; in this case, it was ``/opt/VIN/receipts/sent/CR899957170``. If the file was successfully gathered, the following output should be displayed.
 
 .. figure:: images/vin_cli/vincli_gather.png
@@ -141,7 +151,7 @@ After a file as been spread to the network a cryptographic receipt will be gener
 Note: this ``gather`` created a new ``vin_test.txt`` file, thus there is a ``(2)`` at the end of the filename. To overwrite the file, or append to its contents, refer to the :ref:`supported-commands` table.
 
 
-Sharing a File
+SHARE
 --------------
 The *VIN™* is capable of sharing any file type that is required by the user. To do a basic share run ``share <filepath> <ip_address> <receipt_port>``. For this example, ``<filepath>`` is ``/home/user/Dev/test/vin_test.txt``, the ``<ip_address>`` and ``<receipt_port>`` are the IP address and receipt port of the *VIN™* node not being utilized by the *VIN™ CLI*, or ``127.0.0.1`` and ``9091``, respectively. Completing a successful share will generate the following output:
 
@@ -157,7 +167,7 @@ To manually confirm that the file has been received navigate to ``/opt/VIN/outpu
 For all of the options available with the ``share`` command, refer to the :ref:`supported-commands` table.
 
 
-Getting Peers Connected to the Bootstrap
+GETPEERS
 ----------------------------------------
 
 Run ``getPeers`` in the *VIN™ CLI* window to generate a list of all peers connected to a bootstrap node as displayed in the figure below.  
@@ -173,7 +183,29 @@ Run ``getPeers`` in the *VIN™ CLI* window to generate a list of all peers conn
 In this example, there are two peers with their information listed as follows: ``[unique_node_identifier: { ip_address_of_peers_host peers_data_port }]``
 
 
-Shutting Down a Node
+DOWNLOAD
+----------
+
+
+
+UPDATE_PEER
+-----------
+
+
+
+HEALTH_CHECK
+-------------
+
+
+
+RECEIPT_VALIDATION
+------------------
+
+
+
+
+
+SHUTDOWN
 -----------------------
 
 To shutdown the particular node which the *VIN™ CLI* is currently connected to, run ``shutdown``.
