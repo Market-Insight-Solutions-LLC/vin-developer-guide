@@ -130,3 +130,4 @@ EXAMPLE 3: USING CONTAINERS
                 14:47:49:680 http: 'putValue' request received
                 14:47:49:680 http: 'putValue' successful:  Key: key ; Value: value
                 14:47:49:680 benc: 'putValue' request latency 0 min 0 sec 0 msec
+
