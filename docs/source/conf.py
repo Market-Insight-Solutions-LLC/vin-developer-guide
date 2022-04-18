@@ -34,7 +34,7 @@ extensions = [
     'sphinx.ext.autosummary',
     'sphinx.ext.intersphinx',
     #'sphinx.ext.sphinx_panels',
-    'sphinx-panels'
+    #'sphinx-panels'
 ]
 
 panels_add_bootstrap_css = False
