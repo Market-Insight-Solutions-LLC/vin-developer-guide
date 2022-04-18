@@ -34,8 +34,10 @@ extensions = [
     'sphinx.ext.autosummary',
     'sphinx.ext.intersphinx',
     #'sphinx.ext.sphinx_panels',
-    'sphinx.ext.sphinx-panels'
+    'sphinx-panels'
 ]
+
+panels_add_bootstrap_css = False
 
 intersphinx_mapping = {
     'python': ('https://docs.python.org/3/', None),
