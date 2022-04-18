@@ -34,6 +34,7 @@ extensions = [
     'sphinx.ext.autosummary',
     'sphinx.ext.intersphinx',
     #'sphinx.ext.sphinx_panels',
+    'sphinx_panels'
 ]
 
 intersphinx_mapping = {
