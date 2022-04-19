@@ -9,6 +9,7 @@ sphinx:
   fail_on_warning: true
 
 formats:
+  - html
   - pdf
   - epub
 
@@ -17,7 +18,7 @@ formats:
 python:
   install:
     - requirements: docs/requirements.txt
-    
+
 #dependencies:
   #- sphinx==4.2.0
   #- nbsphinx==0.8.1
