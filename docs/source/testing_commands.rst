@@ -4,12 +4,19 @@
 TESTING COMMANDS
 *****************
 
-
-
 EXAMPLE 1: USING PANELS 
 ========================================
 
 .. panels::
+    :body:  text-justify
+    :header: text-center
+    :footer: text-right
+    
+    ---
+    :column: border-0
+    :card: none
+   
+    .. :column: mx-0
 
     **Putting and Getting A Key-Value Pair**
 
@@ -18,7 +25,8 @@ EXAMPLE 1: USING PANELS
     * To view the shard that was placed on the *Kademlia* network, navigate to ``/opt/VIN/kademlia/data/`` and proceed through the folder structure until reaching the file.
     * To get a value from the network, in the *VIN™ CLI* session run ``get <key>``; where ``<key>`` is ``test_key`` for this example. The following figure displays the result of running this command; where the top image is the output from the *VIN™ CLI* and the bottom is from the peer.
 
-    ---    
+    ---  
+  
 
     **VIN_CLI Output**
 
