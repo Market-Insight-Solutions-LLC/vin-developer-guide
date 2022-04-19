@@ -13,7 +13,6 @@ EXAMPLE 1: USING PANELS
     :footer: text-right
     
     ---
-    :column: border-0
     :card: none
    
     .. :column: mx-0
@@ -26,7 +25,7 @@ EXAMPLE 1: USING PANELS
     * To get a value from the network, in the *VIN™ CLI* session run ``get <key>``; where ``<key>`` is ``test_key`` for this example. The following figure displays the result of running this command; where the top image is the output from the *VIN™ CLI* and the bottom is from the peer.
 
     ---  
-  
+    :card: none
 
     **VIN_CLI Output**
 
