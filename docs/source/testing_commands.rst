@@ -22,7 +22,7 @@ EXAMPLE 1: USING PANELS
 
     **VIN_CLI Output**
 
-    .. code-block:: rst
+    .. code-block:: none
         
         VIN@127.0.0.1:7070> put key value
         Sending payload:

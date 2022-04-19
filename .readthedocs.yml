@@ -9,7 +9,7 @@ sphinx:
   fail_on_warning: true
 
 formats:
-  - html
+  - htmlzip
   - pdf
   - epub
 
