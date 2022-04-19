@@ -12,6 +12,12 @@ formats:
   - pdf
   - epub
 
+
+# Explicitly set the version of Python and its requirements
+python:
+  install:
+    - requirements: docs/requirements.txt
+    
 #dependencies:
   #- sphinx==4.2.0
   #- nbsphinx==0.8.1
