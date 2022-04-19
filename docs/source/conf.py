@@ -36,7 +36,7 @@ extensions = [
     'sphinx_panels'
 ]
 
-#panels_add_bootstrap_css = False
+panels_add_bootstrap_css = False
 
 intersphinx_mapping = {
     'python': ('https://docs.python.org/3/', None),
