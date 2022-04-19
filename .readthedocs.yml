@@ -8,12 +8,10 @@ build:
 sphinx:
   fail_on_warning: true
 
-formats: all
-
-#formats:
-#  - htmlzip
-#  - pdf
-#  - epub
+formats:
+  - pdf
+  - htmlzip
+  - epub
 
 
 # Explicitly set the version of Python and its requirements
