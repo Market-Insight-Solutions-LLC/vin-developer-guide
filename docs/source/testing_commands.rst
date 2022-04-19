@@ -140,7 +140,7 @@ EXAMPLE 1: USING PANELS
 .. panels::
 
     Putting and Getting A Key-Value Pair
-    ------------------------------------
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
     * The following will showcase how to a put key-value pair onto the network as a simple test to ensure the functionality of the *VIN™*. 
     * To put a key-value onto the network, in the *VIN™ CLI* session run ``put <key> <value>``; where ``<key>`` and ``<value>`` can be any string that does not contain spaces. For this example ``test_key`` was used for the ``<key>`` and ``test_value`` for the ``<value>``. The following figure displays the result of running this command; where the top image is the output from the *VIN™ CLI* and the bottom is from the peer.

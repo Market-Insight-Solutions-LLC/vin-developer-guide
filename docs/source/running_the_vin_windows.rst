@@ -108,7 +108,7 @@ The *VIN™* can spread any file type onto it's network. To do a ``spread``, per
 
   Successful Spread (*VIN™ CLI* = top, Peer = bottom)
 
-* After a file as been spread to the network a cryptographic receipt will be generated. Using this receipt, the file can be retrieved from the network via the ``gather`` command. To do a basic ``gather``, in the *VIN™ CLI* session run ``gather <receipt_path>``. The ``<receipt_path>`` will be shown in the *VIN™ CLI* session and, for this example, is ``C:\ProgramData\VIN\receipts\sent\CR3066281403``. If the file was successfully gathered, the following output should be displayed.
+* After a file has been spread to the network a cryptographic receipt will be generated. Using this receipt, the file can be retrieved from the network via the ``gather`` command. To do a basic ``gather``, in the *VIN™ CLI* session run ``gather <receipt_path>``. The ``<receipt_path>`` will be shown in the *VIN™ CLI* session and, for this example, is ``C:\ProgramData\VIN\receipts\sent\CR3066281403``. If the file was successfully gathered, the following output should be displayed.
 
 .. figure:: images/getting_started_with_vin/windows/vincli_gather_host.png
   :scale: 100

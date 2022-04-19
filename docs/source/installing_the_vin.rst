@@ -8,7 +8,7 @@ Installing the VIN™
 Introduction
 ============
 
-The sections below contain the instructions for installing the *VIN™* for multiple operating systems. After installation, it is recommended the instructions in :ref:`running-the-vin-linux`, or :ref:`running-the-vin-windows`, depending on the operating system in use, be followed to gain an understand on how to interact with the *VIN™*.
+The sections below contain the instructions for installing the *VIN™* for multiple operating systems. After installation, it is recommended the instructions in :ref:`running-the-vin-linux`, or :ref:`running-the-vin-windows`, depending on the operating system in use, be followed to gain an understanding on how to interact with the *VIN™*.
 
 
 Installation
