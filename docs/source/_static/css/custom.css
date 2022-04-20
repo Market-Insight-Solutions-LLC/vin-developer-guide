@@ -56,6 +56,14 @@ div.rightside {
   }
 
 
+  .rst-content .myownstyle .admonition-title {
+    background: #b99976
+ }
+ 
+ .rst-content .myownstyle {
+    background: #e5d3b3
+ }
+
 
   /*TEST TABLE. MAY BE GOOD FOR GENERATING STRIPE LOOKING DOCS*/
   /*.response-table th {

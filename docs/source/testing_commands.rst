@@ -9,8 +9,7 @@ EXAMPLE 1: USING PANELS
 
 .. panels::
     :card: none
-    :container: container-lg pb-3
-    :column: col-xs-4 col-md-4
+   
 
     **Putting and Getting A Key-Value Pair**
 
@@ -49,18 +48,25 @@ EXAMPLE 1: USING PANELS
 
 .. panels::
     :container: container-lg pb-3
-    :column: col-lg-4 col-md-4 col-sm-6 col-xs-12 p-2
+    
 
-    panel1
+    .. admonition:: TEST
+        :class: myownstyle
+
+        .. code-block:: none
+
+            14:47:49:680 http: URI: /putValue ; request from: 127.0.0.1:38936
+            14:47:49:680 http: 'putValue' request received
+            14:47:49:680 http: 'putValue' successful:  Key: key ; Value: value
+            14:47:49:680 benc: 'putValue' request latency 0 min 0 sec 0 msec
     ---
     panel2
-    ---
-    panel3
     ---
     :column: col-lg-12 p-2
     panel4
 
-    
+
+
 EXAMPLE 2: USING RAW HTML 
 ===========================
 
