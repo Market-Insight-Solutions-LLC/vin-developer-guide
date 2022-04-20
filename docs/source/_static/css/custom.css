@@ -33,13 +33,13 @@ div.leftside {
     width: 43%;
     padding: 0px 3px 0px 0px;
     float: left;
-  }
-  
-  div.rightside {
+    }
+
+div.rightside {
     margin-left: 45%;
-    /* float: right; */
-  }
-  
+    float: right;
+}
+
 /* Create three equal columns that floats next to each other */
 .column {
     float: left;
@@ -54,9 +54,6 @@ div.leftside {
     display: table;
     clear: both;
   }
-
-
-  
 
 
 
