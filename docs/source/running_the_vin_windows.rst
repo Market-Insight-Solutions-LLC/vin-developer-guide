@@ -118,7 +118,7 @@ The *VIN™* can spread any file type onto it's network. To do a ``spread``, per
   Successful Gather (*VIN™ CLI* = top, Peer = bottom)
 
 * To inspect the gathered file, navigate to ``/opt/VIN/outputs`` and enter ``ls``. A folder with the name of the file which was shared should be listed. Enter this folder (``cd <folder_name>``) and run ``ls``. The file which was shared will be displayed and can be inspected to ensure it was successfully shared. 
-* Note: the ``gather`` command, by default, will create a new file on the system after it finishes; thus, the gathered file may have a number appended to end of the filename. For more information on how to overwrite the file, or append to its contents, refer to the :ref:`supported-commands` table.
+* Note: the ``gather`` command, by default, will create a new file on the system after it finishes; thus, the gathered file may have a number appended to end of the filename. For more information on how to overwrite the file, or append to its contents, refer to the :ref:`vincli-commands` table.
 
 
 Sharing a File

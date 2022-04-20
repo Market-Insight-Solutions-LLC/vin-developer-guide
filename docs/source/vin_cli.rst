@@ -526,7 +526,7 @@ The *VIN™* is capable of sharing any file type that is required by the user. T
 
 To manually confirm that the file has been received navigate to ``/opt/VIN/outputs/`` for *Linux* and ``C:\ProgramData\VIN\outputs`` for *Windows* and ensure that the file is located in this directory. Additionally, ``/opt/VIN/receipts/sent/`` for *Linux* and ``C:\ProgramData\VIN\receipts\sent`` for *Windows* should contain a new cryptographic receipt.
 
-For all of the options available with the ``share`` command, refer to the :ref:`supported-commands` table.
+For all of the options available with the ``share`` command, refer to the :ref:`vincli-commands` table.
 
 
 GETPEERS

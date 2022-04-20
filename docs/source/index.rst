@@ -21,7 +21,7 @@ Check out the :ref:`vin-install` section to install the *VIN™* and for some of
    vin_cli
    configuration
    glossary
-   testing_commands
+   
 
 .. This hides the titles
    .. toctree::
