@@ -4,6 +4,7 @@
 TESTING COMMANDS
 *****************
 
+
 EXAMPLE 1: USING PANELS 
 ========================================
 
@@ -45,23 +46,39 @@ EXAMPLE 1: USING PANELS
         14:47:49:680 benc: 'putValue' request latency 0 min 0 sec 0 msec
 
 
+-------------------------------------------------
 
 .. panels::
     :container: container-lg pb-3
     
+    .. admonition:: Putting and Getting A Key-Value Pair
+        :class: text
+    
 
-    .. admonition:: TEST
-        :class: myownstyle
+        * The fwing will showcase how to a put key-value pair onto the network as a simple test to ensure the functionality of the *VIN™*. 
+        * To put a key-value onto the network, in the *VIN™ CLI* session run ``put <key> <value>``; where ``<key>`` and ``<value>`` can be any string that does not contain spaces. For this example ``test_key`` was used for the ``<key>`` and ``test_value`` for the ``<value>``. The following figure displays the result of running this command; where the top image is the output from the *VIN™ CLI* and the bottom is from the peer.
+        * To view the shard that was placed on the *Kademlia* network, navigate to ``/opt/VIN/kademlia/data/`` and proceed through the folder structure until reaching the file.
+        * To get a value from the network, in the *VIN™ CLI* session run ``get <key>``; where ``<key>`` is ``test_key`` for this example. The following figure displays the result of running this command; where the top image is the output from the *VIN™ CLI* and the bottom is from the peer.
+
+    ---
+
+    .. admonition:: VIN_CLI Output
+        :class: vincli
 
         .. code-block:: none
+        
+            VIN@127.0.0.1:7070> put key value
+            Sending payload:
+            {"key":"key","value":"value"}
 
-            14:47:49:680 http: URI: /putValue ; request from: 127.0.0.1:38936
-            14:47:49:680 http: 'putValue' request received
-            14:47:49:680 http: 'putValue' successful:  Key: key ; Value: value
-            14:47:49:680 benc: 'putValue' request latency 0 min 0 sec 0 msec
-    ---
+            Waiting for response...
+            Status : 200
+            Reason : 'putValue' successful:  Key: key ; Value: value
+            Response received
+
+            [key]:value   put successfully
     
-    .. admonition:: VIN CLI OUTPUT
+    .. admonition:: VIN Node Response
         :class: vincli
 
         .. code-block:: none
@@ -70,12 +87,6 @@ EXAMPLE 1: USING PANELS
             14:47:49:680 http: 'putValue' request received
             14:47:49:680 http: 'putValue' successful:  Key: key ; Value: value
             14:47:49:680 benc: 'putValue' request latency 0 min 0 sec 0 msec
-
-
-    ---
-    :column: col-lg-12 p-2
-    .. note::
-        SOme text
 
 
 

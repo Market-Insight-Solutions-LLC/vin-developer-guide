@@ -72,8 +72,24 @@ div.rightside {
     background: #ffffff
  }
 
+ .rst-content .text .admonition-title {
+    background-image: none;
+    background: #a34343
+ }
+ 
+ .rst-content .text {
+    background: #f1f1f1
+ }
 
-  /*TEST TABLE. MAY BE GOOD FOR GENERATING STRIPE LOOKING DOCS*/
+ /*
+ .rst-content .text .admonition-title:before {
+    content: "  📖";
+}*/
+.rst-content .text .admonition-title:before {
+    content: "";
+}
+
+ /*TEST TABLE. MAY BE GOOD FOR GENERATING STRIPE LOOKING DOCS*/
   /*.response-table th {
     background-color: #cc00ff;
     color: #FFFFFF;
