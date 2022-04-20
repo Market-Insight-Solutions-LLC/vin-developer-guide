@@ -93,11 +93,127 @@ HELP
 .. panels::
     :card: none
 
-    TEXT
+    Displays a list of commands available to the *VIN™ CLI*.
 
+    **Parameters**
+    
+    None.
+
+    **Returns**
+    
+    None.
+    
     ---
 
-    TEXT
+    **VIN_CLI RESPONSE**
+
+    .. code-block:: none
+      
+      Commands available:
+      - help
+              This help message
+      - exit
+              Quit the session
+      - ping
+              Pings connected node to check its status.
+
+      - getPeers
+              Get all peers known to connected node. N.B. some of these hosts may be stale.
+
+      - put <string> <string>
+              Put provided <string>:<string> key-value pair on the network.
+              Example:  'put k1 v1'
+
+      - get <string>
+              Get value for provided <string> key pair.
+              Example:  'get k1'
+
+      - spread <string> <string>
+              Spread provided <string> absolute path to file and a ,<string> pipeline config file
+              or pipeline encoders to use. Use
+              Returns a path to the receipt file.
+              Example:  'spread /home/foo/baz.zip /home/foo/pipeline.json'
+              Example:  'spread /home/foo/baz.zip
+              [ConcurrentEncoder,EntanglementEncoder,NamingEncoder,
+              ValidationEncoder,ValidationDecoder,EntanglementDecoder,ConcurrentDecoder]
+              Example:  'spread /home/foo/baz.zip [coe,ene,nae,vae,vad,end,cod]'
+              Example:  'spread /home/foo/baz.zip {'pipeline string'}'
+
+      - spread <string>
+              Spread provided <string> absolute path to file
+              Returns a path to the receipt file.
+              Example:  'spread /home/foo/baz.zip'
+
+      - gather <string>
+              Gather file (create) from provided <string> absolute path to crypto receipt file.
+              Example:  'gather /home/foo/CR1593084390'
+
+      - download <string> <string>
+              Download file from provided <string> absolute path to crypto receipt file. File Saved at given path <string>.
+              Example:  'download /home/foo/CR1593084390 ./'
+
+      - gather <string> <string>
+              Gather file <string> mode from provided <string> absolute path to crypto receipt file.Use:
+              'append'    / '-a' / 'a' to append data to existing file
+              'overwrite' / '-o' / 'o' to overwrite existing file or
+              'create'    / '-c' / 'c' to create a new one.
+              Example:  'gather append /home/foo/CR1593084390'
+
+      - share <string> <string> <string>
+              Share file (create) provided <string> absolute path to file with <string> IP address
+              at <string> receipt port.
+              Example:  'share /home/foo/baz.zip 12.345.678.90 9091'
+
+      - share <string> <string> <string> <string>
+              Share file using <string> mode , provided <string> absolute path to file with <string> IP address
+              at <string> receipt port and a <string> pipeline config file
+              or pipeline encoders to use. Use:
+              'append'    / '-a' / 'a' to append data to existing file
+              'overwrite' / '-o' / 'o' to overwrite existing file or
+              'create'    / '-c' / 'c' to create a new one.
+              Example:  'share append /home/foo/baz.zip 12.345.678.90 9091
+
+      - share <string> <string> <string> <string> <string>
+              Share file using <string> mode , provided <string> absolute path to file with <string> IP address
+              at <string> receipt port and a <string> pipeline config file
+              or pipeline encoders to use. Use:
+              'append'    / '-a' / 'a' to append data to existing file
+              'overwrite' / '-o' / 'o' to overwrite existing file or
+              'create'    / '-c' / 'c' to create a new one.
+              Example:  'share append /home/foo/baz.zip 12.345.678.90 9091 /home/foo/pipeline.json'
+              Example:  'share append /home/foo/baz.zip 12.345.678.90 9091
+              [ConcurrentEncoder,EntanglementEncoder,NamingEncoder,
+              ValidationEncoder,ValidationDecoder,EntanglementDecoder,ConcurrentDecoder]
+              Example:  'share create /home/foo/baz.zip 12.345.678.90 9091 [coe,ene,nae,vae,vad,end,cod]'
+              Example:  'share create /home/foo/baz.zip 12.345.678.90 9091 {'pipeline string'}'
+
+      - share <string> <string> <string> <string> <string> <string>
+              Share file using <string> mode , provided <string> absolute path to file with <string> IP address
+              at <string> receipt port and a <string> pipeline config file
+              or pipeline encoders to use and repeat <string> Use:
+              'append'   / '-a' / 'a' to append data to existing file
+              'overwrite'/ '-o' / 'o' to overwrite existing file or
+              'create'   / '-c' / 'c' to create a new one.
+              Example:  'share create /home/foo/baz.zip 12.345.678.90 9091 /home/foo/pipeline.json 10'
+              Example:  'share create /home/foo/baz.zip 12.345.678.90 9091
+              [ConcurrentEncoder,EntanglementEncoder,NamingEncoder,
+              ValidationEncoder,ValidationDecoder,EntanglementDecoder,ConcurrentDecoder] 10'
+              Example:  'share create /home/foo/baz.zip 12.345.678.90 9091 [coe,ene,nae,vae,vad,end,cod] 10'
+              Example:  'share create /home/foo/baz.zip 12.345.678.90 9091 {'pipeline string'} 10'
+
+      - [EXPERIMENTAL] stream_test <string> <string>
+              Test unbounded stream to local node at <address>:<port>.
+      - update_peer <string> <string> <string>
+              Add a peer to a fuse folder
+              Example:  'update_peer 12.345.678.90 9091 /home/target/share/foo/'
+      - health_check
+              Print health metrics for the node
+              Example:  'health_check'
+      - receipt_validation <string>
+              Validate a crypto receipt
+              Example:  'receipt_validation /opt/VIN/receipts/sent/CR3736596702'
+      - shutdown
+              Shutdown connected node.
 
 
 
@@ -108,11 +224,16 @@ EXIT
 .. panels::
     :card: none
 
-    TEXT
+    Quits the current session of the *VIN™ CLI*.
 
     ---
 
-    TEXT
+    **VIN_CLI RESPONSE**
+
+    .. code-block:: none
+
+      VIN@10.51.2.22:7070> exit
+      So long for now.
 
 
 PING
@@ -121,11 +242,16 @@ PING
 .. panels::
     :card: none
 
-    TEXT
+    Pings the connected node to check its status. The connected node responds with a "Server pong!" message if successful.
 
     ---
 
-    TEXT
+    **VIN_CLI RESPONSE**
+
+    .. code-block:: none
+
+      VIN@10.51.2.22:7070> ping
+      Server pong!
 
 
 PUT
@@ -162,7 +288,7 @@ GET
 
     TEXT
 
-With the value on the network it can be retrieved by running ``get <key>``. For this example ``test_key`` was used for the ``<key>``. The figure below is the result of the successful ``get``.
+With a value on the network it can be retrieved by running ``get <key>``. For this example ``test_key`` was used for the ``<key>``. The figure below is the result of the successful ``get``.
 
 .. figure:: images/vin_cli/vincli_get.png
   :scale: 100
