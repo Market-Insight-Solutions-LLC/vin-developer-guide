@@ -90,17 +90,56 @@ The following instructions assume that a two *VIN™* nodes and one bootstrap no
 HELP
 ----
 
+.. panels::
+    :card: none
+
+    TEXT
+
+    ---
+
+    TEXT
+
+
+
 
 EXIT
 -----
+
+.. panels::
+    :card: none
+
+    TEXT
+
+    ---
+
+    TEXT
 
 
 PING
 -----
 
+.. panels::
+    :card: none
+
+    TEXT
+
+    ---
+
+    TEXT
+
 
 PUT
 --------------------------------
+
+.. panels::
+    :card: none
+
+    TEXT
+
+    ---
+
+    TEXT
+
 A simple way to ensure that the network as been properly configured is to put a key-value pair onto the network. To do so, in the *VIN™ CLI* window, run ``put <key> <value>``. For this example ``test_key`` was used for the ``<key>`` and ``test_value`` for the ``<value>``. Note that the ``<key>`` and ``<value>`` can be any string that doesn't contain spaces. The figure below is the result of the successful ``put``.
 
 .. figure:: images/vin_cli/vincli_put.png
@@ -113,6 +152,16 @@ A simple way to ensure that the network as been properly configured is to put a 
 
 GET
 -----
+
+.. panels::
+    :card: none
+
+    TEXT
+
+    ---
+
+    TEXT
+
 With the value on the network it can be retrieved by running ``get <key>``. For this example ``test_key`` was used for the ``<key>``. The figure below is the result of the successful ``get``.
 
 .. figure:: images/vin_cli/vincli_get.png
@@ -127,6 +176,17 @@ With the value on the network it can be retrieved by running ``get <key>``. For 
 
 SPREAD
 ---------
+
+.. panels::
+    :card: none
+
+    TEXT
+
+    ---
+
+    TEXT
+
+
 The *VIN™* can spread any file type onto it's network. To do a basic spread run ``spread <filepath>`` where the ``<filepath>`` is the absolute path and name of the file to be spread. For this example, it is ``/home/user/Dev/test/vin_test.txt``. An encrypted cryptographic receipt is generated upon spreading, is outputted in the terminal window, and is stored in ``/opt/VIN/receipts/sent`` and ``VIN\receipts\sent\`` directories in *Linux* and *Windows*, respectively. The output of a successful ``spread`` is shown below.
 
 .. figure:: images/vin_cli/vincli_spread.png
@@ -139,6 +199,16 @@ The *VIN™* can spread any file type onto it's network. To do a basic spread ru
 
 GATHER
 --------
+
+.. panels::
+    :card: none
+
+    TEXT
+
+    ---
+
+    TEXT
+
 After a file as been spread to the network a cryptographic receipt will be generated. Using this receipt, the file can be retrieved from the network via the ``gather`` command. To do a basic ``gather``, run ``gather <receipt_path>``. Copy the ``<receipt_path>`` generated from the :ref:`spread-file` example; in this case, it was ``/opt/VIN/receipts/sent/CR899957170``. If the file was successfully gathered, the following output should be displayed.
 
 .. figure:: images/vin_cli/vincli_gather.png
@@ -153,6 +223,16 @@ Note: this ``gather`` created a new ``vin_test.txt`` file, thus there is a ``(2)
 
 SHARE
 --------------
+
+.. panels::
+    :card: none
+
+    TEXT
+
+    ---
+
+    TEXT
+
 The *VIN™* is capable of sharing any file type that is required by the user. To do a basic share run ``share <filepath> <ip_address> <receipt_port>``. For this example, ``<filepath>`` is ``/home/user/Dev/test/vin_test.txt``, the ``<ip_address>`` and ``<receipt_port>`` are the IP address and receipt port of the *VIN™* node not being utilized by the *VIN™ CLI*, or ``127.0.0.1`` and ``9091``, respectively. Completing a successful share will generate the following output:
 
 .. figure:: images/vin_cli/vincli_share.png
@@ -170,6 +250,16 @@ For all of the options available with the ``share`` command, refer to the :ref:`
 GETPEERS
 ----------------------------------------
 
+.. panels::
+    :card: none
+
+    TEXT
+
+    ---
+
+    TEXT
+
+
 Run ``getPeers`` in the *VIN™ CLI* window to generate a list of all peers connected to a bootstrap node as displayed in the figure below.  
 
 
@@ -186,20 +276,56 @@ In this example, there are two peers with their information listed as follows: `
 DOWNLOAD
 ----------
 
+.. panels::
+    :card: none
+
+    TEXT
+
+    ---
+
+    TEXT
+
 
 
 UPDATE_PEER
 -----------
+
+.. panels::
+    :card: none
+
+    TEXT
+
+    ---
+
+    TEXT
 
 
 
 HEALTH_CHECK
 -------------
 
+.. panels::
+    :card: none
+
+    TEXT
+
+    ---
+
+    TEXT
+
 
 
 RECEIPT_VALIDATION
 ------------------
+
+.. panels::
+    :card: none
+
+    TEXT
+
+    ---
+
+    TEXT
 
 
 
@@ -208,11 +334,35 @@ RECEIPT_VALIDATION
 SHUTDOWN
 -----------------------
 
-To shutdown the particular node which the *VIN™ CLI* is currently connected to, run ``shutdown``.
+.. panels::
+    :card: none
 
-.. figure:: images/vin_cli/vincli_shutdown.png
-  :scale: 100
-  :align: center
-  :alt: Shutdown
+    To shutdown the particular node which the *VIN™ CLI* is currently connected to, run ``shutdown``.
 
-  Successful Shutdown (*VIN™ CLI* = top, Peer_1 = bottom)
+    **Parameters**
+    
+    None.
+
+    **Returns**
+    
+    None.
+
+    ---
+
+    **VIN_CLI RESPONSE**
+
+    .. code-block:: none
+
+      VIN@10.51.2.22:7070> shutdown
+      <h1>Exit<h1>
+
+    **VIN™ NODE RESPONSE**
+
+    .. code-block:: none
+
+      16:53:13:409 http: URI: /exit ; request from: 10.51.2.22:45494
+      16:53:13:409 http: 'exit' request received
+      16:53:13:409 http: HTTP server exit
+      Uninitializing subsystem: Logging SubsystemFUSE: Handle end thread signal 10
+
+      16:53:19:146 root: VIN exit

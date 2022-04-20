@@ -94,7 +94,8 @@
 
 
 
-
+/* ALL THINGS BELOW ARE FOR TWO COLUMNS AND SETTING UP CUSTOM ADMONITIONS */
+/*--------------------------------------------------------------------------------
 div.leftside {
     width: 43%;
     padding: 0px 3px 0px 0px;
@@ -106,7 +107,7 @@ div.rightside {
     float: right;
 }
 
-/* Create three equal columns that floats next to each other */
+
 .column {
     float: left;
     width: 45%;
@@ -114,7 +115,7 @@ div.rightside {
     height: 500px;
   }
   
-  /* Clear floats after the columns */
+  
   .row:after {
     content: "";
     display: table;
@@ -138,17 +139,17 @@ div.rightside {
     background: #ffffff
  }
  
-/*
+
 .admonition-vin-response {
     border: solid 1px;
     border-radius: 25px;
     border-color: rgb(61, 60, 61);
-}*/
+}
 
  .rst-content .admonitionvinresponse  .admonition-title {
-    /*border: solid 5px;
+    border: solid 5px;
     border-radius: 15px 15px 0px 0px;
-    border-color: rgb(61, 60, 61) rgb(55, 8, 228) rgb(255, 0, 255) rgb(0, 255, 157);*/
+    border-color: rgb(61, 60, 61) rgb(55, 8, 228) rgb(255, 0, 255) rgb(0, 255, 157);
     background: #a34343;
  }
  
@@ -156,7 +157,7 @@ div.rightside {
     background: #f1f1f1
  }
 
-/*.rst-content .admonition-vin-response .admonition-title:before {
+.rst-content .admonition-vin-response .admonition-title:before {
     content: " 📖";
 }*/
 
