@@ -29,73 +29,6 @@
 }*/
 
 
-div.leftside {
-    width: 43%;
-    padding: 0px 3px 0px 0px;
-    float: left;
-    }
-
-div.rightside {
-    margin-left: 45%;
-    float: right;
-}
-
-/* Create three equal columns that floats next to each other */
-.column {
-    float: left;
-    width: 45%;
-    padding: 10px;
-    height: 500px;
-  }
-  
-  /* Clear floats after the columns */
-  .row:after {
-    content: "";
-    display: table;
-    clear: both;
-  }
-
-
-  .rst-content .myownstyle .admonition-title {
-    background: #b99976
- }
- 
- .rst-content .myownstyle {
-    background: #e5d3b3
- }
-
- .rst-content .vincli .admonition-title {
-    background: #252525
- }
- 
- .rst-content .vincli {
-    background: #ffffff
- }
- 
-.admonition-vin-response {
-    border: solid 1px;
-    border-radius: 25px;
-    border-color: rgb(61, 60, 61);
-}
-
- .rst-content .admonition-vin-response  .admonition-title {
-    border: solid 5px;
-    border-radius: 15px 15px 0px 0px;
-    border-color: rgb(61, 60, 61) rgb(55, 8, 228) rgb(255, 0, 255) rgb(0, 255, 157);
-    background: #a34343;
- }
- 
- .rst-content .admonition-vin-response  {
-    background: #f1f1f1
- }
-
- /*
- .rst-content .text .admonition-title:before {
-    content: "  📖";
-}*/
-.rst-content .admonition-vin-response .admonition-title:before {
-    content: "";
-}
 
  /*TEST TABLE. MAY BE GOOD FOR GENERATING STRIPE LOOKING DOCS*/
   /*.response-table th {
@@ -161,5 +94,74 @@ div.rightside {
 
 
 
+
+div.leftside {
+    width: 43%;
+    padding: 0px 3px 0px 0px;
+    float: left;
+    }
+
+div.rightside {
+    margin-left: 45%;
+    float: right;
+}
+
+/* Create three equal columns that floats next to each other */
+.column {
+    float: left;
+    width: 45%;
+    padding: 10px;
+    height: 500px;
+  }
+  
+  /* Clear floats after the columns */
+  .row:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+
+
+  .rst-content .myownstyle .admonition-title {
+    background: #b99976
+ }
+ 
+ .rst-content .myownstyle {
+    background: #e5d3b3
+ }
+
+ .rst-content .vincli .admonition-title {
+    background: #252525
+ }
+ 
+ .rst-content .vincli {
+    background: #ffffff
+ }
+ 
+/*
+.admonition-vin-response {
+    border: solid 1px;
+    border-radius: 25px;
+    border-color: rgb(61, 60, 61);
+}*/
+
+ .rst-content .admonition-vin-response  .admonition-title {
+    /*border: solid 5px;
+    border-radius: 15px 15px 0px 0px;
+    border-color: rgb(61, 60, 61) rgb(55, 8, 228) rgb(255, 0, 255) rgb(0, 255, 157);*/
+    background: #a34343;
+ }
+ 
+ .rst-content .admonition-vin-response  {
+    background: #f1f1f1
+ }
+
+ /*
+ .rst-content .text .admonition-title:before {
+    content: "  📖";
+}*/
+.rst-content .admonition-vin-response .admonition-title:before {
+    content: "";
+}
 
 

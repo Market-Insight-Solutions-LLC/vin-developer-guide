@@ -1,4 +1,4 @@
-.. _testing-commands:
+:orphan:
 
 *****************
 TESTING COMMANDS
