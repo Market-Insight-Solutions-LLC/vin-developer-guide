@@ -253,6 +253,11 @@ PING
       VIN@10.51.2.22:7070> ping
       Server pong!
 
+    **VIN™ NODE RESPONSE**
+
+    .. code-block:: none
+
+      17:56:06:605 http: URI: /ping? ; request from: 10.51.2.22:45512
 
 PUT
 --------------------------------
@@ -260,20 +265,45 @@ PUT
 .. panels::
     :card: none
 
-    TEXT
+    A simple way to ensure that the network as been properly configured is to put a key-value pair onto the network. To do so, in the *VIN™ CLI* window, run ``put <key> <value>``. For this example ``test_key`` was used for the ``<key>`` and ``test_value`` for the ``<value>``. Note that the ``<key>`` and ``<value>`` can be any string that doesn't contain spaces. 
+
+    **Parameters**
+    
+    ``key`` *string*: The unique identifier used to locate the given ``value``.
+
+    ``value`` *string*: The value which will be associated with the given ``key``.
+
+    **Returns**
+    
+    None.
 
     ---
 
-    TEXT
+    **VIN_CLI RESPONSE**
 
-A simple way to ensure that the network as been properly configured is to put a key-value pair onto the network. To do so, in the *VIN™ CLI* window, run ``put <key> <value>``. For this example ``test_key`` was used for the ``<key>`` and ``test_value`` for the ``<value>``. Note that the ``<key>`` and ``<value>`` can be any string that doesn't contain spaces. The figure below is the result of the successful ``put``.
+    .. code-block:: none
 
-.. figure:: images/vin_cli/vincli_put.png
-  :scale: 100
-  :align: center
-  :alt: Successful Put
+      VIN@10.51.2.22:7070> put test_key test_value
+      Sending payload:
+      {"key":"test_key","value":"test_value"}
 
-  Successful Put (*VIN™ CLI* = top, Peer_1 = bottom)
+      Waiting for response...
+      Status : 200
+      Reason : 'putValue' successful:  Key: test_key ; Value: test_value
+      Response received
+
+      [test_key]:test_value   put successfully
+
+    **VIN™ NODE RESPONSE**
+
+    .. code-block:: none
+
+      17:47:30:360 http: URI: /putValue ; request from: 10.51.2.22:45502
+      17:47:30:360 http: 'putValue' request received
+      17:47:30:360 http: 'putValue' successful:  Key: test_key ; Value: test_value
+      17:47:30:360 benc: 'putValue' request latency 0 min 0 sec 0 msec
+
+
 
 
 GET
@@ -282,23 +312,48 @@ GET
 .. panels::
     :card: none
 
-    TEXT
+    With a value on the network it can be retrieved by running ``get <key>``. For this example ``test_key`` was used for the ``<key>``. 
+
+    **Parameters**
+    
+    ``key`` *string*: The unique identifier used to locate the given ``value``.
+
+    **Returns**
+    
+    None.
 
     ---
 
-    TEXT
+    **VIN_CLI RESPONSE**
 
-With a value on the network it can be retrieved by running ``get <key>``. For this example ``test_key`` was used for the ``<key>``. The figure below is the result of the successful ``get``.
+    .. code-block:: none
 
-.. figure:: images/vin_cli/vincli_get.png
-  :scale: 100
-  :align: center
-  :alt: Successful Get
+      VIN@10.51.2.22:7070> get test_key
+      Sending payload:
+      {"key":"test_key"}
 
-  Successful Get (*VIN™ CLI* = top, Peer_1 = bottom)
+      Waiting for response...
+      Status : 200
+      Reason : OK
+      Response received
+      value for test_key got successfully
+
+      [test_key]:test_value  is a valid [key]:value pair
+
+    **VIN™ NODE RESPONSE**
+
+    .. code-block:: none
+
+      17:53:36:417 http: URI: /getValue ; request from: 10.51.2.22:45510
+      17:53:36:417 http: 'getValue' request received
+      17:53:36:417 http: 'getValue' successful:  Key: test_key ; Value: test_value
+      17:53:36:417 benc: 'getValue' request latency 0 min 0 sec 0 msec
 
 
-.. _spread-file:
+
+
+
+
 
 SPREAD
 ---------
