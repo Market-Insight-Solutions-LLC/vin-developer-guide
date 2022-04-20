@@ -156,12 +156,8 @@ div.rightside {
     background: #f1f1f1
  }
 
- /*
- .rst-content .text .admonition-title:before {
-    content: "  📖";
-}*/
-.rst-content .admonition-vin-response .admonition-title:before {
+/*.rst-content .admonition-vin-response .admonition-title:before {
     content: " 📖";
-}
+}*/
 
 
