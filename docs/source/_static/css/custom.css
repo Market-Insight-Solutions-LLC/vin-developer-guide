@@ -64,6 +64,14 @@ div.rightside {
     background: #e5d3b3
  }
 
+ .rst-content .vincli .admonition-title {
+    background: #252525
+ }
+ 
+ .rst-content .vincli {
+    background: #ffffff
+ }
+
 
   /*TEST TABLE. MAY BE GOOD FOR GENERATING STRIPE LOOKING DOCS*/
   /*.response-table th {
