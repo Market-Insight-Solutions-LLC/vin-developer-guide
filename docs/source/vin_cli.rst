@@ -6,7 +6,7 @@ VIN™ Command Line Interface (CLI)
 
 *VIN™* commands are assessable through the *VIN™ Command Line Interface (CLI)* which acts as a Hypertext Transfer Protocol (HTTP) client for reaching the *VIN™* HTTP server from the command line. Note: the *VIN™ CLI* will be installed during the installation of the *VIN™*.
 
-The following table displays a list of APIs that are accessible through the *VIN™ CLI*. For examples, and the outputs of each API, please refer to the :ref:`vin-cli-func` section.
+The following table displays a list of APIs that are accessible through the *VIN™ CLI*. For examples, and the outputs of each command, please refer to the :ref:`vin-cli-func` section.
 
 .. _vincli-commands:
 
@@ -57,7 +57,7 @@ The following table displays a list of APIs that are accessible through the *VIN
     Example 3: ``share create /home/foo/baz.zip 12.345.678.90 9091 [coe,ene,nae,vae,vad,end,cod]``
     
     Example 4: ``share create /home/foo/baz.zip 12.345.678.90 9091 {'pipeline string'}``"
-    Share, share <command> <filepath> <ip_address> <receipt_port> <runs>, "Performs a spread, enables control over how the file is stored, specifies a stated pipeline configuration and specifies the number of runs (string) to attempt to successfully spread the file. The commands available are: ``append``, ``-a``, ``a`` to append data to existing file; ``overwrite``, ``-o``, ``o`` to overwrite the existing file; ``create``, ``-c``, ``c`` to create a new file.
+    Share, share <command> <filepath> <ip_address> <receipt_port> <pipe_config> <runs>, "Performs a spread, enables control over how the file is stored, specifies a stated pipeline configuration and specifies the number of times (runs) to spread the file (primarily used as a metric gathering command). The commands available are: ``append``, ``-a``, ``a`` to append data to existing file; ``overwrite``, ``-o``, ``o`` to overwrite the existing file; ``create``, ``-c``, ``c`` to create a new file.
     
     Example 1: ``share append /home/foo/baz.zip 12.345.678.90 9091 /home/foo/pipeline.json 10``
     
@@ -66,14 +66,14 @@ The following table displays a list of APIs that are accessible through the *VIN
     Example 3: ``share create /home/foo/baz.zip 12.345.678.90 9091 [coe,ene,nae,vae,vad,end,cod] 10``
     
     Example 4: ``share create /home/foo/baz.zip 12.345.678.90 9091 {'pipeline string'} 10``"
-    Download, download <file_path> <save_path>, "Download file from provided absolute path to crypto receipt file. File saved at given path.
+    Download, download <file_path> <save_path>, "Download file from provided absolute path to cryptographic receipt file. The file will be saved at given save path.
     
     Example: ``download /home/foo/CR1593084390``"
     Update Peer, update_peer <ip_add_rec> <recp_port_rec> <folder_path>, "Add a receiver peer via its IP address, receipt port, to a fuse folder path.
     
     Example: ``update_peer 12.345.678.90 9091 /home/target/share/foo/``"
     Health Check, health_check, "Displays health information for the node."
-    Receipt Validation, receipt_validation <file_path>, "Validates a cryptographic receipt at the given file path (including receipt name).
+    .. Receipt Validation, receipt_validation <file_path>, "Validates a cryptographic receipt at the given file path (including receipt name).
     
     Example: ``receipt_validation /opt/VIN/receipts/sent/CR3736596702``"
     Shutdown, shutdown, "Send a shutdown signal to the current node that the user is connected to."
@@ -509,24 +509,146 @@ SHARE
 .. panels::
     :card: none
 
-    TEXT
+    The *VIN™* is capable of sharing any file type that is required by the user. To do a basic share run ``share <command> <filepath> <ip_address> <receipt_port> <pipe_config> <runs>``. For more examples of the ``share`` command refer to :ref:`vincli-commands`. Note: To manually confirm that the file has been received navigate to ``/opt/VIN/outputs/`` for *Linux* and ``C:\ProgramData\VIN\outputs`` for *Windows* on teh receiver node. Additionally, ``/opt/VIN/receipts/sent/`` for *Linux* and ``C:\ProgramData\VIN\receipts\sent`` for *Windows* should contain a new cryptographic receipt.
+
+    **Parameters**
+
+    ``command`` *string*: The commands available are ``append``, ``-a``, ``a`` to append data to existing file; ``overwrite``, ``-o``, ``o`` to overwrite the existing file; ``create``, ``-c``, ``c`` to create a new file.
+    
+    ``filepath`` *string*: The absolute path and name of the file to be spread.
+
+    ``ip_address`` *string*: The IP address of the receiver peer.
+
+    ``receipt_port`` *string*: The receipt port of the receiver peer.
+
+    ``pipe_confg`` *string*: The encoders/decoders to use during the spread. Refer to the :ref:`vincli-commands` table for more information.    
+
+    **Returns**
+    
+    None.
 
     ---
 
-    TEXT
+    **VIN_CLI RESPONSE**
 
-The *VIN™* is capable of sharing any file type that is required by the user. To do a basic share run ``share <filepath> <ip_address> <receipt_port>``. For this example, ``<filepath>`` is ``/home/user/Dev/test/vin_test.txt``, the ``<ip_address>`` and ``<receipt_port>`` are the IP address and receipt port of the *VIN™* node not being utilized by the *VIN™ CLI*, or ``127.0.0.1`` and ``9091``, respectively. Completing a successful share will generate the following output:
+    .. code-block:: none
 
-.. figure:: images/vin_cli/vincli_share.png
-  :scale: 100
-  :align: center
-  :alt: Successful Share
+      VIN@10.51.2.22:7070> share create /home/user/Dev/vin_test.txt 10.51.2.21 9090 [coe,ene,nae,vae,vad,end,cod] 2
+      Creating a basic pipeline...
+      Pipeline:
+      {encoders:[{name:ConcurrentEncoder},{name:EntanglementEncoder},{name:NamingEncoder},{name:ValidationEncoder}],decoders:[{name:ValidationDecoder},{name:EntanglementDecoder},{name:ConcurrentDecoder}],channels:[]}
 
-  Successful Share Between Peers (*VIN™ CLI* = top, Peer_1 = left, Peer_2 = right)
+      Waiting for response...
+      Status : 200
+      Reason : OK
+      Response received
+      File shared to 10.51.2.21 9090 successfully (run: 1)
 
-To manually confirm that the file has been received navigate to ``/opt/VIN/outputs/`` for *Linux* and ``C:\ProgramData\VIN\outputs`` for *Windows* and ensure that the file is located in this directory. Additionally, ``/opt/VIN/receipts/sent/`` for *Linux* and ``C:\ProgramData\VIN\receipts\sent`` for *Windows* should contain a new cryptographic receipt.
+      Waiting for response...
+      Status : 200
+      Reason : OK
+      Response received
+      File shared to 10.51.2.21 9090 successfully (run: 2)
 
-For all of the options available with the ``share`` command, refer to the :ref:`vincli-commands` table.
+    **VIN™ NODE RESPONSE**
+
+    .. code-block:: none
+
+      19:39:02:596 http: URI: /share ; request from: 10.51.2.22:45530
+      19:39:02:596 http: 'share' request received
+      19:39:02:596 http: Share to: 10.51.2.21:9090 ; File: vin_test.txt ; Size: 16 ; Flag: create
+      19:39:02:596 benc: 'share' chunking latency 0 min 0 sec 0 msec
+      19:39:02:597 benc: 'spread' file: vin_test.txt size: 16
+      19:39:02:596 root: Using received custom coders pipeline
+      19:39:02:597 root: Validate encoders...
+      19:39:02:597 root: Add: ConcurrentEncoder (cw_density = 0.33)
+      19:39:02:597 root: Add: ConcurrentEncoder (cw_size_2_pow = 15)
+      19:39:02:597 root: Add: ConcurrentEncoder (log = false)
+      19:39:02:597 root: Add: ConcurrentEncoder (msg_len = 1000)
+      19:39:02:597 root: Add: ConcurrentEncoder (red_bits = 30)
+      19:39:02:597 root: Add: EntanglementEncoder (log = false)
+      19:39:02:597 root: Add: NamingEncoder (log = false)
+      19:39:02:597 root: Add: ValidationEncoder (id = network_data)
+      19:39:02:597 root: Add: ValidationEncoder (log = false)
+      19:39:02:597 root: Enc: ConcurrentEncoder EntanglementEncoder NamingEncoder ValidationEncoder
+      19:39:02:597 root: Validate decoders...
+      19:39:02:597 root: Add: ValidationDecoder (id = network_data)
+      19:39:02:597 root: Add: ValidationDecoder (log = false)
+      19:39:02:597 root: Add: EntanglementDecoder (log = false)
+      19:39:02:597 root: Add: ConcurrentDecoder (log = false)
+      19:39:02:597 root: Dec: ValidationDecoder EntanglementDecoder ConcurrentDecoder
+      19:39:02:597 root: Validate channels...
+      19:39:02:597 root: No channels specified
+      19:39:02:597 root: Logging pre-encoded file
+      19:39:02:597 root: Encoding
+      19:39:02:601 benc: 'spread' encoding latency 0 min 0 sec 4 msec
+      19:39:02:601 enco: ConcurrentEncoder: avg marks: 1021
+      19:39:02:803 benc: Found: 3 peers
+      Job Watchdog (0): Job finished signal received
+      Job Watchdog (0): Tasks (Processing 0, Pending 0)
+      19:39:02:803 benc: 'spread' uploading latency 0 min 0 sec 201 msec
+      19:39:02:803 benc: 'spread' total latency 0 min 0 sec 206 msec
+      19:39:02:803 benc: 'spread' encoded data size: 4096  ( 1 chunks of 4096 bytes )
+      19:39:02:803 benc: 'spread' system data size:  20480 ( redundancy = 5 )
+      19:39:02:803 root: Sharing to peer: 10.51.2.21:9090
+      19:39:02:844 root: Receipt session started
+      19:39:02:845 root: Connected to peer: 10.51.2.21:9090
+      19:39:02:846 root: Session token obtained
+      19:39:02:846 root: Sending receipt
+      19:39:03:858 root: Sending status request
+      19:39:03:860 root: Status: File rebuild OK
+      19:39:03:860 root: Sharing end session
+      19:39:03:860 benc: 'share' receipt latency 0 min 1 sec 57 msec
+      19:39:03:861 benc: 'share' encoded data size: 4096
+      19:39:03:861 benc: 'share' system data size:  20480 ( redundancy = 5 )
+      19:39:03:861 benc: 'share' total latency 0 min 1 sec 264 msec
+      19:39:03:863 http: URI: /share ; request from: 10.51.2.22:45534
+      19:39:03:863 http: 'share' request received
+      19:39:03:863 http: Share to: 10.51.2.21:9090 ; File: vin_test.txt ; Size: 16 ; Flag: create
+      19:39:03:863 benc: 'share' chunking latency 0 min 0 sec 0 msec
+      19:39:03:863 root: Using received custom coders pipeline
+      19:39:03:864 root: Validate encoders...
+      19:39:03:864 root: Add: ConcurrentEncoder (cw_density = 0.33)
+      19:39:03:864 root: Add: ConcurrentEncoder (cw_size_2_pow = 15)
+      19:39:03:864 root: Add: ConcurrentEncoder (log = false)
+      19:39:03:864 root: Add: ConcurrentEncoder (msg_len = 1000)
+      19:39:03:864 root: Add: ConcurrentEncoder (red_bits = 30)
+      19:39:03:864 root: Add: EntanglementEncoder (log = false)
+      19:39:03:864 root: Add: NamingEncoder (log = false)
+      19:39:03:864 root: Add: ValidationEncoder (id = network_data)
+      19:39:03:864 root: Add: ValidationEncoder (log = false)
+      19:39:03:864 root: Enc: ConcurrentEncoder EntanglementEncoder NamingEncoder ValidationEncoder
+      19:39:03:864 root: Validate decoders...
+      19:39:03:864 root: Add: ValidationDecoder (id = network_data)
+      19:39:03:864 root: Add: ValidationDecoder (log = false)
+      19:39:03:864 root: Add: EntanglementDecoder (log = false)
+      19:39:03:864 root: Add: ConcurrentDecoder (log = false)
+      19:39:03:864 root: Dec: ValidationDecoder EntanglementDecoder ConcurrentDecoder
+      19:39:03:864 root: Validate channels...
+      19:39:03:864 root: No channels specified
+      19:39:03:864 root: Logging pre-encoded file
+      19:39:03:864 root: Encoding
+      19:39:03:864 benc: 'spread' file: vin_test.txt size: 16
+      19:39:03:867 enco: ConcurrentEncoder: avg marks: 1021
+      19:39:03:867 benc: 'spread' encoding latency 0 min 0 sec 3 msec
+      Job Watchdog (0): Job finished signal received
+      Job Watchdog (0): Tasks (Processing 0, Pending 0)
+      19:39:03:907 benc: 'spread' uploading latency 0 min 0 sec 39 msec
+      19:39:03:907 benc: 'spread' total latency 0 min 0 sec 43 msec
+      19:39:03:907 benc: 'spread' encoded data size: 4096  ( 1 chunks of 4096 bytes )
+      19:39:03:907 benc: 'spread' system data size:  20480 ( redundancy = 5 )
+      19:39:03:907 root: Sharing to peer: 10.51.2.21:9090
+      19:39:03:914 root: Receipt session started
+      19:39:03:914 root: Connected to peer: 10.51.2.21:9090
+      19:39:03:915 root: Session token obtained
+      19:39:03:915 root: Sending receipt
+      19:39:04:927 root: Sending status request
+      19:39:04:929 root: Status: File rebuild OK
+      19:39:04:929 root: Sharing end session
+      19:39:04:929 benc: 'share' receipt latency 0 min 1 sec 21 msec
+      19:39:04:929 benc: 'share' encoded data size: 4096
+      19:39:04:929 benc: 'share' system data size:  20480 ( redundancy = 5 )
+      19:39:04:929 benc: 'share' total latency 0 min 1 sec 66 msec
 
 
 GETPEERS
@@ -535,24 +657,60 @@ GETPEERS
 .. panels::
     :card: none
 
-    TEXT
+      Generates a list of all peers connected to the bootstrap node.
+
+      **Parameters**
+
+      None.
+      
+      **Returns**
+
+      ``peer_list``: A list of peers connected to the bootstrap node including the node which requested the peer list.
 
     ---
 
-    TEXT
+     **VIN_CLI RESPONSE**
 
+    .. code-block:: none
 
-Run ``getPeers`` in the *VIN™ CLI* window to generate a list of all peers connected to a bootstrap node as displayed in the figure below.  
+      VIN@10.51.2.22:7070> getPeers
+      Sending payload:
+      {}
 
+      Waiting for response...
+      Status : 200
+      Reason : OK
+      Response received
+      Got Peers successfully
+      {
+          "10.51.2.21:8000": {
+              "ip": "10.51.2.21",
+              "meta_data": {
+              },
+              "port": "8000"
+          },
+          "10.51.2.21:8080": {
+              "ip": "10.51.2.21",
+              "meta_data": {
+                  "http_port": "7070",
+                  "kad_port": "8080",
+                  "receipt_port": "9090"
+              },
+              "port": "8080"
+          }
+      }
 
-.. figure:: images/vin_cli/vincli_getpeers.png
-  :scale: 100
-  :align: center
-  :alt: getPeers
+    
+    **VIN™ NODE RESPONSE**
 
-  getPeers Example
+    .. code-block:: none
 
-In this example, there are two peers with their information listed as follows: ``[unique_node_identifier: { ip_address_of_peers_host peers_data_port }]``
+        19:52:18:957 http: URI: /getPeers ; request from: 10.51.2.22:45542
+        19:52:18:957 http: 'getPeers' request received
+        19:52:19:070 http: Listing peer: 10.51.2.21:8000
+        19:52:19:070 http: MetaData: {}
+        19:52:19:070 http: Listing peer: 10.51.2.21:8080
+        19:52:19:070 http: MetaData: {"kad_port":"8080","receipt_port":"9090","http_port":"7070"}
 
 
 DOWNLOAD
@@ -561,13 +719,51 @@ DOWNLOAD
 .. panels::
     :card: none
 
-    TEXT
+    Downloads a file from the network given the provided absolute path to cryptographic receipt file. The file will be saved at given save path.
+
+     **Parameters**
+
+    ``filepath`` *string*: The absolute path and name of the cryptographic receipt.
+
+    ``save_file`` *string*: The absolute path to the location the file will be saved upon being downloaded.
+
+    **Returns**
+
+    None.
 
     ---
 
-    TEXT
+    **VIN_CLI RESPONSE**
 
+    .. code-block:: none
 
+      VIN@10.51.2.22:7070> download /opt/VIN/receipts/sent/CR1216842901 /home/dion/
+
+      Waiting for response...
+      Status : 200
+      Reason : OK
+      Response received
+      File gathered successfully
+
+      Downloading file
+
+      Saving to disk
+
+    **VIN™ NODE RESPONSE**
+
+    .. code-block:: none
+
+      19:53:41:893 http: URI: /download ; request from: 10.51.2.22:45544
+      19:53:41:893 http: 'download' request received by server
+      19:53:41:893 cr_: key: gather_flag could not be found
+      19:53:41:894 root: Dec: ValidationDecoder EntanglementDecoder ConcurrentDecoder
+      19:53:41:895 benc: 'gather' file: vin_test.txt size: 16
+      Job Watchdog (110): Tasks (Processing 0, Pending 0)
+      19:53:42:896 benc: 'gather' acquisition latency 0 min 1 sec 2 msec
+      19:53:42:896 benc: 'gather' encoded data size: 4096  ( 1 chunks of 4096 bytes )
+      19:53:42:897 root: Decoding
+      19:53:42:903 benc: 'gather' decoding latency 0 min 0 sec 6 msec
+      19:53:42:904 benc: 'gather' total latency 0 min 1 sec 10 msec
 
 UPDATE_PEER
 -----------
@@ -575,12 +771,39 @@ UPDATE_PEER
 .. panels::
     :card: none
 
-    TEXT
+    Add a receiver peer via its IP address, receipt port, to a fuse folder path to the ``fuse_peers.cfg`` file. Refer to :ref:`vin-install-fuse` for more information on using FUSE.
+
+    **Parameters**
+
+    ``ip_add_rec`` *string*: The IP address of the receiver peer.
+
+    ``recp_port_rec`` *string*: The receipt port of the receiver peer.
+
+    ``folder_path`` *string*: The shared folder to be used by FUSE (e.g. ``share/``).
+
+    **Returns**
+
+    None.
 
     ---
 
-    TEXT
+    **VIN_CLI RESPONSE**
 
+    .. code-block:: none
+
+      VIN@10.51.2.22:7070> update_peer 10.51.2.21 9090 share/
+      Peer updated.
+
+    **VIN™ NODE RESPONSE**
+
+    .. code-block:: none
+
+      19:59:47:012 http: URI: /UpdateFusePeer ; request from: 10.51.2.22:45546
+      19:59:47:012 http: 'updateFusePeer' request received by server
+      19:59:47:012 http: 'updateFusePeer' request with params:
+      19:59:47:012 http: 'updateFusePeer' ip: 10.51.2.21
+      19:59:47:012 http: 'updateFusePeer' port: 9090
+      19:59:47:012 http: 'updateFusePeer' path: share/
 
 
 HEALTH_CHECK
@@ -589,25 +812,68 @@ HEALTH_CHECK
 .. panels::
     :card: none
 
-    TEXT
+    **Parameters**
+
+    None.
+
+    **Returns**
+
+    None.
 
     ---
 
-    TEXT
+    **VIN_CLI RESPONSE**
+
+    .. code-block:: none
+
+      VIN@10.51.2.22:7070> health_check
+
+      Waiting for response...
+      Status : 200
+      Reason : OK
+      Response received
+      Health check succeeded
+
+      dht-initialized: true
+      receipt-server-connected: true
+      stream-in-progress: false
+      active-stream-id: NONE
+      node-shutdown-event: false
 
 
+    **VIN™ NODE RESPONSE**
 
-RECEIPT_VALIDATION
-------------------
+    .. code-block:: none
 
-.. panels::
-    :card: none
+      20:01:42:819 http: URI: /healthCheck ; request from: 10.51.2.22:45548
+      20:01:42:819 http: 'healthCheck' request received
 
-    TEXT
 
-    ---
+..
+  RECEIPT_VALIDATION
+  ------------------
 
-    TEXT
+  .. panels::
+      :card: none
+
+      **Parameters**
+
+      ``filepath`` *string*: The absolute path and name of the cryptographic receipt.
+
+      **Returns**
+
+      None.
+
+      ---
+
+      **VIN_CLI RESPONSE**
+
+      .. code-block:: none
+
+
+      **VIN™ NODE RESPONSE**
+
+      .. code-block:: none
 
 
 
@@ -642,9 +908,9 @@ SHUTDOWN
 
     .. code-block:: none
 
-      16:53:13:409 http: URI: /exit ; request from: 10.51.2.22:45494
-      16:53:13:409 http: 'exit' request received
-      16:53:13:409 http: HTTP server exit
+      20:03:57:404 http: URI: /exit ; request from: 10.51.2.22:45558
+      20:03:57:404 http: 'exit' request received
+      20:03:57:404 http: HTTP server exit
       Uninitializing subsystem: Logging SubsystemFUSE: Handle end thread signal 10
 
-      16:53:19:146 root: VIN exit
+      20:04:02:301 root: VIN exit
