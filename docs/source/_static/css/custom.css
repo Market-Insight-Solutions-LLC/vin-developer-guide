@@ -71,13 +71,21 @@ div.rightside {
  .rst-content .vincli {
     background: #ffffff
  }
+ 
+.admonition-vin-response {
+    border: solid 1px;
+    border-radius: 25px;
+    border-color: rgb(61, 60, 61);
+}
 
- .rst-content .text .admonition-title {
-    background-image: none;
-    background: #a34343
+ .rst-content .admonition-vin-response  .admonition-title {
+    border: solid 1px;
+    border-radius: 15px 15px 0px 0px;
+    border-color: rgb(61, 60, 61) rgb(55, 8, 228) rgb(255, 0, 255) rgb(0, 255, 157);
+    background: #a34343;
  }
  
- .rst-content .text {
+ .rst-content .admonition-vin-response  {
     background: #f1f1f1
  }
 
@@ -85,7 +93,7 @@ div.rightside {
  .rst-content .text .admonition-title:before {
     content: "  📖";
 }*/
-.rst-content .text .admonition-title:before {
+.rst-content .admonition-vin-response .admonition-title:before {
     content: "";
 }
 
