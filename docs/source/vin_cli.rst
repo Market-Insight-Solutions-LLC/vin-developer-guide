@@ -8,15 +8,6 @@ VIN™ Command Line Interface (CLI)
 
 The following table displays a list of APIs that are accessible through the *VIN™ CLI*. For examples, and the outputs of each command, please refer to the :ref:`vin-cli-func` section.
 
-.. admonition:: Putting and Getting A Key-Value Pair
-        :class: admonition-vin-response
-    
-
-        * The ing will showcase how to a put key-value pair onto the network as a simple test to ensure the functionality of the *VIN™*. 
-        * To put a kssey-vasdflue ontosd the network, in the *VIN™ CLI* session run ``put <key> <value>``; where ``<key>`` and ``<value>`` can be any string that does not contain spaces. For this example ``test_key`` was usedsd for the ``<key>`` and ``test_value`` for the ``<value>``. The following figure displays the result of running this command; where the top image is the output from tshe *VIN™ CLIsadfsassdd* and the bottom is from the peer.
-        * To view the shard that was placed asdn the *Kademlia* network, navigate to ``/opt/VIN/kademlia/data/`` and proceed through the folder structure until reaching the file.
-        * To get a value from the network, in tsdhe *VIN™ CLI* session run ``get <key>``; where ``<key>`` is ``test_key`` for this example. The following figure displays the result of running this command; where the top image is the output from the *VIN™ CLI* and the bottom is from the peer.
-
 
 .. _vincli-commands:
 
