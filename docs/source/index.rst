@@ -38,3 +38,5 @@ Check out the :ref:`vin-install` section to install the *VIN™* and for some of
       glossary
 
 
+.. role:: bold-underline
+    :class: bold-underline

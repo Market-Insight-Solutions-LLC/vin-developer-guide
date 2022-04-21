@@ -8,6 +8,8 @@ VIN™ Command Line Interface (CLI)
 
 The following table displays a list of APIs that are accessible through the *VIN™ CLI*. For examples, and the outputs of each command, please refer to the :ref:`vin-cli-func` section.
 
+
+
 .. _vincli-commands:
 
 .. csv-table:: VIN™ CLI Commands
@@ -110,7 +112,7 @@ Note: the following *VIN™ CLI* descriptions were gathered from a *Linux* opera
     
     ---
 
-    **VIN™ CLI Response**
+    :bold-underline:`VIN™ CLI Response`
 
     .. code-block:: none
       
@@ -249,7 +251,7 @@ Note: the following *VIN™ CLI* descriptions were gathered from a *Linux* opera
 
     ---
 
-    **VIN™ CLI Response**
+    :bold-underline:`VIN™ CLI Response`
 
     .. code-block:: none
 
@@ -280,14 +282,14 @@ Note: the following *VIN™ CLI* descriptions were gathered from a *Linux* opera
 
     ---
 
-    **VIN™ CLI Response**
+    :bold-underline:`VIN™ CLI Response`
 
     .. code-block:: none
 
       VIN@10.51.2.22:7070> ping
       Server pong!
 
-    **VIN™ Node Response**
+    :bold-underline:`VIN™ Node Response`
 
     .. code-block:: none
 
@@ -319,7 +321,7 @@ Note: the following *VIN™ CLI* descriptions were gathered from a *Linux* opera
 
     ---
 
-    **VIN™ CLI Response**
+    :bold-underline:`VIN™ CLI Response`
 
     .. code-block:: none
 
@@ -334,7 +336,7 @@ Note: the following *VIN™ CLI* descriptions were gathered from a *Linux* opera
 
       [test_key]:test_value   put successfully
 
-    **VIN™ Node Response**
+    :bold-underline:`VIN™ Node Response`
 
     .. code-block:: none
 
@@ -367,7 +369,7 @@ Note: the following *VIN™ CLI* descriptions were gathered from a *Linux* opera
 
     ---
 
-    **VIN™ CLI Response**
+    :bold-underline:`VIN™ CLI Response`
 
     .. code-block:: none
 
@@ -383,7 +385,7 @@ Note: the following *VIN™ CLI* descriptions were gathered from a *Linux* opera
 
       [test_key]:test_value  is a valid [key]:value pair
 
-    **VIN™ Node Response**
+    :bold-underline:`VIN™ Node Response`
 
     .. code-block:: none
 
@@ -417,7 +419,7 @@ Note: the following *VIN™ CLI* descriptions were gathered from a *Linux* opera
 
     ---
 
-    **VIN™ CLI Response**
+    :bold-underline:`VIN™ CLI Response`
 
     .. code-block:: none
 
@@ -434,7 +436,7 @@ Note: the following *VIN™ CLI* descriptions were gathered from a *Linux* opera
 
       Receipt saved to location : /opt/VIN/receipts/sent/CR1213465839
 
-    **VIN™ Node Response**
+    :bold-underline:`VIN™ Node Response`
 
     .. code-block:: none
 
@@ -500,7 +502,7 @@ Note: the following *VIN™ CLI* descriptions were gathered from a *Linux* opera
 
     ---
 
-    **VIN™ CLI Response**
+    :bold-underline:`VIN™ CLI Response`
 
     .. code-block:: none
 
@@ -514,7 +516,7 @@ Note: the following *VIN™ CLI* descriptions were gathered from a *Linux* opera
 
       File reconstructed at : /opt/VIN/outputs/vin_test/vin_test.txt on node host.
 
-    **VIN™ Node Response**
+    :bold-underline:`VIN™ Node Response`
 
     .. code-block:: none
       
@@ -562,7 +564,7 @@ Note: the following *VIN™ CLI* descriptions were gathered from a *Linux* opera
 
     ---
 
-    **VIN™ CLI Response**
+    :bold-underline:`VIN™ CLI Response`
 
     .. code-block:: none
 
@@ -583,7 +585,7 @@ Note: the following *VIN™ CLI* descriptions were gathered from a *Linux* opera
       Response received
       File shared to 10.51.2.21 9090 successfully (run: 2)
 
-    **VIN™ Node Response**
+    :bold-underline:`VIN™ Node Response`
 
     .. code-block:: none
 
@@ -707,7 +709,7 @@ Note: the following *VIN™ CLI* descriptions were gathered from a *Linux* opera
 
     ---
 
-    **VIN™ CLI Response**
+    :bold-underline:`VIN™ CLI Response`
 
     .. code-block:: none
 
@@ -739,7 +741,7 @@ Note: the following *VIN™ CLI* descriptions were gathered from a *Linux* opera
       }
 
     
-    **VIN™ Node Response**
+    :bold-underline:`VIN™ Node Response`
 
     .. code-block:: none
 
@@ -776,7 +778,7 @@ Note: the following *VIN™ CLI* descriptions were gathered from a *Linux* opera
 
     ---
 
-    **VIN™ CLI Response**
+    :bold-underline:`VIN™ CLI Response`
 
     .. code-block:: none
 
@@ -792,7 +794,7 @@ Note: the following *VIN™ CLI* descriptions were gathered from a *Linux* opera
 
       Saving to disk
 
-    **VIN™ Node Response**
+    :bold-underline:`VIN™ Node Response`
 
     .. code-block:: none
 
@@ -836,14 +838,14 @@ Note: the following *VIN™ CLI* descriptions were gathered from a *Linux* opera
 
     ---
 
-    **VIN™ CLI Response**
+    :bold-underline:`VIN™ CLI Response`
 
     .. code-block:: none
 
       VIN@10.51.2.22:7070> update_peer 10.51.2.21 9090 share/
       Peer updated.
 
-    **VIN™ Node Response**
+    :bold-underline:`VIN™ Node Response`
 
     .. code-block:: none
 
@@ -876,7 +878,7 @@ Note: the following *VIN™ CLI* descriptions were gathered from a *Linux* opera
 
     ---
 
-    **VIN™ CLI Response**
+    :bold-underline:`VIN™ CLI Response`
 
     .. code-block:: none
 
@@ -895,7 +897,7 @@ Note: the following *VIN™ CLI* descriptions were gathered from a *Linux* opera
       node-shutdown-event: false
 
 
-    **VIN™ Node Response**
+    :bold-underline:`VIN™ Node Response`
 
     .. code-block:: none
 
@@ -924,12 +926,12 @@ Note: the following *VIN™ CLI* descriptions were gathered from a *Linux* opera
 
       ---
 
-      **VIN™ CLI Response**
+      :bold-underline:`VIN™ CLI Response`
 
       .. code-block:: none
 
 
-      **VIN™ Node Response**
+      :bold-underline:`VIN™ Node Response`
 
       .. code-block:: none
 
@@ -960,14 +962,14 @@ Note: the following *VIN™ CLI* descriptions were gathered from a *Linux* opera
 
     ---
 
-    **VIN™ CLI Response**
+    :bold-underline:`VIN™ CLI Response`
 
     .. code-block:: none
 
       VIN@10.51.2.22:7070> shutdown
       <h1>Exit<h1>
 
-    **VIN™ Node Response**
+    :bold-underline:`VIN™ Node Response`
 
     .. code-block:: none
 
