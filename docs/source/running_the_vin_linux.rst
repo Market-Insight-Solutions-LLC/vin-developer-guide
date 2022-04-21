@@ -4,7 +4,7 @@
 Running the VIN™ on Linux
 ***********************************
 
-Currently, there are two ways to set up the *VIN™*: on the same host system or through a local network. Both require very similar setups but differ in the way that peers are configured. The method for instantiating the *VIN™* for both cases and a example to demonstrate the *VIN™'s* ``PUT``, ``GET``, ``SPREAD``, ``GATHER``, ``SHARE``, ``GETPEERS``, and ``SHUTDOWN`` commands are detailed in the upcoming sections. Before running the *VIN™*, it is good to become familiar with the *VIN™* command flags listed in the following table. Examples of how these are used will be shown when setting up the *VIN™*. 
+Currently, there are two ways to set up the *VIN™*: on the same host system or through a local network. Both require very similar setups but differ in the way that peers are configured. The method for instantiating the *VIN™* for both cases and a example to demonstrate the *VIN™'s* ``put``, ``get``, ``spread``, ``gather``, and ``share`` commands are detailed in the upcoming sections. For detailed information on all of the commands available to the *VIN™*, refer to :ref:`vin-cli`. Before running the *VIN™*, it is good to become familiar with the *VIN™* command flags listed in the following table. Examples of how these are used will be shown when setting up the *VIN™*. 
 
 Note: The logs of all the *VIN™* transactions are located in ``/var/log/VIN/logs/``. The examples were completed on virtual machines connected to a system running *Ubuntu*. If any issues occur while setting up the *VIN™* or while running any *VIN™ CLI* commands, refer to the :ref:`tips-troubleshooting-linux` section for assistance.
 
@@ -211,12 +211,34 @@ The following will showcase how to a put key-value pair onto the network as a si
 * To view the shard that was placed on the *Kademlia* network, navigate to ``/opt/VIN/kademlia/data/`` and proceed through the folder structure until reaching the file.
 * To get a value from the network, in the *VIN™ CLI* session run ``get <key>``; where ``<key>`` is ``test_key`` for this example. The following figure displays the result of running this command; where the top image is the output from the *VIN™ CLI* and the bottom is from the peer.
 
-.. figure:: images/getting_started_with_vin/linux/get_vincli_peer_host.png
-  :scale: 100
-  :align: center
-  :alt: Successful Get
+.. admonition:: Successful Get Output
+  :class: admonition-vin-run
 
-  Successful Get (*VIN™ CLI* = top, Peer = bottom)
+  :bold-underline:`VIN™ CLI Output`
+
+  .. code-block:: none
+
+    VIN@127.0.0.1:7070> get test_key
+    Sending payload:
+    {"key":"test_key"}
+
+    Waiting for response...
+    Status : 200
+    Reason : OK
+    Response received
+    value for test_key got successfully
+
+    [test_key]:test_value  is a valid [key]:value pair
+
+  :bold-underline:`Peer Output`
+
+  .. code-block:: none
+
+    18:53:04:111 http: URI: /getValue ; request from: 127.0.0.1:51076
+    18:53:04:111 http: 'getValue' request received
+    18:53:04:111 http: 'getValue' successful:  Key: test_key ; Value: test_value
+    18:53:04:112 benc: 'getValue' request latency 0 min 0 sec 0 msec
+
 
 
 Spread and Gather a File
@@ -224,27 +246,94 @@ Spread and Gather a File
 
 The *VIN™* can spread any file type onto it's network. To do a ``spread``, perform the following:
 
-* In the *VIN™ CLI* session run ``spread <filepath>``; where the ``<filepath>`` is the absolute path and name of the file to be spread. For this example, it is ``/home/user/Dev/test/vin_test.txt``. An encrypted cryptographic receipt is generated upon spreading and is stored in ``/opt/VIN/receipts/sent`` and the encrypted data is placed onto the *Kademlia* network and can be seen in ``/opt/VIN/kademlia/data/``. Additionally, the data, broken into shards, is viewable in ``/var/log/VIN/shards/``. Note: the number of shards is dependant on the size of the file and the parameters set in the ``chunker`` object, which is set in ``defaults.cfg`` (see :ref:`vin-configuration` for more details).
+* In the *VIN™ CLI* session run ``spread <filepath>``; where the ``<filepath>`` is the absolute path and name of the file to be spread. For this example, it is ``/home/user/Dev/vin_test.txt``. For all of the options available to ``spread``, refer to :ref:`vin-cli`. An encrypted cryptographic receipt is generated upon spreading and is stored in ``/opt/VIN/receipts/sent`` and the encrypted data is placed onto the *Kademlia* network and can be seen in ``/opt/VIN/kademlia/data/``. Additionally, the data, broken into shards, is viewable in ``/var/log/VIN/shards/``. Note: the number of shards is dependant on the size of the file and the parameters set in the ``chunker`` object, which is set in ``defaults.cfg`` (see :ref:`vin-configuration` for more details).
 * The output of a successful ``spread`` is shown below.
 
-.. figure:: images/getting_started_with_vin/linux/vincli_spread_host.png
-  :scale: 100
-  :align: center
-  :alt: Successful Spread
+.. admonition:: Successful Spread Output
+  :class: admonition-vin-run
 
-  Successful Spread (*VIN™ CLI* = top, Peer = bottom)
+  :bold-underline:`VIN™ CLI Output`
+
+  .. code-block:: none
+
+    VIN@127.0.0.1:7070> spread /home/user/Dev/vin_test.txt
+
+    Waiting for response...
+    Status : 200
+    Reason : OK
+    Response received
+    File spread successfully
+
+    Receipt saved to location : /opt/VIN/receipts/sent/CR1299958208
+
+  :bold-underline:`Peer Output`
+
+  .. code-block:: none
+
+    18:56:39:390 http: URI: /spread ; request from: 127.0.0.1:51078
+    18:56:39:390 http: 'spread' request received
+    18:56:39:391 root: Using default coders pipeline
+    18:56:39:391 root: Validate encoders...
+    18:56:39:391 root: Enc: ConcurrentEncoder EntanglementEncoder NamingEncoder ValidationEncoder
+    18:56:39:391 root: Validate decoders...
+    18:56:39:391 root: Dec: ValidationDecoder EntanglementDecoder ConcurrentDecoder
+    18:56:39:391 root: Validate channels...
+    18:56:39:391 root: No channels specified
+    18:56:39:391 root: Logging pre-encoded file
+    18:56:39:392 root: Encoding
+    18:56:39:391 benc: 'spread' chunking latency 0 min 0 sec 0 msec
+    18:56:39:391 benc: 'spread' file: vin_test.txt size: 27
+    18:56:39:395 benc: 'spread' encoding latency 0 min 0 sec 3 msec
+    18:56:39:395 enco: ConcurrentEncoder: avg marks: 1017
+    18:56:39:871 benc: Found: 3 peers
+    Job Watchdog (0): Job finished signal received
+    Job Watchdog (0): Tasks (Processing 0, Pending 0)
+    18:56:39:872 http: 'spread' receipt saved to: /opt/VIN/receipts/sent/CR1299958208
+    18:56:39:872 benc: 'spread' uploading latency 0 min 0 sec 476 msec
+    18:56:39:872 benc: 'spread' total latency 0 min 0 sec 480 msec
+    18:56:39:872 benc: 'spread' encoded data size: 4096  ( 1 chunks of 4096 bytes )
+    18:56:39:872 benc: 'spread' system data size:  20480 ( redundancy = 5 )
 
 
-* After a file has been spread to the network a cryptographic receipt will be generated. Using this receipt, the file can be retrieved from the network via the ``gather`` command. To do a basic ``gather``, in the *VIN™ CLI* session run ``gather <receipt_path>``. The ``<receipt_path>`` will be shown in the *VIN™ CLI* session and, for this example, is ``/opt/VIN/receipts/sent/CR3053327074``. If the file was successfully gathered, the following output should be displayed.
+* After a file has been spread to the network a cryptographic receipt will be generated. Using this receipt, the file can be retrieved from the network via the ``gather`` command. To do a basic ``gather``, in the *VIN™ CLI* session run ``gather <receipt_path>``. The ``<receipt_path>`` will be shown in the *VIN™ CLI* session and, for this example, is ``/opt/VIN/receipts/sent/CR1299958208``. For all of the options available to ``gather``, refer to :ref:`vin-cli`. If the file was successfully gathered, the following output should be displayed.
 
-.. figure:: images/getting_started_with_vin/linux/vincli_gather_host.png
-  :scale: 100
-  :align: center
-  :alt: Successful Gather
+.. admonition:: Successful Gather Output
+  :class: admonition-vin-run
 
-  Successful Gather (*VIN™ CLI* = top, Peer = bottom)
+  :bold-underline:`VIN™ CLI Output`
 
-* To inspect the gathered file, navigate to ``/opt/VIN/outputs`` and enter ``ls``. A folder with the name of the file which was shared should be listed. Enter this folder (``cd <folder_name>``) and run ``ls``. The file which was shared will be displayed and can be inspected to ensure it was successfully shared. 
+  .. code-block:: none
+    
+    VIN@127.0.0.1:7070> gather /opt/VIN/receipts/sent/CR1299958208
+
+    Waiting for response...
+    Status : 200
+    Reason : OK
+    Response received
+    File gathered successfully
+
+    File reconstructed at : /opt/VIN/outputs/vin_test/vin_test.txt on node host.
+    
+
+  :bold-underline:`Peer Output`
+
+  .. code-block:: none
+    
+    19:01:24:611 http: URI: /gather ; request from: 127.0.0.1:51080
+    19:01:24:611 http: 'gather' request received
+    19:01:24:612 benc: 'gather' file: vin_test.txt size: 27
+    19:01:24:612 root: Dec: ValidationDecoder EntanglementDecoder ConcurrentDecoder
+    Job Watchdog (0): Job finished signal received
+    Job Watchdog (0): Tasks (Processing 0, Pending 0)
+    19:01:24:614 benc: 'gather' acquisition latency 0 min 0 sec 2 msec
+    19:01:24:614 benc: 'gather' encoded data size: 4096  ( 1 chunks of 4096 bytes )
+    19:01:24:614 root: Decoding
+    19:01:24:621 benc: 'gather' decoding latency 0 min 0 sec 7 msec
+    19:01:24:622 benc: 'gather' total latency 0 min 0 sec 9 msec
+    19:01:24:623 root: File rebuild at: /opt/VIN/outputs/vin_test/vin_test(2).txt
+
+
+* To inspect the gathered file, navigate to ``/opt/VIN/outputs`` and enter ``ls``. A folder with the name of the file which was gathered should be listed. Enter this folder (``cd <folder_name>``) and run ``ls``. The file which was shared will be displayed and can be inspected to ensure it was successfully gathered. 
 * Note: the ``gather`` command, by default, will create a new file on the system after it finishes; thus, the gathered file may have a number appended to end of the filename. For more information on how to overwrite the file, or append to its contents, refer to the :ref:`vincli-commands` table.
 
 
@@ -253,41 +342,89 @@ Sharing a File
 
 The following will describe how to share files between the peers on the same host system.
 
-* In the *VIN™ CLI* session, the following command should be run after the required information is determined: ``share <filepath> <ip_address> <receipt_port>``. ``<filepath>`` is the absolute path and filename of the file to be shared, for example, in this case it is ``/home/user/Dev/test/vin_test.txt``. Note: any file type can be shared. The ``<ip_address>`` and ``<receipt_port>`` are ``127.0.0.1`` and ``9091``, or the IP address of the host system and the ``receipt_port`` of the second peer running on it.
-* Thus, the command to run, for this example, becomes ``share /home/user/Dev/test/vin_test.txt 127.0.0.1 9091``. If everything worked correctly, the following should be displayed on the CLI sessions. 
+* In the *VIN™ CLI* session, the following command should be run after the required information is determined: ``share <filepath> <ip_address> <receipt_port>``. ``<filepath>`` is the absolute path and filename of the file to be shared, for example, in this case it is ``/home/user/Dev/vin_test.txt``. Note: any file type can be shared. The ``<ip_address>`` and ``<receipt_port>`` are ``127.0.0.1`` and ``9091``, or the IP address of the host system and the ``receipt_port`` of the second peer running on it.
+* Thus, the command to run, for this example, becomes ``share /home/user/Dev/vin_test.txt 127.0.0.1 9091``. For all of the options available to ``share``, refer to :ref:`vin-cli`. If everything worked correctly, the following should be displayed on the CLI sessions. 
 
-.. figure:: images/getting_started_with_vin/linux/share_vincli_peer1_peer2_host.png
-  :scale: 100
-  :align: center
-  :alt: Successful Share between Peers
+.. admonition:: Successful Get Output
+  :class: admonition-vin-run
 
-  Successful Share Between Peers (*VIN™ CLI* = top, Peer_1 = left, Peer_2 = right)
+  :bold-underline:`VIN™ CLI Output`
+
+  .. code-block:: none
+
+    share /home/user/Dev/vin_test.txt 127.0.0.1 9091
+
+    Waiting for response...
+    Status : 200
+    Reason : OK
+    Response received
+    File shared to 127.0.0.1 9091 successfully (run: 1)
+
+  :bold-underline:`Peer 1 Output`
+
+  .. code-block:: none
+
+    19:06:55:723 http: URI: /share ; request from: 127.0.0.1:51082
+    19:06:55:723 http: 'share' request received
+    19:06:55:723 root: Using default coders pipeline
+    19:06:55:723 benc: 'share' chunking latency 0 min 0 sec 0 msec
+    19:06:55:723 http: Share to: 127.0.0.1:9091 ; File: vin_test.txt ; Size: 27 ; Flag: create
+    19:06:55:723 root: Validate encoders...
+    19:06:55:723 root: Enc: ConcurrentEncoder EntanglementEncoder NamingEncoder ValidationEncoder
+    19:06:55:723 root: Validate decoders...
+    19:06:55:723 root: Dec: ValidationDecoder EntanglementDecoder ConcurrentDecoder
+    19:06:55:723 root: Validate channels...
+    19:06:55:723 root: No channels specified
+    19:06:55:723 root: Logging pre-encoded file
+    19:06:55:724 root: Encoding
+    19:06:55:723 benc: 'spread' file: vin_test.txt size: 27
+    19:06:55:726 enco: ConcurrentEncoder: avg marks: 1017
+    19:06:55:727 benc: 'spread' encoding latency 0 min 0 sec 3 msec
+    Job Watchdog (0): Job finished signal received
+    Job Watchdog (0): Tasks (Processing 0, Pending 0)
+    19:06:55:962 benc: 'spread' uploading latency 0 min 0 sec 235 msec
+    19:06:55:962 benc: 'spread' total latency 0 min 0 sec 238 msec
+    19:06:55:962 benc: 'spread' encoded data size: 4096  ( 1 chunks of 4096 bytes )
+    19:06:55:962 benc: 'spread' system data size:  20480 ( redundancy = 5 )
+    19:06:55:962 root: Sharing to peer: 127.0.0.1:9091
+    19:06:55:969 root: Receipt session started
+    19:06:55:969 root: Connected to peer: 127.0.0.1:9091
+    19:06:55:970 root: Session token obtained
+    19:06:55:970 root: Sending receipt
+    19:06:56:981 root: Sending status request
+    19:06:56:983 root: Status: File rebuild OK
+    19:06:56:983 root: Sharing end session
+    19:06:56:983 benc: 'share' receipt latency 0 min 1 sec 20 msec
+    19:06:56:983 benc: 'share' encoded data size: 4096
+    19:06:56:983 benc: 'share' system data size:  20480 ( redundancy = 5 )
+    19:06:56:983 benc: 'share' total latency 0 min 1 sec 260 msec
+
+  :bold-underline:`Peer 2 Output`
+
+  .. code-block:: none
+
+    19:06:55:963 benc: Share session created. Peer addr: 127.0.0.1:43648
+    19:06:55:971 root: Dec: ValidationDecoder EntanglementDecoder ConcurrentDecoder
+    19:06:55:971 benc: 'gather' file: vin_test.txt size: 27
+    19:06:55:970 cr-s: Start sharing session
+    19:06:55:970 cr-s: Send session id
+    19:06:55:971 cr-s: Receipt received from: 127.0.0.1:43648
+    Job Watchdog (110): Tasks (Processing 0, Pending 0)
+    19:06:56:973 benc: 'gather' acquisition latency 0 min 1 sec 1 msec
+    19:06:56:973 benc: 'gather' encoded data size: 4096  ( 1 chunks of 4096 bytes )
+    19:06:56:973 root: Decoding
+    19:06:56:980 benc: 'gather' decoding latency 0 min 0 sec 7 msec
+    19:06:56:980 benc: 'gather' total latency 0 min 1 sec 9 msec
+    19:06:56:981 cr-s: Status request from: 127.0.0.1:43648
+    19:06:56:982 benc: 'gather' end_stream_session
+    19:06:56:982 root: File rebuild at: /opt/VIN/outputs/vin_test/vin_test(1).txt
+    19:06:56:982 benc: 'gather' rebuilt latency: 0 min 0 sec 0 msec
+    19:06:56:984 cr-s: Status: File rebuild OK
+    19:06:56:984 cr-s: Share ended. 0 min 1 sec 21 msec
+    19:06:57:035 cr-s: Connection with peer: 127.0.0.1:43648 ended
 
 * To manually confirm that the file was shared correctly, enter ``ls`` in the CLI session pointing to the ``/opt/VIN/outputs`` folder directory. A folder with the name of the file which was shared should be listed. Enter this folder (``cd <folder_name>``) and run ``ls``. The file which was shared will be displayed and can be inspected to ensure it was successfully shared.
 * Additionally, the cryptographic receipt for the share is stored in ``/opt/VIN/receipts/sent``, the encrypted data can be seen in ``/opt/VIN/kademlia/data/``, and the sharded data is viewable in ``/var/log/VIN/shards/``. Note: the number of shards is dependant on the size of the file and the parameters set in the ``chunker`` object, which is set in ``defaults.cfg`` (see :ref:`vin-configuration` for more details).
-
-
-Getting Peers Connected to the Bootstrap
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-In the *VIN™ CLI* session run ``getPeers`` to generate a list of all peers connected to a bootstrap node. The result will be an output similar to the one displayed in the figure below.  
-
-.. figure:: images/getting_started_with_vin/linux/getpeers_host.png
-  :scale: 100
-  :align: center
-  :alt: GetPeers Result
-
-  GetPeers Result
-
-For this example, there are two peers with their information listed as follows: ``[unique_node_identifier: { ip_address_of_peers_host peers_data_port }]``
-
-
-Shutting Down a Node
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-* Press **ctrl + c** while the bootstrap node's CLI session is active to kill the process.
-* To shutdown a peer node which is connected to the *VIN™ CLI*, run ``shutdown`` in the *VIN™ CLI* session connected to the peer. Alternatively, press **ctrl + c** while the peer node's CLI session is active to kill the process.
-* To exit from the *VIN™ CLI*, type **exit** and hit **enter** in the *VIN™ CLI* session. Alternatively, press **ctrl + c** while theCLI session containing the *VIN™ CLI* is active to kill the process.
 
 
 .. _local-network-linux:
