@@ -256,6 +256,7 @@ Note: the following *VIN™ CLI* descriptions were gathered from a *Linux* opera
       VIN@10.51.2.22:7070> exit
       So long for now.
 
+---------------------------
 
 ..
   PING
