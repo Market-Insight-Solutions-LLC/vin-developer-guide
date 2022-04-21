@@ -6,7 +6,7 @@ Running the VIN™ on Linux
 
 Currently, there are two ways to set up the *VIN™*: on the same host system or through a local network. Both require very similar setups but differ in the way that peers are configured. The method for instantiating the *VIN™* for both cases and a example to demonstrate the *VIN™'s* ``put``, ``get``, ``spread``, ``gather``, and ``share`` commands are detailed in the upcoming sections. For detailed information on all of the commands available to the *VIN™*, refer to :ref:`vin-cli`. Before running the *VIN™*, it is good to become familiar with the *VIN™* command flags listed in the following table. Examples of how these are used will be shown when setting up the *VIN™*. 
 
-Note: The logs of all the *VIN™* transactions are located in ``/var/log/VIN/logs/``. The examples were completed on virtual machines connected to a system running *Ubuntu*. If any issues occur while setting up the *VIN™* or while running any *VIN™ CLI* commands, refer to the :ref:`tips-troubleshooting-linux` section for assistance.
+Note: The logs of all the *VIN™* transactions are located in ``/var/log/VIN/logs/``. The examples were completed on virtual machines connected to a system running *Ubuntu*. If any issues occur while setting up the *VIN™* or while running any *VIN™ CLI* commands, refer to the :ref:`tips-troubleshooting-ubuntu` section for assistance.
 
 .. This information came from C:\Dev\qtoken-cpp\apps\helper.cpp 
 
@@ -427,7 +427,7 @@ The following will describe how to share files between the peers on the same hos
 * Additionally, the cryptographic receipt for the share is stored in ``/opt/VIN/receipts/sent``, the encrypted data can be seen in ``/opt/VIN/kademlia/data/``, and the sharded data is viewable in ``/var/log/VIN/shards/``. Note: the number of shards is dependant on the size of the file and the parameters set in the ``chunker`` object, which is set in ``defaults.cfg`` (see :ref:`vin-configuration` for more details).
 
 
-.. _local-network-linux:
+.. _local-network-ubuntu:
 
 
 Setting up the *VIN™* on a Local Network 
@@ -562,7 +562,7 @@ Shutting Down a Node
 
 
 
-.. _tips-troubleshooting-linux:
+.. _tips-troubleshooting-ubuntu:
 
 Tips and Troubleshooting
 ========================
@@ -604,6 +604,14 @@ I/O error : Permission denied
 -----------------------------
 
 If this error is present when attempting to connect a peer to a bootstrap node, it is due to one of the peer's ports being in use by another program on the system. In the image below, the error succeeds the ``HTTP server starting ( port: 7070)`` indicating that port 7070 is in use. 
+
+
+.. admonition:: Successful Get Output
+  :class: admonition-vin-run
+
+  :bold-underline:`VIN™ CLI Output`
+
+  .. code-block:: none
 
 .. figure:: images/getting_started_with_vin/troubleshooting/io_permission_error.png
   :scale: 100
