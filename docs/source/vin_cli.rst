@@ -88,14 +88,15 @@ The following instructions assume that a two *VIN™* nodes and one bootstrap no
 
 Note: the following *VIN™ CLI* descriptions were gathered from a *Linux* operating system. However, other operating systems will have the same outputs unless otherwise noted.
 
-
-HELP
-----
+..
+  HELP
+  -----
 
 .. panels::
     :card: none
 
-    **Description**
+    **help**
+    ^^^^^^^^^
 
     Displays a list of commands available to the *VIN™ CLI*.
 
@@ -109,7 +110,7 @@ HELP
     
     ---
 
-    **VIN_CLI RESPONSE**
+    **VIN™ CLI Response**
 
     .. code-block:: none
       
@@ -207,26 +208,34 @@ HELP
 
       - [EXPERIMENTAL] stream_test <string> <string>
               Test unbounded stream to local node at <address>:<port>.
+
       - update_peer <string> <string> <string>
               Add a peer to a fuse folder
               Example:  'update_peer 12.345.678.90 9091 /home/target/share/foo/'
+
       - health_check
               Print health metrics for the node
               Example:  'health_check'
+
       - receipt_validation <string>
               Validate a crypto receipt
               Example:  'receipt_validation /opt/VIN/receipts/sent/CR3736596702'
+
       - shutdown
               Shutdown connected node.
 
 
-EXIT
------
+---------------------------
+
+..
+  EXIT
+  -----
 
 .. panels::
     :card: none
 
-    **Description**
+    **exit**
+    ^^^^^^^^^
 
     Quits the current session of the *VIN™ CLI*.
 
@@ -240,7 +249,7 @@ EXIT
 
     ---
 
-    **VIN_CLI RESPONSE**
+    **VIN™ CLI Response**
 
     .. code-block:: none
 
@@ -248,13 +257,15 @@ EXIT
       So long for now.
 
 
-PING
------
+..
+  PING
+  -----
 
 .. panels::
     :card: none
 
-    **Description**
+    **ping**
+    ^^^^^^^^^
 
     Pings the connected node to check its status. The connected node responds with a "Server pong!" message if successful.
 
@@ -268,27 +279,30 @@ PING
 
     ---
 
-    **VIN_CLI RESPONSE**
+    **VIN™ CLI Response**
 
     .. code-block:: none
 
       VIN@10.51.2.22:7070> ping
       Server pong!
 
-    **VIN™ NODE RESPONSE**
+    **VIN™ Node Response**
 
     .. code-block:: none
 
       17:56:06:605 http: URI: /ping? ; request from: 10.51.2.22:45512
 
+---------------------------
 
-PUT
------
+..
+  PUT
+  -----
 
 .. panels::
     :card: none
 
-    **Description**
+    **put**
+    ^^^^^^^^^
 
     A simple way to ensure that the network as been properly configured is to put a key-value pair onto the network. To do so, in the *VIN™ CLI* window, run ``put <key> <value>``. For this example ``test_key`` was used for the ``<key>`` and ``test_value`` for the ``<value>``. Note that the ``<key>`` and ``<value>`` can be any string that doesn't contain spaces. 
 
@@ -304,7 +318,7 @@ PUT
 
     ---
 
-    **VIN_CLI RESPONSE**
+    **VIN™ CLI Response**
 
     .. code-block:: none
 
@@ -319,7 +333,7 @@ PUT
 
       [test_key]:test_value   put successfully
 
-    **VIN™ NODE RESPONSE**
+    **VIN™ Node Response**
 
     .. code-block:: none
 
@@ -328,12 +342,17 @@ PUT
       17:47:30:360 http: 'putValue' successful:  Key: test_key ; Value: test_value
       17:47:30:360 benc: 'putValue' request latency 0 min 0 sec 0 msec
 
+---------------------------
 
-GET
------
+..
+  GET
+  -----
 
 .. panels::
     :card: none
+
+    **get**
+    ^^^^^^^^^
 
     With a value on the network it can be retrieved by running ``get <key>``. For this example ``test_key`` was used for the ``<key>``. 
 
@@ -347,7 +366,7 @@ GET
 
     ---
 
-    **VIN_CLI RESPONSE**
+    **VIN™ CLI Response**
 
     .. code-block:: none
 
@@ -363,7 +382,7 @@ GET
 
       [test_key]:test_value  is a valid [key]:value pair
 
-    **VIN™ NODE RESPONSE**
+    **VIN™ Node Response**
 
     .. code-block:: none
 
@@ -372,13 +391,17 @@ GET
       17:53:36:417 http: 'getValue' successful:  Key: test_key ; Value: test_value
       17:53:36:417 benc: 'getValue' request latency 0 min 0 sec 0 msec
 
+---------------------------
 
-SPREAD
----------
+..
+  SPREAD
+  ---------
 
 .. panels::
     :card: none
 
+    **spread**
+    ^^^^^^^^^^^^^
     The *VIN™* can spread any file type onto its network. To do do run ``spread <filepath> <pipe_confg>``. Refer to the :ref:`vincli-commands` table for more information regarding these options. An encrypted cryptographic receipt is generated upon spreading, is outputted in the terminal window, and is stored in ``/opt/VIN/receipts/sent`` and ``VIN\receipts\sent\`` directories in *Linux* and *Windows*, respectively. Note: running ``spread`` without a ``<pipe_confg>`` will result in the command utilizing the default pipeline located in the ``defaults.cfg`` file (refer to :ref:`vin-configuration`).
 
     **Parameters**
@@ -393,7 +416,7 @@ SPREAD
 
     ---
 
-    **VIN_CLI RESPONSE**
+    **VIN™ CLI Response**
 
     .. code-block:: none
 
@@ -410,7 +433,7 @@ SPREAD
 
       Receipt saved to location : /opt/VIN/receipts/sent/CR1213465839
 
-    **VIN™ NODE RESPONSE**
+    **VIN™ Node Response**
 
     .. code-block:: none
 
@@ -450,12 +473,17 @@ SPREAD
       18:55:07:503 benc: 'spread' system data size:  20480 ( redundancy = 5 )
       18:55:07:540 http: 'spread' receipt saved to: /opt/VIN/receipts/sent/CR1213465839
 
+---------------------------
 
-GATHER
---------
+..
+  GATHER
+  --------
 
 .. panels::
     :card: none
+
+    **gather**
+    ^^^^^^^^^^^^^
 
     With a file spread to the network, a cryptographic receipt will be generated. Using this receipt, the file can be retrieved from the network via the ``gather`` command. To do so, run ``gather <command> <receipt_path>``. 
 
@@ -471,7 +499,7 @@ GATHER
 
     ---
 
-    **VIN_CLI RESPONSE**
+    **VIN™ CLI Response**
 
     .. code-block:: none
 
@@ -485,7 +513,7 @@ GATHER
 
       File reconstructed at : /opt/VIN/outputs/vin_test/vin_test.txt on node host.
 
-    **VIN™ NODE RESPONSE**
+    **VIN™ Node Response**
 
     .. code-block:: none
       
@@ -501,13 +529,17 @@ GATHER
       19:11:43:037 benc: 'gather' total latency 0 min 1 sec 25 msec
       19:11:43:061 root: File rebuild at: /opt/VIN/outputs/vin_test/vin_test.txt
 
+---------------------------
 
-
-SHARE
---------------
+..
+  SHARE
+  --------------
 
 .. panels::
     :card: none
+
+    **share**
+    ^^^^^^^^^^^^^
 
     The *VIN™* is capable of sharing any file type that is required by the user. To do a basic share run ``share <command> <filepath> <ip_address> <receipt_port> <pipe_config> <runs>``. For more examples of the ``share`` command refer to :ref:`vincli-commands`. Note: To manually confirm that the file has been received navigate to ``/opt/VIN/outputs/`` for *Linux* and ``C:\ProgramData\VIN\outputs`` for *Windows* on teh receiver node. Additionally, ``/opt/VIN/receipts/sent/`` for *Linux* and ``C:\ProgramData\VIN\receipts\sent`` for *Windows* should contain a new cryptographic receipt.
 
@@ -529,7 +561,7 @@ SHARE
 
     ---
 
-    **VIN_CLI RESPONSE**
+    **VIN™ CLI Response**
 
     .. code-block:: none
 
@@ -550,7 +582,7 @@ SHARE
       Response received
       File shared to 10.51.2.21 9090 successfully (run: 2)
 
-    **VIN™ NODE RESPONSE**
+    **VIN™ Node Response**
 
     .. code-block:: none
 
@@ -650,26 +682,31 @@ SHARE
       19:39:04:929 benc: 'share' system data size:  20480 ( redundancy = 5 )
       19:39:04:929 benc: 'share' total latency 0 min 1 sec 66 msec
 
+---------------------------
 
-GETPEERS
-----------------------------------------
+..
+  GETPEERS
+  ------------
 
 .. panels::
     :card: none
 
-      Generates a list of all peers connected to the bootstrap node.
+    **getPeers**
+    ^^^^^^^^^^^^^
 
-      **Parameters**
+    Generates a list of all peers connected to (and including) the bootstrap node.
 
-      None.
-      
-      **Returns**
+    **Parameters**
 
-      ``peer_list``: A list of peers connected to the bootstrap node including the node which requested the peer list.
+    None.
+    
+    **Returns**
+
+    ``peer_list``: A list of peers connected to (and including) the bootstrap node.
 
     ---
 
-     **VIN_CLI RESPONSE**
+    **VIN™ CLI Response**
 
     .. code-block:: none
 
@@ -701,7 +738,7 @@ GETPEERS
       }
 
     
-    **VIN™ NODE RESPONSE**
+    **VIN™ Node Response**
 
     .. code-block:: none
 
@@ -712,12 +749,17 @@ GETPEERS
         19:52:19:070 http: Listing peer: 10.51.2.21:8080
         19:52:19:070 http: MetaData: {"kad_port":"8080","receipt_port":"9090","http_port":"7070"}
 
+---------------------------
 
-DOWNLOAD
-----------
+..
+  DOWNLOAD
+  ----------
 
 .. panels::
     :card: none
+
+    **download**
+    ^^^^^^^^^^^^^
 
     Downloads a file from the network given the provided absolute path to cryptographic receipt file. The file will be saved at given save path.
 
@@ -733,7 +775,7 @@ DOWNLOAD
 
     ---
 
-    **VIN_CLI RESPONSE**
+    **VIN™ CLI Response**
 
     .. code-block:: none
 
@@ -749,7 +791,7 @@ DOWNLOAD
 
       Saving to disk
 
-    **VIN™ NODE RESPONSE**
+    **VIN™ Node Response**
 
     .. code-block:: none
 
@@ -765,11 +807,17 @@ DOWNLOAD
       19:53:42:903 benc: 'gather' decoding latency 0 min 0 sec 6 msec
       19:53:42:904 benc: 'gather' total latency 0 min 1 sec 10 msec
 
-UPDATE_PEER
------------
+---------------------------
+
+..
+  UPDATE_PEER
+  -----------
 
 .. panels::
     :card: none
+
+    **update_peer**
+    ^^^^^^^^^^^^^^^^
 
     Add a receiver peer via its IP address, receipt port, to a fuse folder path to the ``fuse_peers.cfg`` file. Refer to :ref:`vin-install-fuse` for more information on using FUSE.
 
@@ -787,14 +835,14 @@ UPDATE_PEER
 
     ---
 
-    **VIN_CLI RESPONSE**
+    **VIN™ CLI Response**
 
     .. code-block:: none
 
       VIN@10.51.2.22:7070> update_peer 10.51.2.21 9090 share/
       Peer updated.
 
-    **VIN™ NODE RESPONSE**
+    **VIN™ Node Response**
 
     .. code-block:: none
 
@@ -805,12 +853,17 @@ UPDATE_PEER
       19:59:47:012 http: 'updateFusePeer' port: 9090
       19:59:47:012 http: 'updateFusePeer' path: share/
 
+---------------------------
 
-HEALTH_CHECK
--------------
+..
+  HEALTH_CHECK
+  -------------
 
 .. panels::
     :card: none
+
+    **health_check**
+    ^^^^^^^^^^^^^^^^^^
 
     **Parameters**
 
@@ -822,7 +875,7 @@ HEALTH_CHECK
 
     ---
 
-    **VIN_CLI RESPONSE**
+    **VIN™ CLI Response**
 
     .. code-block:: none
 
@@ -841,13 +894,14 @@ HEALTH_CHECK
       node-shutdown-event: false
 
 
-    **VIN™ NODE RESPONSE**
+    **VIN™ Node Response**
 
     .. code-block:: none
 
       20:01:42:819 http: URI: /healthCheck ; request from: 10.51.2.22:45548
       20:01:42:819 http: 'healthCheck' request received
 
+---------------------------
 
 ..
   RECEIPT_VALIDATION
@@ -855,6 +909,9 @@ HEALTH_CHECK
 
   .. panels::
       :card: none
+
+      **receipt_validation**
+      ^^^^^^^^^^^^^^^^^^^^^
 
       **Parameters**
 
@@ -866,24 +923,29 @@ HEALTH_CHECK
 
       ---
 
-      **VIN_CLI RESPONSE**
+      **VIN™ CLI Response**
 
       .. code-block:: none
 
 
-      **VIN™ NODE RESPONSE**
+      **VIN™ Node Response**
 
       .. code-block:: none
 
+  
 
 
 
 
-SHUTDOWN
------------------------
+..
+  SHUTDOWN
+  -----------------------
 
 .. panels::
     :card: none
+
+    **shutdown**
+    ^^^^^^^^^^^^^
 
     To shutdown the particular node which the *VIN™ CLI* is currently connected to, run ``shutdown``.
 
@@ -897,14 +959,14 @@ SHUTDOWN
 
     ---
 
-    **VIN_CLI RESPONSE**
+    **VIN™ CLI Response**
 
     .. code-block:: none
 
       VIN@10.51.2.22:7070> shutdown
       <h1>Exit<h1>
 
-    **VIN™ NODE RESPONSE**
+    **VIN™ Node Response**
 
     .. code-block:: none
 
@@ -914,3 +976,4 @@ SHUTDOWN
       Uninitializing subsystem: Logging SubsystemFUSE: Handle end thread signal 10
 
       20:04:02:301 root: VIN exit
+
