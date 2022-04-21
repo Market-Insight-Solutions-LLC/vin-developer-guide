@@ -4,7 +4,7 @@
 Running the VIN™ on Linux
 ***********************************
 
-Currently, there are two ways to set up the *VIN™*: on the same host system or through a local network. Both require very similar setups but differ in the way that peers are configured. The method for instantiating the *VIN™* for both cases and a example to demonstrate the *VIN™'s* ``PUT``, ``GET``, ``SPREAD``, ``GATER``, ``SHARE``, ``GETPEERS``, and ``SHUTDOWN`` commands are detailed in the upcoming sections. Before running the *VIN™*, it is good to become familiar with the *VIN™* command flags listed in the following table. Examples of how these are used will be shown when setting up the *VIN™*. 
+Currently, there are two ways to set up the *VIN™*: on the same host system or through a local network. Both require very similar setups but differ in the way that peers are configured. The method for instantiating the *VIN™* for both cases and a example to demonstrate the *VIN™'s* ``PUT``, ``GET``, ``SPREAD``, ``GATHER``, ``SHARE``, ``GETPEERS``, and ``SHUTDOWN`` commands are detailed in the upcoming sections. Before running the *VIN™*, it is good to become familiar with the *VIN™* command flags listed in the following table. Examples of how these are used will be shown when setting up the *VIN™*. 
 
 Note: The logs of all the *VIN™* transactions are located in ``/var/log/VIN/logs/``. The examples were completed on virtual machines connected to a system running *Ubuntu*. If any issues occur while setting up the *VIN™* or while running any *VIN™ CLI* commands, refer to the :ref:`tips-troubleshooting-linux` section for assistance.
 
@@ -26,8 +26,8 @@ Note: The logs of all the *VIN™* transactions are located in ``/var/log/VIN/lo
     LVM Port Flag, -v, "This flag specifies that the next string will be the port through which the node communicates with the *LVM*."
 
 
-Setting up the *VIN™* on a Single Host
-==========================================
+Setting up the *VIN™* on a Single Host Machine
+================================================
 
 While setting up the *VIN™* on single host machine doesn't represent a real-world scenario, it can be a useful architecture for developers to test and work with the *VIN™* functionality. To run a simple *VIN™* on a single host machine, a minimum of three *VIN™* nodes, one bootstrap node and two sender/receiver peer nodes, must be instantiated. Additionally, to perform commands with the network, the *VIN™ Command Line Interface* (*VIN™ CLI*) must be started. To do so, the following steps should be completed:
 
@@ -35,49 +35,178 @@ While setting up the *VIN™* on single host machine doesn't represent a real-wo
 * Begin by opening four CLI sessions.
 * In one of the sessions, run ``VIN -b 127.0.0.1``. This will serve as the bootstrap node with the IP address of the host (``127.0.0.1``) and will occupy port ``8000`` for incoming connections. Note: ``VIN -b`` will also work.
 
-.. figure:: images/getting_started_with_vin/linux/bootstrap_connected_host.png
-  :scale: 100
-  :align: center
-  :alt: Bootstrap Connected Successfully on Host
+.. admonition:: Bootstrap Connection Output 
+  :class: admonition-vin-run
 
-  Bootstrap Connected Successfully
+  .. code-block:: none
+    
+    user@vin1:~$ VIN -b
+    17:17:17:665 benc: VIN
+    17:17:17:665 benc: Version:    1.12.3
+    17:17:17:665 benc: Git branch: HEAD - da8fd80c
+    17:17:17:665 benc: Compiled:   Apr  7 2022 , 15:28:19
+    17:17:17:665 benc: Log files:  LOG_07C0F_*
+    17:17:17:765 root: VIN initializing...
+    LVMLibrary initialize_library...
+    BuiltinLvmUDPClient.pl library loaded.
+
+    Logical Virtual Machine (LVM)
+    GraphStax (c) 2019-2021
+    compiled 07:56:17 Dec 22 2021
+    git WindowsDev - 94d910fc
+
+    system.pl library loaded.
+
+    17:17:17:819 root: License validated
+    17:17:17:820 root: Recconnect time (s): 60
+    17:17:17:820 root: VIN as bootstrap PID: 31759 , 0x07C0F
+    17:17:17:820 root: Machine name: vin1 Available IPs:
+    17:17:17:820 root: IP: 127.0.1.1
+    17:17:17:921 root: Kademlia - peerless engine created (0.0.0.0:8000, :::8000)
+    17:17:18:031 root: VIN bootstrap node started at: 0.0.0.0:8000
+
 
 * In another session, run ``VIN -n -a 127.0.0.1 -h 7070 -p 8080 -r 9090``. This will start a *VIN™* peer node and connect it to the bootstrap which has an IP address of ``127.0.0.1``. The peer node starts with an HTTP port of ``7070``, a data (Kademlia) port of ``8080`` and a receipt server port of ``9090``. These ports can be chosen based on the requirements/restrictions of the user.
 
-.. figure:: images/getting_started_with_vin/linux/peer_connected_host.png
-  :scale: 100
-  :align: center
-  :alt: Peer Connected Successfully on Host
+.. admonition:: First VIN™ Peer Connection Output
+  :class: admonition-vin-run
 
-  Peer Connected Successfully
+  .. code-block:: none
+    
+    user@vin1:~$ VIN -n -a 127.0.0.1 -h 7070 -p 8080 -r 9090
+    18:10:28:288 benc: VIN
+    18:10:28:288 benc: Version:    1.12.3
+    18:10:28:288 benc: Git branch: HEAD - da8fd80c
+    18:10:28:288 benc: Compiled:   Apr  7 2022 , 15:28:19
+    18:10:28:288 benc: Log files:  LOG_07C25_*
+    LVMLibrary initialize_library...
+    18:10:28:389 root: VIN initializing...
+    BuiltinLvmUDPClient.pl library loaded.
+
+    Logical Virtual Machine (LVM)
+    GraphStax (c) 2019-2021
+    compiled 07:56:17 Dec 22 2021
+    git WindowsDev - 94d910fc
+
+    system.pl library loaded.
+
+    18:10:28:415 root: License validated
+    18:10:28:415 root: Using HTTP port: 7070
+    18:10:28:415 root: Recconnect time (s): 60
+    18:10:28:415 root: VIN as node PID: 31781 , 0x07C25
+    18:10:28:416 fuse: Initializing fuse peer defaults
+    Initializing subsystem: Logging Subsystem
+    18:10:28:707 root: Node port:  8080
+    18:10:28:707 root: HTTP port:  7070
+    18:10:28:707 root: Recp port:  9090
+    18:10:28:708 root: Bootstrap:  127.0.0.1:8000
+    18:10:28:708 root: Chunk size: 1500
+    18:10:28:708 root: Redundancy: 5
+    18:10:28:710 root: Kademlia - peerless engine created (0.0.0.0:8080, :::8080)
+    18:10:28:711 root: Connecting to bootstrap peer at: 127.0.0.1
+    18:10:28:720 root: Initialized.Ready.
+    18:10:28:830 root: Receipt server starting ( port: 9090 )...
+    18:10:28:831 root: VIN node started. port: 8080 ;receipt port: 9090 ;http port: 7070
+    18:10:28:831 root: Connected to bootstrap at: 127.0.0.1:8000
+    FUSE: Interface thread started
+    FUSE: Open pipe  
 
 * On the third session run ``VIN -n -a 127.0.0.1 -h 7071 -p 8081 -r 9091``. Note that the HTTP, data and receipt ports are different than the node which was first instantiated.
+
+.. admonition:: Second VIN™ Peer Connection Output
+  :class: admonition-vin-run
+
+  .. code-block:: none
+
+    user@vin1:~$ VIN -n -a 127.0.0.1 -h 7071 -p 8081 -r 9091
+    18:13:56:809 benc: VIN
+    18:13:56:809 benc: Version:    1.12.3
+    18:13:56:809 benc: Git branch: HEAD - da8fd80c
+    18:13:56:809 benc: Compiled:   Apr  7 2022 , 15:28:19
+    18:13:56:809 benc: Log files:  LOG_07C8F_*
+    LVMLibrary initialize_library...
+    18:13:56:910 root: VIN initializing...
+    BuiltinLvmUDPClient.pl library loaded.
+
+    Logical Virtual Machine (LVM)
+    GraphStax (c) 2019-2021
+    compiled 07:56:17 Dec 22 2021
+    git WindowsDev - 94d910fc
+
+    system.pl library loaded.
+
+    18:13:56:937 root: License validated
+    18:13:56:937 root: Using HTTP port: 7071
+    18:13:56:937 root: Recconnect time (s): 60
+    18:13:56:937 root: VIN as node PID: 31887 , 0x07C8F
+    18:13:56:940 root: Node port:  8081
+    18:13:56:940 root: HTTP port:  7071
+    18:13:56:940 root: Recp port:  9091
+    18:13:56:940 root: Bootstrap:  127.0.0.1:8000
+    18:13:56:940 root: Chunk size: 1500
+    18:13:56:941 root: Redundancy: 5
+    18:13:56:938 fuse: Initializing fuse peer defaults
+    Initializing subsystem: Logging Subsystem
+    18:13:56:944 root: Kademlia - peerless engine created (0.0.0.0:8081, :::8081)
+    18:13:56:944 root: Connecting to bootstrap peer at: 127.0.0.1
+    18:13:57:194 root: Initialized.Ready.
+    18:13:57:305 root: Receipt server starting ( port: 9091 )...
+    18:13:57:305 root: VIN node started. port: 8081 ;receipt port: 9091 ;http port: 7071
+    18:13:57:306 root: Connected to bootstrap at: 127.0.0.1:8000
+    FUSE: Interface thread started
+    FUSE: Open pipe
+
 * On the final session run ``VIN_CLI 127.0.0.1 7070``. This will successfully launch the *VIN™ CLI* and connect it to the peer with an HTTP port of ``7070``. If everything is working correctly, the CLI window should contain the following:
 
-.. figure:: images/getting_started_with_vin/linux/vincli_connected_host.png
-  :scale: 100
-  :align: center
-  :alt: VIN™ CLI Connected Successfully on Host
+.. admonition:: VIN™ CLI Connection Output
+  :class: admonition-vin-run
 
-  *VIN™ CLI* Connected Successfully
+  .. code-block:: none
+
+    user@vin1:~$ VIN_CLI 127.0.0.1 7070
+    connecting to 127.0.0.1:7070 with timeout: 100 seconds
+    Server pong!
+    Connected!
 
 
-Network Interaction on a Single Host
---------------------------------------------
+Network Interaction on a Single Host Machine
+------------------------------------------------
 
-Putting and Getting A Key-Value Pair
+Put and Get A Key-Value Pair
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The following will showcase how to a put key-value pair onto the network as a simple test to ensure the functionality of the *VIN™*. 
 
 * To put a key-value onto the network, in the *VIN™ CLI* session run ``put <key> <value>``; where ``<key>`` and ``<value>`` can be any string that does not contain spaces. For this example ``test_key`` was used for the ``<key>`` and ``test_value`` for the ``<value>``. The following figure displays the result of running this command; where the top image is the output from the *VIN™ CLI* and the bottom is from the peer.
 
-.. figure:: images/getting_started_with_vin/linux/put_vincli_peer_host.png
-  :scale: 100
-  :align: center
-  :alt: Successful Put
 
-  Successful Put (*VIN™ CLI* = top, Peer = bottom)
+.. admonition:: Successful Put Output
+  :class: admonition-vin-run
+
+  :bold-underline:`VIN™ CLI Output`
+
+  .. code-block:: none
+
+    VIN@127.0.0.1:7070> put test_key test_value
+    Sending payload:
+    {"key":"test_key","value":"test_value"}
+
+    Waiting for response...
+    Status : 200
+    Reason : 'putValue' successful:  Key: test_key ; Value: test_value
+    Response received
+
+    [test_key]:test_value   put successfully
+
+  :bold-underline:`Peer Output`
+
+  .. code-block:: none
+
+    8:29:03:041 http: URI: /putValue ; request from: 127.0.0.1:51072
+    18:29:03:041 http: 'putValue' request received
+    18:29:03:041 http: 'putValue' successful:  Key: test_key ; Value: test_value
+    18:29:03:041 benc: 'putValue' request latency 0 min 0 sec 0 msec
+
 
 * To view the shard that was placed on the *Kademlia* network, navigate to ``/opt/VIN/kademlia/data/`` and proceed through the folder structure until reaching the file.
 * To get a value from the network, in the *VIN™ CLI* session run ``get <key>``; where ``<key>`` is ``test_key`` for this example. The following figure displays the result of running this command; where the top image is the output from the *VIN™ CLI* and the bottom is from the peer.
@@ -90,7 +219,7 @@ The following will showcase how to a put key-value pair onto the network as a si
   Successful Get (*VIN™ CLI* = top, Peer = bottom)
 
 
-Spreading and Gathering a File
+Spread and Gather a File
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The *VIN™* can spread any file type onto it's network. To do a ``spread``, perform the following:
@@ -153,7 +282,7 @@ In the *VIN™ CLI* session run ``getPeers`` to generate a list of all peers con
 For this example, there are two peers with their information listed as follows: ``[unique_node_identifier: { ip_address_of_peers_host peers_data_port }]``
 
 
-Shutting Down the Network
+Shutting Down a Node
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 * Press **ctrl + c** while the bootstrap node's CLI session is active to kill the process.
@@ -284,7 +413,7 @@ In the *VIN™ CLI* session on ``system_1``, run ``getPeers`` to generate a list
 For this example, there are two peers with their information listed as follows: ``[unique_node_identifier: { ip_address_of_peers_host peers_data_port }]``
 
 
-Shutting Down the Network
+Shutting Down a Node
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 * Press **ctrl + c** while the bootstrap node's CLI session is active to kill the process.

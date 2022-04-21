@@ -4,7 +4,7 @@
 Running the VIN™ on Windows
 ***********************************
 
-Currently, there are two ways to set up the *VIN™*: on the same host system or through a local network. Both require very similar setups but differ in the way that peers are configured. The method for instantiating the *VIN™* for both cases and a example to demonstrate the *VIN™'s* ``PUT``, ``GET``, ``SPREAD``, ``GATER``, ``SHARE``, ``GETPEERS``, and ``SHUTDOWN`` commands are detailed in the upcoming sections. Before running the *VIN™*, it is good to become familiar with the *VIN™* command flags listed in the following table. Examples of how these are used will be shown when setting up the *VIN™*. 
+Currently, there are two ways to set up the *VIN™*: on the same host system or through a local network. Both require very similar setups but differ in the way that peers are configured. The method for instantiating the *VIN™* for both cases and a example to demonstrate the *VIN™'s* ``PUT``, ``GET``, ``SPREAD``, ``GATHER``, ``SHARE``, ``GETPEERS``, and ``SHUTDOWN`` commands are detailed in the upcoming sections. Before running the *VIN™*, it is good to become familiar with the *VIN™* command flags listed in the following table. Examples of how these are used will be shown when setting up the *VIN™*. 
 
 Note: The logs of all the *VIN™* transactions are located in ``C:\ProgramData\VIN\logs\``. The examples were completed on virtual machines connected to a system running *Ubuntu*. If any issues occur while setting up the *VIN™* or while running any *VIN™ CLI* commands, refer to the :ref:`tips-troubleshooting-windows` section for assistance.
 
