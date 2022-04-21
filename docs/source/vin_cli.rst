@@ -8,7 +8,6 @@ VIN™ Command Line Interface (CLI)
 
 The following table displays a list of APIs that are accessible through the *VIN™ CLI*. For examples, and the outputs of each command, please refer to the :ref:`vin-cli-func` section.
 
-
 .. _vincli-commands:
 
 .. csv-table:: VIN™ CLI Commands

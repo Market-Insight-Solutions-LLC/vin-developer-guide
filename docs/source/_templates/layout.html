@@ -22,37 +22,36 @@
 
     /* Change the background color to pure white so that images with white backgrounds look ok */
     /* while this changes the background, it also affects the sidebar and search bar. will need to find another way to do this if needed.*/
-    /*div {background-color: #ffffff;}*/
+    /*div {background-color: #ffffff;}*/    
 
-    
+    /*Enables text to be bold and underlined :bold-underline:`Some Text`*/
+    .bold-underline {
+      text-decoration: underline;
+      font-weight: bold;
+    }
 
+    /*-------------------------Customizing admonition text boxes-------------*/
+    .admonition-vin-response {
+      border: solid 1px;
+      border-radius: 25px;
+      border-color: rgb(61, 60, 61);
+    }
 
-  .bold-underline {
-    text-decoration: underline;
-    font-weight: bold;
-  }
-
+    .rst-content .admonition-vin-response  .admonition-title {
+        border: solid 5px;
+        border-radius: 15px 15px 0px 0px;
+        border-color: rgb(61, 60, 61) rgb(55, 8, 228) rgb(255, 0, 255) rgb(0, 255, 157);
+        background: #a34343;
+    }
   
-  .admonition-vin-response {
-    border: solid 1px;
-    border-radius: 25px;
-    border-color: rgb(61, 60, 61);
-  }
+    .rst-content .admonition-vin-response  {
+        background: #f1f1f1
+    }
 
-  .rst-content .admonition-vin-response  .admonition-title {
-      border: solid 5px;
-      border-radius: 15px 15px 0px 0px;
-      border-color: rgb(61, 60, 61) rgb(55, 8, 228) rgb(255, 0, 255) rgb(0, 255, 157);
-      background: #a34343;
-  }
- 
-  .rst-content .admonition-vin-response  {
-      background: #f1f1f1
-  }
-
-  .rst-content .admonition-vin-response .admonition-title:before {
-      content: " 📖";
-  }
+    .rst-content .admonition-vin-response .admonition-title:before {
+        content: " 📖";
+    }
+    /*----------------------------------------------------------------------*/
 
   </style>
 {% endblock %}

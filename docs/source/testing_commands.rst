@@ -52,7 +52,7 @@ EXAMPLE 1: USING PANELS
     :container: container-lg pb-3
     
     .. admonition:: Putting and Getting A Key-Value Pair
-        :class: admonitionvinresponse
+        :class: admonition-vin-response
     
 
         * The ing will showcase how to a put key-value pair onto the network as a simple test to ensure the functionality of the *VIN™*. 
