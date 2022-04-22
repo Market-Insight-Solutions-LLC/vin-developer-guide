@@ -66,7 +66,30 @@
       content: "";
     }
     /*********************FOR USE WITH RUNNING VIN NODES*****************************/
+    
+    /*********************NO BORDER AND BACKGROUND MATCHES RTD COLOR*****************************/
+    .admonition-noborder-background-match {
+      border: none;
+      margin: 0px 175px 0px 125px; /*top right bottom left*/
+    }
 
+    .rst-content .admonition-noborder-background-match  .admonition-title {
+      border: solid 1px;
+      border-radius: 0px 0px 0px 0px;
+      border-color: #333333; /* rgb(55, 8, 228) rgb(255, 0, 255) rgb(0, 255, 157);*/
+      background: #333333;
+      font-size: 110%;
+    }
+  
+    .rst-content .admonition-noborder-background-match  {
+      background: #fcfcfc
+    }
+
+    .rst-content .admonition-noborder-background-match .admonition-title:before {
+      content: "";
+    }
+    /*********************NO BORDER AND BACKGROUND MATCHES RTD COLOR*****************************/
+    /*
     .admonition-vin-response {
       border: solid 1px;
       border-radius: 25px;
@@ -87,6 +110,7 @@
     .rst-content .admonition-vin-response .admonition-title:before {
         content: " 📖";
     }
+    */
     /*----------------------------------------------------------------------*/
 
   </style>

@@ -4,7 +4,25 @@
 Running the VIN™ on Linux
 ***********************************
 
-Currently, there are two ways to set up the *VIN™*: on the same host system or through a local network. Both require very similar setups but differ in the way that peers are configured. The method for instantiating the *VIN™* for both cases and a example to demonstrate the *VIN™'s* ``put``, ``get``, ``spread``, ``gather``, and ``share`` commands are detailed in the upcoming sections. For detailed information on all of the commands available to the *VIN™*, refer to :ref:`vin-cli`. Before running the *VIN™*, it is good to become familiar with the *VIN™* command flags listed in the following table. Examples of how these are used will be shown when setting up the *VIN™*. 
+
+
+.. code-block:: none
+  :class: noBorder
+
+    user@vin1:~$ VIN -
+    17:17:17:665 benc: VIN
+    17:17:17:665 benc: Version:    1.12.3
+    17:17:17:665 benc: Git branch: HEAD - da8fd80c
+    17:17:17:665 benc: Compiled:   Apr  7 2022 , 15:28:19
+    17:17:17:665 benc: Log files:  LOG_07C0F_*
+    17:17:17:765 root: VIN initializing...
+    LVMLibrary initialize_library
+    BuiltinLvmUDPClient.pl library loaded.
+
+   
+
+
+Currently, there are two ways to set up the *VIN™*: on the same host system or through a local network. Both require very similar setups but differ in the way that peers are configured. The method for instantiating the *VIN™* for both cases and a example to demonstrate the *VIN™'s* ``put``, ``get``, ``spread``, ``gather``, ``share``, ``getPeers``, and ``shutdown`` commands are detailed in the upcoming sections. For detailed information on all of the commands available to the *VIN™*, refer to :ref:`vin-cli`. Before running the *VIN™*, it is good to become familiar with the *VIN™* command flags listed in the following table. Examples of how these are used will be shown when setting up the *VIN™*. 
 
 Note: The logs of all the *VIN™* transactions are located in ``/var/log/VIN/logs/``. The examples were completed on virtual machines connected to a system running *Ubuntu*. If any issues occur while setting up the *VIN™* or while running any *VIN™ CLI* commands, refer to the :ref:`tips-troubleshooting-linux` section for assistance.
 
@@ -39,7 +57,7 @@ While setting up the *VIN™* on single host machine doesn't represent a real-wo
   :class: admonition-vin-run
 
   .. code-block:: none
-    
+
     user@vin1:~$ VIN -b
     17:17:17:665 benc: VIN
     17:17:17:665 benc: Version:    1.12.3
