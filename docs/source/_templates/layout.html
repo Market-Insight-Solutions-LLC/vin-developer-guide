@@ -18,17 +18,28 @@
     /*.wy-nav-side {background: #000000;}
     
     /* Make a class to allow for center alignment of text */
-    .text-align-center { text-align: center; }
+    .text-align-center { 
+      text-align: center; 
+    }
 
     /* Change the background color to pure white so that images with white backgrounds look ok */
     /* while this changes the background, it also affects the sidebar and search bar. will need to find another way to do this if needed.*/
     /*div {background-color: #ffffff;}*/    
 
-    /*Enables text to be bold and underlined :bold-underline:`Some Text`*/
+    /*Enables text to be bold and underlined. E.g. :bold-underline:`Some Text`*/
     .bold-underline {
       text-decoration: underline;
       font-weight: bold;
     }
+
+    /*-------------------------Customizing panels--------------------------*/
+    .vin-cli-container {
+      width: 92%;
+      margin: 0px 0px 0px 25px; /*top right bottom left*/
+    }
+
+    /*----------------------------------------------------------------------*/
+
 
     /*-------------------------Customizing admonition text boxes-------------*/
     /*********************FOR USE WITH RUNNING VIN NODES*****************************/

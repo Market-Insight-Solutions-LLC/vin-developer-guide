@@ -4,9 +4,62 @@
 Running the VIN™ on Linux
 ***********************************
 
+.. panels::
+    :card: none
+    :container: example-container
+
+    **exit**
+    ^^^^^^^^^
+
+    Quits the cdurrent sessn of the *VIN™ CLI*.
+
+    :bold-underline:`Parameters`
+    
+    None.
+
+    :bold-underline:`Returns`
+    
+    None.
+
+    ---
+
+    :bold-underline:`VIN™ CLI Response`
+
+    .. code-block:: none
+
+      VIN@10.51.2.22:7070> exit
+      So long for now.
+
+
+.. panels::
+    :card: none
+    :container: example-container1
+
+    **exit**
+    ^^^^^^^^^
+
+    Quits the urrent sfasdfsdfsdf of the *VIN™ CLI*.
+
+    :bold-underline:`Parameters`
+    
+    None.
+
+    :bold-underline:`Returns`
+    
+    None.
+
+    ---
+
+    :bold-underline:`VIN™ CLI Response`
+
+    .. code-block:: none
+
+      VIN@10.51.2.22:7070> exit
+      So long for now.
+
 Currently, there are two ways to set up the *VIN™*: on the same host system or through a local network. Both require very similar setups but differ in the way that peers are configured. The method for instantiating the *VIN™* for both cases and a example to demonstrate the *VIN™'s* ``put``, ``get``, ``spread``, ``gather``, and ``share`` commands are detailed in the upcoming sections. For detailed information on all of the commands available to the *VIN™*, refer to :ref:`vin-cli`. Before running the *VIN™*, it is good to become familiar with the *VIN™* command flags listed in the following table. Examples of how these are used will be shown when setting up the *VIN™*. 
 
-Note: The logs of all the *VIN™* transactions are located in ``/var/log/VIN/logs/``. The examples were completed on virtual machines connected to a system running *Ubuntu*. If any issues occur while setting up the *VIN™* or while running any *VIN™ CLI* commands, refer to the :ref:`tips-troubleshooting-ubuntu` section for assistance.
+Note: The logs of all the *VIN™* transactions are located in ``/var/log/VIN/logs/``. The examples were completed on virtual machines connected to a system running *Ubuntu*. If any issues occur while setting up the *VIN™* or while running any *VIN™ CLI* commands, refer to the :ref:`tips-troubleshooting-linux` section for assistance.
 
 .. This information came from C:\Dev\qtoken-cpp\apps\helper.cpp 
 
@@ -208,7 +261,7 @@ The following will showcase how to a put key-value pair onto the network as a si
     18:29:03:041 benc: 'putValue' request latency 0 min 0 sec 0 msec
 
 
-* To view the shard that was placed on the *Kademlia* network, navigate to ``/opt/VIN/kademlia/data/`` and proceed through the folder structure until reaching the file.
+* To view the value that was placed on the *Kademlia* network, navigate to ``/opt/VIN/kademlia/data/`` and proceed through the folder structure.
 * To get a value from the network, in the *VIN™ CLI* session run ``get <key>``; where ``<key>`` is ``test_key`` for this example. The following figure displays the result of running this command; where the top image is the output from the *VIN™ CLI* and the bottom is from the peer.
 
 .. admonition:: Successful Get Output
@@ -330,7 +383,7 @@ The *VIN™* can spread any file type onto it's network. To do a ``spread``, per
     19:01:24:614 root: Decoding
     19:01:24:621 benc: 'gather' decoding latency 0 min 0 sec 7 msec
     19:01:24:622 benc: 'gather' total latency 0 min 0 sec 9 msec
-    19:01:24:623 root: File rebuild at: /opt/VIN/outputs/vin_test/vin_test(2).txt
+    19:01:24:623 root: File rebuild at: /opt/VIN/outputs/vin_test/vin_test.txt
 
 
 * To inspect the gathered file, navigate to ``/opt/VIN/outputs`` and enter ``ls``. A folder with the name of the file which was gathered should be listed. Enter this folder (``cd <folder_name>``) and run ``ls``. The file which was shared will be displayed and can be inspected to ensure it was successfully gathered. 
@@ -562,7 +615,7 @@ Shutting Down a Node
 
 
 
-.. _tips-troubleshooting-ubuntu:
+.. _tips-troubleshooting-linux:
 
 Tips and Troubleshooting
 ========================
