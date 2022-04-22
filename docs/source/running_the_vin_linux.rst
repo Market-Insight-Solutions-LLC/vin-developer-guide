@@ -4,24 +4,6 @@
 Running the VIN™ on Linux
 ***********************************
 
-
-
-.. code-block:: none
-  :class: noBorder
-
-    user@vin1:~$ VIN -
-    17:17:17:665 benc: VIN
-    17:17:17:665 benc: Version:    1.12.3
-    17:17:17:665 benc: Git branch: HEAD - da8fd80c
-    17:17:17:665 benc: Compiled:   Apr  7 2022 , 15:28:19
-    17:17:17:665 benc: Log files:  LOG_07C0F_*
-    17:17:17:765 root: VIN initializing...
-    LVMLibrary initialize_library
-    BuiltinLvmUDPClient.pl library loaded.
-
-   
-
-
 Currently, there are two ways to set up the *VIN™*: on the same host system or through a local network. Both require very similar setups but differ in the way that peers are configured. The method for instantiating the *VIN™* for both cases and a example to demonstrate the *VIN™'s* ``put``, ``get``, ``spread``, ``gather``, ``share``, ``getPeers``, and ``shutdown`` commands are detailed in the upcoming sections. For detailed information on all of the commands available to the *VIN™*, refer to :ref:`vin-cli`. Before running the *VIN™*, it is good to become familiar with the *VIN™* command flags listed in the following table. Examples of how these are used will be shown when setting up the *VIN™*. 
 
 Note: The logs of all the *VIN™* transactions are located in ``/var/log/VIN/logs/``. The examples were completed on virtual machines connected to a system running *Ubuntu*. If any issues occur while setting up the *VIN™* or while running any *VIN™ CLI* commands, refer to the :ref:`tips-troubleshooting-linux` section for assistance.
@@ -445,7 +427,131 @@ The following will describe how to share files between the peers on the same hos
 * Additionally, the cryptographic receipt for the share is stored in ``/opt/VIN/receipts/sent``, the encrypted data can be seen in ``/opt/VIN/kademlia/data/``, and the sharded data is viewable in ``/var/log/VIN/shards/``. Note: the number of shards is dependant on the size of the file and the parameters set in the ``chunker`` object, which is set in ``defaults.cfg`` (see :ref:`vin-configuration` for more details).
 
 
-.. _local-network-ubuntu:
+Getting Peers Connected to a Peer
+""""""""""""""""""""""""""""""""""""""""
+
+In the *VIN™ CLI* session run ``getPeers`` to generate a list of all peers connected to a bootstrap node. The result will be an output similar to the one displayed in the figure below.  
+
+.. admonition:: Successful GetPeers Output
+  :class: admonition-vin-run
+
+  :bold-underline:`VIN™ CLI Output`
+
+  .. code-block:: none
+
+    VIN@127.0.0.1:7070> getPeers
+    Sending payload:
+    {}
+
+    Waiting for response...
+    Status : 200
+    Reason : OK
+    Response received
+    Got Peers successfully
+    {
+        "127.0.0.1:8000": {
+            "ip": "127.0.0.1",
+            "meta_data": {
+            },
+            "port": "8000"
+        },
+        "127.0.0.1:8081": {
+            "ip": "127.0.0.1",
+            "meta_data": {
+                "http_port": "7071",
+                "kad_port": "8081",
+                "receipt_port": "9091"
+            },
+            "port": "8081"
+        }
+    }
+
+  :bold-underline:`Peer 1 Output`
+
+  .. code-block:: none
+
+    20:27:00:685 http: URI: /getPeers ; request from: 127.0.0.1:51118
+    20:27:00:685 http: 'getPeers' request received
+    20:27:00:947 benc: Found: 3 peers
+    20:27:00:948 http: Listing peer: 127.0.0.1:8000
+    20:27:00:948 http: MetaData: {}
+    20:27:00:948 http: Listing peer: 127.0.0.1:8081
+    20:27:00:948 http: MetaData: {"kad_port":"8081","receipt_port":"9091","http_port":"7071"}
+
+
+As two nodes (the bootstrap and Peer 2) are connected to Peer 1, the results contain two outputs. The first listed is the bootstrap (``127.0.0.1:8000``), while the second is Peer 2 (``127.0.0.1:8081``). Note how Peer 2 contains additional port information which was supplied during its instantiation.
+
+
+Shutting Down the Network
+"""""""""""""""""""""""""
+
+:bold-underline:`Bootstrap`
+
+* Press **ctrl + c** while the bootstrap node's terminal session is active to stop the process.
+
+.. admonition:: Bootstrap Shutdown
+  :class: admonition-vin-run
+
+  :bold-underline:`VIN™ CLI Output`
+
+  .. code-block:: none
+    
+    20:33:25:500 root: VIN exit
+
+:bold-underline:`Peer Connection To *VIN™ CLI* (Sender Peer)`
+
+* To shutdown a peer node which is connected to the *VIN™ CLI*, run ``shutdown`` in the *VIN™ CLI* session connected to the peer. Alternatively, press **ctrl + c** while the peer node's terminal session is active to end the process.
+
+.. admonition:: Peer 1 Connected to VIN CLI Shutdown
+  :class: admonition-vin-run
+
+  :bold-underline:`VIN™ CLI Output`
+
+  .. code-block:: none
+    
+    VIN@127.0.0.1:7070> shutdown
+    <h1>Exit<h1>
+
+  :bold-underline:`Peer 1 Output`
+
+  .. code-block:: none
+
+    20:34:51:455 http: URI: /exit ; request from: 127.0.0.1:51120
+    20:34:51:455 http: 'exit' request received
+    20:34:51:455 http: HTTP server exit
+    Uninitializing subsystem: Logging SubsystemFUSE: Handle end thread signal 10
+  
+    20:34:55:871 root: VIN exit
+
+:bold-underline:`Peer not Connection To *VIN™ CLI* (Receiver Peer)`
+
+* Press **ctrl + c** while the peer node's terminal session is active to kill the process.
+
+.. admonition:: Peer 1 Not Connected to VIN CLI Shutdown
+  :class: admonition-vin-run
+
+  :bold-underline:`Peer 2 Output`
+
+  .. code-block:: none
+
+    20:36:16:654 http: HTTP server exit
+
+:bold-underline:`*VIN™ CLI*`
+
+* To exit from the *VIN™ CLI*, type **exit** and hit **enter** in the *VIN™ CLI* session. Alternatively, press **ctrl + c**.
+
+.. admonition:: Peer 2 Connected to VIN CLI Shutdown
+  :class: admonition-vin-run
+
+  :bold-underline:`VIN™ CLI Output`
+
+  .. code-block:: none
+    
+    VIN@127.0.0.1:7070> exit
+    So long for now.
+
+
+.. _local-network-linux:
 
 
 Setting up the *VIN™* on a Local Network 
