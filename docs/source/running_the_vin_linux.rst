@@ -29,10 +29,10 @@ Note: The logs of all the *VIN™* transactions are located in ``/var/log/VIN/lo
 Setting up the *VIN™* on a Single Host Machine
 ================================================
 
-While setting up the *VIN™* on single host machine doesn't represent a real-world scenario, it can be a useful architecture for developers to test and work with the *VIN™* functionality. To run a simple *VIN™* on a single host machine, a minimum of three *VIN™* nodes, one bootstrap node and two sender/receiver peer nodes, must be instantiated. Additionally, to perform commands with the network, the *VIN™ Command Line Interface* (*VIN™ CLI*) must be started. To do so, the following steps should be completed:
+While setting up the *VIN™* on single host machine doesn't represent a real-world scenario, it can be a useful architecture for developers to test and work with the *VIN™'s* functionality. To run a *VIN™* on a single host machine, a minimum of three *VIN™* nodes, one bootstrap node and two sender/receiver peer nodes, must be instantiated. Additionally, to perform commands with the network, the *VIN™ Command Line Interface* (*VIN™ CLI*) must be connected to one of the peer nodes. To do so, the following steps should be completed:
 
-* Upon installation of the *VIN™*, *VIN™* nodes can be launched from any directory using commands in a command line interface (CLI). 
-* Begin by opening four CLI sessions.
+* With the *VIN™* installed (refer to :ref:`vin-install`, *VIN™* nodes can be launched from any directory using commands in a command line interface (CLI) terminal session. 
+* Begin by opening four terminal sessions.
 * In one of the sessions, run ``VIN -b 127.0.0.1``. This will serve as the bootstrap node with the IP address of the host (``127.0.0.1``) and will occupy port ``8000`` for incoming connections. Note: ``VIN -b`` will also work.
 
 .. admonition:: Bootstrap Connection Output 
@@ -66,9 +66,9 @@ While setting up the *VIN™* on single host machine doesn't represent a real-wo
     17:17:18:031 root: VIN bootstrap node started at: 0.0.0.0:8000
 
 
-* In another session, run ``VIN -n -a 127.0.0.1 -h 7070 -p 8080 -r 9090``. This will start a *VIN™* peer node and connect it to the bootstrap which has an IP address of ``127.0.0.1``. The peer node starts with an HTTP port of ``7070``, a data (Kademlia) port of ``8080`` and a receipt server port of ``9090``. These ports can be chosen based on the requirements/restrictions of the user.
+* In another session, run ``VIN -n -a 127.0.0.1 -h 7070 -p 8080 -r 9090``. This will start a *VIN™* peer node and connect it to the bootstrap which has an IP address of ``127.0.0.1``. The peer node runs with an HTTP port of ``7070``, a data (Kademlia) port of ``8080`` and a receipt server port of ``9090``. These ports can be chosen based on the requirements/restrictions of the user. WHile nodes are capable of both sending and receiving information, for clarity in this example, this node will be treated and referred to as a "sender" node.
 
-.. admonition:: First VIN™ Peer Connection Output
+.. admonition:: VIN™ Sender Peer Connection Output
   :class: admonition-vin-run
 
   .. code-block:: none
@@ -111,9 +111,9 @@ While setting up the *VIN™* on single host machine doesn't represent a real-wo
     FUSE: Interface thread started
     FUSE: Open pipe  
 
-* On the third session run ``VIN -n -a 127.0.0.1 -h 7071 -p 8081 -r 9091``. Note that the HTTP, data and receipt ports are different than the node which was first instantiated.
+* On the third session run ``VIN -n -a 127.0.0.1 -h 7071 -p 8081 -r 9091``. Note that the HTTP, data and receipt ports are different than the node which was first instantiated. This node will be the "receiver" node for this example.
 
-.. admonition:: Second VIN™ Peer Connection Output
+.. admonition:: VIN™ Receiver Peer Connection Output
   :class: admonition-vin-run
 
   .. code-block:: none
