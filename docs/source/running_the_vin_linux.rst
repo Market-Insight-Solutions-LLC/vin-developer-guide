@@ -32,8 +32,8 @@ Setting up the *VIN™* on a Single Host Machine
 While setting up the *VIN™* on single host machine doesn't represent a real-world scenario, it can be a useful architecture for developers to test and work with the *VIN™'s* functionality. To run a *VIN™* on a single host machine, a minimum of three *VIN™* nodes, one bootstrap node and two sender/receiver peer nodes, must be instantiated. Additionally, to perform commands with the network, the *VIN™ Command Line Interface* (*VIN™ CLI*) must be connected to one of the peer nodes. To do so, the following steps should be completed:
 
 * With the *VIN™* installed (refer to :ref:`vin-install`, *VIN™* nodes can be launched from any directory using commands in a command line interface (CLI) terminal session. 
-* Begin by opening four terminal sessions.
-* In one of the sessions, run ``VIN -b 127.0.0.1``. This will serve as the bootstrap node with the IP address of the host (``127.0.0.1``) and will occupy port ``8000`` for incoming connections. Note: ``VIN -b`` will also work.
+* Begin by opening four terminal windows.
+* In one of the windows, run ``VIN -b 127.0.0.1``. This will serve as the bootstrap node with the IP address of the host (``127.0.0.1``) and will occupy port ``8000`` for incoming connections. Note: ``VIN -b`` will also work.
 
 .. admonition:: Bootstrap Connection Output 
   :class: admonition-vin-run
@@ -66,7 +66,7 @@ While setting up the *VIN™* on single host machine doesn't represent a real-wo
     17:17:18:031 root: VIN bootstrap node started at: 0.0.0.0:8000
 
 
-* In another session, run ``VIN -n -a 127.0.0.1 -h 7070 -p 8080 -r 9090``. This will start a *VIN™* peer node and connect it to the bootstrap which has an IP address of ``127.0.0.1``. The peer node runs with an HTTP port of ``7070``, a data (Kademlia) port of ``8080`` and a receipt server port of ``9090``. These ports can be chosen based on the requirements/restrictions of the user. WHile nodes are capable of both sending and receiving information, for clarity in this example, this node will be treated and referred to as a "sender" node.
+* In another terminal window, run ``VIN -n -a 127.0.0.1 -h 7070 -p 8080 -r 9090``. This will start a *VIN™* peer node and connect it to the bootstrap which has an IP address of ``127.0.0.1``. The peer node runs with an HTTP port of ``7070``, a data (Kademlia) port of ``8080`` and a receipt server port of ``9090``. These ports can be chosen based on the requirements/restrictions of the user. While peers are capable of both sending and receiving information, for clarity in this example, this peer will be treated and referred to as a ``sender`` peer.
 
 .. admonition:: VIN™ Sender Peer Connection Output
   :class: admonition-vin-run
@@ -111,7 +111,7 @@ While setting up the *VIN™* on single host machine doesn't represent a real-wo
     FUSE: Interface thread started
     FUSE: Open pipe  
 
-* On the third session run ``VIN -n -a 127.0.0.1 -h 7071 -p 8081 -r 9091``. Note that the HTTP, data and receipt ports are different than the node which was first instantiated. This node will be the "receiver" node for this example.
+* On the third terminal window run ``VIN -n -a 127.0.0.1 -h 7071 -p 8081 -r 9091``. Note that the HTTP, data and receipt ports are different than the node which was first instantiated. This peer will be the ``receiver`` peer for this example.
 
 .. admonition:: VIN™ Receiver Peer Connection Output
   :class: admonition-vin-run
@@ -156,7 +156,7 @@ While setting up the *VIN™* on single host machine doesn't represent a real-wo
     FUSE: Interface thread started
     FUSE: Open pipe
 
-* On the final session run ``VIN_CLI 127.0.0.1 7070``. This will successfully launch the *VIN™ CLI* and connect it to the peer with an HTTP port of ``7070``. If everything is working correctly, the CLI window should contain the following:
+* On the final terminal window run ``VIN_CLI 127.0.0.1 7070``. This will successfully launch the *VIN™ CLI* and connect it to the ``sender`` peer with its HTTP port of ``7070``. If everything is working correctly, the terminal window should contain the following:
 
 .. admonition:: VIN™ CLI Connection Output
   :class: admonition-vin-run
@@ -177,7 +177,7 @@ Put and Get A Key-Value Pair
 
 The following will showcase how to a put key-value pair onto the network as a simple test to ensure the functionality of the *VIN™*. 
 
-* To put a key-value onto the network, in the *VIN™ CLI* session run ``put <key> <value>``; where ``<key>`` and ``<value>`` can be any string that does not contain spaces. For this example ``test_key`` was used for the ``<key>`` and ``test_value`` for the ``<value>``. The following figure displays the result of running this command; where the top image is the output from the *VIN™ CLI* and the bottom is from the peer.
+* To put a key-value onto the network, in the *VIN™ CLI* terminal window run ``put <key> <value>``; where ``<key>`` and ``<value>`` can be any string that does not contain spaces. For this example ``test_key`` was used for the ``<key>`` and ``test_value`` for the ``<value>``. The following figure displays the result of running this command; where the top image is the output from the *VIN™ CLI* and the bottom is from the peer.
 
 
 .. admonition:: Successful Put Output
@@ -198,7 +198,7 @@ The following will showcase how to a put key-value pair onto the network as a si
 
     [test_key]:test_value   put successfully
 
-  :bold-underline:`Peer Output`
+  :bold-underline:`Sender Peer Output`
 
   .. code-block:: none
 
@@ -209,7 +209,7 @@ The following will showcase how to a put key-value pair onto the network as a si
 
 
 * To view the value that was placed on the *Kademlia* network, navigate to ``/opt/VIN/kademlia/data/`` and proceed through the folder structure.
-* To get a value from the network, in the *VIN™ CLI* session run ``get <key>``; where ``<key>`` is ``test_key`` for this example. The following figure displays the result of running this command; where the top image is the output from the *VIN™ CLI* and the bottom is from the peer.
+* To get a value from the network, in the *VIN™ CLI* terminal window run ``get <key>``; where ``<key>`` is ``test_key`` for this example. The following figure displays the result of running this command; where the top image is the output from the *VIN™ CLI* and the bottom is from the ``sender`` peer.
 
 .. admonition:: Successful Get Output
   :class: admonition-vin-run
@@ -230,7 +230,7 @@ The following will showcase how to a put key-value pair onto the network as a si
 
     [test_key]:test_value  is a valid [key]:value pair
 
-  :bold-underline:`Peer Output`
+  :bold-underline:`Sender Peer Output`
 
   .. code-block:: none
 
@@ -246,7 +246,7 @@ Spread and Gather a File
 
 The *VIN™* can spread any file type onto it's network. To do a ``spread``, perform the following:
 
-* In the *VIN™ CLI* session run ``spread <filepath>``; where the ``<filepath>`` is the absolute path and name of the file to be spread. For this example, it is ``/home/user/Dev/vin_test.txt``. For all of the options available to ``spread``, refer to :ref:`vin-cli`. An encrypted cryptographic receipt is generated upon spreading and is stored in ``/opt/VIN/receipts/sent`` and the encrypted data is placed onto the *Kademlia* network and can be seen in ``/opt/VIN/kademlia/data/``. Additionally, the data, broken into shards, is viewable in ``/var/log/VIN/shards/``. Note: the number of shards is dependant on the size of the file and the parameters set in the ``chunker`` object, which is set in ``defaults.cfg`` (see :ref:`vin-configuration` for more details).
+* In the *VIN™ CLI* terminal window run ``spread <filepath>``; where the ``<filepath>`` is the absolute path and name of the file to be spread. For this example, it is ``/home/user/Dev/vin_test.txt``. For all of the options available to ``spread``, refer to :ref:`vin-cli`. An encrypted cryptographic receipt is generated upon spreading and is stored in ``/opt/VIN/receipts/sent`` and the encrypted data is placed onto the *Kademlia* network and can be seen in ``/opt/VIN/kademlia/data/``. Additionally, the data, broken into shards, is viewable in ``/var/log/VIN/shards/``. Note: the number of shards is dependant on the size of the file and the parameters set in the ``chunker`` object, which is set in ``defaults.cfg`` (see :ref:`vin-configuration` for more details).
 * The output of a successful ``spread`` is shown below.
 
 .. admonition:: Successful Spread Output
@@ -266,7 +266,7 @@ The *VIN™* can spread any file type onto it's network. To do a ``spread``, per
 
     Receipt saved to location : /opt/VIN/receipts/sent/CR1299958208
 
-  :bold-underline:`Peer Output`
+  :bold-underline:`Sender Peer Output`
 
   .. code-block:: none
 
@@ -295,7 +295,7 @@ The *VIN™* can spread any file type onto it's network. To do a ``spread``, per
     18:56:39:872 benc: 'spread' system data size:  20480 ( redundancy = 5 )
 
 
-* After a file has been spread to the network a cryptographic receipt will be generated. Using this receipt, the file can be retrieved from the network via the ``gather`` command. To do a basic ``gather``, in the *VIN™ CLI* session run ``gather <receipt_path>``. The ``<receipt_path>`` will be shown in the *VIN™ CLI* session and, for this example, is ``/opt/VIN/receipts/sent/CR1299958208``. For all of the options available to ``gather``, refer to :ref:`vin-cli`. If the file was successfully gathered, the following output should be displayed.
+* After a file has been spread to the network a cryptographic receipt will be generated. Using this receipt, the file can be retrieved from the network via the ``gather`` command. To do a basic ``gather``, in the *VIN™ CLI* terminal window run ``gather <receipt_path>``. The ``<receipt_path>`` will be shown in the *VIN™ CLI* terminal window and, for this example, is ``/opt/VIN/receipts/sent/CR1299958208``. For all of the options available to ``gather``, refer to :ref:`vin-cli`. If the file was successfully gathered, the following output should be displayed.
 
 .. admonition:: Successful Gather Output
   :class: admonition-vin-run
@@ -315,7 +315,7 @@ The *VIN™* can spread any file type onto it's network. To do a ``spread``, per
     File reconstructed at : /opt/VIN/outputs/vin_test/vin_test.txt on node host.
     
 
-  :bold-underline:`Peer Output`
+  :bold-underline:`Sender Peer Output`
 
   .. code-block:: none
     
@@ -342,8 +342,8 @@ Sharing a File
 
 The following will describe how to share files between the peers on the same host system.
 
-* In the *VIN™ CLI* session, the following command should be run after the required information is determined: ``share <filepath> <ip_address> <receipt_port>``. ``<filepath>`` is the absolute path and filename of the file to be shared, for example, in this case it is ``/home/user/Dev/vin_test.txt``. Note: any file type can be shared. The ``<ip_address>`` and ``<receipt_port>`` are ``127.0.0.1`` and ``9091``, or the IP address of the host system and the ``receipt_port`` of the second peer running on it.
-* Thus, the command to run, for this example, becomes ``share /home/user/Dev/vin_test.txt 127.0.0.1 9091``. For all of the options available to ``share``, refer to :ref:`vin-cli`. If everything worked correctly, the following should be displayed on the CLI sessions. 
+* In the *VIN™ CLI* terminal window, the following command should be run after the required information is determined: ``share <filepath> <ip_address> <receipt_port>``. ``<filepath>`` is the absolute path and filename of the file to be shared, for example, in this case it is ``/home/user/Dev/vin_test.txt``. Note: any file type can be shared. The ``<ip_address>`` and ``<receipt_port>`` are ``127.0.0.1`` and ``9091``, or the IP address of the host system and the ``receipt_port`` of the second peer running on it.
+* Thus, the command to run, for this example, becomes ``share /home/user/Dev/vin_test.txt 127.0.0.1 9091``. For all of the options available to ``share``, refer to :ref:`vin-cli`. If everything worked correctly, the following should be displayed: 
 
 .. admonition:: Successful Get Output
   :class: admonition-vin-run
@@ -360,7 +360,7 @@ The following will describe how to share files between the peers on the same hos
     Response received
     File shared to 127.0.0.1 9091 successfully (run: 1)
 
-  :bold-underline:`Peer 1 Output`
+  :bold-underline:`Sender Peer Output`
 
   .. code-block:: none
 
@@ -399,7 +399,7 @@ The following will describe how to share files between the peers on the same hos
     19:06:56:983 benc: 'share' system data size:  20480 ( redundancy = 5 )
     19:06:56:983 benc: 'share' total latency 0 min 1 sec 260 msec
 
-  :bold-underline:`Peer 2 Output`
+  :bold-underline:`Receiver Peer Output`
 
   .. code-block:: none
 
@@ -423,14 +423,14 @@ The following will describe how to share files between the peers on the same hos
     19:06:56:984 cr-s: Share ended. 0 min 1 sec 21 msec
     19:06:57:035 cr-s: Connection with peer: 127.0.0.1:43648 ended
 
-* To manually confirm that the file was shared correctly, enter ``ls`` in the CLI session pointing to the ``/opt/VIN/outputs`` folder directory. A folder with the name of the file which was shared should be listed. Enter this folder (``cd <folder_name>``) and run ``ls``. The file which was shared will be displayed and can be inspected to ensure it was successfully shared.
+* To manually confirm that the file was shared correctly, enter ``ls`` in a terminal window pointing to the ``/opt/VIN/outputs`` folder directory. A folder with the name of the file which was shared should be listed. Enter this folder (``cd <folder_name>``) and run ``ls``. The file which was shared will be displayed and can be inspected to ensure it was successfully shared.
 * Additionally, the cryptographic receipt for the share is stored in ``/opt/VIN/receipts/sent``, the encrypted data can be seen in ``/opt/VIN/kademlia/data/``, and the sharded data is viewable in ``/var/log/VIN/shards/``. Note: the number of shards is dependant on the size of the file and the parameters set in the ``chunker`` object, which is set in ``defaults.cfg`` (see :ref:`vin-configuration` for more details).
 
 
-Getting Peers Connected to a Peer
+Getting the Peers Connected to a Peer
 """"""""""""""""""""""""""""""""""""""""
 
-In the *VIN™ CLI* session run ``getPeers`` to generate a list of all peers connected to a bootstrap node. The result will be an output similar to the one displayed in the figure below.  
+In the *VIN™ CLI* terminal window run ``getPeers`` to generate a list of all peers connected to a particular peer; in this example the ``sender`` peer. The result will be an output similar to the one displayed in the figure below.  
 
 .. admonition:: Successful GetPeers Output
   :class: admonition-vin-run
@@ -466,7 +466,7 @@ In the *VIN™ CLI* session run ``getPeers`` to generate a list of all peers con
         }
     }
 
-  :bold-underline:`Peer 1 Output`
+  :bold-underline:`Sender Peer Output`
 
   .. code-block:: none
 
@@ -479,7 +479,7 @@ In the *VIN™ CLI* session run ``getPeers`` to generate a list of all peers con
     20:27:00:948 http: MetaData: {"kad_port":"8081","receipt_port":"9091","http_port":"7071"}
 
 
-As two nodes (the bootstrap and Peer 2) are connected to Peer 1, the results contain two outputs. The first listed is the bootstrap (``127.0.0.1:8000``), while the second is Peer 2 (``127.0.0.1:8081``). Note how Peer 2 contains additional port information which was supplied during its instantiation.
+As two peers (the bootstrap and the ``recevier`` peer) are connected to ``sender`` peer, the result contain two outputs. The first listed is the bootstrap (``127.0.0.1:8000``), while the second is the ``reevier`` peer (``127.0.0.1:8081``). Note how the ``receiver`` peer contains additional port information which was supplied during its instantiation.
 
 
 Shutting Down the Network
@@ -487,7 +487,7 @@ Shutting Down the Network
 
 :bold-underline:`Bootstrap`
 
-* Press **ctrl + c** while the bootstrap node's terminal session is active to stop the process.
+* Press **ctrl + c** while the bootstrap node's terminal window is active to stop the process.
 
 .. admonition:: Bootstrap Shutdown
   :class: admonition-vin-run
@@ -498,11 +498,11 @@ Shutting Down the Network
     
     20:33:25:500 root: VIN exit
 
-:bold-underline:`Peer Connection To *VIN™ CLI* (Sender Peer)`
+:bold-underline:`Sender Peer Connected To *VIN™ CLI*`
 
-* To shutdown a peer node which is connected to the *VIN™ CLI*, run ``shutdown`` in the *VIN™ CLI* session connected to the peer. Alternatively, press **ctrl + c** while the peer node's terminal session is active to end the process.
+* To shutdown a peer node which is connected to the *VIN™ CLI*, run ``shutdown`` in the *VIN™ CLI* terminal window connected to the peer. Alternatively, press **ctrl + c** while the peer node's terminal window is active to end the process.
 
-.. admonition:: Peer 1 Connected to VIN CLI Shutdown
+.. admonition:: Sender Peer Shutdown
   :class: admonition-vin-run
 
   :bold-underline:`VIN™ CLI Output`
@@ -512,7 +512,7 @@ Shutting Down the Network
     VIN@127.0.0.1:7070> shutdown
     <h1>Exit<h1>
 
-  :bold-underline:`Peer 1 Output`
+  :bold-underline:`Sender Peer Output`
 
   .. code-block:: none
 
@@ -523,24 +523,24 @@ Shutting Down the Network
   
     20:34:55:871 root: VIN exit
 
-:bold-underline:`Peer not Connection To *VIN™ CLI* (Receiver Peer)`
+:bold-underline:`Receiver Peer not Connected To VIN™ CLI`
 
 * Press **ctrl + c** while the peer node's terminal session is active to kill the process.
 
-.. admonition:: Peer 1 Not Connected to VIN CLI Shutdown
+.. admonition:: Receiver Peer Shutdown
   :class: admonition-vin-run
 
-  :bold-underline:`Peer 2 Output`
+  :bold-underline:`Receiver Peer Output`
 
   .. code-block:: none
 
     20:36:16:654 http: HTTP server exit
 
-:bold-underline:`*VIN™ CLI*`
+:bold-underline:`VIN™ CLI`
 
-* To exit from the *VIN™ CLI*, type **exit** and hit **enter** in the *VIN™ CLI* session. Alternatively, press **ctrl + c**.
+* To exit from the *VIN™ CLI*, type **exit** and hit **enter** in the *VIN™ CLI* terminal window. Alternatively, **ctrl + c** may be pressed.
 
-.. admonition:: Peer 2 Connected to VIN CLI Shutdown
+.. admonition:: *VIN™ CLI* Shutdown
   :class: admonition-vin-run
 
   :bold-underline:`VIN™ CLI Output`
@@ -557,13 +557,13 @@ Shutting Down the Network
 Setting up the *VIN™* on a Local Network 
 ===========================================
 
-To run a basic *VIN™* on an IP based network, such as *Amazon Web Services (AWS)*, a Local Area Network (LAN) with routers/switches and Dynamic Host Communication Protocol (DHCP), *VMware*, etc., complete the following steps:
+To run the *VIN™* on an IP based network, such as *Amazon Web Services (AWS)*, a Local Area Network (LAN) with routers/switches and Dynamic Host Communication Protocol (DHCP), *VMware*, etc., complete the following steps:
 
 * For this example, two systems will be used: ``system_1`` and ``system_2``.
-* Complete the *VIN™* installation procedure on each system.
-* On each system, open three CLI sessions. 
+* Complete the *VIN™* installation procedure on each system (refer to :ref:`vin-install`).
+* On each system, open three terminal windows. 
 * Since each system will have it's own IP address, deemed ``<ip_1>`` and ``<ip_2>`` for this example, it is imperative to determine and record it.
-* Run ``ifconfig`` in one of the CLI sessions. Note: if this feature is not installed a message will appear recommending that ``sudo apt-get install -y net-tools`` be run. If this is the case, run this command and re-run ``ifconfig`` to generate an output similar to the one below. 
+* Run ``ifconfig`` in one of the terminal windows. Note: if this feature is not installed a message will appear recommending that ``sudo apt-get install -y net-tools`` be run. If this is the case, run this command and re-run ``ifconfig`` to generate an output similar to the one below. 
   
 .. figure:: images/getting_started_with_vin/linux/ifconfig_results.png
   :scale: 100
