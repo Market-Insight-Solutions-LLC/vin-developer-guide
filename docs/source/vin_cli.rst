@@ -17,7 +17,7 @@ The following table displays a list of APIs that are accessible through the *VIN
     Help, help, "Displays a list of commands available to the *VIN™ CLI*."
     Exit, exit, "Quits the current session of the *VIN™ CLI*."
     Ping, ping, "Pings the connected node to check its status. The connected node responds with a 'Server pong!' message if successful."
-    GetPeers, getPeers, "Get the IP addresses and data ports for all nodes connected on this network. Note: some of the nodes may be stale."
+    GetPeers, getPeers, "Get the IP addresses and data ports for all peers connected to this peer (the one invoking ``getPeers``) on the network. Note: some of the nodes may be stale."
     Put, put <key> <value>, "Puts a user provided value (string) onto the network which corresponds to the user provided key (string).
     
     Example: ``put k1 v1``"
@@ -27,7 +27,7 @@ The following table displays a list of APIs that are accessible through the *VIN
     Spread, spread <filepath>, "Splits a file of any type located in a given filepath (string) into tokens and then spreads them across the network. An encrypted cryptographic receipt is then generated and stored in ``/opt/VIN/receipts/sent`` in *Linux* and ``VIN\receipts\sent\`` in *Windows*.
     
     Example: ``spread /home/foo/baz.zip``"
-    Spread, spread <filepath> <pipe_confg>, "Splits a file of any type located in a given filepath (string) into tokens and then spreads them across the network with a stated pipeline configuration. An encrypted cryptographic receipt is then generated and stored in ``/opt/VIN/receipts/sent`` in *Linux* and ``VIN\receipts\sent\`` in *Windows*.
+    Spread, spread <filepath> <pipe_config>, "Splits a file of any type located in a given filepath (string) into tokens and then spreads them across the network with a stated pipeline configuration. An encrypted cryptographic receipt is then generated and stored in ``/opt/VIN/receipts/sent`` in *Linux* and ``VIN\receipts\sent\`` in *Windows*.
     
     Example 1: ``spread /home/foo/baz.zip /home/foo/pipeline.json``
     
@@ -73,7 +73,7 @@ The following table displays a list of APIs that are accessible through the *VIN
     
     Example: ``update_peer 12.345.678.90 9091 /home/target/share/foo/``"
     Health Check, health_check, "Displays health information for the node."
-    .. Receipt Validation, receipt_validation <file_path>, "Validates a cryptographic receipt at the given file path (including receipt name).
+    Receipt Validation, receipt_validation <file_path>, "Validates a cryptographic receipt at the given file path (including receipt name).
     
     Example: ``receipt_validation /opt/VIN/receipts/sent/CR3736596702``"
     Shutdown, shutdown, "Send a shutdown signal to the current node that the user is connected to."
@@ -305,7 +305,7 @@ Note: the following *VIN™ CLI* descriptions were gathered from a *Linux* opera
     **put**
     ^^^^^^^^^
 
-    A simple way to ensure that the network as been properly configured is to put a key-value pair onto the network. To do so, in the *VIN™ CLI* window, run ``put <key> <value>``. For this example ``test_key`` was used for the ``<key>`` and ``test_value`` for the ``<value>``. Note that the ``<key>`` and ``<value>`` can be any string that doesn't contain spaces. 
+    To do a put so, in the *VIN™ CLI* window, run ``put <key> <value>``. Note that the ``<key>`` and ``<value>`` can be any string that doesn't contain spaces. 
 
     :bold-underline:`Parameters`
     
@@ -409,7 +409,7 @@ Note: the following *VIN™ CLI* descriptions were gathered from a *Linux* opera
     
     ``filepath`` *string*: The absolute path and name of the file to be spread.
 
-    ``pipe_confg`` *string*: The encoders/decoders to use during the spread. Refer to the :ref:`vincli-commands` table for more information.    
+    ``pipe_config`` *string*: The encoders/decoders to use during the spread. Refer to the :ref:`vin-configuration` table for more information.    
 
     :bold-underline:`Returns`
     
