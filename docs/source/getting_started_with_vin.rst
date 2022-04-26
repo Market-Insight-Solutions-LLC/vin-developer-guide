@@ -28,6 +28,9 @@ To ensure the *VIN™* is directed to the required libraries run:
 * ``echo "export LD_LIBRARY_PATH=/usr/local/lib:/usr/lib" > ~/.profile``
 * ``export LD_LIBRARY_PATH=/usr/local/lib:/usr/lib`` 
 
+* Run the following to install additional dependencies:
+  * ``sudo add-apt-repository -y ppa:ubuntu-toolchain-r/test``
+  * ``sudo apt install -y g++-11``
 
 Windows
 ----------
