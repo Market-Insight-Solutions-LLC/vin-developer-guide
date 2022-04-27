@@ -57,7 +57,7 @@ The following table displays a list of APIs that are accessible through the *VIN
     Example 3: ``share create /home/foo/baz.zip 12.345.678.90 9091 [coe,ene,nae,vae,vad,end,cod]``
     
     Example 4: ``share create /home/foo/baz.zip 12.345.678.90 9091 {'pipeline string'}``"
-    Share, share <command> <filepath> <ip_address> <receipt_port> <pipe_config> <runs>, "Performs a spread, enables control over how the file is stored, specifies a stated pipeline configuration and specifies the number of times (runs) to spread the file (primarily used as a metric gathering command). The commands available are: ``append``, ``-a``, ``a`` to append data to existing file; ``overwrite``, ``-o``, ``o`` to overwrite the existing file; ``create``, ``-c``, ``c`` to create a new file.
+    Share, share <command> <filepath> <ip_address> <receipt_port> <pipe_config> <runs>, "Performs a spread, enables control over how the file is stored, specifies a stated pipeline configuration and specifies the number of times (runs) to share the file. The commands available are: ``append``, ``-a``, ``a`` to append data to existing file; ``overwrite``, ``-o``, ``o`` to overwrite the existing file; ``create``, ``-c``, ``c`` to create a new file.
     
     Example 1: ``share append /home/foo/baz.zip 12.345.678.90 9091 /home/foo/pipeline.json 10``
     
@@ -554,7 +554,7 @@ Note: the following *VIN™ CLI* descriptions were gathered from a *Linux* opera
 
     ``receipt_port`` *string*: The receipt port of the receiver peer.
 
-    ``pipe_confg`` *string*: The encoders/decoders to use during the spread. Refer to the :ref:`vincli-commands` table for more information.    
+    ``pipe_confg`` *string*: The encoders/decoders to use during the spread. Refer to the :ref:`vin-configuration` table for more information.    
 
     :bold-underline:`Returns`
     

@@ -19,12 +19,12 @@ The configuration items listed below relate to connection information for the va
     *config_name*, "The name of the *VIN™’s* configuration file.", default_config, "Default value or user-defined."
     *fuse_peers_name*, "The name of the fuse peers configuration file.", fuse_peers, "Default or user-defined."
     *bootstrap_ip*, The bootstrap node’s IP address., 0.0.0.0, "Default value or user-defined."
-    *bootstrap_port*, The port fora node's node-to-bootstrap and bootstrap-to-node communications within the *VIN™*., 8000, "Default value or user-defined."
-    *kademlia_port*, The port through which a *VIN™* node communications bi-directionally with the Kademlia network., 8080, "Default value or user-defined."
+    *bootstrap_port*, The port for a node's node-to-bootstrap and bootstrap-to-node communications within the *VIN™*., 8000, "Default value or user-defined."
+    *kademlia_port*, The port through which a *VIN™* node communicates bi-directionally with the Kademlia network., 8080, "Default value or user-defined."
     *receipt_port*, The port through which a node within the *VIN™* communicates its cryptographic receipt., 9090, "Default value or user-defined."
     *http_port*, The port utilized for HTTP messages by a node within the *VIN™*., 9980, "Default value or user-defined."
     *lvm_port*, The port through which a *VIN™* node communicates with the LVM., 60001, "Default value or user-defined."
-    *redundancy*, The number of holograms that will be replicated from the original data shards and placed on the network., 5, "Default value or user-defined. Lower redundancy leads to higher transmission speeds but lower data reliability/integrity."
+    *redundancy*, The number of holograms that will be produced from the original data shards. All of these will be placed on the network., 5, "Default value or user-defined. Lower redundancy leads to higher transmission speeds but lower data reliability/integrity."
     *log_datasize*, Enables the logging/storing of the size of the file being stored on the network., true, "true: enables logging of the data size.
     
     false: disables logging of the data size."
@@ -40,7 +40,7 @@ The configuration items listed below relate to connection information for the va
 chunker
 =======
 
-The following options pertain to the configuration of the chunkers (shards) used by the *VIN™*.
+The following options pertain to the configuration of the chunkers used by the *VIN™*.
 
 .. csv-table:: Chunker Parameters
     :header: Parameter, Description, Default, Options 
@@ -263,7 +263,7 @@ channels
 decoders
 --------
 
-The following configuration items allow for the enabling/disabling and customization of the various decoders used by the *VIN™*. Be sure that 
+The following configuration items allow for the enabling/disabling and customization of the various decoders used by the *VIN™*.
 
 .. csv-table:: Validation Decoder Parameters
     :header: Parameter, Description, Default, Options 
