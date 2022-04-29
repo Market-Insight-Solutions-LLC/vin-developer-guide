@@ -806,17 +806,17 @@ The *VIN™* can spread any file type onto its network. To do a ``spread`` with 
 * After a file has been spread to the network a cryptographic receipt will be generated as is shown in the ``system_1`` output. Using this receipt, the file can be retrieved from the network via the ``gather`` command. However, the receipt is located on ``system_1`` (the system which did the spread), and ``system_2`` will need to have access to it. Therefore it must be copied to that system before a ``gather`` from ``system_2`` can be complete.
 
 ..
-  * One way of securely copying the file from ``system_1`` to ``system_2`` is by doing the following:
-
-
-  * scp C:\Dev\vin_test.txt 192.168.23.128:\C\Dev\
-
-  .. admonition:: scp of the Cryptographic Receipt
-    :class: admonition-vin-run
-
-    .. code-block:: none
-
-      scp C:\Dev\vin_test.txt 192.168.23.128:\C\Dev\
+  _* One way of securely copying the file from ``system_1`` to ``system_2`` is _by doing the following:
+  _
+  _
+  _* scp C:\Dev\vin_test.txt 192.168.23.128:\C\Dev\
+  _
+  _.. admonition:: scp of the Cryptographic Receipt
+  _  :class: admonition-vin-run
+  _
+  _  .. code-block:: none
+  _
+  _    scp C:\Dev\vin_test.txt 192.168.23.128:\C\Dev\
 
 * With the cryptographic receipt copied, to do a ``gather``, in the *VIN™ CLI* terminal window on ``system_2`` run ``gather <receipt_path>``. The ``<receipt_path>`` for this example is ``C:\ProgramData\VIN\receipts\received\CR1908902645``. For all of the options available to ``gather``, refer to :ref:`vin-cli`. If the file was successfully gathered, the following output should be displayed.
 
