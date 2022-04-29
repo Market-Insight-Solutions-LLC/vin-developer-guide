@@ -59,7 +59,6 @@ While setting up the *VIN™* on single host machine doesn't represent a real-wo
     16:39:32:264 root: Recconnect time (s): 60
     16:39:32:264 root: VIN as bootstrap PID: 19096 , 0x04A98
     16:39:32:269 root: Machine name: DESKTOP-2AHN6VJ Available IPs:
-    16:39:32:269 root: IP: 10.51.1.143
     16:39:32:269 root: IP: 192.168.1.20
     16:39:32:269 root: IP: 192.168.23.1
     16:39:32:269 root: IP: 192.168.56.1
@@ -273,7 +272,6 @@ The *VIN™* can spread any file type onto its network. To do a ``spread`` its d
     16:58:36:001 http: URI: /spread ; request from: 127.0.0.1:50910
     16:58:36:001 benc: 'spread' chunking latency 0 min 0 sec 0 msec
     16:58:36:001 root: Using default coders pipeline
-    Unable to open file
     16:58:36:002 benc: 'spread' file: vin_test.txt size: 31
     16:58:36:001 http: 'spread' request received
     16:58:36:002 root: Validate encoders...
@@ -365,7 +363,6 @@ The following will describe how to do a ``share`` with its default configuration
     17:02:54:682 http: URI: /share ; request from: 127.0.0.1:50970
     17:02:54:682 benc: 'share' chunking latency 0 min 0 sec 0 msec
     17:02:54:683 root: Using default coders pipeline
-    Unable to open file
     17:02:54:682 http: 'share' request received
     17:02:54:683 root: Validate encoders...
     17:02:54:683 benc: 'spread' file: vin_test.txt size: 31
@@ -876,7 +873,6 @@ The following will describe how to share files between the peer on ``system_1`` 
     17:41:27:439 http: URI: /share ; request from: 192.168.1.20:54843
     17:41:27:439 benc: 'share' chunking latency 0 min 0 sec 0 msec
     17:41:27:439 root: Using default coders pipeline
-    Unable to open file
     17:41:27:440 http: 'share' request received
     17:41:27:440 root: Validate encoders...
     17:41:27:440 benc: 'spread' file: vin_network_test.txt size: 32

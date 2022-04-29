@@ -210,7 +210,7 @@ The following will showcase how to a put key-value pair onto the network as a si
 
   .. code-block:: none
 
-    8:29:03:041 http: URI: /putValue ; request from: 127.0.0.1:51072
+    18:29:03:041 http: URI: /putValue ; request from: 127.0.0.1:51072
     18:29:03:041 http: 'putValue' request received
     18:29:03:041 http: 'putValue' successful:  Key: test_key ; Value: test_value
     18:29:03:041 benc: 'putValue' request latency 0 min 0 sec 0 msec
