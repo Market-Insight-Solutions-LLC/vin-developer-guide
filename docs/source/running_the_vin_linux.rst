@@ -161,7 +161,7 @@ While setting up the *VIN™* on single host machine doesn't represent a real-wo
 .. admonition:: VIN™ CLI Connection Output
   :class: admonition-vin-run
 
-  :bold-underline:`VIN™ CLI Output`
+  :bold-underline-admonition:`VIN™ CLI Output`
 
   .. code-block:: none
 
@@ -170,7 +170,7 @@ While setting up the *VIN™* on single host machine doesn't represent a real-wo
     Server pong!
     Connected!
 
-  :bold-underline:`Sender Peer Output`
+  :bold-underline-admonition:`Sender Peer Output`
 
   .. code-block:: none
 
@@ -191,7 +191,7 @@ The following will showcase how to a put key-value pair onto the network as a si
 .. admonition:: Successful Put Output
   :class: admonition-vin-run
 
-  :bold-underline:`VIN™ CLI Output`
+  :bold-underline-admonition:`VIN™ CLI Output`
 
   .. code-block:: none
 
@@ -206,7 +206,7 @@ The following will showcase how to a put key-value pair onto the network as a si
 
     [test_key]:test_value   put successfully
 
-  :bold-underline:`Sender Peer Output`
+  :bold-underline-admonition:`Sender Peer Output`
 
   .. code-block:: none
 
@@ -222,7 +222,7 @@ The following will showcase how to a put key-value pair onto the network as a si
 .. admonition:: Successful Get Output
   :class: admonition-vin-run
 
-  :bold-underline:`VIN™ CLI Output`
+  :bold-underline-admonition:`VIN™ CLI Output`
 
   .. code-block:: none
 
@@ -238,7 +238,7 @@ The following will showcase how to a put key-value pair onto the network as a si
 
     [test_key]:test_value  is a valid [key]:value pair
 
-  :bold-underline:`Sender Peer Output`
+  :bold-underline-admonition:`Sender Peer Output`
 
   .. code-block:: none
 
@@ -260,7 +260,7 @@ The *VIN™* can spread any file type onto its network. To do a ``spread`` with 
 .. admonition:: Successful Spread Output
   :class: admonition-vin-run
 
-  :bold-underline:`VIN™ CLI Output`
+  :bold-underline-admonition:`VIN™ CLI Output`
 
   .. code-block:: none
 
@@ -274,7 +274,7 @@ The *VIN™* can spread any file type onto its network. To do a ``spread`` with 
 
     Receipt saved to location : /opt/VIN/receipts/sent/CR1299958208
 
-  :bold-underline:`Sender Peer Output`
+  :bold-underline-admonition:`Sender Peer Output`
 
   .. code-block:: none
 
@@ -308,7 +308,7 @@ The *VIN™* can spread any file type onto its network. To do a ``spread`` with 
 .. admonition:: Successful Gather Output
   :class: admonition-vin-run
 
-  :bold-underline:`VIN™ CLI Output`
+  :bold-underline-admonition:`VIN™ CLI Output`
 
   .. code-block:: none
     
@@ -323,7 +323,7 @@ The *VIN™* can spread any file type onto its network. To do a ``spread`` with 
     File reconstructed at : /opt/VIN/outputs/vin_test/vin_test.txt on node host.
     
 
-  :bold-underline:`Sender Peer Output`
+  :bold-underline-admonition:`Sender Peer Output`
 
   .. code-block:: none
     
@@ -356,7 +356,7 @@ The following will describe how to do a ``share`` with its default configuration
 .. admonition:: Successful Share Output
   :class: admonition-vin-run
 
-  :bold-underline:`VIN™ CLI Output`
+  :bold-underline-admonition:`VIN™ CLI Output`
 
   .. code-block:: none
 
@@ -368,7 +368,7 @@ The following will describe how to do a ``share`` with its default configuration
     Response received
     File shared to 127.0.0.1 9091 successfully (run: 1)
 
-  :bold-underline:`Sender Peer Output`
+  :bold-underline-admonition:`Sender Peer Output`
 
   .. code-block:: none
 
@@ -407,7 +407,7 @@ The following will describe how to do a ``share`` with its default configuration
     19:06:56:983 benc: 'share' system data size:  20480 ( redundancy = 5 )
     19:06:56:983 benc: 'share' total latency 0 min 1 sec 260 msec
 
-  :bold-underline:`Receiver Peer Output`
+  :bold-underline-admonition:`Receiver Peer Output`
 
   .. code-block:: none
 
@@ -444,7 +444,7 @@ In the *VIN™ CLI* terminal window connected to the ``sender`` peer, run ``getP
 .. admonition:: Successful GetPeers Output
   :class: admonition-vin-run
 
-  :bold-underline:`VIN™ CLI Output`
+  :bold-underline-admonition:`VIN™ CLI Output`
 
   .. code-block:: none
 
@@ -475,7 +475,7 @@ In the *VIN™ CLI* terminal window connected to the ``sender`` peer, run ``getP
         }
     }
 
-  :bold-underline:`Sender Peer Output`
+  :bold-underline-admonition:`Sender Peer Output`
 
   .. code-block:: none
 
@@ -508,14 +508,14 @@ Shutting Down the Network
 .. admonition:: Sender Peer Shutdown Output
   :class: admonition-vin-run
 
-  :bold-underline:`VIN™ CLI Output`
+  :bold-underline-admonition:`VIN™ CLI Output`
 
   .. code-block:: none
     
     VIN@127.0.0.1:7070> shutdown
     <h1>Exit<h1>
 
-  :bold-underline:`Sender Peer Output`
+  :bold-underline-admonition:`Sender Peer Output`
 
   .. code-block:: none
 
@@ -678,7 +678,7 @@ To run the *VIN™* on an IP based network, such as *Amazon Web Services (AWS)*,
 .. admonition:: System 1 VIN™ CLI Connection Output
   :class: admonition-vin-run
 
-  :bold-underline:`System 1 VIN™ CLI Output`
+  :bold-underline-admonition:`System 1 VIN™ CLI Output`
 
   .. code-block:: none
 
@@ -687,7 +687,7 @@ To run the *VIN™* on an IP based network, such as *Amazon Web Services (AWS)*,
     Server pong!
     Connected!
 
-  :bold-underline:`System 1 Peer Output`
+  :bold-underline-admonition:`System 1 Peer Output`
 
   .. code-block:: none
 
@@ -715,7 +715,7 @@ The following will showcase how to a put a key-value pair onto the network. Whil
 .. admonition:: Successful Put Output
   :class: admonition-vin-run
 
-  :bold-underline:`System 1 VIN™ CLI Output`
+  :bold-underline-admonition:`System 1 VIN™ CLI Output`
 
   .. code-block:: none
 
@@ -730,7 +730,7 @@ The following will showcase how to a put a key-value pair onto the network. Whil
 
     [test_key]:test_value   put successfully
 
-  :bold-underline:`System 1 Peer Output`
+  :bold-underline-admonition:`System 1 Peer Output`
 
   .. code-block:: none
 
@@ -746,7 +746,7 @@ The following will showcase how to a put a key-value pair onto the network. Whil
 .. admonition:: Successful Get Output
   :class: admonition-vin-run
 
-  :bold-underline:`System 2 VIN™ CLI Output`
+  :bold-underline-admonition:`System 2 VIN™ CLI Output`
 
   .. code-block:: none
 
@@ -762,7 +762,7 @@ The following will showcase how to a put a key-value pair onto the network. Whil
 
     [test_key]:test_value  is a valid [key]:value pair
 
-  :bold-underline:`System 2 Peer Output`
+  :bold-underline-admonition:`System 2 Peer Output`
 
   .. code-block:: none
 
@@ -784,7 +784,7 @@ The *VIN™* can spread any file type onto its network. To do a ``spread`` with 
 .. admonition:: Successful Spread Output
   :class: admonition-vin-run
 
-  :bold-underline:`System 1 VIN™ CLI Output`
+  :bold-underline-admonition:`System 1 VIN™ CLI Output`
 
   .. code-block:: none
 
@@ -798,7 +798,7 @@ The *VIN™* can spread any file type onto its network. To do a ``spread`` with 
 
     Receipt saved to location : /opt/VIN/receipts/sent/CR1637078311
 
-  :bold-underline:`System 1 Peer Output`
+  :bold-underline-admonition:`System 1 Peer Output`
 
   .. code-block:: none
 
@@ -833,7 +833,7 @@ The *VIN™* can spread any file type onto its network. To do a ``spread`` with 
 .. admonition:: Successful Gather Output
   :class: admonition-vin-run
 
-  :bold-underline:`System 2 VIN™ CLI Output`
+  :bold-underline-admonition:`System 2 VIN™ CLI Output`
 
   .. code-block:: none
     
@@ -847,7 +847,7 @@ The *VIN™* can spread any file type onto its network. To do a ``spread`` with 
 
     File reconstructed at : /opt/VIN/outputs/vin_network_test/vin_network_test.txt on node host.
 
-  :bold-underline:`System 2 Peer Output`
+  :bold-underline-admonition:`System 2 Peer Output`
 
   .. code-block:: none
     
@@ -877,7 +877,7 @@ The following will describe how to share files between the peer on ``system_1`` 
 .. admonition:: Successful Share Output
   :class: admonition-vin-run
 
-  :bold-underline:`System 1 VIN™ CLI Output`
+  :bold-underline-admonition:`System 1 VIN™ CLI Output`
 
   .. code-block:: none
 
@@ -890,7 +890,7 @@ The following will describe how to share files between the peer on ``system_1`` 
     File shared to 10.51.2.22 9090 successfully (run: 1)
     
 
-  :bold-underline:`System 1 Peer Output`
+  :bold-underline-admonition:`System 1 Peer Output`
 
   .. code-block:: none
 
@@ -931,7 +931,7 @@ The following will describe how to share files between the peer on ``system_1`` 
     18:06:42:415 benc: 'share' total latency 0 min 0 sec 321 msec
 
 
-  :bold-underline:`System 2 Peer Output`
+  :bold-underline-admonition:`System 2 Peer Output`
 
   .. code-block:: none
 
@@ -971,7 +971,7 @@ In the *VIN™ CLI* terminal on ``system_1``, run ``getPeers`` to generate a lis
 .. admonition:: System 1 Successful GetPeers Output
   :class: admonition-vin-run
 
-  :bold-underline:`System 1 VIN™ CLI Output`
+  :bold-underline-admonition:`System 1 VIN™ CLI Output`
 
   .. code-block:: none
 
@@ -1002,7 +1002,7 @@ In the *VIN™ CLI* terminal on ``system_1``, run ``getPeers`` to generate a lis
         }
     }
 
-  :bold-underline:`System 1 Peer Output`
+  :bold-underline-admonition:`System 1 Peer Output`
 
   .. code-block:: none
 
@@ -1020,7 +1020,7 @@ In the *VIN™ CLI* terminal on ``system_1``, run ``getPeers`` to generate a lis
 .. admonition:: System 2 Successful GetPeers Output
   :class: admonition-vin-run
 
-  :bold-underline:`System 2 VIN™ CLI Output`
+  :bold-underline-admonition:`System 2 VIN™ CLI Output`
 
   .. code-block:: none
 
@@ -1051,7 +1051,7 @@ In the *VIN™ CLI* terminal on ``system_1``, run ``getPeers`` to generate a lis
         }
     }
 
-  :bold-underline:`System 2 Peer Output`
+  :bold-underline-admonition:`System 2 Peer Output`
 
   .. code-block:: none
 
@@ -1082,14 +1082,14 @@ Shutting Down the Network
 .. admonition:: System 1 Peer Shutdown Output
   :class: admonition-vin-run
 
-  :bold-underline:`System 1 VIN™ CLI Output`
+  :bold-underline-admonition:`System 1 VIN™ CLI Output`
 
   .. code-block:: none
     
     VIN@10.51.2.21:7070> shutdown
     <h1>Exit<h1>
 
-  :bold-underline:`System 1 Peer Output`
+  :bold-underline-admonition:`System 1 Peer Output`
 
   .. code-block:: none
 

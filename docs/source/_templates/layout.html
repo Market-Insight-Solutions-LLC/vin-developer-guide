@@ -26,20 +26,24 @@
     /* while this changes the background, it also affects the sidebar and search bar. will need to find another way to do this if needed.*/
     /*div {background-color: #ffffff;}*/    
 
-    /*Enables text to be bold and underlined. E.g. :bold-underline:`Some Text`*/
-    .bold-underline {
+     /*Enables text to be bold and underlined. E.g. :bold-underline:`Some Text`
+     Be sure to add the class to index.rst*/
+     .bold-underline {
       text-decoration: underline;
       font-weight: bold;
-      font-size: 90%;
     }
-    
-     /*Enables text to be bold and underlined. E.g. :bold-underline:`Some Text`*/
+
+
+    /*Enables text to be bold, underlined and reduced in size. E.g. :bold-underline-admonition:`Some Text`
+      For use as titles with the admonition blocks
+      Be sure to add the class to index.rst*/
     .bold-underline-admonition {
       text-decoration: underline;
       font-weight: bold;
       font-size: 90%;
     }
-
+    
+   
     /*-------------------------Customizing panels--------------------------*/
     .vin-cli-container {
       width: 92%;
@@ -50,7 +54,7 @@
 
 
     /*-------------------------Customizing admonition text boxes-------------*/
-    /*********************FOR USE WITH RUNNING VIN NODES*****************************/
+    /*********************FOR USE WITH RUNNING VIN (BOTH LINUX AND WINDOWS)*****************************/
     .admonition-vin-run {
       border: solid 1px;
       border-radius: 10px;
@@ -73,7 +77,7 @@
     .rst-content .admonition-vin-run .admonition-title:before {
       content: "";
     }
-    /*********************FOR USE WITH RUNNING VIN NODES*****************************/
+    /*********************FOR USE WITH RUNNING VIN (BOTH LINUX AND WINDOWS)*****************************/
     
     /*********************NO BORDER AND BACKGROUND MATCHES RTD COLOR*****************************/
     .admonition-noborder-background-match {

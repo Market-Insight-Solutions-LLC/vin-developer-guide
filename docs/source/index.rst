@@ -39,4 +39,7 @@ To begin, refer to the :ref:`vin-install` section to install the *VIN™*. Then,
 
 
 .. role:: bold-underline
-    :class: bold-underline
+   :class: bold-underline
+
+.. role:: bold-underline-admonition
+   :class: bold-underline-admonition
