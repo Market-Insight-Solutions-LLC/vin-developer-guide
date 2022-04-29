@@ -254,7 +254,7 @@ Spread and Gather a File
 
 The *VIN™* can spread any file type onto its network. To do a ``spread`` with its default configuration (see :ref:`vin-configuration` and :ref:`vin-cli` for more details), perform the following:
 
-* In the *VIN™ CLI* terminal window run ``spread <filepath>``; where the ``<filepath>`` is the path and name of the file to be spread. For this example, it is ``/home/user/Dev/vin_test.txt``. For all of the options available to ``spread``, refer to :ref:`vin-cli`. An encrypted cryptographic receipt is generated upon spreading and is stored in ``/opt/VIN/receipts/sent/`` and the encrypted data is placed onto the *Kademlia* network and can be seen in ``/opt/VIN/kademlia/data/``. Additionally, the data, broken into shards, is viewable in ``/var/log/VIN/shards/``. Note: the number of shards is dependant on the size of the file and the parameters set in the ``chunker`` object, which is set in ``defaults.cfg`` (see :ref:`vin-configuration` for more details).
+* In the *VIN™ CLI* terminal window run ``spread <filepath>``; where the ``<filepath>`` is the absolute (or relative) path and name of the file to be spread. For this example, it is ``/home/user/Dev/vin_test.txt``. For all of the options available to ``spread``, refer to :ref:`vin-cli`. An encrypted cryptographic receipt is generated upon spreading and is stored in ``/opt/VIN/receipts/sent/`` and the encrypted data is placed onto the *Kademlia* network and can be seen in ``/opt/VIN/kademlia/data/``. Additionally, the data, broken into shards, is viewable in ``/var/log/VIN/shards/``. Note: the number of shards is dependant on the size of the file and the parameters set in the ``chunker`` object, which is set in ``defaults.cfg`` (see :ref:`vin-configuration` for more details).
 * The output of a successful ``spread`` is shown below.
 
 .. admonition:: Successful Spread Output
@@ -436,8 +436,8 @@ The following will describe how to do a ``share`` with its default configuration
 * Additionally, the cryptographic receipt for the share is stored in ``/opt/VIN/receipts/sent/``, the encrypted data can be seen in ``/opt/VIN/kademlia/data/``, and the sharded data is viewable in ``/var/log/VIN/shards/``. Note: the number of shards is dependant on the size of the file and the parameters set in the ``chunker`` object, which is set in ``defaults.cfg`` (see :ref:`vin-configuration` for more details).
 
 
-Getting (Listing) available Peers on the Network
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Getting (Listing) the available Peers on the Network
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 In the *VIN™ CLI* terminal window connected to the ``sender`` peer, run ``getPeers`` to generate a list of all peers available to the ``sender`` peer. The result will be an output similar to the one displayed in the figure below.  
 
@@ -560,7 +560,7 @@ To run the *VIN™* on an IP based network, such as *Amazon Web Services (AWS)*,
 
 * For this example, two systems will be used: ``system_1`` and ``system_2``.
 * Complete the *VIN™* installation procedure on each system (refer to :ref:`vin-install`).
-* On each system, open four terminal windows. 
+* On each system, open three terminal windows. 
 * Since each system will have it's own IP address, deemed ``<ip_1>`` and ``<ip_2>`` for this example, it is imperative to determine and record them.
 * Run ``ifconfig`` in one of the terminal windows. Note: if this feature is not installed a message will appear recommending that ``sudo apt-get install -y net-tools`` be run. If this is the case, run this command and re-run ``ifconfig`` to generate an output similar to the one below. 
   
@@ -592,7 +592,7 @@ To run the *VIN™* on an IP based network, such as *Amazon Web Services (AWS)*,
 
 * Record the address next to the ``inet`` parameter for the required network connection (i.e., wired or wireless). From the output above, the ``inet`` value of ``10.51.2.21`` corresponds to an ethernet connection, ``eth0``, and was recorded as ``<ip_1>``.
 * Repeat the above instructions for ``system_2`` and record ``<ip_2>`` (for this example it is ``10.51.2.22``).
-* In one of the three terminal windows on ``system_1``, run ``VIN -b <ip_1>``. For this example, ``<ip_1>`` is ``10.51.2.21``. This will serve as the bootstrap node and will occupy port ``8000`` for incoming connections. If the bootstrap was successfully launched, its terminal window will output similar results to those below.
+* In one of the terminal windows on ``system_1`` run ``VIN -b <ip_1>``. For this example, ``<ip_1>`` is ``10.51.2.21``. This will serve as the bootstrap node and will occupy port ``8000`` for incoming connections. If the bootstrap was successfully launched, its terminal window will output similar results to those below.
 
 
 .. admonition:: System 1 Bootstrap Connection Output 
@@ -693,7 +693,7 @@ To run the *VIN™* on an IP based network, such as *Amazon Web Services (AWS)*,
 
     16:06:28:353 http: URI: /ping? ; request from: 10.51.2.21:38238
 
-* In a terminal window on ``system_2``, run ``VIN -n -a <ip_1> -h 7070 -p 8080 -r 9090``, where ``<ip_1>`` is ``10.51.2.21`` for this example. This will connect to the bootstrap located on ``system_1`` with its IP address of ``<ip_1>``.
+* In one of the terminal windows on ``system_2`` run ``VIN -n -a <ip_1> -h 7070 -p 8080 -r 9090``, where ``<ip_1>`` is ``10.51.2.21`` for this example. This will connect to the bootstrap located on ``system_1`` with its IP address of ``<ip_1>``.
 * In the second terminal window, run ``VIN_CLI <ip_2> 7070`` to connect to the peer on ``system_2`` using ``<ip_2>`` (or ``10.51.2.22`` for this example).  
 * In the final terminal window, navigate to ``/opt/VIN/outputs/``. This directory will contain the received file after it has been reconstructed during the example in the following section. 
 
@@ -828,22 +828,25 @@ The *VIN™* can spread any file type onto its network. To do a ``spread`` with 
 
 
 * After a file has been spread to the network a cryptographic receipt will be generated as is shown in the ``system_1`` output. Using this receipt, the file can be retrieved from the network via the ``gather`` command. However, the receipt is located on ``system_1`` (the system which did the spread), and ``system_2`` will need to have access to it. Therefore it must be copied to that system before a ``gather`` from ``system_2`` can be complete.
-* One way of securely copying the file from ``system_1`` to ``system_2`` is by doing the following:
 
-  * In the fourth terminal window on ``system_2`` run ``scp <receipt_location_and_filename> <ip_2>:<location_and_filename>``
-  * For this example, ``<receipt_location_and_filename>`` is ``/opt/VIN/receipts/sent/CR1637078311`` (as outputted from the ``spread``), ``<ip_2>`` is ``10.51.2.22`` (``system_2`` IP address) and ``<location_and_filename>`` is ``/opt/VIN/receipts/received/CR1637078311``.
-  * Type **y** and hit **enter**.
-  * Enter the user's password.
-  * The output from the process will look similar to the following:
+.. 
 
-.. admonition:: scp of the Cryptographic Receipt
-  :class: admonition-vin-run
+  * One way of securely copying the file from ``system_1`` to ``system_2`` is by doing the following:
 
-  .. code-block:: none
+    * In the fourth terminal window on ``system_2`` run ``scp <receipt_location_and_filename> <ip_2>:<location_and_filename>``
+    * For this example, ``<receipt_location_and_filename>`` is ``/opt/VIN/receipts/sent/CR1637078311`` (as outputted from the ``spread``), ``<ip_2>`` is ``10.51.2.22`` (``system_2`` IP address) and ``<location_and_filename>`` is ``/opt/VIN/receipts/received/CR1637078311``.
+    * Type **y** and hit **enter**.
+    * Enter the user's password.
+    * The output from the process will look similar to the following:
 
-    user@vin1:~/Dev$ scp /opt/VIN/receipts/sent/CR1637078311 10.51.2.22:/opt/VIN/receipts/received/CR1637078311
-    user@10.51.2.22's password:
-    CR1638703191             100% 2428     4.5MB/s   00:00
+  .. admonition:: scp of the Cryptographic Receipt
+    :class: admonition-vin-run
+
+    .. code-block:: none
+
+      user@vin1:~/Dev$ scp /opt/VIN/receipts/sent/CR1637078311 10.51.2.22:/opt/VIN/receipts/received/CR1637078311
+      user@10.51.2.22's password:
+      CR1638703191             100% 2428     4.5MB/s   00:00
 
 
 * With the cryptographic receipt copied, to do a ``gather``, in the *VIN™ CLI* terminal window on ``system_2`` run ``gather <receipt_path>``. The ``<receipt_path>`` for this example is ``/opt/VIN/receipts/received/CR1637078311``. For all of the options available to ``gather``, refer to :ref:`vin-cli`. If the file was successfully gathered, the following output should be displayed.
@@ -880,7 +883,7 @@ The *VIN™* can spread any file type onto its network. To do a ``spread`` with 
     File reconstructed at : /opt/VIN/outputs/vin_network_test/vin_network_test.txt on node host.
    
 
-* To inspect the gathered file, navigate to ``/opt/VIN/outputs/`` and enter ``ls``. A folder with the name of the file which was gathered should be listed. Enter this folder (``cd <folder_name>``) and run ``ls``. The file which was shared will be displayed and can be inspected to ensure it was successfully gathered. 
+* To inspect the gathered file, refer to the folder ``/opt/VIN/outputs/`` and enter ``ls``. A folder with the name of the file which was gathered should be listed. Enter this folder (``cd <folder_name>``) and run ``ls``. The file which was shared will be displayed and can be inspected to ensure it was successfully gathered. 
 * Note: the ``gather`` command, by default, will create a new file on the system after it finishes; thus, the gathered file may have a number appended to end of the filename. For more information on how to overwrite the file, or append to its contents, refer to the :ref:`vincli-commands` table.
 
 
@@ -889,7 +892,7 @@ Share a File
 
 The following will describe how to share files between the peer on ``system_1`` to the peer located on ``system_2``. Note: the peer/*VIN™ CLI* connection on ``system_2`` could also be used to perform the share.
 
-* In the *VIN™ CLI* terminal window on ``system_1``, the following command should be run after the required information is determined: ``share <filepath> <ip_address> <receipt_port>``. ``<filepath>`` is the absolute path and filename of the file to be shared, for example, in this case it is ``/home/user/Dev/vin_network_test.txt``. Note: any file type can be shared. The ``<ip_address>`` and ``<receipt_port>`` are ``<ip_2>`` (or ``10.51.2.22`` for this example) and ``9091``, or the IP address of ``system_2`` and the ``receipt_port`` of the peer running on it.
+* In the *VIN™ CLI* terminal window on ``system_1``, the following command should be run after the required information is determined: ``share <filepath> <ip_address> <receipt_port>``. ``<filepath>`` is the path and filename of the file to be shared, for example, in this case it is ``/home/user/Dev/vin_network_test.txt``. Note: any file type can be shared. The ``<ip_address>`` and ``<receipt_port>`` are ``<ip_2>`` (or ``10.51.2.22`` for this example) and ``9090``, or the IP address of ``system_2`` and the ``receipt_port`` of the peer running on it.
 * Thus, the command to run, for this example, becomes ``share /home/user/Dev/vin_network_test.txt 10.51.2.22 9090``. If everything worked correctly, the following should be displayed on ``system_1`` and ``system_2``. 
 
 .. admonition:: Successful Share Output
@@ -976,13 +979,13 @@ The following will describe how to share files between the peer on ``system_1`` 
     
 
 
-* To manually confirm that the file was shared correctly, enter ``ls`` in the CLI session on ``system_2`` pointing to the ``/opt/VIN/outputs/`` folder directory. A folder with the name of the file which was shared should be listed. Enter this folder (``cd <folder_name>``) and run ``ls``. The file which was shared will be displayed and can be inspected to ensure it was successfully shared.
+* To manually confirm that the file was shared correctly, on ``system_2`` navigate to the ``/opt/VIN/outputs/`` folder directory and enter ``ls``. A folder with the name of the file which was shared should be listed. Enter this folder (``cd <folder_name>``) and run ``ls``. The file which was shared will be displayed and can be inspected to ensure it was successfully shared.
 * Note the ``(1)`` added to the the reconstructed file name ``vin_network_test(1).txt``. As a basic ``share`` was performed, a copy of the file that was spread in the above example was created. To overwrite, append to the existing, or create a new file, refer to the available options in the :ref:`vin-cli` section. The table located on this page also details all of the options available to ``share``.
-* Additionally, the cryptographic receipt for the share is stored in ``/opt/VIN/receipts/sent/``, the encrypted data can be seen in ``/opt/VIN/kademlia/data/``, and the sharded data is viewable in ``/var/log/VIN/shards/``. Note: the number of shards is dependant on the size of the file and the parameters set in the ``chunker`` object, which is set in ``defaults.cfg`` (see :ref:`vin-configuration` for more details).
+* Additionally, the cryptographic receipt for the ``share`` is stored in ``/opt/VIN/receipts/sent/``, the encrypted data can be seen in ``/opt/VIN/kademlia/data/``, and the sharded data is viewable in ``/var/log/VIN/shards/``. Note: the number of shards is dependant on the size of the file and the parameters set in the ``chunker`` object, which is set in ``defaults.cfg`` (see :ref:`vin-configuration` for more details).
 
 
-Getting (Listing) available Peers on the Network
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Getting (Listing) the available Peers on the Network
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 In the *VIN™ CLI* terminal on ``system_1``, run ``getPeers`` to generate a list of all peers connected to a bootstrap node. The result will be an output similar to the one displayed in the figure below.  
 
@@ -1083,7 +1086,7 @@ In the *VIN™ CLI* terminal on ``system_1``, run ``getPeers`` to generate a lis
 
 * Once again two peers (the bootstrap and the ``system_1`` peer) are displayed in the outputs. The first listed is the bootstrap (``10.51.2.21:8000``), while the second is the ``system_1`` peer (``10.51.2.21:8080``). 
 
-Shutting Down a Node
+Shutting Down the Network
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 * Press **ctrl + c** while the bootstrap node's terminal window is active to stop the process.
