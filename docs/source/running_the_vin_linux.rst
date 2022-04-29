@@ -13,6 +13,7 @@ Note: The logs of all the *VIN™* transactions are located in ``/var/log/VIN/lo
 .. csv-table:: VIN™ Command Flags
     :header: Flag Name, Command Line Instruction, Description
     :widths: 20 10 70
+    :width: 100%
 
     List Flag, -l, "Displays a list out all *VIN™* flags along with their descriptions."
     Bootstrap Flag, -b, "Indicates that the node being instantiated will be a bootstrap node."

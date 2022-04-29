@@ -13,6 +13,7 @@ The following table displays a list of APIs that are accessible through the *VIN
 .. csv-table:: VIN™ CLI Commands
     :header: Command, Command Line Instruction, Description
     :widths: 15 40 50 
+    :width: 100%
 
     Help, help, "Displays a list of commands available to the *VIN™ CLI*."
     Exit, exit, "Quits the current session of the *VIN™ CLI*."

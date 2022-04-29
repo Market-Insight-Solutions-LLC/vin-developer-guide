@@ -14,6 +14,7 @@ The configuration items listed below relate to connection information for the va
 .. csv-table:: Connection Parameters
     :header: Parameter, Description, Default, Options 
     :widths: 15 40 15 30
+    :width: 100%
 
     *version*, "The current version of the *VIN™*.", 0.1.0, "Do not modify."
     *config_name*, "The name of the *VIN™’s* configuration file.", default_config, "Default value or user-defined."
@@ -45,6 +46,7 @@ The following options pertain to the configuration of the chunkers used by the *
 .. csv-table:: Chunker Parameters
     :header: Parameter, Description, Default, Options 
     :widths: 15 40 15 30
+    :width: 100%
 
     *log*, "Enables the logging/storing of the shards for inspection/debug purposes.", true, "true: enables logging of shards.
     
@@ -66,6 +68,7 @@ Any flags utilized by the *VIN™* for a *Linux* operating system are listed in 
 .. csv-table:: Flag (Linux) Parameters
     :header: Parameter, Description, Default, Options 
     :widths: 15 40 15 30
+    :width: 100%
 
     *bootstrap*, "Sets the current *VIN™* node as a bootstrap node for a *Linux* OS.", false,	"true: set the node as bootstrap. 
     
@@ -80,6 +83,7 @@ Any flags utilized by the *VIN™* for a *Windows* operating system are listed i
 .. csv-table:: Win_flag (Windows) Parameters
     :header: Parameter, Description, Default, Options 
     :widths: 15 40 15 30
+    :width: 100%
 
     *bootstrap*, "Sets the current *VIN™* node as a bootstrap node for a *Windows* OS.", true, "true: set the node as bootstrap. 
     
@@ -96,6 +100,7 @@ The following options pertain to the locations of configuration and logs generat
 .. csv-table:: File (Linux) Parameters
     :header: Parameter, Description, Default, Options 
     :widths: 15 40 15 30
+    :width: 100%
 
     *base*, "The base location in the *VIN™* folder structure.", ``/opt/VIN/``, "Default value or user-defined."
     *config*, "The location of the configuration file is located here.", ``/etc/opt/VIN/``, "Default value or user-defined."
@@ -114,6 +119,7 @@ The options below configure the location of the files/folders related to the cry
 .. csv-table:: Receipt (Linux) Parameters
     :header: Parameter, Description, Default, Options 
     :widths: 15 40 15 30
+    :width: 100%
 
     *base*, "The base storage location of the cryptographic receipts used by the *VIN™*.", ``/opt/VIN/receipts/``, "Default value or user-defined."
     *received*, "The location of any received cryptographic receipts.", ``/opt/VIN/receipts/received/``, "Default value or user-defined."
@@ -128,6 +134,7 @@ The configuration items below set the location of the files/folders associated w
 .. csv-table:: Receipt (Linux) Parameters
     :header: Parameter, Description, Default, Options 
     :widths: 15 40 15 30
+    :width: 100%
 
     *base*, "The storage location for any public/private keys utilized by the *VIN™*.",	``/opt/VIN/keys/``, "Default value or user-defined."
     *crt*, "The location and name of the public key.", ``/opt/VIN/keys/self.crt``, "Default value or user-defined."
@@ -144,6 +151,7 @@ The following options pertain to the locations of configuration and logs generat
 .. csv-table:: Win_file (Windows) Parameters
     :header: Parameter, Description, Default, Options 
     :widths: 15 40 15 30
+    :width: 100%
 
     *base*, "The base location in the *VIN™* folder structure.", "``\\VIN\\ (e.g., C:\ProgramData\VIN\)``", "Default value or user-defined."
     *config*, "The location of the configuration file is located here.", "``config\\ (e.g., C:\Program Files\Virgil\VIN\config\)``", "Default value or user-defined."
@@ -162,6 +170,7 @@ The options below configure the location of the files/folders related to the cry
 .. csv-table:: Receipt (Windows) Parameters
     :header: Parameter, Description, Default, Options 
     :widths: 15 40 15 30
+    :width: 100%
 
     *base*, "The base storage location of the cryptographic receipts used by the *VIN™*.", "``receipts\\ (e.g., C:\ProgramData\VIN\receipts\)``", "Default value or user-defined."
     *received*, "The location of any received cryptographic receipts.", "``receipts\\received\\ (e.g., C:\ProgramData\VIN\receipts\received\)``", "Default value or user-defined."
@@ -176,6 +185,7 @@ The configuration items below set the location of the files/folders associated w
 .. csv-table:: Key (Windows) Parameters
     :header: Parameter, Description, Default, Options 
     :widths: 15 40 15 30
+    :width: 100%
 
     *base*, "The storage location for any public/private keys utilized by the *VIN™*.", "``keys (e.g., C:\ProgramData\VIN\keys\)``", "Default value or user-defined."
     *crt*, "The location and name of the public key.", "``keys\\self.crt (e.g., C:\ProgramData\VIN\keys\self.crt)``", "Default value or user-defined."
@@ -192,6 +202,7 @@ These options allow for the configuration of various timeouts used to ensure the
 .. csv-table:: Timeout Parameters
     :header: Parameter, Description, Default, Options 
     :widths: 15 40 15 30
+    :width: 100%
 
     *dht*, "The time (milliseconds) to wait before the failure of a request to/from the distributed hash table is confirmed.", 2000, "Default value or user-defined."
     *receipt*, "The time (microseconds) to wait before a failure on the sending side of the cryptographic receipt transmission is confirmed.", 600000000, "Default value or user-defined. Note: this must be greater than the reactor timeout."
@@ -214,6 +225,7 @@ The following configuration items allow for the customization of the various enc
 .. csv-table:: Concurrent Encoder Parameters
     :header: Parameter, Description, Default, Options 
     :widths: 15 40 15 30
+    :width: 100%
 
     *name*, "The name of the encoder.", ConcurrentEncoder, "Default value."
     *log*, "Enables/disables log generation for the output of the encoder.", false, "true: enables logging of the output. 
@@ -228,6 +240,7 @@ The following configuration items allow for the customization of the various enc
 .. csv-table:: Entanglement Encoder Parameters
     :header: Parameter, Description, Default, Options 
     :widths: 15 40 15 30
+    :width: 100%
 
     *name*, "The name of the encoder.", EntanglementEncoder, "Default value."
     *log*, "Enables/disables log generation for the output of the encoder.", false, "true: enables logging of the output. 
@@ -238,6 +251,7 @@ The following configuration items allow for the customization of the various enc
 .. csv-table:: Naming Encoder Parameters
     :header: Parameter, Description, Default, Options 
     :widths: 15 40 15 30
+    :width: 100%
 
     *name*, "The name of the encoder.", NamingEncoder, "Default value."
     *log*, "Enables/disables log generation for the output of the encoder.", false, "true: enables logging of the output. 
@@ -248,6 +262,7 @@ The following configuration items allow for the customization of the various enc
 .. csv-table:: Validation Encoder Parameters
     :header: Parameter, Description, Default, Options 
     :widths: 15 40 15 30
+    :width: 100%
 
     *name*, "The name of the encoder.", ValidationEncoder, "Default value."
     *id*, "Errors related to this encoder will be stored under this id name.", "network_data", "Default or user-defined."
@@ -268,6 +283,7 @@ The following configuration items allow for the enabling/disabling and customiza
 .. csv-table:: Validation Decoder Parameters
     :header: Parameter, Description, Default, Options 
     :widths: 15 40 15 30
+    :width: 100%
 
     *name*, "The name of the decoder.", ValidationDecoder, "Default value."
     *id*, "Errors related to this encoder will be stored under this id name.", "network_data", "Default or user-defined."
@@ -279,6 +295,7 @@ The following configuration items allow for the enabling/disabling and customiza
 .. csv-table:: Entanglement Decoder Parameters
     :header: Parameter, Description, Default, Options 
     :widths: 15 40 15 30
+    :width: 100%
 
     *name*, "The name of the decoder.", EntanglementDecoder, "Default value."
     *log*, "Enables/disables log generation for the output of the decoder.", false, "true: enables logging of the output. 
@@ -289,6 +306,7 @@ The following configuration items allow for the enabling/disabling and customiza
 .. csv-table:: Concurrent Decoder Parameters
     :header: Parameter, Description, Default, Options 
     :widths: 15 40 15 30
+    :width: 100%
 
     *name*, "The name of the decoder.", ConcurrentDecoder, "Default value."
     *log*, "Enables/disables log generation for the output of the decoder.", false, "true: enables logging of the output. 
@@ -309,6 +327,7 @@ The following configuration items allow for the customization of the various enc
 .. csv-table:: Alpha-Entanglement Encoder Parameters
     :header: Parameter, Description, Default, Options 
     :widths: 15 40 15 30
+    :width: 100%
 
     *name*, "The name of the encoder.", AlphaEntEncoder, "Default value."
     *log*, "Enables/disables log generation for the output of the encoder.", false, "true: enables logging of the output. 
@@ -319,6 +338,7 @@ The following configuration items allow for the customization of the various enc
 .. csv-table:: Cipher Encoder Parameters
     :header: Parameter, Description, Default, Options 
     :widths: 15 40 15 30
+    :width: 100%
 
     *name*, "The name of the encoder.", CipherEncoder, "Default value."
     *bits*, "The size of the key used by the cipher coder algorithm.", 256, "128, 192, or 256."
@@ -330,6 +350,7 @@ The following configuration items allow for the customization of the various enc
 .. csv-table:: Pipeline Prep Encoder Parameters
     :header: Parameter, Description, Default, Options 
     :widths: 15 40 15 30
+    :width: 100%
 
     *name*, "The name of the encoder.", PipelinePreEncoder, "Default value."
     *log*, "Enables/disables log generation for the output of the encoder.", false, "true: enables logging of the output. 
@@ -340,6 +361,7 @@ The following configuration items allow for the customization of the various enc
 .. csv-table:: Concurrent Encoder Parameters
     :header: Parameter, Description, Default, Options 
     :widths: 15 40 15 30
+    :width: 100%
 
     *name*, "The name of the encoder.", ConcurrentEncoder, "Default value."
     *log*, "Enables/disables log generation for the output of the encoder.", false, "true: enables logging of the output. 
@@ -354,6 +376,7 @@ The following configuration items allow for the customization of the various enc
 .. csv-table:: Entanglement Encoder Parameters
     :header: Parameter, Description, Default, Options 
     :widths: 15 40 15 30
+    :width: 100%
 
     *name*, "The name of the encoder.", EntanglementEncoder, "Default value."
     *log*, "Enables/disables log generation for the output of the encoder.", false, "true: enables logging of the output. 
@@ -364,6 +387,7 @@ The following configuration items allow for the customization of the various enc
 .. csv-table:: Naming Encoder Parameters
     :header: Parameter, Description, Default, Options 
     :widths: 15 40 15 30
+    :width: 100%
 
     *name*, "The name of the encoder.", NamingEncoder, "Default value."
     *log*, "Enables/disables log generation for the output of the encoder.", false, "true: enables logging of the output. 
@@ -374,6 +398,7 @@ The following configuration items allow for the customization of the various enc
 .. csv-table:: Polar Encoder Parameters
     :header: Parameter, Description, Default, Options 
     :widths: 15 40 15 30
+    :width: 100%
 
     *name*, "The name of the encoder.", PolarEncoder, "Default value."
     *frames*, "The number of K-byte segments in the message to be encoded (is not currently implemented in the Polar Encoder).", "1", "Default or user-defined."
@@ -387,6 +412,7 @@ The following configuration items allow for the customization of the various enc
 .. csv-table:: Reed-Solomon Encoder Parameters
     :header: Parameter, Description, Default, Options 
     :widths: 15 40 15 30
+    :width: 100%
 
     *name*, "The name of the encoder.", ReedSolomonEncoder, "Default value."
     *log*, "Enables/disables log generation for the output of the encoder.", false, "true: enables logging of the output. 
@@ -397,6 +423,7 @@ The following configuration items allow for the customization of the various enc
 .. csv-table:: Reed-Solomon Block Encoder Parameters
     :header: Parameter, Description, Default, Options 
     :widths: 15 40 15 30
+    :width: 100%
 
     *name*, "The name of the encoder.", RSBlockEncoder, "Default value."
     *perc_parity*, "The percentage of parity bytes created per data byte. Every two parity bytes can find and correct a single corrupted byte among a set of bytes. Note: Not every parity byte can correct every data byte. Each parity byte only 'covers' for a certain set of data bytes.", 100, "0 – 100; where a higher number improves data recovery. The default is recommended."
@@ -408,6 +435,7 @@ The following configuration items allow for the customization of the various enc
 .. csv-table:: Validation Encoder Parameters
     :header: Parameter, Description, Default, Options 
     :widths: 15 40 15 30
+    :width: 100%
 
     *name*, "The name of the encoder.", ValidationEncoder, "Default value."
     *id*, "Errors related to this encoder will be stored under this id name.", "network_data", "Default or user-defined."
@@ -422,6 +450,7 @@ channels
 .. csv-table:: Binary Symmetric Channel (BSC) Parameters
     :header: Parameter, Description, Default, Options 
     :widths: 15 40 15 30
+    :width: 100%
 
     *name*, "The name of the channel.", BSCChannel, "Default value."
     *log*, "Enables/disables log generation for the output of the channel.", false, "true: enables logging of the output. 
@@ -434,6 +463,7 @@ channels
 .. csv-table:: Jammer Channel Parameters
     :header: Parameter, Description, Default, Options 
     :widths: 15 40 15 30
+    :width: 100%
 
     *name*, "The name of the channel.", JammerChannel, "Default value."
     *log*, "Enables/disables log generation for the output of the channel.", false, "true: enables logging of the output. 
@@ -451,6 +481,7 @@ The following configuration items allow for the customization of the various dec
 .. csv-table:: Validation Decoder Parameters
     :header: Parameter, Description, Default, Options 
     :widths: 15 40 15 30
+    :width: 100%
 
     *name*, "The name of the decoder.", ValidationDecoder, "Default value."
     *id*, "Errors related to this encoder will be stored under this id name.", "network_data", "Default or user-defined."
@@ -462,6 +493,7 @@ The following configuration items allow for the customization of the various dec
 .. csv-table:: Reed-Solomon Block Decoder Parameters
     :header: Parameter, Description, Default, Options 
     :widths: 15 40 15 30
+    :width: 100%
 
     *name*, "The name of the decoder.", RSBlockDecoder, "Default value."
     *perc_parity*, "The percentage of parity bytes created per data byte. Every two parity bytes can find and correct a single corrupted byte among a set of bytes. Note: Not every parity byte can correct every data byte. Each parity byte only 'covers' for a certain set of data bytes.", 100, "0 – 100; where a higher number improves data recovery. The default is recommended."
@@ -473,6 +505,7 @@ The following configuration items allow for the customization of the various dec
 .. csv-table:: Reed-Solomon Decoder Parameters
     :header: Parameter, Description, Default, Options 
     :widths: 15 40 15 30
+    :width: 100%
 
     *name*, "The name of the decoder.", ReedSolomonDecoder, "Default value."
     *log*, "Enables/disables log generation for the output of the decoder.", false, "true: enables logging of the output. 
@@ -483,6 +516,7 @@ The following configuration items allow for the customization of the various dec
 .. csv-table:: Polar Decoder Parameters
     :header: Parameter, Description, Default, Options 
     :widths: 15 40 15 30
+    :width: 100%
 
     *name*, "The name of the decoder.", PolarDecoder, "Default value."
     *frames*, "The number of K-byte segments in the message to be encoded (is not currently implemented in the Polar Encoder)", "1", "Default or user-defined."
@@ -496,6 +530,7 @@ The following configuration items allow for the customization of the various dec
 .. csv-table:: Entanglement Decoder Parameters
     :header: Parameter, Description, Default, Options 
     :widths: 15 40 15 30
+    :width: 100%
 
     *name*, "The name of the decoder.", EntanglementDecoder, "Default value."
     *log*, "Enables/disables log generation for the output of the decoder.", false, "true: enables logging of the output. 
@@ -506,6 +541,7 @@ The following configuration items allow for the customization of the various dec
 .. csv-table:: Concurrent Decoder Parameters
     :header: Parameter, Description, Default, Options 
     :widths: 15 40 15 30
+    :width: 100%
 
     *name*, "The name of the decoder.", ConcurrentDecoder, "Default value."
     *log*, "Enables/disables log generation for the output of the decoder.", false, "true: enables logging of the output. 
@@ -516,6 +552,7 @@ The following configuration items allow for the customization of the various dec
 .. csv-table:: Pipeline Prep Decoder Parameters
     :header: Parameter, Description, Default, Options 
     :widths: 15 40 15 30
+    :width: 100%
 
     *name*, "The name of the decoder.", PipelinePreDecoder, "Default value."
     *log*, "Enables/disables log generation for the output of the decoder.", false, "true: enables logging of the output. 
@@ -526,6 +563,7 @@ The following configuration items allow for the customization of the various dec
 .. csv-table:: Cipher Decoder Parameters
     :header: Parameter, Description, Default, Options 
     :widths: 15 40 15 30
+    :width: 100%
 
     *name*, "The name of the decoder.", CipherDecoder, "Default value."
     *bits*, "The size of the key used by the cipher coder algorithm.", 256, "128, 192, or 256."
@@ -537,6 +575,7 @@ The following configuration items allow for the customization of the various dec
 .. csv-table:: Alpha-Entanglement Decoder Parameters
     :header: Parameter, Description, Default, Options 
     :widths: 15 40 15 30
+    :width: 100%
 
     *name*, "The name of the decoder.", AlphaEntDecoder, "Default value."
     *log*, "Enables/disables log generation for the output of the decoder.", false, "true: enables logging of the output. 

@@ -7,6 +7,7 @@ Glossary
 .. csv-table::
     :header: Terminology, Acronym, Definition
     :widths: 25 15 60
+    :width: 100%
 
     *Amazon Web Services*,AWS,"*Amazon Web Services*, Inc. is a subsidiary of *Amazon* providing on-demand cloud computing platforms and APIs to individuals, companies, and governments, on a metered pay-as-you-go basis."
     *Bit Error Rate*,BER,"In digital transmission, the number of bit errors is the number of received bits of a data stream over a communication channel that have been altered due to noise, interference, distortion, or bit synchronization errors. The bit error rate is the number of bit errors per unit time."
