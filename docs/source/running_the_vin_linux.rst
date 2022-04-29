@@ -436,7 +436,7 @@ The following will describe how to do a ``share`` with its default configuration
 * Additionally, the cryptographic receipt for the share is stored in ``/opt/VIN/receipts/sent/``, the encrypted data can be seen in ``/opt/VIN/kademlia/data/``, and the sharded data is viewable in ``/var/log/VIN/shards/``. Note: the number of shards is dependant on the size of the file and the parameters set in the ``chunker`` object, which is set in ``defaults.cfg`` (see :ref:`vin-configuration` for more details).
 
 
-Getting (Listing) the available Peers on the Network
+Getting the available Peers on the Network
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 In the *VIN™ CLI* terminal window connected to the ``sender`` peer, run ``getPeers`` to generate a list of all peers available to the ``sender`` peer. The result will be an output similar to the one displayed in the figure below.  
@@ -963,7 +963,7 @@ The following will describe how to share files between the peer on ``system_1`` 
 * Additionally, the cryptographic receipt for the ``share`` is stored in ``/opt/VIN/receipts/sent/``, the encrypted data can be seen in ``/opt/VIN/kademlia/data/``, and the sharded data is viewable in ``/var/log/VIN/shards/``. Note: the number of shards is dependant on the size of the file and the parameters set in the ``chunker`` object, which is set in ``defaults.cfg`` (see :ref:`vin-configuration` for more details).
 
 
-Getting (Listing) the available Peers on the Network
+Getting the available Peers on the Network
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 In the *VIN™ CLI* terminal on ``system_1``, run ``getPeers`` to generate a list of all peers connected to a bootstrap node. The result will be an output similar to the one displayed in the figure below.  

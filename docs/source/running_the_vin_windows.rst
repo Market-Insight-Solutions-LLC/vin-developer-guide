@@ -423,7 +423,7 @@ The following will describe how to do a ``share`` with its default configuration
 * Additionally, the cryptographic receipt for the share is stored in ``C:\ProgramData\VIN\receipts\sent\``, the encrypted data can be seen in ``C:\ProgramData\VIN\kademlia\data\``, and the sharded data is viewable in ``C:\ProgramData\VIN\shards\``. Note: the number of shards is dependant on the size of the file and the parameters set in the ``chunker`` object, which is set in ``defaults.cfg`` (see :ref:`vin-configuration` for more details).
 
 
-Getting (Listing) the available Peers on the Network
+Getting the available Peers on the Network
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 In the *VIN™ CLI* terminal window connected to the ``sender`` peer, run ``getPeers`` to generate a list of all peers available to the ``sender`` peer. The result will be an output similar to the one displayed in the figure below. 
@@ -871,6 +871,8 @@ The following will describe how to share files between the peer on ``system_1`` 
 
   :bold-underline:`System 1 Peer Output`
 
+  .. code-block:: none
+
     17:41:27:439 http: URI: /share ; request from: 192.168.1.20:54843
     17:41:27:439 benc: 'share' chunking latency 0 min 0 sec 0 msec
     17:41:27:439 root: Using default coders pipeline
@@ -940,7 +942,7 @@ The following will describe how to share files between the peer on ``system_1`` 
 * Additionally, the cryptographic receipt for the ``share`` is stored in ``C:\ProgramData\VIN\receipts\sent\``, the encrypted data can be seen in ``C:\ProgramData\VIN\kademlia\data``, and the sharded data is viewable in ``C:\ProgramData\VIN\shards\``. Note: the number of shards is dependant on the size of the file and the parameters set in the ``chunker`` object, which is set in ``defaults.cfg`` (see :ref:`vin-configuration` for more details).
 
 
-Getting (Listing) the available Peers on the Network
+Getting the available Peers on the Network
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 In the *VIN™ CLI* terminal on ``system_1``, run ``getPeers`` to generate a list of all peers connected to a bootstrap node. The result will be an output similar to the one displayed in the figure below.   
