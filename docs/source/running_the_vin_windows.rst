@@ -623,7 +623,6 @@ To run the *VIN™* on an IP based network, such as *Amazon Web Services (AWS)*,
     17:20:08:300 benc: Log files:  LOG_00C30_*
     17:20:08:410 root: VIN initializing...
     LVMLibrary initialize_library...
-    Licensed to Vcinity until 2022-12-31
     BuiltinLvmUDPClient.pl library loaded.
 
     Logical Virtual Machine (LVM)
@@ -888,51 +887,48 @@ The following will describe how to share files between the peer on ``system_1`` 
 
   :bold-underline:`System 1 Peer Output`
 
-
-  17:41:27:439 http: URI: /share ; request from: 192.168.1.20:54843
-  17:41:27:439 benc: 'share' chunking latency 0 min 0 sec 0 msec
-  17:41:27:439 root: Using default coders pipeline
-  Unable to open file
-  17:41:27:440 http: 'share' request received
-  17:41:27:440 root: Validate encoders...
-  17:41:27:440 benc: 'spread' file: vin_network_test.txt size: 32
-  17:41:27:440 root: Enc: ConcurrentEncoder EntanglementEncoder NamingEncoder ValidationEncoder
-  17:41:27:440 enco: ConcurrentEncoder: avg marks: 1014
-  17:41:27:440 http: Share to: 192.168.23.128:9090 ; File: vin_network_test.txt ; Size: 32 ; Flag: create
-  17:41:27:440 benc: 'spread' encoding latency 0 min 0 sec 2 msec
-  17:41:27:441 root: Validate decoders...
-  17:41:27:441 root: Dec: ValidationDecoder EntanglementDecoder ConcurrentDecoder
-  17:41:27:441 root: Validate channels...
-  17:41:27:441 root: No channels specified
-  17:41:27:441 root: Logging pre-encoded file
-  17:41:27:441 root: Encoding
-  17:41:27:441 benc: Found: 3 peers
-  Job Watchdog (1): Job finished signal received
-  Job Watchdog (1): Tasks (Processing 0, Pending 0)
-  17:41:27:443 root: Sharing to peer: 192.168.23.128:9090
-  17:41:27:443 benc: 'spread' uploading latency 0 min 0 sec 163 msec
-  17:41:27:443 benc: 'spread' total latency 0 min 0 sec 166 msec
-  17:41:27:443 benc: 'spread' encoded data size: 4096  ( 1 chunks of 4096 bytes )
-  17:41:27:443 benc: 'spread' system data size:  20480 ( redundancy = 5 )
-  17:41:27:463 root: Receipt session started
-  17:41:27:463 root: Connected to peer: 192.168.23.128:9090
-  17:41:27:525 root: Session token obtained
-  17:41:27:525 root: Sending receipt
-  17:41:27:525 root: Sending status request
-  17:41:27:538 root: Status: File rebuild OK
-  17:41:27:538 benc: 'share' receipt latency 0 min 0 sec 110 msec
-  17:41:27:538 root: Sharing end session
-  17:41:27:539 benc: 'share' encoded data size: 4096
-  17:41:27:539 benc: 'share' system data size:  20480 ( redundancy = 5 )
-  17:41:27:539 benc: 'share' total latency 0 min 0 sec 277 msec
+    17:41:27:439 http: URI: /share ; request from: 192.168.1.20:54843
+    17:41:27:439 benc: 'share' chunking latency 0 min 0 sec 0 msec
+    17:41:27:439 root: Using default coders pipeline
+    Unable to open file
+    17:41:27:440 http: 'share' request received
+    17:41:27:440 root: Validate encoders...
+    17:41:27:440 benc: 'spread' file: vin_network_test.txt size: 32
+    17:41:27:440 root: Enc: ConcurrentEncoder EntanglementEncoder NamingEncoder ValidationEncoder
+    17:41:27:440 enco: ConcurrentEncoder: avg marks: 1014
+    17:41:27:440 http: Share to: 192.168.23.128:9090 ; File: vin_network_test.txt ; Size: 32 ; Flag: create
+    17:41:27:440 benc: 'spread' encoding latency 0 min 0 sec 2 msec
+    17:41:27:441 root: Validate decoders...
+    17:41:27:441 root: Dec: ValidationDecoder EntanglementDecoder ConcurrentDecoder
+    17:41:27:441 root: Validate channels...
+    17:41:27:441 root: No channels specified
+    17:41:27:441 root: Logging pre-encoded file
+    17:41:27:441 root: Encoding
+    17:41:27:441 benc: Found: 3 peers
+    Job Watchdog (1): Job finished signal received
+    Job Watchdog (1): Tasks (Processing 0, Pending 0)
+    17:41:27:443 root: Sharing to peer: 192.168.23.128:9090
+    17:41:27:443 benc: 'spread' uploading latency 0 min 0 sec 163 msec
+    17:41:27:443 benc: 'spread' total latency 0 min 0 sec 166 msec
+    17:41:27:443 benc: 'spread' encoded data size: 4096  ( 1 chunks of 4096 bytes )
+    17:41:27:443 benc: 'spread' system data size:  20480 ( redundancy = 5 )
+    17:41:27:463 root: Receipt session started
+    17:41:27:463 root: Connected to peer: 192.168.23.128:9090
+    17:41:27:525 root: Session token obtained
+    17:41:27:525 root: Sending receipt
+    17:41:27:525 root: Sending status request
+    17:41:27:538 root: Status: File rebuild OK
+    17:41:27:538 benc: 'share' receipt latency 0 min 0 sec 110 msec
+    17:41:27:538 root: Sharing end session
+    17:41:27:539 benc: 'share' encoded data size: 4096
+    17:41:27:539 benc: 'share' system data size:  20480 ( redundancy = 5 )
+    17:41:27:539 benc: 'share' total latency 0 min 0 sec 277 msec
 
 
   :bold-underline:`System 2 Peer Output`
 
   .. code-block:: none
     
-  17:41:27:539 benc: 'share' total latency 0 min 0 sec 277 msec
-
     13:11:31:487 benc: Share session created. Peer addr: 192.168.1.20:54844
     13:11:31:492 cr-s: Start sharing session
     13:11:31:492 cr-s: Send session id
