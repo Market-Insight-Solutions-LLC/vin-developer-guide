@@ -209,7 +209,7 @@ The following will showcase how to a put key-value pair onto the network as a si
     16:46:11:859 http: 'putValue' request received
     16:46:11:859 http: 'putValue' successful:  Key: test_key ; Value: test_value
 
-* To view the value that was placed on the *Kademlia* network, navigate to ``C:\ProgramData\VIN\kademlia\data\`` to find a folder containing two alpha-numeric characters. Proceed through the folder structure until reaching a file and when opened it should contain ``test_value``.
+* To view the value that was placed on the *Kademlia* network, navigate to ``C:\ProgramData\VIN\kademlia\data\`` to find a folder containing two alpha-numeric characters. Proceed through the folder structure until reaching a file and when opened it should contain ``<value>``.
 * To get a value from the network, in the *VIN™ CLI* terminal window run ``get <key>``; where ``<key>`` is ``test_key`` for this example. The following displays the result of running this command; where the top image is the output from the *VIN™ CLI* and the bottom is from the ``sender`` peer.
 
 .. admonition:: Successful Get Output
@@ -713,7 +713,7 @@ The following will showcase how to put a key-value pair onto the network. While 
     17:30:06:304 http: 'putValue' request received
     17:30:06:304 http: 'putValue' successful:  Key: test_key ; Value: test_value
 
-* To view the shard that was placed on the *Kademlia* network, navigate to ``C:\ProgramData\VIN\kademlia\data\`` to find a folder containing two alpha-numeric characters. Proceed through the folder structure until reaching a file and when opened it should contain ``test_value``.
+* To view the shard that was placed on the *Kademlia* network, navigate to ``C:\ProgramData\VIN\kademlia\data\`` to find a folder containing two alpha-numeric characters. Proceed through the folder structure until reaching a file and when opened it should contain ``<value>``.
 * To get a value from the network, in the *VIN™ CLI* terminal window on ``system_2``, run ``get <key>``; where ``<key>`` is ``test_key`` for this example. The following output displays the result of running this command.
 
 .. admonition:: Successful Get Output

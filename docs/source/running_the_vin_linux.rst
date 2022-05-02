@@ -217,7 +217,7 @@ The following will showcase how to a put key-value pair onto the network as a si
     18:29:03:041 benc: 'putValue' request latency 0 min 0 sec 0 msec
 
 
-* To view the value that was placed on the *Kademlia* network, navigate to ``/opt/VIN/kademlia/data/`` to find a folder containing two alpha-numeric characters. Proceed through the folder structure until reaching a file and when opened it should contain ``test_value``.
+* To view the value that was placed on the *Kademlia* network, navigate to ``/opt/VIN/kademlia/data/`` to find a folder containing two alpha-numeric characters. Proceed through the folder structure until reaching a file and when opened it should contain ``<value>``.
 * To get a value from the network, in the *VIN™ CLI* terminal window run ``get <key>``; where ``<key>`` is ``test_key`` for this example. The following displays the result of running this command; where the top image is the output from the *VIN™ CLI* and the bottom is from the ``sender`` peer.
 
 .. admonition:: Successful Get Output
@@ -741,7 +741,7 @@ The following will showcase how to a put a key-value pair onto the network. Whil
     16:16:32:130 benc: 'putValue' request latency 0 min 0 sec 0 msec
 
 
-* To view the value that was placed on the *Kademlia* network, navigate to ``/opt/VIN/kademlia/data/`` to find a folder containing two alpha-numeric characters. Proceed through the folder structure until reaching a file and when opened it should contain ``test_value``.
+* To view the value that was placed on the *Kademlia* network, navigate to ``/opt/VIN/kademlia/data/`` to find a folder containing two alpha-numeric characters. Proceed through the folder structure until reaching a file and when opened it should contain ``<value>``.
 * To get a value from the network, in the *VIN™ CLI* terminal window on ``system_2``, run ``get <key>``; where ``<key>`` is ``test_key`` for this example. The following output displays the result of running this command.
 
 .. admonition:: Successful Get Output
