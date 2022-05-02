@@ -6,7 +6,7 @@ Running the VIN™ on Windows
 
 Currently, there are two ways to set up the *VIN™*: on the same host system or through a local network. Both require very similar setups but differ in the way that peers are configured. The method for instantiating the *VIN™* for both cases and a example to demonstrate the *VIN™'s* ``put``, ``get``, ``spread``, ``gather``, ``share``, ``getPeers``, and ``shutdown`` commands are detailed in the upcoming sections. For detailed information on all of the commands available to the *VIN™*, refer to :ref:`vin-cli`. Before running the *VIN™*, it is good to become familiar with the *VIN™* command flags listed in the following table. Examples of how these are used will be shown when setting up the *VIN™*. 
 
-Note: The logs of all the *VIN™* transactions are located in ``C:\ProgramData\VIN\logs\``. The examples were completed on virtual machines connected to a system running *Windows 10*. 
+Note: The logs of all the *VIN™* transactions are located in ``C:\ProgramData\VIN\logs\``. The examples were completed on virtual machines connected to a system running *Windows 10*. If any issues occur while setting up the VIN™ or while running any VIN™ CLI commands, refer to the :ref:`tips-troubleshooting-windows` section for assistance. 
 
 .. csv-table:: VIN™ Command Flags
     :header: Flag Name, Command Line Instruction, Description
@@ -1087,13 +1087,14 @@ Shutting Down the Network
 
 * The peer and *VIN™ CLI* for ``system_2`` can be shut down in the same manner listed above.
 
+.. _tips-troubleshooting-windows:
 
 Tips and Troubleshooting
 ==========================
 
 This section details tips for using the *VIN™* as well as highlights troubleshooting for issues that may occur while utilizing the VIN’s™ functionality.
 
-VIN_CLI Connection Error
+VIN™ CLI Connection Error
 --------------------------
 
 .. code-block:: none
