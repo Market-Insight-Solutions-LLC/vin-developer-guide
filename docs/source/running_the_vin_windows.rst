@@ -1087,3 +1087,29 @@ Shutting Down the Network
 
 * The peer and *VIN™ CLI* for ``system_2`` can be shut down in the same manner listed above.
 
+
+Tips and Troubleshooting
+==========================
+
+This section details tips for using the *VIN™* as well as highlights troubleshooting for issues that may occur while utilizing the VIN’s™ functionality.
+
+VIN_CLI Connection Error
+--------------------------
+
+.. code-block:: none
+
+  PS C:\Users\DionHicks> VIN_CLI 127.0.0.1 7070
+  connecting to 127.0.0.1:7070 with timeout: 100 seconds
+
+  ERROR: Unable to connect to supplied host 127.0.0.1 and port 7070.
+
+  Connection issue: Connection reset by peer
+
+  Version: 2.0.0
+  Usage: VIN_CLI [-h server_host] [-p server_port] [-t session_timeout]
+    Start the VIN CLI to enable command line interaction with the VIN.
+        -h <server-hostname-or-ip>
+        -p <server-port> (default: 9980)
+        -t <seconds> (default: 100)
+	  
+The port, in this case 7070, is in use by another application. To fix this issue, shutdown the *VIN™* node using port 7070, start it with a different port number, and then connect the *VIN™ CLI* to the node.  
