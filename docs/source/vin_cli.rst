@@ -422,7 +422,7 @@ Note: the following *VIN™ CLI* descriptions were gathered from a *Linux* opera
 
     .. code-block:: none
 
-      VIN@10.51.2.22:7070> spread /home/dion/Dev/vin_test.txt [coe,ene,nae,vae,vad,end,cod]
+      VIN@10.51.2.22:7070> spread /home/user/Dev/vin_test.txt [coe,ene,nae,vae,vad,end,cod]
       Creating a basic pipeline...
       Pipeline:
       {encoders:[{name:ConcurrentEncoder},{name:EntanglementEncoder},{name:NamingEncoder},{name:ValidationEncoder}],decoders:[{name:ValidationDecoder},{name:EntanglementDecoder},{name:ConcurrentDecoder}],channels:[]}
@@ -781,7 +781,7 @@ Note: the following *VIN™ CLI* descriptions were gathered from a *Linux* opera
 
     .. code-block:: none
 
-      VIN@10.51.2.22:7070> download /opt/VIN/receipts/sent/CR1216842901 /home/dion/
+      VIN@10.51.2.22:7070> download /opt/VIN/receipts/sent/CR1216842901 /home/user/
 
       Waiting for response...
       Status : 200
