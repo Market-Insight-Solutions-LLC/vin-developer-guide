@@ -217,7 +217,7 @@ The following will showcase how to a put key-value pair onto the network as a si
     18:29:03:041 benc: 'putValue' request latency 0 min 0 sec 0 msec
 
 
-* To view the value that was placed on the *Kademlia* network, navigate to ``/opt/VIN/kademlia/data/`` and proceed through the folder structure.
+* To view the value that was placed on the *Kademlia* network, navigate to ``/opt/VIN/kademlia/data/`` to find a folder containing two alpha-numeric characters. Proceed through the folder structure until reaching a file and when opened it should contain ``test_value``.
 * To get a value from the network, in the *VIN™ CLI* terminal window run ``get <key>``; where ``<key>`` is ``test_key`` for this example. The following displays the result of running this command; where the top image is the output from the *VIN™ CLI* and the bottom is from the ``sender`` peer.
 
 .. admonition:: Successful Get Output
@@ -255,7 +255,7 @@ Spread and Gather a File
 
 The *VIN™* can spread any file type onto its network. To do a ``spread`` with its default configuration (see :ref:`vin-configuration` and :ref:`vin-cli` for more details), perform the following:
 
-* In the *VIN™ CLI* terminal window run ``spread <filepath>``; where the ``<filepath>`` is the absolute (or relative) path and name of the file to be spread. For this example, it is ``/home/user/Dev/vin_test.txt``. For all of the options available to ``spread``, refer to :ref:`vin-cli`. An encrypted cryptographic receipt is generated upon spreading and is stored in ``/opt/VIN/receipts/sent/`` and the encrypted data is placed onto the *Kademlia* network and can be seen in ``/opt/VIN/kademlia/data/``. Additionally, the data, broken into shards, is viewable in ``/var/log/VIN/shards/``. Note: the number of shards is dependant on the size of the file and the parameters set in the ``chunker`` object, which is set in ``defaults.cfg`` (see :ref:`vin-configuration` for more details).
+* In the *VIN™ CLI* terminal window run ``spread <filepath>``; where the ``<filepath>`` is the absolute (or relative) path and name of the file to be spread. For this example, it is ``/home/user/Dev/vin_test.txt``. For all of the options available to ``spread``, refer to :ref:`vin-cli`. An encrypted cryptographic receipt is generated upon spreading and is stored in ``/opt/VIN/receipts/sent/`` and the encrypted data is placed onto the *Kademlia* network and can be seen in ``/opt/VIN/kademlia/data/`` (proceed through the folder structure until reaching a file and when opened it should be contain unreadable characters). Additionally, the unencrypted data, broken into shards, is viewable in ``/var/log/VIN/shards/``. Note: the number of shards is dependant on the size of the file and the parameters set in the ``chunker`` object, which is set in ``defaults.cfg`` (see :ref:`vin-configuration` for more details).
 * The output of a successful ``spread`` is shown below.
 
 .. admonition:: Successful Spread Output
@@ -562,7 +562,7 @@ To run the *VIN™* on an IP based network, such as *Amazon Web Services (AWS)*,
 * For this example, two systems will be used: ``system_1`` and ``system_2``.
 * Complete the *VIN™* installation procedure on each system (refer to :ref:`vin-install`).
 * On each system, open three terminal windows. 
-* Since each system will have it's own IP address, deemed ``<ip_1>`` and ``<ip_2>`` for this example, it is imperative to determine and record them.
+* Since each system will have it's own IP address, deemed ``<ip_1>`` and ``<ip_2>`` for this example, it is imperative to determine and record them or store them in a variable (e.g., ``export IP_1=<ip_1>``) for upcoming use.
 * Run ``ifconfig`` in one of the terminal windows. Note: if this feature is not installed a message will appear recommending that ``sudo apt-get install -y net-tools`` be run. If this is the case, run this command and re-run ``ifconfig`` to generate an output similar to the one below. 
   
 
@@ -592,8 +592,8 @@ To run the *VIN™* on an IP based network, such as *Amazon Web Services (AWS)*,
 
 
 * Record the address next to the ``inet`` parameter for the required network connection (i.e., wired or wireless). From the output above, the ``inet`` value of ``10.51.2.21`` corresponds to an ethernet connection, ``eth0``, and was recorded as ``<ip_1>``.
-* Repeat the above instructions for ``system_2`` and record ``<ip_2>`` (for this example it is ``10.51.2.22``).
-* In one of the terminal windows on ``system_1`` run ``VIN -b <ip_1>``. For this example, ``<ip_1>`` is ``10.51.2.21``. This will serve as the bootstrap node and will occupy port ``8000`` for incoming connections. If the bootstrap was successfully launched, its terminal window will output similar results to those below.
+* Repeat the above instructions for ``system_2`` and record or store ``<ip_2>`` (for this example it is ``10.51.2.22``).
+* In one of the terminal windows on ``system_1`` run ``VIN -b <ip_1>`` (or if stored in a variable, ``VIN -b $IP_1``). For this example, ``<ip_1>`` is ``10.51.2.21``. This will serve as the bootstrap node and will occupy port ``8000`` for incoming connections. If the bootstrap was successfully launched, its terminal window will output similar results to those below.
 
 
 .. admonition:: System 1 Bootstrap Connection Output 
@@ -741,7 +741,7 @@ The following will showcase how to a put a key-value pair onto the network. Whil
     16:16:32:130 benc: 'putValue' request latency 0 min 0 sec 0 msec
 
 
-* To view the value that was placed on the *Kademlia* network, navigate to ``/opt/VIN/kademlia/data/`` and proceed through the folder structure until reaching the file.
+* To view the value that was placed on the *Kademlia* network, navigate to ``/opt/VIN/kademlia/data/`` to find a folder containing two alpha-numeric characters. Proceed through the folder structure until reaching a file and when opened it should contain ``test_value``.
 * To get a value from the network, in the *VIN™ CLI* terminal window on ``system_2``, run ``get <key>``; where ``<key>`` is ``test_key`` for this example. The following output displays the result of running this command.
 
 .. admonition:: Successful Get Output
@@ -779,7 +779,7 @@ Spread and Gather a File
 
 The *VIN™* can spread any file type onto its network. To do a ``spread`` with its default configuration (see :ref:`vin-configuration` and :ref:`vin-cli` for more details), perform the following:
 
-* In the *VIN™ CLI* terminal window on ``system_`1`` run ``spread <filepath>``; where the ``<filepath>`` is the path and name of the file to be spread. For this example, it is ``/home/user/Dev/vin_network_test.txt``. For all of the options available to ``spread``, refer to :ref:`vin-cli`. An encrypted cryptographic receipt is generated upon spreading and is stored in ``/opt/VIN/receipts/sent/`` and the encrypted data is placed onto the *Kademlia* network and can be seen in ``/opt/VIN/kademlia/data/``. Additionally, the data, broken into shards, is viewable in ``/var/log/VIN/shards/``. Note: the number of shards is dependant on the size of the file and the parameters set in the ``chunker`` object, which is set in ``defaults.cfg`` (see :ref:`vin-configuration` for more details).
+* In the *VIN™ CLI* terminal window on ``system_`1`` run ``spread <filepath>``; where the ``<filepath>`` is the path and name of the file to be spread. For this example, it is ``/home/user/Dev/vin_network_test.txt``. For all of the options available to ``spread``, refer to :ref:`vin-cli`. An encrypted cryptographic receipt is generated upon spreading and is stored in ``/opt/VIN/receipts/sent/`` and the encrypted data is placed onto the *Kademlia* network and can be seen in ``/opt/VIN/kademlia/data/`` (proceed through the folder structure until reaching a file and when opened it should be contain unreadable characters). Additionally, the unencrypted data, broken into shards, is viewable in ``/var/log/VIN/shards/``. Note: the number of shards is dependant on the size of the file and the parameters set in the ``chunker`` object, which is set in ``defaults.cfg`` (see :ref:`vin-configuration` for more details).
 * The output of a successful ``spread`` is shown below.
 
 .. admonition:: Successful Spread Output
