@@ -1099,7 +1099,7 @@ VIN™ CLI Connection Error
 
 .. code-block:: none
 
-  PS C:\Users\DionHicks> VIN_CLI 127.0.0.1 7070
+  PS C:\Users> VIN_CLI 127.0.0.1 7070
   connecting to 127.0.0.1:7070 with timeout: 100 seconds
 
   ERROR: Unable to connect to supplied host 127.0.0.1 and port 7070.
