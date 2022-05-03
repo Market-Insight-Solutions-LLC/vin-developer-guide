@@ -74,7 +74,7 @@ The following table displays a list of APIs that are accessible through the *VIN
     
     Example: ``update_peer 12.345.678.90 9091 /home/target/share/foo/``"
     Health Check, health_check, "Displays health information for the node."
-    Receipt Validation, receipt_validation <file_path>, "Validates a cryptographic receipt at the given file path (including receipt name).
+    Validate Receipt, receipt_validation <file_path>, "Validates a cryptographic receipt at the given file path (including receipt name).
     
     Example: ``receipt_validation /opt/VIN/receipts/sent/CR3736596702``"
     Shutdown, shutdown, "Send a shutdown signal to the current node that the user is connected to."

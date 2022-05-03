@@ -38,9 +38,8 @@ Run the following to install additional dependencies:
 Windows
 ----------
 
-* Navigate to the folder containing the ``VIN.zip`` file on the system
-* Run ``tar -xf VIN.zip`` from a CLI session (as an administrator) or double click the file and follow the prompts to extract the contents 
-* Navigate to the extracted folder and run ``msiexec /i VIN.msi`` from a CLI session (as an administrator) or double click the file and follow the prompts to install the *VIN™*  
+* Navigate to the folder containing the ``<vin_name>.zip`` file on the system
+* Navigate to the extracted folder and run ``msiexec /i <vin_name>.msi`` from a CLI session (as an administrator) or double click the file and follow the prompts to install the *VIN™*  
     
 
 Components
