@@ -138,7 +138,7 @@ This section details instructions to perform a ``SHARE`` using *rvault* with the
       }
     }
 
-  * Where ``<ip_add_rec>`` and ``<recp_port_rec>`` are the IP address and Receipt port of the receiving node, respectively. If running the *VIN™* with default settings, ``<http_port_share>`` will be ``9090``.
+  * Where ``<ip_add_rec>`` and ``<recp_port_rec>`` are the IP address and Receipt port of the receiving node, respectively. If running the *VIN™* with default settings, ``<recp_port_rec>`` will be ``9090``.
   * The result is the same as running ``update_peer <ip_add_rec> <recp_port_rec> share/`` within *VIN™ CLI*.
 
 
