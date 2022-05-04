@@ -107,7 +107,7 @@ This section details instructions to perform a ``SHARE`` using *rvault* with the
 
 * In the *VIN™ CLI* terminal, run: 
 
-  * ``update_peer <ip_add_rec> <recp_port_rec> share/``, where ``<ip_add_rec>`` and ``<recp_port_rec>`` are the IP address and Receipt port of the receiving node, respectively. If running the *VIN™* with default settings, ``<http_port_share>`` will be ``9090``.
+  * ``update_peer <ip_add_rec> <recp_port_rec> share/``, where ``<ip_add_rec>`` and ``<recp_port_rec>`` are the IP address and Receipt port of the receiving node, respectively. If running the *VIN™* with default settings, ``<recp_port_rec>`` will be ``9090``.
   * Note: only files copied into the ``share/`` folder or a subfolder of ``share/`` will trigger a *VIN™* ``SHARE``.
 
 * Alternatively, adding a peer to a shareable folder may be accomplished by modifying ``fuse_peers.cfg`` before running the sharing *VIN™* and is detailed below:
